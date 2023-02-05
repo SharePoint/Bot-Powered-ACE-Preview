@@ -1,0 +1,52 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.9",
+    "version": "1.0.0",
+    "id": "249f3523-b426-43d7-a2d8-68a20ceb4a23",
+    "packageName": "FooBar",
+    "developer": {
+        "name": "Microsoft",
+        "websiteUrl": "https://microsoft.sharepoint-df.com",
+        "privacyUrl": "https://microsoft.sharepoint-df.com/teams/Scheduling2?reset=true",
+        "termsOfUseUrl": "https://microsoft.sharepoint-df.com/teams/Scheduling2?reset=true"
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "DK Local bot",
+        "full": ""
+    },
+    "description": {
+        "short": "DK Local bot",
+        "full": "DK Local bot"
+    },
+    "accentColor": "#FFFFFF",
+    "bots": [
+      {
+        "scopes": [
+          "Viva Connections"
+        ],
+        "botId": "50996233-8d97-4278-a346-cdcd54644182"
+      }
+     ],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": [
+        "microsoft.sharepoint-df.com"
+    ],
+    "devicePermissions": [
+        "media",
+        "geolocation",
+        "notifications",
+        "midi",
+        "openExternal"
+    ],
+    "webApplicationInfo": {
+    "resource": "https://prepspo.spgrid.com",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}

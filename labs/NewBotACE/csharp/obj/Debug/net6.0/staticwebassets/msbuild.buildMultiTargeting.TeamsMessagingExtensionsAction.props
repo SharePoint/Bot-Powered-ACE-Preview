@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\TeamsMessagingExtensionsAction.props" />
+</Project>
