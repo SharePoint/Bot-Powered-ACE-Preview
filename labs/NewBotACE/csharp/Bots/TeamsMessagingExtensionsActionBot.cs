@@ -384,44 +384,44 @@ namespace Microsoft.BotBuilderSamples.Bots
                 {
                     Type = "result",
                     Value = @"{
-                      ""data"": {
-                        ""title"": ""Bot quick view"",
-                        ""description"": ""Bot description""
-                      },
-                      ""template"": {
-                        ""$schema"": ""http://adaptivecards.io/schemas/adaptive-card.json"",
-                        ""type"": ""AdaptiveCard"",
-                        ""version"": ""1.2"",
-                        ""body"": [
-                          {
-                            ""type"": ""Container"",
-                            ""separator"": true,
-                            ""items"": [
-                              {
-                                ""type"": ""TextBlock"",
-                                ""text"": ""Benefits of Bot Aces"",
-                                ""color"": ""dark"",
-                                ""weight"": ""Bolder"",
-                                ""size"": ""large"",
-                                ""wrap"": true,
-                                ""maxLines"": 1,
-                                ""spacing"": ""None""
-                              },
-                              {
-                                ""type"": ""TextBlock"",
-                                ""text"": ""When a Bot powers an Ace it allows you to customize the content of an Ace without deploying a new package, learning about the SPFX toolchain, or having to deploy updates to your customer sites."",
-                                ""color"": ""dark"",
-                                ""wrap"": true,
-                                ""size"": ""medium"",
-                                ""maxLines"": 6,
-                                ""spacing"": ""None""
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      ""viewId"": """",
-                      ""viewStackSize"": 1
+                        ""data"": {
+                        ""title"": ""Bot quick view"",
+                        ""description"": ""Bot description""
+                        },
+                        ""template"": {
+                            ""$schema"": ""http://adaptivecards.io/schemas/adaptive-card.json"",
+                            ""type"": ""AdaptiveCard"",
+                            ""version"": ""1.2"",
+                            ""body"": [
+                                    {
+                                    ""type"": ""Container"",
+                                    ""separator"": true,
+                                    ""items"": [
+                                        {
+                                        ""type"": ""TextBlock"",
+                                        ""text"": ""Benefits of Bot Aces"",
+                                        ""color"": ""dark"",
+                                        ""weight"": ""Bolder"",
+                                        ""size"": ""large"",
+                                        ""wrap"": true,
+                                        ""maxLines"": 1,
+                                        ""spacing"": ""None""
+                                        },
+                                        {
+                                        ""type"": ""TextBlock"",
+                                        ""text"": ""When a Bot powers an Ace it allows you to customize the content of an Ace without deploying a new package, learning about the SPFX toolchain, or having to deploy updates to your customer sites."",
+                                        ""color"": ""dark"",
+                                        ""wrap"": true,
+                                        ""size"": ""medium"",
+                                        ""maxLines"": 6,
+                                        ""spacing"": ""None""
+                                        }
+                                        ]
+                                    }
+                            ]
+                        },
+                        ""viewId"": """",
+                        ""viewStackSize"": 1
                     }"
                 },
             };
@@ -435,32 +435,32 @@ namespace Microsoft.BotBuilderSamples.Bots
                 {
                     Type = "result",
                     Value = @"{
-                        ""aceData"" : {
-                            ""cardSize"": ""Medium"",
-                            ""dataVersion"": ""1.0"",
-                            ""id"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f"",
-                            ""description"": ""This card is rendered from a bot"",
-                            ""iconProperty"": ""SharePointLogo"",
-                            ""instanceId"": ""how would I know"",
-                            ""properties"": {},
-                            ""title"": ""Bot Ace Demo""
-                        },
-                        ""templateType"": ""PrimaryTextCardView"",
-                        ""data"": {
-                          ""actionButtons"": [
-                            {
-                              ""title"": ""Details"",
-                              ""action"": {
-                                ""type"": ""QuickView"",
-                                ""parameters"": {
-                                    ""view"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW""
-                                }
-                              }
-                            }
-                          ],
-                          ""primaryText"": ""My Bot Demo""
-                        }
-                      }"
+                        ""aceData"" : {
+                            ""cardSize"": ""Medium"",
+                            ""dataVersion"": ""1.0"",
+                            ""id"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f"",
+                            ""description"": ""This card is rendered from a bot"",
+                            ""iconProperty"": ""SharePointLogo"",
+                            ""instanceId"": ""how would I know"",
+                            ""properties"": {},
+                            ""title"": ""Bot Ace Demo""
+                        },
+                        ""templateType"": ""PrimaryTextCardView"",
+                        ""data"": {
+                        ""actionButtons"": [
+                            {
+                                ""title"": ""Details"",
+                                ""action"": {
+                                    ""type"": ""QuickView"",
+                                    ""parameters"": {
+                                        ""view"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW""
+                                    }
+                                }
+                            }
+                        ],
+                        ""primaryText"": ""My Bot Demo""
+                        }
+                    }"
                 },
             };
         }
