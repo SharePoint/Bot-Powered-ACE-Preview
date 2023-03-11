@@ -23,6 +23,34 @@ namespace Microsoft.BotBuilderSamples.Bots
     {
         public readonly string baseUrl;
 
+        private static string cardView = @"{
+                        ""aceData"" : {
+                            ""cardSize"": ""Medium"",
+                            ""dataVersion"": ""1.0"",
+                            ""id"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f"",
+                            ""description"": ""This card is rendered from a bot"",
+                            ""iconProperty"": ""SharePointLogo"",
+                            ""instanceId"": """",
+                            ""properties"": {},
+                            ""title"": ""Bot Ace Demo""
+                        },
+                        ""templateType"": ""PrimaryTextCardView"",
+                        ""data"": {
+                          ""actionButtons"": [
+                            {
+                              ""title"": ""Details"",
+                              ""action"": {
+                                ""type"": ""QuickView"",
+                                ""parameters"": {
+                                    ""view"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW""
+                                }
+                              }
+                            }
+                          ],
+                          ""primaryText"": ""My Bot""
+                        }
+         }";
+
         public TeamsMessagingExtensionsActionBot(IConfiguration configuration) : base()
         {
             this.baseUrl = configuration["BaseUrl"];
@@ -363,6 +391,15 @@ namespace Microsoft.BotBuilderSamples.Bots
                 {
                     return Task.FromResult(GetQuickView());
                 }
+                else if (activityValue == "propertyPaneConfiguration")
+                {
+                    return Task.FromResult(GetPropertyPaneConfiguration());
+                }
+                else if (activityValue == "setAceProperties")
+                {
+                    JObject aceProperties = (JObject)activityObject.Property("data").Value;
+                    return Task.FromResult(SetAceProperties(aceProperties));
+                }
             }
 
             // Return empty for now;
@@ -374,6 +411,18 @@ namespace Microsoft.BotBuilderSamples.Bots
                     Value = "{}"
                 }
             });
+        }
+
+        private TaskModuleResponse GetCardView()
+        {
+            return new TaskModuleResponse
+            {
+                Task = new TaskModuleMessageResponse
+                {
+                   Type = "result",
+                    Value = TeamsMessagingExtensionsActionBot.cardView
+                },
+            };
         }
 
         private TaskModuleResponse GetQuickView()
@@ -427,7 +476,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             };
         }
 
-        private TaskModuleResponse GetCardView()
+        private TaskModuleResponse GetPropertyPaneConfiguration()
         {
             return new TaskModuleResponse
             {
@@ -435,32 +484,61 @@ namespace Microsoft.BotBuilderSamples.Bots
                 {
                     Type = "result",
                     Value = @"{
-                        ""aceData"" : {
-                            ""cardSize"": ""Medium"",
-                            ""dataVersion"": ""1.0"",
-                            ""id"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f"",
-                            ""description"": ""This card is rendered from a bot"",
-                            ""iconProperty"": ""SharePointLogo"",
-                            ""instanceId"": ""how would I know"",
-                            ""properties"": {},
-                            ""title"": ""Bot Ace Demo""
-                        },
-                        ""templateType"": ""PrimaryTextCardView"",
-                        ""data"": {
-                        ""actionButtons"": [
-                            {
-                                ""title"": ""Details"",
-                                ""action"": {
-                                    ""type"": ""QuickView"",
-                                    ""parameters"": {
-                                        ""view"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW""
-                                    }
+                      ""pages"": [
+                        {
+                            ""header"": {
+                                ""description"": ""Property Pane for My Bot""
+                            },
+                            ""groups"": [
+                                {
+                                    ""groupFields"": [
+                                        {
+                                            ""type"": 3,
+                                            ""targetProperty"": ""title"",
+                                            ""properties"": {
+                                                ""label"": ""Title"",
+                                                ""value"": ""Bot Ace Demo""
+                                            }
+                                        },
+                                        {
+                                            ""type"": 3,
+                                            ""targetProperty"": ""description"",
+                                            ""properties"": {
+                                                ""label"": ""Description"",
+                                                ""value"": ""This card is rendered from a bot""
+                                            }
+                                        }
+                                    ]
                                 }
-                            }
-                        ],
-                        ""primaryText"": ""My Bot Demo""
+                            ]
                         }
+                      ]
                     }"
+                },
+            };
+        }
+
+        private TaskModuleResponse SetAceProperties(JObject test)
+        {
+            dynamic json = JsonConvert.DeserializeObject(TeamsMessagingExtensionsActionBot.cardView);
+            foreach (dynamic property in test)
+            {
+                if (property.Key.Equals("title") || property.Key.Equals("description"))
+                {
+                    json.aceData[property.Key] = test[property.Key];
+                }
+                else
+                {
+                    json.data[property.Key] = test[property.Key];
+                }
+            }
+            TeamsMessagingExtensionsActionBot.cardView = JsonConvert.SerializeObject(json);
+            return new TaskModuleResponse
+            {
+                Task = new TaskModuleMessageResponse
+                {
+                    Type = "result",
+                    Value = TeamsMessagingExtensionsActionBot.cardView
                 },
             };
         }
