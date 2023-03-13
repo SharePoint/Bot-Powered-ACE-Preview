@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 using System;
@@ -518,18 +518,18 @@ namespace Microsoft.BotBuilderSamples.Bots
             };
         }
 
-        private TaskModuleResponse SetAceProperties(JObject test)
+        private TaskModuleResponse SetAceProperties(JObject aceProperties)
         {
             dynamic json = JsonConvert.DeserializeObject(TeamsMessagingExtensionsActionBot.cardView);
-            foreach (dynamic property in test)
+            foreach (dynamic property in aceProperties)
             {
-                if (property.Key.Equals("title") || property.Key.Equals("description"))
+                if (property.Key.Equals("title") || property.Key.Equals("description" ))
                 {
-                    json.aceData[property.Key] = test[property.Key];
+                    json.aceData[property.Key] = aceProperties[property.Key];
                 }
                 else
                 {
-                    json.data[property.Key] = test[property.Key];
+                    json.data[property.Key] = aceProperties[property.Key];
                 }
             }
             TeamsMessagingExtensionsActionBot.cardView = JsonConvert.SerializeObject(json);
