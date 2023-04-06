@@ -23,37 +23,317 @@ namespace Microsoft.BotBuilderSamples.Bots
     {
         public readonly string baseUrl;
 
-        private static string cardView = @"{
-                        ""aceData"" : {
-                            ""cardSize"": ""Medium"",
-                            ""dataVersion"": ""1.0"",
-                            ""id"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f"",
-                            ""description"": ""This card is rendered from a bot"",
-                            ""iconProperty"": ""SharePointLogo"",
-                            ""instanceId"": """",
-                            ""properties"": {},
-                            ""title"": ""Bot Ace Demo""
-                        },
-                        ""templateType"": ""PrimaryTextCardView"",
-                        ""data"": {
-                          ""actionButtons"": [
-                            {
-                              ""title"": ""Details"",
-                              ""action"": {
-                                ""type"": ""QuickView"",
-                                ""parameters"": {
-                                    ""view"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW""
+        private static Dictionary<string, string> viewDictionary;
+
+        private string cardView = @"{
+                        ""viewType"": ""Card"",
+                        ""renderArguments"": {
+                            ""aceData"" : {
+                                ""cardSize"": ""Medium"",
+                                ""dataVersion"": ""1.0"",
+                                ""id"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f"",
+                                ""description"": ""This card is rendered from a bot"",
+                                ""iconProperty"": ""SharePointLogo"",
+                                ""instanceId"": """",
+                                ""properties"": {},
+                                ""title"": ""Bot Ace Demo""
+                            },
+                            ""templateType"": ""PrimaryText"",
+                            ""viewId"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_CARD_VIEW"",
+                            ""data"": {
+                              ""onCardSelection"": {
+                                    ""type"": ""QuickView"",
+                                    ""parameters"": {
+                                        ""view"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW""
+                                    }
+                              },
+                              ""actionButtons"": [
+                                {
+                                  ""title"": ""Next View"",
+                                  ""action"": {
+                                    ""type"": ""Submit"",
+                                    ""parameters"": {
+                                        ""view"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_CARD_VIEW2""
+                                    }
+                                  }
                                 }
-                              }
+                              ],
+                              ""primaryText"": ""My Bot""
                             }
-                          ],
-                          ""primaryText"": ""My Bot""
                         }
          }";
 
+        private string cardView2 = @"{
+                        ""viewType"": ""Card"",
+                        ""renderArguments"": {
+                            ""aceData"" : {
+                                ""cardSize"": ""Medium"",
+                                ""dataVersion"": ""1.0"",
+                                ""id"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f"",
+                                ""description"": ""This card is rendered from a bot"",
+                                ""iconProperty"": ""SharePointLogo"",
+                                ""instanceId"": """",
+                                ""properties"": {},
+                                ""title"": ""Bot Ace Demo""
+                            },
+                            ""templateType"": ""PrimaryText"",
+                            ""cardViewId"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_CARD_VIEW2"",
+                            ""data"": {
+                              ""onCardSelection"": {
+                                    ""type"": ""QuickView"",
+                                    ""parameters"": {
+                                        ""view"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW""
+                                    }
+                              },
+                              ""actionButtons"": [
+                                {
+                                  ""title"": ""Last View"",
+                                  ""action"": {
+                                    ""type"": ""Submit"",
+                                    ""parameters"": {
+                                        ""view"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_CARD_VIEW3""
+                                    }
+                                  }
+                                }
+                              ],
+                              ""primaryText"": ""Second Card""
+                            }
+                        }
+         }";
+
+        private string cardView3 = @"{
+                        ""viewType"": ""Card"",
+                        ""renderArguments"": {
+                            ""aceData"" : {
+                                ""cardSize"": ""Medium"",
+                                ""dataVersion"": ""1.0"",
+                                ""id"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f"",
+                                ""description"": ""This card is rendered from a bot"",
+                                ""iconProperty"": ""SharePointLogo"",
+                                ""instanceId"": """",
+                                ""properties"": {},
+                                ""title"": ""Bot Ace Demo""
+                            },
+                            ""templateType"": ""PrimaryText"",
+                            ""cardViewId"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_CARD_VIEW3"",
+                            ""data"": {
+                              ""onCardSelection"": {
+                                    ""type"": ""QuickView"",
+                                    ""parameters"": {
+                                        ""view"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW""
+                                    }
+                              },
+                              ""actionButtons"": [
+                                {
+                                  ""title"": ""First View"",
+                                  ""action"": {
+                                    ""type"": ""Submit"",
+                                    ""parameters"": {
+                                        ""view"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_CARD_VIEW""
+                                    }
+                                  }
+                                }
+                              ],
+                              ""primaryText"": ""Last Card""
+                            }
+                        }
+         }";
+
+        private string quickView = @"{
+                        ""viewType"": ""QuickView"",
+                        ""renderArguments"": {
+                            ""data"": {
+                            ""title"": ""Bot quick view"",
+                            ""description"": ""Bot description""
+                            },
+                            ""template"": {
+                                ""$schema"": ""http://adaptivecards.io/schemas/adaptive-card.json"",
+                                ""type"": ""AdaptiveCard"",
+                                ""version"": ""1.2"",
+                                ""body"": [
+                                        {
+                                        ""type"": ""Container"",
+                                        ""separator"": true,
+                                        ""selectAction"": {
+                                                ""type"": ""Action.Submit"",
+                                                ""data"": {
+                                                  ""view"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW2""
+                                                }
+                                        },
+                                        ""items"": [
+                                            {
+                                            ""type"": ""TextBlock"",
+                                            ""text"": ""Benefits of Bot Aces"",
+                                            ""color"": ""dark"",
+                                            ""weight"": ""Bolder"",
+                                            ""size"": ""large"",
+                                            ""wrap"": true,
+                                            ""maxLines"": 1,
+                                            ""spacing"": ""None""
+                                            },
+                                            {
+                                            ""type"": ""TextBlock"",
+                                            ""text"": ""When a Bot powers an Ace it allows you to customize the content of an Ace without deploying a new package, learning about the SPFX toolchain, or having to deploy updates to your customer sites."",
+                                            ""color"": ""dark"",
+                                            ""wrap"": true,
+                                            ""size"": ""medium"",
+                                            ""maxLines"": 6,
+                                            ""spacing"": ""None""
+                                            },
+                                            {
+                                                ""type"": ""ActionSet"",
+                                                ""actions"": [
+                                                  {
+                                                    ""type"": ""Action.Submit"",
+                                                    ""id"": ""nextView"",
+                                                    ""title"": ""Next"",
+                                                    ""data"": {
+                                                      ""view"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW2""
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                        }
+                                ]
+                            },
+                            ""viewId"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW""
+                        }
+                    }";
+
+        private string quickView2 = @"{
+                        ""viewType"": ""QuickView"",
+                        ""renderArguments"": {
+                            ""data"": {
+                            ""title"": ""Bot quick view"",
+                            ""description"": ""Bot description""
+                            },
+                            ""template"": {
+                                ""$schema"": ""http://adaptivecards.io/schemas/adaptive-card.json"",
+                                ""type"": ""AdaptiveCard"",
+                                ""version"": ""1.2"",
+                                ""body"": [
+                                        {
+                                        ""type"": ""Container"",
+                                        ""separator"": true,
+                                        ""selectAction"": {
+                                                ""type"": ""Action.Submit"",
+                                                ""data"": {
+                                                  ""view"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW3""
+                                                }
+                                        },
+                                        ""items"": [
+                                            {
+                                            ""type"": ""TextBlock"",
+                                            ""text"": ""Second Quick View"",
+                                            ""color"": ""dark"",
+                                            ""weight"": ""Bolder"",
+                                            ""size"": ""large"",
+                                            ""wrap"": true,
+                                            ""maxLines"": 1,
+                                            ""spacing"": ""None""
+                                            },
+                                            {
+                                            ""type"": ""TextBlock"",
+                                            ""text"": ""This is the second bot ace quick view"",
+                                            ""color"": ""dark"",
+                                            ""wrap"": true,
+                                            ""size"": ""medium"",
+                                            ""maxLines"": 6,
+                                            ""spacing"": ""None""
+                                            },
+                                            {
+                                                ""type"": ""ActionSet"",
+                                                ""actions"": [
+                                                  {
+                                                    ""type"": ""Action.Submit"",
+                                                    ""id"": ""nextView"",
+                                                    ""title"": ""Last View"",
+                                                    ""data"": {
+                                                      ""view"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW3""
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                        }
+                                ]
+                            },
+                            ""viewId"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW2""
+                        }
+                    }";
+
+        private string quickView3 = @"{
+                        ""viewType"": ""QuickView"",
+                        ""renderArguments"": {
+                            ""data"": {
+                            ""title"": ""Bot quick view"",
+                            ""description"": ""Bot description""
+                            },
+                            ""template"": {
+                                ""$schema"": ""http://adaptivecards.io/schemas/adaptive-card.json"",
+                                ""type"": ""AdaptiveCard"",
+                                ""version"": ""1.2"",
+                                ""body"": [
+                                        {
+                                        ""type"": ""Container"",
+                                        ""separator"": true,
+                                        ""selectAction"": {
+                                                ""type"": ""Action.Submit"",
+                                                ""data"": {
+                                                  ""view"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW""
+                                                }
+                                        },
+                                        ""items"": [
+                                            {
+                                            ""type"": ""TextBlock"",
+                                            ""text"": ""Last Quick View"",
+                                            ""color"": ""dark"",
+                                            ""weight"": ""Bolder"",
+                                            ""size"": ""large"",
+                                            ""wrap"": true,
+                                            ""maxLines"": 1,
+                                            ""spacing"": ""None""
+                                            },
+                                            {
+                                            ""type"": ""TextBlock"",
+                                            ""text"": ""This is the last bot ace quick view"",
+                                            ""color"": ""dark"",
+                                            ""wrap"": true,
+                                            ""size"": ""medium"",
+                                            ""maxLines"": 6,
+                                            ""spacing"": ""None""
+                                            },
+                                            {
+                                                ""type"": ""ActionSet"",
+                                                ""actions"": [
+                                                  {
+                                                    ""type"": ""Action.Submit"",
+                                                    ""id"": ""nextView"",
+                                                    ""title"": ""First View"",
+                                                    ""data"": {
+                                                      ""view"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW""
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                        }
+                                ]
+                            },
+                            ""viewId"": ""a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW3""
+                        }
+                    }";
         public TeamsMessagingExtensionsActionBot(IConfiguration configuration) : base()
         {
             this.baseUrl = configuration["BaseUrl"];
+            TeamsMessagingExtensionsActionBot.viewDictionary = new Dictionary<string, string>();
+            viewDictionary.Add("a1de36bb-9e9e-4b8e-81f8-853c3bba483f_CARD_VIEW", this.cardView);
+            viewDictionary.Add("a1de36bb-9e9e-4b8e-81f8-853c3bba483f_CARD_VIEW2", this.cardView2);
+            viewDictionary.Add("a1de36bb-9e9e-4b8e-81f8-853c3bba483f_CARD_VIEW3", this.cardView3);
+            viewDictionary.Add("a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW", this.quickView);
+            viewDictionary.Add("a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW2", this.quickView2);
+            viewDictionary.Add("a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW3", this.quickView3);
         }
 
         protected override async Task<MessagingExtensionActionResponse> OnTeamsMessagingExtensionSubmitActionAsync(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionAction action, CancellationToken cancellationToken)
@@ -249,10 +529,10 @@ namespace Microsoft.BotBuilderSamples.Bots
             };
         }
 
-     
+
         protected override async Task<MessagingExtensionActionResponse> OnTeamsMessagingExtensionFetchTaskAsync(
-            ITurnContext<IInvokeActivity> turnContext, 
-            MessagingExtensionAction action, 
+            ITurnContext<IInvokeActivity> turnContext,
+            MessagingExtensionAction action,
             CancellationToken cancellationToken)
         {
             switch (action.CommandId)
@@ -400,6 +680,11 @@ namespace Microsoft.BotBuilderSamples.Bots
                     JObject aceProperties = (JObject)activityObject.Property("data").Value;
                     return Task.FromResult(SetAceProperties(aceProperties));
                 }
+                else if (activityValue == "handleAction")
+                {
+                    JObject actionParameters = (JObject)activityObject.Property("data").Value;
+                    return Task.FromResult(HandleAction(actionParameters));
+                }
             }
 
             // Return empty for now;
@@ -415,63 +700,27 @@ namespace Microsoft.BotBuilderSamples.Bots
 
         private TaskModuleResponse GetCardView()
         {
+            dynamic cardViewJson = JsonConvert.DeserializeObject(TeamsMessagingExtensionsActionBot.viewDictionary["a1de36bb-9e9e-4b8e-81f8-853c3bba483f_CARD_VIEW"]);
+
             return new TaskModuleResponse
             {
                 Task = new TaskModuleMessageResponse
                 {
-                   Type = "result",
-                    Value = TeamsMessagingExtensionsActionBot.cardView
+                    Type = "result",
+                    Value = JsonConvert.SerializeObject(cardViewJson.renderArguments)
                 },
             };
         }
 
         private TaskModuleResponse GetQuickView()
         {
+            dynamic quickViewJson = JsonConvert.DeserializeObject(TeamsMessagingExtensionsActionBot.viewDictionary["a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW"]);
             return new TaskModuleResponse
             {
                 Task = new TaskModuleMessageResponse
                 {
                     Type = "result",
-                    Value = @"{
-                        ""data"": {
-                        ""title"": ""Bot quick view"",
-                        ""description"": ""Bot description""
-                        },
-                        ""template"": {
-                            ""$schema"": ""http://adaptivecards.io/schemas/adaptive-card.json"",
-                            ""type"": ""AdaptiveCard"",
-                            ""version"": ""1.2"",
-                            ""body"": [
-                                    {
-                                    ""type"": ""Container"",
-                                    ""separator"": true,
-                                    ""items"": [
-                                        {
-                                        ""type"": ""TextBlock"",
-                                        ""text"": ""Benefits of Bot Aces"",
-                                        ""color"": ""dark"",
-                                        ""weight"": ""Bolder"",
-                                        ""size"": ""large"",
-                                        ""wrap"": true,
-                                        ""maxLines"": 1,
-                                        ""spacing"": ""None""
-                                        },
-                                        {
-                                        ""type"": ""TextBlock"",
-                                        ""text"": ""When a Bot powers an Ace it allows you to customize the content of an Ace without deploying a new package, learning about the SPFX toolchain, or having to deploy updates to your customer sites."",
-                                        ""color"": ""dark"",
-                                        ""wrap"": true,
-                                        ""size"": ""medium"",
-                                        ""maxLines"": 6,
-                                        ""spacing"": ""None""
-                                        }
-                                        ]
-                                    }
-                            ]
-                        },
-                        ""viewId"": """",
-                        ""viewStackSize"": 1
-                    }"
+                    Value = JsonConvert.SerializeObject(quickViewJson.renderArguments)
                 },
             };
         }
@@ -520,29 +769,55 @@ namespace Microsoft.BotBuilderSamples.Bots
 
         private TaskModuleResponse SetAceProperties(JObject aceProperties)
         {
-            dynamic json = JsonConvert.DeserializeObject(TeamsMessagingExtensionsActionBot.cardView);
+            dynamic json = JsonConvert.DeserializeObject(TeamsMessagingExtensionsActionBot.viewDictionary["a1de36bb-9e9e-4b8e-81f8-853c3bba483f_CARD_VIEW"]);
             foreach (dynamic property in aceProperties)
             {
-                if (property.Key.Equals("title") || property.Key.Equals("description" ))
+                if (property.Key.Equals("title") || property.Key.Equals("description"))
                 {
-                    json.aceData[property.Key] = aceProperties[property.Key];
+                    json.renderArguments.aceData[property.Key] = aceProperties[property.Key];
                 }
                 else
                 {
-                    json.data[property.Key] = aceProperties[property.Key];
+                    json.renderArguments.data[property.Key] = aceProperties[property.Key];
                 }
             }
-            TeamsMessagingExtensionsActionBot.cardView = JsonConvert.SerializeObject(json);
+            TeamsMessagingExtensionsActionBot.viewDictionary["a1de36bb-9e9e-4b8e-81f8-853c3bba483f_CARD_VIEW"] = JsonConvert.SerializeObject(json);
             return new TaskModuleResponse
             {
                 Task = new TaskModuleMessageResponse
                 {
                     Type = "result",
-                    Value = TeamsMessagingExtensionsActionBot.cardView
+                    Value = TeamsMessagingExtensionsActionBot.viewDictionary["a1de36bb-9e9e-4b8e-81f8-853c3bba483f_CARD_VIEW"]
+                },
+            };
+        }
+
+        private TaskModuleResponse HandleAction(JObject actionParameters)
+        {
+
+            if (actionParameters["type"] != null)
+            {
+                if (actionParameters["type"].ToString().Equals("Submit"))
+                {
+                    return new TaskModuleResponse
+                    {
+                        Task = new TaskModuleMessageResponse
+                        {
+                            Type = "result",
+                            Value = TeamsMessagingExtensionsActionBot.viewDictionary[actionParameters["data"]["view"].ToString()]
+                        },
+                    };
+                }
+            }
+            return new TaskModuleResponse
+            {
+                Task = new TaskModuleMessageResponse
+                {
+                    Type = "result",
+                    Value = ""
                 },
             };
         }
 
     }
 }
-
