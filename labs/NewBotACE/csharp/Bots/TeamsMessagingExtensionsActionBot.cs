@@ -16,12 +16,41 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Microsoft.BotBuilderSamples.Helpers;
 using Microsoft.BotBuilderSamples.Models;
+using System.Runtime;
+using Microsoft.Bot.Connector.Authentication;
+using Microsoft.VisualBasic;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Graph;
+using Attachment = Microsoft.Bot.Schema.Attachment;
+using Microsoft.AspNetCore.Components.RenderTree;
+using Microsoft.Graph.ExternalConnectors;
+using static System.Collections.Specialized.BitVector32;
+using static Microsoft.Graph.Constants;
+using Microsoft.Graph.CallRecords;
+using static System.Net.Mime.MediaTypeNames;
+using System.Drawing;
 
 namespace Microsoft.BotBuilderSamples.Bots
 {
+    public class ACEQuickViewTemplate
+    {
+        [JsonProperty("$schema")]
+        public string schema { get; set; }
+
+        [JsonProperty("type")]
+        public string type { get; set; }
+
+        [JsonProperty("version")]
+        public string version { get; set; }
+
+        [JsonProperty("body")]
+        public object body { get; set; }
+    }
+
     public class TeamsMessagingExtensionsActionBot : TeamsActivityHandler
     {
         public readonly string baseUrl;
+        public readonly string connectionName;
 
         private static string cardView = @"{
                         ""aceData"" : {
@@ -54,8 +83,10 @@ namespace Microsoft.BotBuilderSamples.Bots
         public TeamsMessagingExtensionsActionBot(IConfiguration configuration) : base()
         {
             this.baseUrl = configuration["BaseUrl"];
+            this.connectionName = configuration["ConnectionName"];
         }
 
+        #region Message Extensions
         protected override async Task<MessagingExtensionActionResponse> OnTeamsMessagingExtensionSubmitActionAsync(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionAction action, CancellationToken cancellationToken)
         {
             switch (action.CommandId)
@@ -231,8 +262,6 @@ namespace Microsoft.BotBuilderSamples.Bots
             };
         }
 
-
-
         private MessagingExtensionActionResponse ShareHTMLCard(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionAction action)
         {
             var createCardResponse = ((JObject)action.Data).ToObject<CardResponse>();
@@ -249,7 +278,6 @@ namespace Microsoft.BotBuilderSamples.Bots
             };
         }
 
-     
         protected override async Task<MessagingExtensionActionResponse> OnTeamsMessagingExtensionFetchTaskAsync(
             ITurnContext<IInvokeActivity> turnContext, 
             MessagingExtensionAction action, 
@@ -363,12 +391,11 @@ namespace Microsoft.BotBuilderSamples.Bots
             };
             return response;
         }
-
         private static Attachment GetAdaptiveCardAttachmentFromFile(string fileName)
         {
             //Read the card json and create attachment.
             string[] paths = { ".", "Resources", fileName };
-            var adaptiveCardJson = File.ReadAllText(Path.Combine(paths));
+            var adaptiveCardJson = System.IO.File.ReadAllText(Path.Combine(paths));
 
             var adaptiveCardAttachment = new Attachment()
             {
@@ -377,6 +404,9 @@ namespace Microsoft.BotBuilderSamples.Bots
             };
             return adaptiveCardAttachment;
         }
+
+        #endregion
+
         protected override Task<TaskModuleResponse> OnTeamsTaskModuleFetchAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
             JObject activityObject = turnContext.Activity.Value as JObject;
@@ -385,11 +415,11 @@ namespace Microsoft.BotBuilderSamples.Bots
                 string activityValue = (string)((JValue)activityObject.Property("activity").Value).Value;
                 if (activityValue == "cardView")
                 {
-                    return Task.FromResult(GetCardView());
+                    return GetCardView(turnContext, taskModuleRequest, cancellationToken);
                 }
                 else if (activityValue == "quickView")
                 {
-                    return Task.FromResult(GetQuickView());
+                    return Task.FromResult(GenerateSignInQuickView());
                 }
                 else if (activityValue == "propertyPaneConfiguration")
                 {
@@ -413,16 +443,190 @@ namespace Microsoft.BotBuilderSamples.Bots
             });
         }
 
-        private TaskModuleResponse GetCardView()
+        #region Card Views
+
+        private async Task<TaskModuleResponse> GetCardView(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
+            // var token = await TryToGetUserToken(null, turnContext, taskModuleRequest, cancellationToken);
+            // var signInUser = null; // TryGetUser(token);
+            // string cardView = signInUser == null ? GenerateSignInCardView(turnContext, cancellationToken) : GenerateCardView();
             return new TaskModuleResponse
             {
                 Task = new TaskModuleMessageResponse
                 {
                    Type = "result",
-                    Value = TeamsMessagingExtensionsActionBot.cardView
+                   Value = GenerateSignInCardView(turnContext, cancellationToken)
                 },
             };
+        }
+
+        private string GenerateSignInCardView(ITurnContext<IInvokeActivity> turnContext, CancellationToken cancellationToken)
+        {
+            // var signInLink = TryGetSignInLink(turnContext, cancellationToken);
+
+            object aceData = new
+            {
+                cardSize = "Large",
+                dataVersion = "1.0",
+                id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f",
+                iconProperty = "SharePointLogo",
+                instanceId = "",
+                properties = new { },
+                primaryText = "Bot Ace Demo",
+                description = "Testing sign in through sign in template for bots",
+                signInButtonText = "Sign In",
+                uri = "https://login.microsoft.com",
+                connectionName
+            };
+            
+            object quickViewButton = new
+            {
+                title = "Details",
+                action = new
+                {
+                    type = "QuickView",
+                    parameters = new
+                    {
+                        view = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f_COMPLETESIGNIN_QUICK_VIEW"
+                    }
+                }
+            };
+            List<object> actionButtonsWrapper = new List<object> { quickViewButton };
+            
+            return JsonConvert.SerializeObject(new
+            {
+                aceData,
+                templateType = "SignIn",
+                data = new
+                {
+                    actionButtons = actionButtonsWrapper
+                },
+                viewId = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f"
+            });
+        }
+
+        private string GenerateCardView()
+        {
+            object aceData = new
+            {
+                cardSize = "Medium",
+                dataVersion = "1.0",
+                id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f",
+                description = "This card is rendered from a bot",
+                iconProperty = "SharePointLogo",
+                instanceId = "",
+                properties = new {},
+                title = "Bot Ace Demo"
+            };
+
+            object quickViewButton = new
+            {
+                title = "Details",
+                action = new
+                {
+                    type = "QuickView",
+                    parameters = new
+                    {
+                        view = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW"
+                    }
+                }
+            };
+            List<object> actionButtonsWrapper = new List<object> { quickViewButton };
+
+            return JsonConvert.SerializeObject(new
+            {
+                aceData,
+                templateType = "PrimaryTextCardView",
+                data = new
+                {
+                    actionButtons = actionButtonsWrapper
+                },
+                primaryText = "My Bot",
+                viewId = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f"
+            });
+        }
+
+        #endregion
+
+        #region Quick View
+        private TaskModuleResponse GenerateSignInQuickView()
+        {
+            return new TaskModuleResponse
+            {
+                Task = new TaskModuleMessageResponse
+                {
+                    Type = "result",
+                    Value = GenerateSignInQuickViewValue()
+                }
+            };
+        }
+
+        private string GenerateSignInQuickViewValue()
+        {
+            object title = new {
+                type = "TextBlock",
+                text = "Complete Sign In",
+                color = "dark",
+                weight = "Bolder",
+                size = "large",
+                wrap = true,
+                maxLines = 1,
+                spacing = "None"
+            };
+            object description = new
+            {
+                type = "TextBlock",
+                text = "description",
+                color = "dark",
+                size = "medium",
+                wrap = true,
+                maxLines = 6,
+                spacing = "None"
+            };
+            object magicCodeInput = new
+            {
+                type = "Input.Number",
+                placeholder = "Enter Magic Code",
+                id = "magicCode",
+                isRequired = true,
+            };
+            object actions = new
+            {
+                type = "ActionSet",
+                actions = new List<object> {
+                    new {
+                        type = "Action.Submit",
+                        title = "Complete Sign In"
+                    }
+                }
+            };
+            List<object> itemsWrapper = new List<object> { title, description };
+            
+            object body = new
+            {
+                type = "Details",
+                separator = true,
+                items = itemsWrapper
+            };
+            List<object> bodyWrapper = new List<object> { body };
+
+            return JsonConvert.SerializeObject(new
+            {
+                data = new
+                {
+                    title = "Title",
+                    description = "description"
+                },
+                template = new ACEQuickViewTemplate
+                {
+                    schema = "http://adaptivecards.io/schemas/adaptive-card.json",
+                    type = "AdaptiveCard",
+                    version = "1.2",
+                    body = bodyWrapper
+                },
+                viewId = "",
+                viewStackSize = 1
+            });
         }
 
         private TaskModuleResponse GetQuickView()
@@ -434,8 +638,8 @@ namespace Microsoft.BotBuilderSamples.Bots
                     Type = "result",
                     Value = @"{
                         ""data"": {
-                        ""title"": ""Bot quick view"",
-                        ""description"": ""Bot description""
+                            ""title"": ""Bot quick view"",
+                            ""description"": ""Bot description""
                         },
                         ""template"": {
                             ""$schema"": ""http://adaptivecards.io/schemas/adaptive-card.json"",
@@ -475,7 +679,36 @@ namespace Microsoft.BotBuilderSamples.Bots
                 },
             };
         }
+        #endregion
 
+        #region Authentication
+        private Task<TokenResponse> TryToGetUserToken(string magicCode, ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        {
+            var userTokenClient = turnContext.TurnState.Get<UserTokenClient>();
+            return userTokenClient.GetUserTokenAsync(turnContext.Activity.From.Id, connectionName, turnContext.Activity.ChannelId, magicCode, cancellationToken);
+        }
+
+        private async Task<Graph.User> TryGetUser(TokenResponse response)
+        {
+            if (response != null && !string.IsNullOrEmpty(response.Token))
+            {
+                var client = new SimpleGraphClient(response.Token);
+                return await client.GetMeAsync().ConfigureAwait(false);
+            }
+
+            return null;
+        }
+
+        private async Task<string> TryGetSignInLink(ITurnContext<IInvokeActivity> turnContext, CancellationToken cancellationToken)
+        {
+            var userTokenClient = turnContext.TurnState.Get<UserTokenClient>();
+            var signInResource = await userTokenClient.GetSignInResourceAsync(connectionName, (Activity)turnContext.Activity, null, cancellationToken).ConfigureAwait(false);
+            return signInResource.SignInLink;
+        }
+
+        #endregion
+
+        #region Property Pane
         private TaskModuleResponse GetPropertyPaneConfiguration()
         {
             return new TaskModuleResponse
@@ -542,7 +775,7 @@ namespace Microsoft.BotBuilderSamples.Bots
                 },
             };
         }
-
+        #endregion
     }
 }
 
