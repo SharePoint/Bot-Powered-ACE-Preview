@@ -51,6 +51,7 @@ namespace Microsoft.BotBuilderSamples.Bots
     {
         public readonly string baseUrl;
         public readonly string connectionName;
+        private readonly string signInQuickViewId = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f_COMPLETESIGNIN_QUICK_VIEW";
 
         private static string cardView = @"{
                         ""aceData"" : {
@@ -472,7 +473,8 @@ namespace Microsoft.BotBuilderSamples.Bots
                 iconProperty = "SharePointLogo",
                 instanceId = "",
                 properties = new { },
-                primaryText = "Bot Ace Demo",
+                title = "3P IDP Test",
+                primaryText = "Please Sign In",
                 description = "Testing sign in through sign in template for bots",
                 signInButtonText = "Sign In",
                 uri = "https://login.microsoft.com",
@@ -487,7 +489,7 @@ namespace Microsoft.BotBuilderSamples.Bots
                     type = "QuickView",
                     parameters = new
                     {
-                        view = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f_COMPLETESIGNIN_QUICK_VIEW"
+                        view = signInQuickViewId
                     }
                 }
             };
@@ -576,7 +578,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             object description = new
             {
                 type = "TextBlock",
-                text = "description",
+                text = "Input the magic code from signing into Azure Active Directory in order to continue.",
                 color = "dark",
                 size = "medium",
                 wrap = true,
@@ -600,11 +602,11 @@ namespace Microsoft.BotBuilderSamples.Bots
                     }
                 }
             };
-            List<object> itemsWrapper = new List<object> { title, description };
+            List<object> itemsWrapper = new List<object> { title, description, magicCodeInput, actions };
             
             object body = new
             {
-                type = "Details",
+                type = "Container",
                 separator = true,
                 items = itemsWrapper
             };
@@ -612,20 +614,23 @@ namespace Microsoft.BotBuilderSamples.Bots
 
             return JsonConvert.SerializeObject(new
             {
-                data = new
+                viewType = "QuickView",
+                renderArguments = new
                 {
-                    title = "Title",
-                    description = "description"
-                },
-                template = new ACEQuickViewTemplate
-                {
-                    schema = "http://adaptivecards.io/schemas/adaptive-card.json",
-                    type = "AdaptiveCard",
-                    version = "1.2",
-                    body = bodyWrapper
-                },
-                viewId = "",
-                viewStackSize = 1
+                    viewId = signInQuickViewId,
+                    data = new
+                    {
+                        title = "Title",
+                        description = "description"
+                    },
+                    template = new ACEQuickViewTemplate
+                    {
+                        schema = "http://adaptivecards.io/schemas/adaptive-card.json",
+                        type = "AdaptiveCard",
+                        version = "1.2",
+                        body = bodyWrapper
+                    },
+                }
             });
         }
 
