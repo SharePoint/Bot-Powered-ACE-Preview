@@ -123,7 +123,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             response.AceData.CardSize = AceData.AceCardSize.Medium;
             response.AceData.Title = "BOT DRIVEN ACE";
             response.AceData.DataVersion = "1.0";
-            response.AceData.Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f";
+            response.AceData.Id = "<App ID>";
             response.Data = new CardViewData();
             response.Data.PrimaryText = "MY BOT " + SharePointBotDrivenAceActionBot.index++.ToString();
 
@@ -132,7 +132,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             button.Action = new Microsoft.Bot.Schema.SharePoint.Action();
             button.Action.Type = "QuickView";
             button.Action.Parameters = new ActionParameters();
-            button.Action.Parameters.View = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW";
+            button.Action.Parameters.View = "appid_QUICK_VIEW";
 
             List<ActionButton> actionButtons = new List<ActionButton>();
             actionButtons.Add(button);
