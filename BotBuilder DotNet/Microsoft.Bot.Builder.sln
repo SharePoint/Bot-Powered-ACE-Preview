@@ -235,6 +235,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Bot.Connector.Str
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Bot.Connector.Streaming.Perf", "tests\Microsoft.Bot.Connector.Streaming.Perf\Microsoft.Bot.Connector.Streaming.Perf.csproj", "{B49A3201-5BEE-426C-A082-D92D52172E06}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamsMessagingExtensionsAction", "msgext-action\csharp\TeamsMessagingExtensionsAction.csproj", "{18B7EA82-A513-439D-AB05-AE4739C081ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -923,14 +925,14 @@ Global
 		{B49A3201-5BEE-426C-A082-D92D52172E06}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B49A3201-5BEE-426C-A082-D92D52172E06}.Release-Windows|Any CPU.ActiveCfg = Release|Any CPU
 		{B49A3201-5BEE-426C-A082-D92D52172E06}.Release-Windows|Any CPU.Build.0 = Release|Any CPU
-		{CEDE5CDE-7046-463B-93AF-BDDB2A106F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CEDE5CDE-7046-463B-93AF-BDDB2A106F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CEDE5CDE-7046-463B-93AF-BDDB2A106F04}.Debug-Windows|Any CPU.ActiveCfg = Debug|Any CPU
-		{CEDE5CDE-7046-463B-93AF-BDDB2A106F04}.Debug-Windows|Any CPU.Build.0 = Debug|Any CPU
-		{CEDE5CDE-7046-463B-93AF-BDDB2A106F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CEDE5CDE-7046-463B-93AF-BDDB2A106F04}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CEDE5CDE-7046-463B-93AF-BDDB2A106F04}.Release-Windows|Any CPU.ActiveCfg = Release|Any CPU
-		{CEDE5CDE-7046-463B-93AF-BDDB2A106F04}.Release-Windows|Any CPU.Build.0 = Release|Any CPU
+		{18B7EA82-A513-439D-AB05-AE4739C081ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18B7EA82-A513-439D-AB05-AE4739C081ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18B7EA82-A513-439D-AB05-AE4739C081ED}.Debug-Windows|Any CPU.ActiveCfg = Debug|Any CPU
+		{18B7EA82-A513-439D-AB05-AE4739C081ED}.Debug-Windows|Any CPU.Build.0 = Debug|Any CPU
+		{18B7EA82-A513-439D-AB05-AE4739C081ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18B7EA82-A513-439D-AB05-AE4739C081ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18B7EA82-A513-439D-AB05-AE4739C081ED}.Release-Windows|Any CPU.ActiveCfg = Release|Any CPU
+		{18B7EA82-A513-439D-AB05-AE4739C081ED}.Release-Windows|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
