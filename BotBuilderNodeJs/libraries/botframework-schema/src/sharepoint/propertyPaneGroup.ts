@@ -2,13 +2,13 @@
 // Licensed under the MIT License.
 
 import { IPropertyPaneGroupOrConditionalGroup } from './IPropertyPaneGroupOrConditionalGroup';
-import { PropertyPaneField } from './propertyPaneField';
+import { PropertyPaneGroupField } from './propertyPaneGroupField';
 
 /**
  * Sharepoint PropertyPaneGroup object
  */
 export class PropertyPaneGroup implements IPropertyPaneGroupOrConditionalGroup {
-    private groupFields: [PropertyPaneField];
+    private groupFields: [PropertyPaneGroupField];
     private groupName: string;
     private isCollapsed: boolean;
     private isGroupNameHidden: boolean;
@@ -22,14 +22,14 @@ export class PropertyPaneGroup implements IPropertyPaneGroupOrConditionalGroup {
     /**
      * Sets the group fields of type PropertyPaneGroupField
      */
-    public set GroupFields(groupFields: [PropertyPaneField]){
+    public set GroupFields(groupFields: [PropertyPaneGroupField]){
         this.groupFields = groupFields;
     }
 
     /**
      * Gets the group fields of type PropertyPaneGroupField
      */
-    public get GroupFields(): [PropertyPaneField] {
+    public get GroupFields(): [PropertyPaneGroupField] {
         return this.groupFields;
     }
 

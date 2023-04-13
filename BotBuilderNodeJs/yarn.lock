@@ -2546,7 +2546,7 @@
     "uuid" "^3.1.0"
     "xpath.js" "~1.1.0"
 
-"adaptive-expressions-ie11@4.1.6", "adaptive-expressions-ie11@file:D:\\botbuilder-js\\libraries\\adaptive-expressions-ie11":
+"adaptive-expressions-ie11@4.1.6", "adaptive-expressions-ie11@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\adaptive-expressions-ie11":
   "resolved" "file:libraries/adaptive-expressions-ie11"
   "version" "4.1.6"
   dependencies:
@@ -2555,7 +2555,7 @@
     "core-js" "^3.3.2"
     "terser-webpack-plugin" "^4.2.3"
 
-"adaptive-expressions@4.1.6", "adaptive-expressions@file:D:\\botbuilder-js\\libraries\\adaptive-expressions":
+"adaptive-expressions@4.1.6", "adaptive-expressions@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\adaptive-expressions":
   "resolved" "file:libraries/adaptive-expressions"
   "version" "4.1.6"
   dependencies:
@@ -3133,7 +3133,7 @@
     "xml2js" "~0.2.8"
     "xmlbuilder" "^9.0.7"
 
-"azure@file:D:\\botbuilder-js\\tools":
+"azure@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\tools":
   "resolved" "file:tools"
   "version" "2.2.1-preview"
   dependencies:
@@ -3389,20 +3389,20 @@
     "raw-body" "2.4.3"
     "type-is" "~1.6.18"
 
-"bot-integration-tests@file:D:\\botbuilder-js\\testing\\bot-integration":
+"bot-integration-tests@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\testing\\bot-integration":
   "resolved" "file:testing/bot-integration"
   "version" "4.1.6"
   dependencies:
     "botbuilder" "4.1.6"
     "botframework-connector" "4.1.6"
 
-"botbuilder-ai-luis@4.1.6", "botbuilder-ai-luis@file:D:\\botbuilder-js\\libraries\\botbuilder-ai-luis":
+"botbuilder-ai-luis@4.1.6", "botbuilder-ai-luis@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-ai-luis":
   "resolved" "file:libraries/botbuilder-ai-luis"
   "version" "4.1.6"
   dependencies:
     "botbuilder-ai" "4.1.6"
 
-"botbuilder-ai-orchestrator@4.1.6", "botbuilder-ai-orchestrator@file:D:\\botbuilder-js\\libraries\\botbuilder-ai-orchestrator":
+"botbuilder-ai-orchestrator@4.1.6", "botbuilder-ai-orchestrator@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-ai-orchestrator":
   "resolved" "file:libraries/botbuilder-ai-orchestrator"
   "version" "4.1.6"
   dependencies:
@@ -3415,13 +3415,13 @@
     "botbuilder-dialogs-declarative" "4.1.6"
     "uuid" "^8.3.2"
 
-"botbuilder-ai-qna@4.1.6", "botbuilder-ai-qna@file:D:\\botbuilder-js\\libraries\\botbuilder-ai-qna":
+"botbuilder-ai-qna@4.1.6", "botbuilder-ai-qna@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-ai-qna":
   "resolved" "file:libraries/botbuilder-ai-qna"
   "version" "4.1.6"
   dependencies:
     "botbuilder-ai" "4.1.6"
 
-"botbuilder-ai@4.1.6", "botbuilder-ai@file:D:\\botbuilder-js\\libraries\\botbuilder-ai":
+"botbuilder-ai@4.1.6", "botbuilder-ai@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-ai":
   "resolved" "file:libraries/botbuilder-ai"
   "version" "4.1.6"
   dependencies:
@@ -3437,7 +3437,7 @@
     "url-parse" "^1.5.9"
     "zod" "~1.11.17"
 
-"botbuilder-applicationinsights@4.1.6", "botbuilder-applicationinsights@file:D:\\botbuilder-js\\libraries\\botbuilder-applicationinsights":
+"botbuilder-applicationinsights@4.1.6", "botbuilder-applicationinsights@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-applicationinsights":
   "resolved" "file:libraries/botbuilder-applicationinsights"
   "version" "4.1.6"
   dependencies:
@@ -3445,7 +3445,7 @@
     "botbuilder-core" "4.1.6"
     "cls-hooked" "^4.2.2"
 
-"botbuilder-azure-blobs@4.1.6", "botbuilder-azure-blobs@file:D:\\botbuilder-js\\libraries\\botbuilder-azure-blobs":
+"botbuilder-azure-blobs@4.1.6", "botbuilder-azure-blobs@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-azure-blobs":
   "resolved" "file:libraries/botbuilder-azure-blobs"
   "version" "4.1.6"
   dependencies:
@@ -3456,14 +3456,14 @@
     "p-map" "^4.0.0"
     "zod" "~1.11.17"
 
-"botbuilder-azure-queues@4.1.6", "botbuilder-azure-queues@file:D:\\botbuilder-js\\libraries\\botbuilder-azure-queues":
+"botbuilder-azure-queues@4.1.6", "botbuilder-azure-queues@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-azure-queues":
   "resolved" "file:libraries/botbuilder-azure-queues"
   "version" "4.1.6"
   dependencies:
     "@azure/storage-queue" "^12.2.0"
     "botbuilder-core" "4.1.6"
 
-"botbuilder-azure@4.1.6", "botbuilder-azure@file:D:\\botbuilder-js\\libraries\\botbuilder-azure":
+"botbuilder-azure@4.1.6", "botbuilder-azure@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-azure":
   "resolved" "file:libraries/botbuilder-azure"
   "version" "4.1.6"
   dependencies:
@@ -3474,7 +3474,7 @@
     "botbuilder" "4.1.6"
     "lodash" "^4.17.20"
 
-"botbuilder-core@4.1.6", "botbuilder-core@file:D:\\botbuilder-js\\libraries\\botbuilder-core":
+"botbuilder-core@4.1.6", "botbuilder-core@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-core":
   "resolved" "file:libraries/botbuilder-core"
   "version" "4.1.6"
   dependencies:
@@ -3485,13 +3485,13 @@
     "uuid" "^8.3.2"
     "zod" "~1.11.17"
 
-"botbuilder-dialogs-adaptive-runtime-core@4.1.6", "botbuilder-dialogs-adaptive-runtime-core@file:D:\\botbuilder-js\\libraries\\botbuilder-dialogs-adaptive-runtime-core":
+"botbuilder-dialogs-adaptive-runtime-core@4.1.6", "botbuilder-dialogs-adaptive-runtime-core@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-dialogs-adaptive-runtime-core":
   "resolved" "file:libraries/botbuilder-dialogs-adaptive-runtime-core"
   "version" "4.1.6"
   dependencies:
     "dependency-graph" "^0.10.0"
 
-"botbuilder-dialogs-adaptive-runtime-integration-azure-functions@4.1.6", "botbuilder-dialogs-adaptive-runtime-integration-azure-functions@file:D:\\botbuilder-js\\libraries\\botbuilder-dialogs-adaptive-runtime-integration-azure-functions":
+"botbuilder-dialogs-adaptive-runtime-integration-azure-functions@4.1.6", "botbuilder-dialogs-adaptive-runtime-integration-azure-functions@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-dialogs-adaptive-runtime-integration-azure-functions":
   "resolved" "file:libraries/botbuilder-dialogs-adaptive-runtime-integration-azure-functions"
   "version" "4.1.6"
   dependencies:
@@ -3502,7 +3502,7 @@
     "mime" "^2.5.2"
     "zod" "~1.11.17"
 
-"botbuilder-dialogs-adaptive-runtime-integration-express@4.1.6", "botbuilder-dialogs-adaptive-runtime-integration-express@file:D:\\botbuilder-js\\libraries\\botbuilder-dialogs-adaptive-runtime-integration-express":
+"botbuilder-dialogs-adaptive-runtime-integration-express@4.1.6", "botbuilder-dialogs-adaptive-runtime-integration-express@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-dialogs-adaptive-runtime-integration-express":
   "resolved" "file:libraries/botbuilder-dialogs-adaptive-runtime-integration-express"
   "version" "4.1.6"
   dependencies:
@@ -3514,7 +3514,7 @@
     "express" "^4.17.3"
     "zod" "~1.11.17"
 
-"botbuilder-dialogs-adaptive-runtime-integration-restify@4.1.6", "botbuilder-dialogs-adaptive-runtime-integration-restify@file:D:\\botbuilder-js\\libraries\\botbuilder-dialogs-adaptive-runtime-integration-restify":
+"botbuilder-dialogs-adaptive-runtime-integration-restify@4.1.6", "botbuilder-dialogs-adaptive-runtime-integration-restify@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-dialogs-adaptive-runtime-integration-restify":
   "resolved" "file:libraries/botbuilder-dialogs-adaptive-runtime-integration-restify"
   "version" "4.1.6"
   dependencies:
@@ -3524,7 +3524,7 @@
     "restify" "^8.5.1"
     "zod" "~1.11.17"
 
-"botbuilder-dialogs-adaptive-runtime@4.1.6", "botbuilder-dialogs-adaptive-runtime@file:D:\\botbuilder-js\\libraries\\botbuilder-dialogs-adaptive-runtime":
+"botbuilder-dialogs-adaptive-runtime@4.1.6", "botbuilder-dialogs-adaptive-runtime@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-dialogs-adaptive-runtime":
   "resolved" "file:libraries/botbuilder-dialogs-adaptive-runtime"
   "version" "4.1.6"
   dependencies:
@@ -3543,7 +3543,7 @@
     "yargs-parser" "^20.2.7"
     "zod" "~1.11.17"
 
-"botbuilder-dialogs-adaptive-testing@4.1.6", "botbuilder-dialogs-adaptive-testing@file:D:\\botbuilder-js\\libraries\\botbuilder-dialogs-adaptive-testing":
+"botbuilder-dialogs-adaptive-testing@4.1.6", "botbuilder-dialogs-adaptive-testing@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-dialogs-adaptive-testing":
   "resolved" "file:libraries/botbuilder-dialogs-adaptive-testing"
   "version" "4.1.6"
   dependencies:
@@ -3561,7 +3561,7 @@
     "url-parse" "^1.5.9"
     "zod" "~1.11.17"
 
-"botbuilder-dialogs-adaptive@4.1.6", "botbuilder-dialogs-adaptive@file:D:\\botbuilder-js\\libraries\\botbuilder-dialogs-adaptive":
+"botbuilder-dialogs-adaptive@4.1.6", "botbuilder-dialogs-adaptive@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-dialogs-adaptive":
   "resolved" "file:libraries/botbuilder-dialogs-adaptive"
   "version" "4.1.6"
   dependencies:
@@ -3583,7 +3583,7 @@
     "lodash" "^4.17.21"
     "node-fetch" "^2.6.7"
 
-"botbuilder-dialogs-declarative@4.1.6", "botbuilder-dialogs-declarative@file:D:\\botbuilder-js\\libraries\\botbuilder-dialogs-declarative":
+"botbuilder-dialogs-declarative@4.1.6", "botbuilder-dialogs-declarative@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-dialogs-declarative":
   "resolved" "file:libraries/botbuilder-dialogs-declarative"
   "version" "4.1.6"
   dependencies:
@@ -3592,7 +3592,7 @@
     "chokidar" "^3.4.0"
     "zod" "~1.11.17"
 
-"botbuilder-dialogs@4.1.6", "botbuilder-dialogs@file:D:\\botbuilder-js\\libraries\\botbuilder-dialogs":
+"botbuilder-dialogs@4.1.6", "botbuilder-dialogs@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-dialogs":
   "resolved" "file:libraries/botbuilder-dialogs"
   "version" "4.1.6"
   dependencies:
@@ -3608,7 +3608,7 @@
     "uuid" "^8.3.2"
     "zod" "~1.11.17"
 
-"botbuilder-lg@4.1.6", "botbuilder-lg@file:D:\\botbuilder-js\\libraries\\botbuilder-lg":
+"botbuilder-lg@4.1.6", "botbuilder-lg@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-lg":
   "resolved" "file:libraries/botbuilder-lg"
   "version" "4.1.6"
   dependencies:
@@ -3617,7 +3617,7 @@
     "lodash" "^4.17.19"
     "uuid" "^8.3.2"
 
-"botbuilder-repo-utils@file:D:\\botbuilder-js\\libraries\\botbuilder-repo-utils":
+"botbuilder-repo-utils@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-repo-utils":
   "resolved" "file:libraries/botbuilder-repo-utils"
   "version" "1.0.0"
   dependencies:
@@ -3629,11 +3629,11 @@
     "minimist" "^1.2.6"
     "p-map" "^4.0.0"
 
-"botbuilder-stdlib@4.1.6", "botbuilder-stdlib@file:D:\\botbuilder-js\\libraries\\botbuilder-stdlib":
+"botbuilder-stdlib@4.1.6", "botbuilder-stdlib@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-stdlib":
   "resolved" "file:libraries/botbuilder-stdlib"
   "version" "4.1.6"
 
-"botbuilder-test-utils@0.0.0", "botbuilder-test-utils@file:D:\\botbuilder-js\\testing\\botbuilder-test-utils":
+"botbuilder-test-utils@0.0.0", "botbuilder-test-utils@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\testing\\botbuilder-test-utils":
   "resolved" "file:testing/botbuilder-test-utils"
   "version" "0.0.0"
   dependencies:
@@ -3641,14 +3641,14 @@
     "node-forge" "^1.3.0"
     "zod" "~1.11.17"
 
-"botbuilder-testing@4.1.6", "botbuilder-testing@file:D:\\botbuilder-js\\libraries\\botbuilder-testing":
+"botbuilder-testing@4.1.6", "botbuilder-testing@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder-testing":
   "resolved" "file:libraries/botbuilder-testing"
   "version" "4.1.6"
   dependencies:
     "botbuilder-core" "4.1.6"
     "botbuilder-dialogs" "4.1.6"
 
-"botbuilder@4.1.6", "botbuilder@file:D:\\botbuilder-js\\libraries\\botbuilder":
+"botbuilder@4.1.6", "botbuilder@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botbuilder":
   "resolved" "file:libraries/botbuilder"
   "version" "4.1.6"
   dependencies:
@@ -3666,7 +3666,7 @@
     "uuid" "^8.3.2"
     "zod" "~1.11.17"
 
-"botframework-config@4.1.6", "botframework-config@file:D:\\botbuilder-js\\libraries\\botframework-config":
+"botframework-config@4.1.6", "botframework-config@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botframework-config":
   "resolved" "file:libraries/botframework-config"
   "version" "4.1.6"
   dependencies:
@@ -3674,7 +3674,7 @@
     "read-text-file" "^1.1.0"
     "uuid" "^8.3.2"
 
-"botframework-connector@4.1.6", "botframework-connector@file:D:\\botbuilder-js\\libraries\\botframework-connector":
+"botframework-connector@4.1.6", "botframework-connector@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botframework-connector":
   "resolved" "file:libraries/botframework-connector"
   "version" "4.1.6"
   dependencies:
@@ -3690,7 +3690,7 @@
     "rsa-pem-from-mod-exp" "^0.8.4"
     "zod" "~1.11.17"
 
-"botframework-schema@^4.0.0-preview1.2", "botframework-schema@4.1.6", "botframework-schema@file:D:\\botbuilder-js\\libraries\\botframework-schema":
+"botframework-schema@^4.0.0-preview1.2", "botframework-schema@4.1.6", "botframework-schema@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botframework-schema":
   "resolved" "file:libraries/botframework-schema"
   "version" "4.1.6"
   dependencies:
@@ -3698,7 +3698,7 @@
     "uuid" "^8.3.2"
     "zod" "~1.11.17"
 
-"botframework-streaming@4.1.6", "botframework-streaming@file:D:\\botbuilder-js\\libraries\\botframework-streaming":
+"botframework-streaming@4.1.6", "botframework-streaming@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\botframework-streaming":
   "resolved" "file:libraries/botframework-streaming"
   "version" "4.1.6"
   dependencies:
@@ -3766,7 +3766,7 @@
   "resolved" "https://registry.npmjs.org/brorand/-/brorand-1.1.0.tgz"
   "version" "1.1.0"
 
-"browser-functional-tests@file:D:\\botbuilder-js\\testing\\browser-functional":
+"browser-functional-tests@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\testing\\browser-functional":
   "resolved" "file:testing/browser-functional"
   "version" "1.0.0"
 
@@ -4511,6 +4511,8 @@
     "wrap-ansi" "^2.0.0"
 
 "cliui@^4.0.0":
+  "integrity" "sha512-4FG+RSG9DL7uEwRUZXZn3SS34DiDPfzP0VOiEwtUWlE+AR2EIg+hSyvrIgUUfhdgR/UkAeW2QHgeP+hWrXs7jQ=="
+  "resolved" "https://registry.npmjs.org/cliui/-/cliui-4.1.0.tgz"
   "version" "4.1.0"
   dependencies:
     "string-width" "^2.1.1"
@@ -4744,7 +4746,7 @@
   "resolved" "https://registry.npmjs.org/constants-browserify/-/constants-browserify-1.0.0.tgz"
   "version" "1.0.0"
 
-"consumer-test@file:D:\\botbuilder-js\\testing\\consumer-test":
+"consumer-test@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\testing\\consumer-test":
   "resolved" "file:testing/consumer-test"
   "version" "1.0.0"
   dependencies:
@@ -4939,6 +4941,8 @@
     "which" "^1.2.9"
 
 "cross-spawn@^5.0.1":
+  "integrity" "sha1-6L0O/uWPz/b4+UUQoKVUu/ojVEk="
+  "resolved" "https://registry.npmjs.org/cross-spawn/-/cross-spawn-5.1.0.tgz"
   "version" "5.1.0"
   dependencies:
     "lru-cache" "^4.0.1"
@@ -6627,6 +6631,8 @@
     "semver-store" "^0.3.0"
 
 "find-up@^1.0.0":
+  "integrity" "sha1-ay6YIrGizgpgq2TWEOzK1TyyTQ8="
+  "resolved" "https://registry.npmjs.org/find-up/-/find-up-1.1.2.tgz"
   "version" "1.1.2"
   dependencies:
     "path-exists" "^2.0.0"
@@ -6967,7 +6973,7 @@
   "resolved" "https://registry.npmjs.org/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz"
   "version" "1.0.1"
 
-"functional-tests@file:D:\\botbuilder-js\\testing\\functional":
+"functional-tests@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\testing\\functional":
   "resolved" "file:testing/functional"
   "version" "1.0.0"
   dependencies:
@@ -7020,7 +7026,7 @@
     "https-proxy-agent" "5.0.0"
     "tar" "6.0.2"
 
-"generateclient-via-swagger@file:D:\\botbuilder-js\\libraries\\swagger":
+"generateclient-via-swagger@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\libraries\\swagger":
   "resolved" "file:libraries/swagger"
   "version" "1.0.0"
   dependencies:
@@ -8278,6 +8284,8 @@
     "kind-of" "^3.0.2"
 
 "is-number@^4.0.0":
+  "integrity" "sha512-rSklcAIlf1OmFdyAqbnWTLVelsQ58uvZ66S/ZyawjWqIviTWCjg2PzVGw8WUA+nNuPTqb4wgA+NszrJ+08LlgQ=="
+  "resolved" "https://registry.npmjs.org/is-number/-/is-number-4.0.0.tgz"
   "version" "4.0.0"
 
 "is-number@^7.0.0":
@@ -13458,6 +13466,8 @@
   "version" "2.0.0"
 
 "supports-color@^3.1.2":
+  "integrity" "sha1-ZawFBLOVQXHYpklGsq48u4pfVPY="
+  "resolved" "https://registry.npmjs.org/supports-color/-/supports-color-3.2.3.tgz"
   "version" "3.2.3"
   dependencies:
     "has-flag" "^1.0.0"
@@ -13662,7 +13672,7 @@
     "glob" "^7.1.4"
     "minimatch" "^3.0.4"
 
-"testbot@file:D:\\botbuilder-js\\testing\\testbot":
+"testbot@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\testing\\testbot":
   "resolved" "file:testing/testbot"
   "version" "1.0.0"
   dependencies:
@@ -13877,7 +13887,7 @@
   "resolved" "https://registry.npmjs.org/tr46/-/tr46-0.0.3.tgz"
   "version" "0.0.3"
 
-"transcript-tests@file:D:\\botbuilder-js\\testing\\transcripts":
+"transcript-tests@file:D:\\BotPoweredACEPreview\\BotBuilderNodeJs\\testing\\transcripts":
   "resolved" "file:testing/transcripts"
   "version" "1.0.0"
   dependencies:
@@ -14968,6 +14978,8 @@
     "camelcase" "^4.1.0"
 
 "yargs-parser@^9.0.2":
+  "integrity" "sha1-nM9qQ0YP5O1Aqbto9I1DuKaMwHc="
+  "resolved" "https://registry.npmjs.org/yargs-parser/-/yargs-parser-9.0.2.tgz"
   "version" "9.0.2"
   dependencies:
     "camelcase" "^4.1.0"

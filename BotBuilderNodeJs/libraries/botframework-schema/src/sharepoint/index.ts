@@ -1,9 +1,9 @@
-export { AceData, AceCardSize } from './aceData';
+export { AceData } from './aceData';
 export { Action as SharepointAction} from './action';
 export { ActionButton } from './actionButton';
 export { ActionParameters } from './actionParameters';
 export { CardViewData } from './cardViewData';
-export { GetCardViewResponse, CardViewTemplateType } from './getCardViewResponse';
+export { GetCardViewResponse } from './getCardViewResponse';
 export { GetPropertyPaneConfigurationResponse } from './getPropertyPaneConfigurationResponse';
 export { GetQuickViewResponse } from './getQuickViewResponse';
 export { IPropertyPaneFieldProperties } from './IPropertyPaneFieldProperties';
@@ -14,12 +14,12 @@ export { PropertyPaneChoiceGroupIconProperties } from './propertyPaneChoiceGroup
 export { PropertyPaneChoiceGroupImageSize } from './propertyPaneChoiceGroupImageSize';
 export { PropertyPaneChoiceGroupOption } from './propertyPaneChoiceGroupOption';
 export { PropertyPaneChoiceGroupProperties } from './propertyPaneChoiceGroupProperties';
-export { PropertyPaneDropDownOption, DropDownOptionType } from './propertyPaneDropDownOptions';
+export { PropertyPaneDropDownOption } from './propertyPaneDropDownOptions';
 export { PropertyPaneDropDownProperties } from './propertyPaneDropDownProperties';
-export { PropertyPaneField, FieldType } from './propertyPaneField';
+export { PropertyPaneGroupField } from './propertyPaneGroupField';
 export { PropertyPaneGroup } from './propertyPaneGroup';
 export { PropertyPaneLabelProperties } from './propertyPaneLabelProperties';
-export { PropertyPaneLinkPopupWindowProperties, PopupWindowPosition } from './propertyPaneLinkPopupWindowProperties';
+export { PropertyPaneLinkPopupWindowProperties } from './propertyPaneLinkPopupWindowProperties';
 export { PropertyPaneLinkProperties } from './propertyPaneLinkProperties';
 export { PropertyPanePage } from './propertyPanePage';
 export { PropertyPanePageHeader } from './propertyPanePageHeader';

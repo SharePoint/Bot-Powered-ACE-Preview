@@ -4,38 +4,32 @@
 import { AceData } from './aceData';
 import { CardViewData } from './cardViewData';
 
-export enum CardViewTemplateType {
-    PrimaryTextCardView = "PrimaryText",
-    ImageCardView = "Image",
-    BasicCardView = "Basic"
-}
-
 /**
  * Sharepoint GetCardView response object
  */
 export class GetCardViewResponse {
-    private templateType: CardViewTemplateType;
+    private templateType: GetCardViewResponse.CardViewTemplateType;
     private aceData: AceData;
     private data: CardViewData;
     private viewId: string;
     /**
      * Initializes a new instance of the GetCardViewResponse class
      */
-    public GetCardViewResponse(templateType: CardViewTemplateType){
+    public GetCardViewResponse(templateType: GetCardViewResponse.CardViewTemplateType){
         this.TemplateType = templateType;
     }
 
     /**
      * Sets templateType property of type CardViewTemplateType
      */
-    public set TemplateType(templateType: CardViewTemplateType){
+    public set TemplateType(templateType: GetCardViewResponse.CardViewTemplateType){
         this.templateType = templateType;
     }
 
     /**
      * Gets templateType property of type CardViewTemplateType
      */
-    public get TemplateType(): CardViewTemplateType {
+    public get TemplateType(): GetCardViewResponse.CardViewTemplateType {
         return this.templateType;
     }
 
@@ -79,5 +73,14 @@ export class GetCardViewResponse {
      */
     public get ViewId(): string {
         return this.viewId;
+    }
+}
+
+export namespace GetCardViewResponse
+{
+    export enum CardViewTemplateType {
+        PrimaryTextCardView = "PrimaryText",
+        ImageCardView = "Image",
+        BasicCardView = "Basic"
     }
 }

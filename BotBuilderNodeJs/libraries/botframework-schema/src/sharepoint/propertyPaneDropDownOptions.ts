@@ -1,15 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-export enum DropDownOptionType{
-    // Render normal menu item
-    Normal = 0,
-    // Render a divider
-    Divider = 1,
-    // Render menu item as a header
-    Header = 2
-}
-
 /**
  * Sharepoint PropertyPaneDropDownOption object
  */
@@ -17,7 +8,7 @@ export class PropertyPaneDropDownOption {
     private index: number;
     private key: string;
     private text: string;
-    private type: DropDownOptionType;
+    private type: PropertyPaneDropDownOption.DropDownOptionType;
     /**
      * Initializes a new instance of the PropertyPaneDropDownOption class
      */
@@ -70,14 +61,25 @@ export class PropertyPaneDropDownOption {
     /**
      * Sets the type of option. If omitted, the default is PropertyPaneDropdownMenuItemType.Normal of type DropDownOptionType
      */
-    public set Type(type: DropDownOptionType){
+    public set Type(type: PropertyPaneDropDownOption.DropDownOptionType){
         this.type = type;
     }
 
     /**
      * Gets the type of option. If omitted, the default is PropertyPaneDropdownMenuItemType.Normal of type DropDownOptionType
      */
-    public get Type(): DropDownOptionType {
+    public get Type(): PropertyPaneDropDownOption.DropDownOptionType {
         return this.type;
+    }
+}
+
+export namespace PropertyPaneDropDownOption{
+    export enum DropDownOptionType{
+        // Render normal menu item
+        Normal = 0,
+        // Render a divider
+        Divider = 1,
+        // Render menu item as a header
+        Header = 2
     }
 }

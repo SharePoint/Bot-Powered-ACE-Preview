@@ -1,16 +1,11 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-export enum AceCardSize {
-    Medium = "Medium",
-    Large = "Large"
-}
-
 /**
  * Sharepoint Ace Data object
  */
 export class AceData {
-    private cardSize: AceCardSize;
+    private cardSize: AceData.AceCardSize;
     private dataVersion: string;
     private id: string;
     private title: string;
@@ -25,14 +20,14 @@ export class AceData {
     /**
      * Sets card size property of type AceCardSize
      */
-    public set CardSize(cardSize: AceCardSize){
+    public set CardSize(cardSize: AceData.AceCardSize){
         this.cardSize = cardSize;
     }
 
     /**
      * Gets card size property of type AceCardSize
      */
-    public get CardSize(): AceCardSize {
+    public get CardSize(): AceData.AceCardSize {
         return this.cardSize;
     }
 
@@ -90,5 +85,13 @@ export class AceData {
      */
     public get IconProperty(): string{
         return this.iconProperty;
+    }
+}
+
+export namespace AceData
+{
+    export enum AceCardSize {
+        Medium = "Medium",
+        Large = "Large"
     }
 }

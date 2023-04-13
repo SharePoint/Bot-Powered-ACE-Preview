@@ -1,14 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-export enum PopupWindowPosition{
-    Center = 0,
-    RightTop = 1,
-    LeftTop = 2,
-    RightBottom = 3,
-    LeftBottom = 4
-}
-
 /**
  * Sharepoint PropertyPaneLinkPopupWindowProperties object
  */
@@ -16,7 +8,7 @@ export class PropertyPaneLinkPopupWindowProperties {
     private width: number;
     private height: number;
     private title: string;
-    private positionWindowPosition: PopupWindowPosition;
+    private positionWindowPosition: PropertyPaneLinkPopupWindowProperties.PopupWindowPosition;
     /**
      * Initializes a new instance of the PropertyPaneLinkPopupWindowProperties class
      */
@@ -69,14 +61,24 @@ export class PropertyPaneLinkPopupWindowProperties {
     /**
      * Sets the position of pop up window type PopupWindowPosition
      */
-     public set PositionWindowPosition(positionWindowPosition: PopupWindowPosition){
+     public set PositionWindowPosition(positionWindowPosition: PropertyPaneLinkPopupWindowProperties.PopupWindowPosition){
         this.positionWindowPosition = positionWindowPosition;
     }
 
     /**
      * Gets the position of pop up window type PopupWindowPosition
      */
-    public get PositionWindowPosition(): PopupWindowPosition {
+    public get PositionWindowPosition(): PropertyPaneLinkPopupWindowProperties.PopupWindowPosition {
         return this.positionWindowPosition;
+    }
+}
+
+export namespace PropertyPaneLinkPopupWindowProperties{
+    export enum PopupWindowPosition{
+        Center = 0,
+        RightTop = 1,
+        LeftTop = 2,
+        RightBottom = 3,
+        LeftBottom = 4
     }
 }
