@@ -63,7 +63,7 @@ namespace Microsoft.BotBuilderSamples.Bots
 
             response.Template.Body.Add(container);
 
-            response.ViewId = string.Empty;
+            response.ViewId = "qv1";
             response.StackSize = 1;
             return Task.FromResult(response);
         }
@@ -118,7 +118,7 @@ namespace Microsoft.BotBuilderSamples.Bots
 
         protected override Task<GetCardViewResponse> OnSharePointTaskGetCardViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
-            GetCardViewResponse response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView);
+            GetCardViewResponse response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryText);
             response.AceData = new AceData();
             response.AceData.CardSize = AceData.AceCardSize.Medium;
             response.AceData.Title = "BOT DRIVEN ACE";
@@ -126,6 +126,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             response.AceData.Id = "<App ID>";
             response.Data = new CardViewData();
             response.Data.PrimaryText = "MY BOT " + SharePointBotDrivenAceActionBot.index++.ToString();
+            response.ViewId = "view1";
 
             ActionButton button = new ActionButton();
             button.Title = "DETAILS";

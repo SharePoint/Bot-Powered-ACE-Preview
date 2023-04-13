@@ -34,12 +34,12 @@ namespace Microsoft.Bot.Schema.SharePoint
             /// <summary>
             /// Primary text card view
             /// </summary>
-            PrimaryTextCardView,
+            PrimaryText,
 
             /// <summary>
             /// Image card view
             /// </summary>
-            ImageCardView
+            Image
         }
 
         /// <summary>
@@ -63,5 +63,12 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// <value>This value is the data of the card view response.</value>
         [JsonProperty(PropertyName = "data")]
         public CardViewData Data { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the view Id of type <see cref="string"/>.
+        /// </summary>
+        /// <value>This value is the primary text of the card view.</value>
+        [JsonProperty(PropertyName = "viewId")]
+        public string ViewId { get; set; }
     }
 }
