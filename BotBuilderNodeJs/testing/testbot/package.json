@@ -1,0 +1,25 @@
+{
+  "name": "testbot",
+  "private": true,
+  "version": "1.0.0",
+  "description": "a test bot for working locally",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "nyc mocha tests/**/*.test.js"
+  },
+  "author": "Microsoft Corp.",
+  "license": "MIT",
+  "dependencies": {
+    "@microsoft/recognizers-text-data-types-timex-expression": "1.1.4",
+    "botbuilder": "4.1.6",
+    "botbuilder-ai": "4.1.6",
+    "botbuilder-dialogs": "4.1.6",
+    "botbuilder-testing": "4.1.6",
+    "dotenv": "^6.2.0",
+    "restify": "^8.5.1"
+  },
+  "devDependencies": {
+    "assert": "^1.4.1"
+  }
+}

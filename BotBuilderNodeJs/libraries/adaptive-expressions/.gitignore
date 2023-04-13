@@ -1,0 +1,8 @@
+/**/node_modules
+/**/.vscode
+/**/lib/*
+coverage
+.nyc_output
+/**/.antlr
+/**/*.interp
+tests/expressionProperty.test.js

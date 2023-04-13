@@ -1,0 +1,25 @@
+# ShowList(list)
+- ${join(list, ' ')}
+
+# Test2
+- ${ShowList(['hello', 'world'])}
+
+# Test3
+- ${ShowList(createArray('hello', 'world'))}
+
+# Test4
+- ```
+  ${ShowList(createArray('hello', 'world'))}
+```
+
+# length(str)
+- calculate length of ${str} by user's template
+
+# dupNameWithTemplate
+- ${length('ms')}
+
+# compose(property)
+- ${template(property +'Entity')}
+
+# ShowEntity
+- you made it!
