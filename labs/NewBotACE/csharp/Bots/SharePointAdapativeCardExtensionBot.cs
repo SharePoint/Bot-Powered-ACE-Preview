@@ -94,6 +94,8 @@ namespace Microsoft.BotBuilderSamples.Bots
 
         protected override Task<GetPropertyPaneConfigurationResponse> OnSharePointTaskGetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
+        // note that the following code is currently not used by the card either in rendering the card view nor the quick view.
+        //however this is an example of the syntaxt that needs to be used to surface controls in the property pane.
             GetPropertyPaneConfigurationResponse response = new GetPropertyPaneConfigurationResponse();
             PropertyPanePage page = new PropertyPanePage();
             page.Header = new PropertyPanePageHeader();
