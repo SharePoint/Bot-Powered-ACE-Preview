@@ -1,0 +1,119 @@
+# This runs under BotBuilder-JS-daily-yaml.
+
+name: $(Build.BuildId)
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  NodeVersion: 16.x
+  Packaging.EnableSBOMSigning: true
+  YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
+#  SDK_JS_org_registry_Url: define this in Azure
+
+steps:
+- template: templates/build.yml
+
+- template: templates/test.yml
+
+- script: yarn update-versions "$(PackageVersion)" --buildLabel "$(BuildLabel)" --internal "$(InternalText)" --preview "$(PreviewText)" --deprecated "$(DeprecatedText)" --date "$(DateFormat)" --git "$(IncludeGitSha)"
+  displayName: yarn update-versions
+
+- script: yarn package
+  displayName: yarn package
+
+- task: CopyFiles@2
+  displayName: copy .tgz files to staging area
+  inputs:
+    SourceFolder: libraries
+    Contents: '*/*.tgz'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    flattenFolders: true
+
+- task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+  displayName: 'generate software bill of materials'
+  inputs:
+    BuildDropPath: '$(Build.ArtifactStagingDirectory)'
+    PackageName: 'Microsoft Bot Framework SDK for Node.js'
+    PackageVersion: $(PackageVersion)
+
+- task: PublishBuildArtifacts@1
+  displayName: publish staging artifacts
+
+- powershell: |
+   [string[]]$outvar = (Get-ChildItem *.tgz -Path $(Build.ArtifactStagingDirectory) ).Name;
+
+   [int] $packageCount = $outvar.Length;
+   $PackagesDescription = "$packageCount packages";
+   $PackagesDescription;
+   $outvar;
+
+   "##vso[task.setvariable variable=PackagesDescription;]$PackagesDescription";
+   [int] $maxTags = 5;
+
+   if ($packageCount -gt $maxTags) {
+       # Too many packages for tags.
+
+       # Set a few package name variables for tags
+       for ($i = 0; $i -lt $maxTags; $i++ ) {
+           $p = $outvar[$i];
+           "##vso[task.setvariable variable=pkg$i;]$p";
+       }
+
+       $message = "(See 'Package names' task log for full list)";
+       Write-Host "##vso[task.setvariable variable=pkg$i;]$message";
+       Write-Host $message;
+       $packageCount = ++$i;
+   } else {
+       # Set package name variables for tags
+       for ($i = 0; $i -lt $packageCount; $i++ ) {
+           $p = $outvar[$i];
+           "##vso[task.setvariable variable=pkg$i;]$p";
+       }
+   }
+
+   for ($i = $packageCount; $i -le 30; $i++ ) {
+       # Set remaining variables to an empty string
+       "##vso[task.setvariable variable=pkg$i;]";
+   }
+  displayName: package names
+  continueOnError: true
+
+- task: colinsalmcorner.colinsalmcorner-buildtasks.tag-build-task.tagBuildOrRelease@0
+  displayName: tag build with package names
+  inputs:
+    tags: |
+     $(PACKAGESDESCRIPTION)
+     $(PKG0)
+     $(PKG1)
+     $(PKG2)
+     $(PKG3)
+     $(PKG4)
+     $(PKG5)
+     $(PKG6)
+     $(PKG7)
+     $(PKG8)
+     $(PKG9)
+     $(PKG10)
+     $(PKG11)
+     $(PKG12)
+     $(PKG13)
+     $(PKG14)
+     $(PKG15)
+     $(PKG16)
+     $(PKG17)
+     $(PKG18)
+  continueOnError: true
+
+- powershell: |
+   cd ..
+   tree -a -f -s -i -I node_modules
+  displayName: 'Dir workspace except node_modules'
+  continueOnError: true
+  condition: succeededOrFailed()
+
+- task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
+  displayName: 'Component Detection'
+  inputs:
+    ignoreDirectories: './testing,./tools,./generators'
+    failOnAlert: false

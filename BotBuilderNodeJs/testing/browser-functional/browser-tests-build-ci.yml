@@ -1,0 +1,135 @@
+#
+# Run functional tests on browser bot deployed to Azure.
+#
+
+pool:
+  vmImage: 'windows-latest'
+
+trigger:
+- main
+
+pr:
+- main
+
+variables:
+  TestResourceGroup: 'BrowserBotTest$(Build.BuildId)'
+  TestAppServicePlan: 'BrowserBotServicePlan$(Build.BuildId)'
+  TestWebApp: 'BrowserBotWebApp$(Build.BuildId)'
+  TESTURI: 'https://$(TestWebApp).azurewebsites.net/'
+  # AzureSubscription: define this in Azure
+  # ChromeDriverVersionOverride: (optional) define this in Azure. Sample values: '107.0.1'; '' (= no override)
+
+steps:
+
+- task: PowerShell@2
+  inputs:
+    targetType: inline
+    script: |
+      # Create DateTimeTag for Resource Group
+      $DateTimeTag=Get-Date -Format "yyyy-MM-ddTHH:mm:ssZ"
+      "##vso[task.setvariable variable=DateTimeTag]$DateTimeTag";
+  displayName: 'Create DateTimeTag for Resource Group'
+  # Get-Date on Azure DevOps returns a datetime relative to UTC-0, so "Z" is being used instead of the dynamic "K".
+
+- task: PowerShell@2
+  inputs:
+    targetType: inline
+    script: |
+      $packageName = "chromedriver";
+      Write-Host "Get $packageName second latest version from npmjs.com";
+      $versions = npm view $packageName versions | ConvertFrom-Json;
+      $versionToUse = $versions[-2];
+      Write-Host "$packageName second latest = $versionToUse";
+      " "
+
+      if ($null -ne $Env:ChromeDriverVersionOverride -and $Env:ChromeDriverVersionOverride.Trim() -ne '') {
+        Write-Host "Pipeline var ChromeDriverVersionOverride is set.";
+        $versionToUse = $Env:ChromeDriverVersionOverride;
+        Write-Host "Use override value = $versionToUse";
+      } else {
+        Write-Host "Pipeline var ChromeDriverVersionOverride is not set.";
+        Write-Host "Use value = $versionToUse";
+      }
+
+      "##vso[task.setvariable variable=DriverVersion;]$versionToUse";
+  displayName: 'Get chromedriver version number to use'
+
+- task: PowerShell@2
+  inputs:
+    targetType: inline
+    script: |
+      # This lets the pipeline automatically keep up with Chrome browser upgrades.
+      # Chrome browser upgrades on ADO agents lag behind chromedriver upgrades, so
+      # if we use the second latest chromedriver, that should keep the tests working.
+
+      $path = "$(System.DefaultWorkingDirectory)/testing/browser-functional/package.json";
+      $package = 'chromedriver';
+      $newVersion = "$(DriverVersion)";
+
+      $find = "$package`": `"\S*`"";
+      $replace = "$package`": `"$newVersion`"";
+
+      Get-ChildItem -Path "$path" | % {
+          $_.FullName;
+          $content = Get-Content -Raw $_.FullName;
+
+          $content -Replace "$find", "$replace" | Set-Content $_.FullName;
+          '-------------'; get-content $_.FullName; '==================='
+      }
+  displayName: 'Upgrade chromedriver version reference'
+
+- task: NodeTool@0
+  displayName: use node 16.x
+  inputs:
+    versionSpec: 16.x
+
+- script: cd testing/browser-functional/browser-echo-bot && yarn && yarn build
+  displayName: yarn install and build browser-echo-bot
+
+- task: PowerShell@2
+  inputs:
+    targetType: inline
+    script: |
+      # Compress Bot Source Code
+      cd $(System.DefaultWorkingDirectory)/testing/browser-functional/browser-echo-bot/dist
+      $DirToCompress = "$(System.DefaultWorkingDirectory)/testing/browser-functional/browser-echo-bot/dist"
+      $files = Get-ChildItem -Path $DirToCompress
+      $ZipFileResult="$(System.DefaultWorkingDirectory)/testing/browser-functional/browser-echo-bot/browser-echo-bot.zip"
+      Compress-Archive -Path $files -DestinationPath $ZipFileResult
+  displayName: 'Compress Bot Source Code'
+
+- task: AzureCLI@1
+  displayName: 'Deploy browser bot'
+  inputs:
+    azureSubscription: '$(AzureSubscription)'
+    scriptLocation: inlineScript
+    inlineScript: |
+     echo "# Create resource group"
+     call az group create -l westus -n "$(TestResourceGroup)" --tags buildName="$(Build.DefinitionName)" cause=automation date="$(DateTimeTag)" product="$(Build.Repository.Name)" sourceBranch="$(Build.SourceBranch)"
+
+     echo "# Create app service plan"
+     call az appservice plan create -g "$(TestResourceGroup)" -n "$(TestAppServicePlan)" --number-of-workers 4 --sku S1
+
+     echo "# Create web app"
+     call az webapp create -g "$(TestResourceGroup)" -p "$(TestAppServicePlan)" -n "$(TestWebApp)"
+
+     echo "# Deploy source code"
+     call az webapp deployment source config-zip --resource-group "$(TestResourceGroup)" --name "$(TestWebApp)" --src "$(System.DefaultWorkingDirectory)/testing/browser-functional/browser-echo-bot/browser-echo-bot.zip"
+
+- script: yarn
+  displayName: yarn install
+
+- script: yarn browser-functional-test chrome
+  displayName: run chrome tests
+
+- script: yarn browser-functional-test firefox
+  displayName: run firefox tests
+
+- task: AzureCLI@1
+  displayName: 'Delete Resource Group'
+  inputs:
+    azureSubscription: '$(AzureSubscription)'
+    scriptLocation: inlineScript
+    inlineScript: 'call az group delete -n $(TestResourceGroup) --yes'
+
+  condition: succeededOrFailed()
