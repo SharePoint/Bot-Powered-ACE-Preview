@@ -23,14 +23,22 @@
         "full": "DK Local bot"
     },
     "accentColor": "#FFFFFF",
-    "bots": [
-      {
-        "scopes": [
-          "Viva Connections"
-        ],
-        "botId": "<<Microsoft-App-ID>>"
-      }
-     ],
+    "dashboardCards": [
+	{
+	  "entityId": "<<Microsoft-App-ID>>",
+	  "name": "Bot default name",
+	  "description": "Bot default description",
+	  "context":[
+		"Connections"
+	   ],
+	  "iconProperty": "SharePointLogo", 
+	  "officeFabricIconFontName": "VivaLogo",
+	  "defaultSize": [
+		"medium"
+	   ],
+	  "contentBotId": "<<Microsoft-App-ID>>"
+	}
+    ],    
     "permissions": [
         "identity",
         "messageTeamMembers"
@@ -46,7 +54,7 @@
         "openExternal"
     ],
     "webApplicationInfo": {
-    "resource": "https://prepspo.spgrid.com",
+    "resource": "https://{teamSiteDomain}",
     "id": "00000003-0000-0ff1-ce00-000000000000"
   }
 }
