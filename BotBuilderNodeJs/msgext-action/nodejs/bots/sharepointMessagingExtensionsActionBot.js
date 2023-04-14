@@ -31,7 +31,7 @@ const {
 const AdaptiveCards = require("adaptivecards");
 const baseurl = process.env.BaseUrl;
 
-class TeamsMessagingExtensionsActionBot extends SharePointActivityHandler {
+class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
     
 	constructor() {
         super();
@@ -557,4 +557,4 @@ class TeamsMessagingExtensionsActionBot extends SharePointActivityHandler {
 
 
 
-module.exports.TeamsMessagingExtensionsActionBot = TeamsMessagingExtensionsActionBot;
+module.exports.SharepointMessagingExtensionsActionBot = SharepointMessagingExtensionsActionBot;
