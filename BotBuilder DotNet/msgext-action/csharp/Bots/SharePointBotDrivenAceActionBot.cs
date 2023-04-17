@@ -24,12 +24,12 @@ namespace Microsoft.BotBuilderSamples.Bots
     public class SharePointBotDrivenAceActionBot : SharePointActivityHandler
     {
         private static int index = 0;
-        public readonly string baseUrl;
+        private readonly string _baseUrl;
 
         public SharePointBotDrivenAceActionBot(IConfiguration configuration) 
             : base()
         {
-            this.baseUrl = configuration["BaseUrl"];
+            this._baseUrl = configuration["BaseUrl"];
         }
 
         protected override Task<GetQuickViewResponse> OnSharePointTaskGetQuickViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
@@ -461,7 +461,7 @@ namespace Microsoft.BotBuilderSamples.Bots
         {
             // The user has chosen to create a card by choosing the 'Web View' context menu command.
             CustomFormResponse cardData = JsonConvert.DeserializeObject<CustomFormResponse>(action.Data.ToString());
-            var imgUrl = baseUrl + "/profile-image.png";
+            var imgUrl = _baseUrl + "/profile-image.png";
 
             var card = new ThumbnailCard
             {
@@ -595,7 +595,7 @@ namespace Microsoft.BotBuilderSamples.Bots
                         Height = 175,
                         Width = 300,
                         Title = "Task Module Razor View",
-                        Url = baseUrl + "/Home/RazorView",
+                        Url = _baseUrl + "/Home/RazorView",
                     },
                 },
             };
@@ -613,7 +613,7 @@ namespace Microsoft.BotBuilderSamples.Bots
                         Height = 200,
                         Width = 400,
                         Title = "Task Module HTML Page",
-                        Url = baseUrl + "/Home/HtmlPage",
+                        Url = _baseUrl + "/Home/HtmlPage",
                     },
                 },
             };
@@ -631,7 +631,7 @@ namespace Microsoft.BotBuilderSamples.Bots
                         Height = 300,
                         Width = 450,
                         Title = "Task Module WebView",
-                        Url = baseUrl + "/Home/CustomForm",
+                        Url = _baseUrl + "/Home/CustomForm",
                     },
                 },
             };

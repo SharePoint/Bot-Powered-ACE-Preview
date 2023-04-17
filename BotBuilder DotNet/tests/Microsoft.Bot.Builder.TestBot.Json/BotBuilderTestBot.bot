@@ -20,11 +20,11 @@
             "type": "endpoint",
             "endpoint": "http://localhost:3979/api/messages",
             "id": "98",
-            "name": "http://localhost:3979/api/messages"
+            "name": "http://localhost:3978/api/messages"
         },
         {
             "type": "endpoint",
-            "endpoint": "http://localhost:3978/api/messages",
+            "endpoint": "http://localhost:3979/api/messages",
             "id": "161",
             "name": "http://localhost:3978/api/messages"
         },

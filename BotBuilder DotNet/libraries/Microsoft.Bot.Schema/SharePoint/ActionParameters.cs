@@ -27,5 +27,12 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// <value>This value is the view of the action parameter.</value>
         [JsonProperty(PropertyName = "view")]
         public string View { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the view of type <see cref="string"/>.
+        /// </summary>
+        /// <value>This value is the view of the action parameter.</value>
+        [JsonProperty(PropertyName = "magicCode")]
+        public string MagicCode { get; set; }
     }
 }

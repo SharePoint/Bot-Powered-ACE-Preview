@@ -42,7 +42,7 @@ namespace Microsoft.BotBuilderSamples
             services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();
 
             // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
-            services.AddTransient<IBot, SharePointBotDrivenAceActionBot>();
+            services.AddTransient<IBot, SharePointBotDrivenAceAuthenticationBot>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +62,7 @@ namespace Microsoft.BotBuilderSamples
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+
                 // Mapping of endpoints goes here:
                 endpoints.MapControllers();
             });

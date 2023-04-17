@@ -39,7 +39,12 @@ namespace Microsoft.Bot.Schema.SharePoint
             /// <summary>
             /// Image card view
             /// </summary>
-            Image
+            Image,
+
+            /// <summary>
+            /// Sign In card view
+            /// </summary>
+            SignIn
         }
 
         /// <summary>
