@@ -38,68 +38,19 @@ namespace Microsoft.BotBuilderSamples.Bots
 
         protected override async Task<GetCardViewResponse> OnSharePointTaskGetCardViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
-            // var authenticatedUser = await TryGetAuthenticatedUser(null, turnContext, cancellationToken);
+            var magicCode = (taskModuleRequest?.Data as JObject)?.GetValue("data")?.SelectToken("magicCode")?.ToString();
+            var user = await TryGetAuthenticatedUser(magicCode, turnContext, cancellationToken);
+            if (user != null)
+            {
+                return GenerateCardView(user, turnContext, cancellationToken);
+            }
+
             return await GenerateSignInCardView(turnContext, cancellationToken);
         }
 
         protected override Task<GetQuickViewResponse> OnSharePointTaskGetQuickViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
-            AdaptiveTextBlock titleText = new AdaptiveTextBlock
-            {
-                Text = "Complete Sign In",
-                Color = AdaptiveTextColor.Dark,
-                Weight = AdaptiveTextWeight.Bolder,
-                Size = AdaptiveTextSize.Medium,
-                Wrap = true,
-                MaxLines = 1,
-                Spacing = AdaptiveSpacing.None
-            };
-            AdaptiveTextBlock descriptionText = new AdaptiveTextBlock
-            {
-                Text = "Input the magic code from signing into Azure Active Directory in order to continue.",
-                Color = AdaptiveTextColor.Dark,
-                Size = AdaptiveTextSize.Normal,
-                Wrap = true,
-                MaxLines = 6,
-                Spacing = AdaptiveSpacing.None
-            };
-            AdaptiveNumberInput magicCodeInputField = new AdaptiveNumberInput
-            {
-                Placeholder = "Enter Magic Code",
-                Id = "magicCode",
-                IsRequired = true
-            };
-            AdaptiveSubmitAction submitAction = new AdaptiveSubmitAction
-            {
-                Title = "Submit",
-                Id = "SubmitMagicCode"
-            };
-            AdaptiveContainer container = new AdaptiveContainer
-            {
-                Separator = true,
-                Items = new List<AdaptiveElement>
-                {
-                    titleText, descriptionText, magicCodeInputField
-                }
-            };
-
-            GetQuickViewResponse response = new GetQuickViewResponse
-            {
-                Data = new QuickViewData
-                {
-                    Title = "Complete Sign In",
-                    Description = "Complete signing into a third party identity provider."
-                },
-                Template = new AdaptiveCard
-                {
-                    Body = new List<AdaptiveElement> { container },
-                    Actions = new List<AdaptiveAction> { submitAction }
-                },
-                ViewId = _signInQuickViewId,
-                StackSize = 1
-            };
-
-            return Task.FromResult(response);
+            return Task.FromResult(GenerateSignInQuickView());
         }
 
         protected override Task OnSharePointTaskSetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
@@ -158,6 +109,88 @@ namespace Microsoft.BotBuilderSamples.Bots
                 ActionButtons = actionButtons
             };
             response.ViewId = "signInCard";
+
+            return response;
+        }
+
+        private GetQuickViewResponse GenerateSignInQuickView()
+        {
+            AdaptiveTextBlock titleText = new AdaptiveTextBlock
+            {
+                Text = "Complete Sign In",
+                Color = AdaptiveTextColor.Dark,
+                Weight = AdaptiveTextWeight.Bolder,
+                Size = AdaptiveTextSize.Medium,
+                Wrap = true,
+                MaxLines = 1,
+                Spacing = AdaptiveSpacing.None
+            };
+            AdaptiveTextBlock descriptionText = new AdaptiveTextBlock
+            {
+                Text = "Input the magic code from signing into Azure Active Directory in order to continue.",
+                Color = AdaptiveTextColor.Dark,
+                Size = AdaptiveTextSize.Normal,
+                Wrap = true,
+                MaxLines = 6,
+                Spacing = AdaptiveSpacing.None
+            };
+            AdaptiveNumberInput magicCodeInputField = new AdaptiveNumberInput
+            {
+                Placeholder = "Enter Magic Code",
+                Id = "magicCode",
+                IsRequired = true
+            };
+            AdaptiveSubmitAction submitAction = new AdaptiveSubmitAction
+            {
+                Title = "Submit",
+                Id = "SubmitMagicCode"
+            };
+            AdaptiveContainer container = new AdaptiveContainer
+            {
+                Separator = true,
+                Items = new List<AdaptiveElement>
+                {
+                    titleText, descriptionText, magicCodeInputField
+                }
+            };
+
+            GetQuickViewResponse response = new GetQuickViewResponse
+            {
+                Data = new QuickViewData
+                {
+                    Title = "Complete Sign In",
+                    Description = "Complete signing into a third party identity provider."
+                },
+                Template = new AdaptiveCard
+                {
+                    Body = new List<AdaptiveElement> { container },
+                    Actions = new List<AdaptiveAction> { submitAction }
+                },
+                ViewId = _signInQuickViewId,
+                StackSize = 1
+            };
+
+            return response;
+        }
+
+        private GetCardViewResponse GenerateCardView(Graph.User user, ITurnContext<IInvokeActivity> turnContext, CancellationToken cancellationToken)
+        {
+            var displayText = $"Hello, {user?.DisplayName}! You're signed in.";
+
+            var aceData = new AceData
+            {
+                DataVersion = "1.0",
+                Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f",
+
+                CardSize = AceData.AceCardSize.Large,
+                Title = "3P IDP Test",
+
+                PrimaryText = "Signed In",
+                Description = displayText,
+            };
+
+            GetCardViewResponse response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryText);
+            response.AceData = aceData;
 
             return response;
         }
