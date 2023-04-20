@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
   "manifestVersion": "1.14",
   "version": "1.0",
-  "id": "777b509e-d1bb-4a81-ac31-f21215083b3c",
+  "id": "<app id>",
   "packageName": "com.microsoft.teams.samples",
   "developer": {
     "name": "Microsoft",
@@ -25,7 +25,7 @@
   "accentColor": "#FFFFFF",
   "bots": [
     {
-      "botId": "777b509e-d1bb-4a81-ac31-f21215083b3c",
+      "botId": "<app id>",
       "needsChannelSelector": false,
       "isNotificationOnly": false,
       "supportsCalling": false,
@@ -40,7 +40,7 @@
   ],
   "composeExtensions": [
     {
-      "botId": "777b509e-d1bb-4a81-ac31-f21215083b3c",
+      "botId": "<app id>",
       "commands": [
         {
           "id": "createCard",
@@ -148,10 +148,9 @@
     }
   ],
   "permissions": [
-    "identity",
-    "VivaConnections"
+    "identity"
   ],
   "validDomains": [
-    "https://b72c-2001-4898-80e8-37-4a2c-bf33-1fa4-e2d6.ngrok-free.app"
+    "https://cbf5-2001-569-500b-5700-1f7-2270-17b0-7b06.ngrok.io"
   ]
 }
