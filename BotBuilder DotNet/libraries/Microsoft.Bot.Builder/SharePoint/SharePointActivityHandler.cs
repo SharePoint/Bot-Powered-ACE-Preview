@@ -58,6 +58,8 @@ namespace Microsoft.Bot.Builder.SharePoint
                         case "cardExtension/setPropertyPaneConfiguration":
                             await OnSharePointTaskSetPropertyPaneConfigurationAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false);
                             return CreateInvokeResponse();
+                        case "cardExtension/handleAction":
+                            return CreateInvokeResponse(OnSharePointTaskHandleActionAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false)); 
                     }
                 }
             }
@@ -91,6 +93,19 @@ namespace Microsoft.Bot.Builder.SharePoint
         /// or threads to receive notice of cancellation.</param>
         /// <returns>A Task Module Response for the request.</returns>
         protected virtual Task<GetQuickViewResponse> OnSharePointTaskGetQuickViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        {
+            throw new InvokeResponseException(HttpStatusCode.NotImplemented);
+        }
+
+        /// <summary>
+        /// Override this in a derived class to provide logic for when a Action.Submit is initiated.
+        /// </summary>
+        /// <param name="turnContext">A strongly-typed context object for this turn.</param>
+        /// <param name="taskModuleRequest">The task module invoke request value payload.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects
+        /// or threads to receive notice of cancellation.</param>
+        /// <returns>A Task Module Response for the request.</returns>
+        protected virtual Task<HandleActionResponse> OnSharePointTaskHandleActionAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
             throw new InvokeResponseException(HttpStatusCode.NotImplemented);
         }

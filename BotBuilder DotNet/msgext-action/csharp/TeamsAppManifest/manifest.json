@@ -1,60 +1,157 @@
 {
-    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
-    "manifestVersion": "1.9",
-    "version": "1.0.0",
-    "id": "777b509e-d1bb-4a81-ac31-f21215083b3c",
-    "packageName": "FooBar",
-    "developer": {
-        "name": "Microsoft",
-        "websiteUrl": "https://mwww.microsoft.com",
-        "privacyUrl": "https://mwww.microsoft.com",
-        "termsOfUseUrl": "https://www.microsoft.com/en-us/legal/terms-of-use"
-    },
-    "icons": {
-        "color": "color.png",
-        "outline": "outline.png"
-    },
-    "name": {
-        "short": "CM 3P IDP",
-        "full": ""
-    },
-    "description": {
-        "short":  "CM 3P IDP",
-        "full":  "CM 3P IDP",
-    },
-    "accentColor": "#FFFFFF",
-    "dashboardCards": [
-	{
-	  "entityId": "777b509e-d1bb-4a81-ac31-f21215083b3c",
-	  "name": "CM 3P IDP",
-	  "description": "CM 3P IDP",
-	  "context":[
-		"Connections"
-	   ],
-	  "iconProperty": "SharePointLogo", 
-	  "officeFabricIconFontName": "VivaLogo",
-	  "defaultSize": [
-		"medium"
-	   ],
-	  "contentBotId": "777b509e-d1bb-4a81-ac31-f21215083b3c"
-	}
-    ],    
-    "permissions": [
-        "identity",
-        "messageTeamMembers"
-    ],
-    "validDomains": [
-        "https://157e-2001-4898-80e8-37-fe1c-6bfe-28d6-85ce.ngrok-free.app"
-    ],
-    "devicePermissions": [
-        "media",
-        "geolocation",
-        "notifications",
-        "midi",
-        "openExternal"
-    ],
-    "webApplicationInfo": {
-    "resource": "https://{teamSiteDomain}",
-    "id": "00000003-0000-0ff1-ce00-000000000000"
-  }
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.14",
+  "version": "1.0",
+  "id": "777b509e-d1bb-4a81-ac31-f21215083b3c",
+  "packageName": "com.microsoft.teams.samples",
+  "developer": {
+    "name": "Microsoft",
+    "websiteUrl": "https://dev.botframework.com",
+    "privacyUrl": "https://privacy.microsoft.com",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx"
+  },
+  "name": {
+    "short": "Action Messaging Extension",
+    "full": "Microsoft Teams Action Based Messaging Extension"
+  },
+  "description": {
+    "short": "Sample demonstrating an Action Based Messaging Extension",
+    "full": "Sample Action Messaging Extension built with the Bot Builder SDK"
+  },
+  "icons": {
+    "outline": "icon-outline.png",
+    "color": "icon-color.png"
+  },
+  "accentColor": "#FFFFFF",
+  "bots": [
+    {
+      "botId": "777b509e-d1bb-4a81-ac31-f21215083b3c",
+      "needsChannelSelector": false,
+      "isNotificationOnly": false,
+      "supportsCalling": false,
+      "supportsVideo": false,
+      "supportsFiles": false,
+      "scopes": [
+        "team",
+        "personal",
+        "groupchat"
+      ]
+    }
+  ],
+  "composeExtensions": [
+    {
+      "botId": "777b509e-d1bb-4a81-ac31-f21215083b3c",
+      "commands": [
+        {
+          "id": "createCard",
+          "type": "action",
+          "context": [ "compose" ],
+          "description": "Command to run action to create a Card from Compose Box",
+          "title": "Create Card",
+          "parameters": [
+            {
+              "name": "title",
+              "title": "Card title",
+              "description": "Title for the card",
+              "inputType": "text"
+            },
+            {
+              "name": "subTitle",
+              "title": "Subtitle",
+              "description": "Subtitle for the card",
+              "inputType": "text"
+            },
+            {
+              "name": "text",
+              "title": "Text",
+              "description": "Text for the card",
+              "inputType": "textarea"
+            }
+          ]
+        },
+        {
+          "id": "shareMessage",
+          "type": "action",
+          "context": [ "message" ],
+          "description": "Test command to run action on message context (message sharing)",
+          "title": "Share Message",
+          "parameters": [
+            {
+              "name": "includeImage",
+              "title": "Include Image",
+              "description": "Include image in Hero Card",
+              "inputType": "toggle"
+            }
+          ]
+        },
+        {
+          "id": "FetchRoster",
+          "description": "Fetch the conversation roster",
+          "title": "FetchRoster",
+          "type": "action",
+          "fetchTask": true,
+          "context": [ "compose" ]
+        },
+        {
+          "id": "createAdaptiveCard",
+          "type": "action",
+          "context": [ "compose" ],
+          "description": "Command to run action to create a Card from Compose Box",
+          "title": "Adaptive Card",
+          "parameters": [
+            {
+              "name": "title",
+              "title": "Name",
+              "description": "Name of the User",
+              "inputType": "text"
+            },
+            {
+              "name": "subTitle",
+              "title": "Designation",
+              "description": "Designation of the User",
+              "inputType": "text"
+            },
+            {
+              "name": "text",
+              "title": "Description",
+              "description": "Description",
+              "inputType": "textarea"
+            }
+          ]
+        },
+        {
+          "id": "webView",
+          "description": "Fetch the Web View",
+          "title": "Web View",
+          "type": "action",
+          "fetchTask": true,
+          "context": [ "compose" ]
+        },
+        {
+          "id": "HTML",
+          "description": "Fetch the HTML",
+          "title": "HTML",
+          "type": "action",
+          "fetchTask": true,
+          "context": [ "compose" ]
+        },
+        {
+          "id": "razorView",
+          "description": "Fetch the Razor View",
+          "title": "Razor View",
+          "type": "action",
+          "fetchTask": true,
+          "context": [ "compose" ]
+        }
+
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "VivaConnections"
+  ],
+  "validDomains": [
+    "https://b72c-2001-4898-80e8-37-4a2c-bf33-1fa4-e2d6.ngrok-free.app"
+  ]
 }

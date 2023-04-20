@@ -310,7 +310,6 @@ namespace Microsoft.BotBuilderSamples.Bots
             linkProperties.PopupWindowProps = popupProps;
             link.Properties = linkProperties;
 
-
             List<PropertyPaneGroupField> fields = new List<PropertyPaneGroupField>()
             {
                 text,

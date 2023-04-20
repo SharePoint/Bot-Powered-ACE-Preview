@@ -40,7 +40,7 @@ namespace Microsoft.BotBuilderSamples.Bots
         {
             var magicCode = (taskModuleRequest?.Data as JObject)?.GetValue("data")?.SelectToken("magicCode")?.ToString();
             var user = await TryGetAuthenticatedUser(magicCode, turnContext, cancellationToken);
-            if (user != null)
+            if (magicCode != null && user != null)
             {
                 return GenerateCardView(user, turnContext, cancellationToken);
             }
@@ -51,6 +51,29 @@ namespace Microsoft.BotBuilderSamples.Bots
         protected override Task<GetQuickViewResponse> OnSharePointTaskGetQuickViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
             return Task.FromResult(GenerateSignInQuickView());
+        }
+
+        protected override Task<HandleActionResponse> OnSharePointTaskHandleActionAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        {
+            var magicCode = (taskModuleRequest?.Data as JObject)?.GetValue("data")?.SelectToken("magicCode")?.ToString();
+
+            HandleActionResponse response = new HandleActionResponse
+            {
+                ViewType = HandleActionResponse.HandleActionCardType.Card,
+                RenderArguments = new RenderArgumentsBody
+                {
+                    AceData = new AceData
+                    {
+                        DataVersion = "1.0",
+                        Id = "SignedInView",
+
+                        CardSize = AceData.AceCardSize.Large,
+                        Title = "3P IDP Test"
+                    }
+                }
+            };
+
+            return Task.FromResult(response);
         }
 
         protected override Task OnSharePointTaskSetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
@@ -180,17 +203,19 @@ namespace Microsoft.BotBuilderSamples.Bots
             var aceData = new AceData
             {
                 DataVersion = "1.0",
-                Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f",
+                Id = "SignedInView",
 
                 CardSize = AceData.AceCardSize.Large,
                 Title = "3P IDP Test",
-
-                PrimaryText = "Signed In",
-                Description = displayText,
             };
 
             GetCardViewResponse response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryText);
             response.AceData = aceData;
+            response.ViewId = "SignedInView";
+            response.Data = new CardViewData
+            {
+                PrimaryText = displayText
+            };
 
             return response;
         }
