@@ -2,7 +2,9 @@
 // Licensed under the MIT License.
 
 import { AceData } from './aceData';
-import { CardViewData } from './cardViewData';
+import { ICardParameters } from './ICardParameters';
+import { ICardActionParameters } from './ICardActionParameters';
+import { ActionButton } from './actionButton';
 
 /**
  * Sharepoint GetCardView response object
@@ -10,8 +12,10 @@ import { CardViewData } from './cardViewData';
 export class GetCardViewResponse {
     private templateType: GetCardViewResponse.CardViewTemplateType;
     private aceData: AceData;
-    private data: CardViewData;
+    private data: ICardParameters;
     private viewId: string;
+    private onCardSelection: ICardActionParameters;
+    private cardButtons: ActionButton;
     /**
      * Initializes a new instance of the GetCardViewResponse class
      */
@@ -48,17 +52,45 @@ export class GetCardViewResponse {
     }
 
     /**
-     * Sets data property of type CardViewData
+     * Sets data property of type ICardParameters
      */
-    public set Data(data: CardViewData){
+    public set Data(data: ICardParameters){
         this.data = data;
     }
 
     /**
-     * Gets data property of type CardViewData
+     * Gets data property of type ICardParameters
      */
-    public get Data(): CardViewData {
+    public get Data(): ICardParameters {
         return this.data;
+    }
+
+    /**
+     * Sets on card selection property of type ICardActionParameters
+     */
+    public set OnCardSelection(onCardSelection: ICardActionParameters){
+        this.onCardSelection = onCardSelection;
+    }
+
+    /**
+     * Gets on card selection property of type ICardActionParameters
+     */
+    public get OnCardSelection(): ICardActionParameters {
+        return this.onCardSelection;
+    }
+
+    /**
+     * Sets card buttons property of type ActionButton
+     */
+    public set CardButtons(cardButtons: ActionButton){
+        this.cardButtons = cardButtons;
+    }
+
+    /**
+     * Gets card buttons property of type ActionButton
+     */
+    public get CardButtons(): ActionButton {
+        return this.cardButtons;
     }
 
     /**
@@ -81,6 +113,7 @@ export namespace GetCardViewResponse
     export enum CardViewTemplateType {
         PrimaryTextCardView = "PrimaryText",
         ImageCardView = "Image",
-        BasicCardView = "Basic"
+        BasicCardView = "Basic",
+        SignInCardView = "SignIn"
     }
 }

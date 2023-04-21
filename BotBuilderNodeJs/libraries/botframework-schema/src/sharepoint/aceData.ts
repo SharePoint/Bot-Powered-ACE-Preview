@@ -10,6 +10,7 @@ export class AceData {
     private id: string;
     private title: string;
     private iconProperty: string;
+    private description: string;
     /**
      * Initializes a new instance of the AceData class
      */
@@ -85,6 +86,20 @@ export class AceData {
      */
     public get IconProperty(): string{
         return this.iconProperty;
+    }
+
+    /**
+     * Sets description property of type string
+     */
+    public set Description(description: string){
+        this.description = description;
+    }
+
+    /**
+     * Gets description property of type string
+     */
+    public get Description(): string{
+        return this.description;
     }
 }
 

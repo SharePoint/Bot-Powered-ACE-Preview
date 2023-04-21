@@ -5,10 +5,8 @@ require('dotenv').config();
 const {  SharePointActivityHandler, CardFactory, TeamsInfo, MessageFactory } = require('botbuilder');
 const { 
     GetCardViewResponse, 
-    AceData, 
-    CardViewData,
+    AceData,
     ActionButton, 
-    ActionParameters, 
     SharepointAction, 
     GetQuickViewResponse, 
     PropertyPanePageHeader, 
@@ -26,7 +24,12 @@ const {
     PropertyPaneToggleProperties,
     PropertyPaneSliderProperties,
     PropertyPaneLinkProperties,
-    PropertyPaneLinkPopupWindowProperties
+    PropertyPaneLinkPopupWindowProperties,
+    BasicCardParameters,
+    QuickViewParameters,
+    PrimaryTextCardParameters,
+    ImageCardParameters,
+    SignInCardParameters
 } = require('botframework-schema');
 const AdaptiveCards = require("adaptivecards");
 const baseurl = process.env.BaseUrl;
@@ -35,7 +38,10 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
     
 	constructor() {
         super();
-        this.cardViewResponse = undefined;
+        this.cardViewsCreated = false;
+        this.quickViewsCreated = false;
+        this.cardViewMap = new Map();
+        this.quickViewMap = new Map();
 	}
 	
     async handleTeamsMessagingExtensionSubmitAction(context, action) {
@@ -112,6 +118,10 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
      * @returns A task module response for the request
      */
     async OnSharePointTaskGetCardViewAsync(context, taskModuleRequest){
+        if (!this.cardViewsCreated){
+            this.createCardViews();
+        }
+        return this.cardViewMap.get('PRIMARY_TEXT_CARD_VIEW');
         try {
             if(!this.cardViewResponse){
                 this.cardViewResponse = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView);
@@ -156,43 +166,10 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
      * @returns A task module response for the request
      */
     async OnSharePointTaskGetQuickViewAsync(context, taskModuleRequest){
-        try {
-            const response = new GetQuickViewResponse();
-            response.Data = {}
-            response.Data.title = "BOT QUICK VIEW";
-            response.Data.description = "BOT DESCRIPTION";
-            response.Template = new AdaptiveCards.AdaptiveCard();
-
-            const container = new AdaptiveCards.Container();
-            container.separator = true;
-            const titleText = new AdaptiveCards.TextBlock();
-            titleText.text = "BENEFITS OF BOT ACES";
-            titleText.color = AdaptiveCards.TextColor.Dark;
-            titleText.weight = AdaptiveCards.TextWeight.Bolder;
-            titleText.size = AdaptiveCards.TextSize.Large;
-            titleText.wrap = true;
-            titleText.maxLines = 1;
-            titleText.spacing = AdaptiveCards.Spacing.None;
-            container.addItem(titleText);
-
-            const descriptionText = new AdaptiveCards.TextBlock();
-            descriptionText.text = "When a Bot powers an Ace it allows you to customize the content of an Ace without deploying a new package, learning about the SPFX toolchain, or having to deploy updates to your customer sites.";
-            descriptionText.color = AdaptiveCards.TextColor.Dark;
-            descriptionText.size = AdaptiveCards.TextSize.Medium;
-            descriptionText.wrap = true;
-            descriptionText.maxLines = 6;
-            descriptionText.spacing = AdaptiveCards.Spacing.None;
-            container.addItem(descriptionText);
-
-            response.Template.addItem(container); 
-
-            response.ViewId = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW";
-            response.StackSize = 1;
-
-            return response;
-        } catch(error) {
-            console.log(error);
+        if (!this.quickViewsCreated){
+            this.createQuickViews();
         }
+        return this.quickViewMap.get('BASIC_QUICK_VIEW');
     }
 
     /**
@@ -370,30 +347,28 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
      */
     async OnSharePointTaskSetPropertyPaneConfigurationAsync(context, taskModuleRequest){
         try {
+            const primaryTextCardView = this.cardViewMap.get("PRIMARY_TEXT_CARD_VIEW");
             const changedProperties = context.activity.value.data;
             for (const property in changedProperties) {
                 if (Object.prototype.hasOwnProperty.call(changedProperties, property)) {
                     switch (property){
                         
                         case "title":
-                            this.cardViewResponse.AceData.Title = changedProperties[property];
+                            primaryTextCardView.AceData.Title = changedProperties[property];
                             break;
                         case "primaryText":
-                            this.cardViewResponse.Data.PrimaryText = changedProperties[property];
+                            primaryTextCardView.Data.PrimaryText = changedProperties[property];
                             break;
                         case "description":
-                            this.cardViewResponse.Data.Description = changedProperties[property];
+                            primaryTextCardView.Data.Description = changedProperties[property];
                             break
                         default:
                             break;
                     }
                 }
             }
-
-            return {
-                viewType: 'Card',
-                renderArguments: this.cardViewResponse
-            };
+            this.cardViewMap.set(primaryTextCardView.ViewId, primaryTextCardView);
+            return primaryTextCardView;
         } catch (error){
             console.log(error);
         }
@@ -410,150 +385,203 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         //         json.data[property.Key] = aceProperties[property.Key];
         //     }
         return '';
-    } 
+    }
+    
+    async createCardViews(){
+        try {
+            const basicCardView = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.BasicCardView);
+            basicCardView.TemplateType = GetCardViewResponse.CardViewTemplateType.BasicCardView;
+            basicCardView.ViewId = "BASIC_CARD_VIEW"
+
+            const aceData = new AceData();
+            aceData.CardSize = AceData.AceCardSize.Medium;
+            aceData.Title = "BOT DRIVEN ACE";
+            aceData.Description= "bot description";
+            aceData.DataVersion = "1.0";
+            aceData.Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f";
+            basicCardView.AceData = aceData;
+
+            const basicCardParameters = new BasicCardParameters();
+            basicCardParameters.PrimaryText = "My bot's basic card";
+            basicCardView.Data = basicCardParameters;
+
+            const quickViewActionParameters = new QuickViewParameters();
+            quickViewActionParameters.View = "BASIC_QUICK_VIEW";
+            const action = new SharepointAction();
+            action.Type = SharepointAction.ActionType.QuickView;
+            action.Parameters = quickViewActionParameters;
+            const button = new ActionButton();
+            button.Title = "Quick View";
+            button.Action = action;
+
+            const cardButtons = new Array();
+
+            cardButtons[0] = button;
+
+            basicCardView.CardButtons = cardButtons;
+
+            this.cardViewMap.set(basicCardView.ViewId, basicCardView);
+        } catch(error) {
+            console.log(error);
+        }
+        try {
+            const primaryTextCard = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView);
+            primaryTextCard.TemplateType = GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView;
+            primaryTextCard.ViewId = "PRIMARY_TEXT_CARD_VIEW"
+
+            const aceData = new AceData();
+            aceData.CardSize = AceData.AceCardSize.Medium;
+            aceData.Title = "BOT DRIVEN ACE";
+            aceData.Description= "bot description";
+            aceData.DataVersion = "1.0";
+            aceData.Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f";
+            primaryTextCard.AceData = aceData;
+
+            const primaryTextCardParameters = new PrimaryTextCardParameters();
+            primaryTextCardParameters.PrimaryText = "My bot's primary text card";
+            primaryTextCardParameters.Description = "A nice description"
+            primaryTextCard.Data = primaryTextCardParameters;
+
+            const quickViewActionParameters = new QuickViewParameters();
+            quickViewActionParameters.View = "PRIMARY_TEXT_QUICK_VIEW";
+            const action = new SharepointAction();
+            action.Type = SharepointAction.ActionType.QuickView;
+            action.Parameters = quickViewActionParameters;
+            const button = new ActionButton();
+            button.Title = "Quick View";
+            button.Action = action;
+
+            const cardButtons = new Array();
+
+            cardButtons[0] = button;
+
+            primaryTextCard.CardButtons = cardButtons;
+
+            this.cardViewMap.set(primaryTextCard.ViewId, primaryTextCard);
+        } catch(error) {
+            console.log(error);
+        }
+        try {
+            const imageCard = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.ImageCardView);
+            imageCard.TemplateType = GetCardViewResponse.CardViewTemplateType.ImageCardView;
+            imageCard.ViewId = "IMAGE_CARD_VIEW"
+
+            const aceData = new AceData();
+            aceData.CardSize = AceData.AceCardSize.Medium;
+            aceData.Title = "BOT DRIVEN ACE";
+            aceData.Description= "bot description";
+            aceData.DataVersion = "1.0";
+            aceData.Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f";
+            imageCard.AceData = aceData;
+
+            const imageCardParameters = new ImageCardParameters();
+            imageCardParameters.ImageUrl = "https://download.logo.wine/logo/SharePoint/SharePoint-Logo.wine.png";
+            imageCardParameters.ImageAltText = "Sharepoint logo";
+            imageCardParameters.PrimaryText = "My bot's image card";
+            imageCard.Data = imageCardParameters;
+
+            const quickViewActionParameters = new QuickViewParameters();
+            quickViewActionParameters.View = "IMAGE_QUICK_VIEW";
+            const action = new SharepointAction();
+            action.Type = SharepointAction.ActionType.QuickView;
+            action.Parameters = quickViewActionParameters;
+            const button = new ActionButton();
+            button.Title = "Quick View";
+            button.Action = action;
+
+            const cardButtons = new Array();
+
+            cardButtons[0] = button;
+
+            imageCard.CardButtons = cardButtons;
+            imageCard.OnCardSelection = action;
+
+            this.cardViewMap.set(imageCard.ViewId, imageCard);
+        } catch(error) {
+            console.log(error);
+        }
+        try {
+            const signInCard = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.SignInCardView);
+            signInCard.TemplateType = GetCardViewResponse.CardViewTemplateType.SignInCardView;
+            signInCard.ViewId = "SIGN_IN_CARD_VIEW"
+
+            const aceData = new AceData();
+            aceData.CardSize = AceData.AceCardSize.Medium;
+            aceData.Title = "BOT DRIVEN ACE";
+            aceData.Description= "bot description";
+            aceData.DataVersion = "1.0";
+            aceData.Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f";
+            signInCard.AceData = aceData;
+
+            const signInCardParameters = new SignInCardParameters();
+            signInCardParameters.PrimaryText = "My bot's sign in card";
+            signInCardParameters.Description = "Use this card to sign in";
+            signInCardParameters.SignInButtonText = "Sign In";
+            signInCardParameters.uri = "....";
+            signInCardParameters.ConnectionName = "...";
+            signInCard.Data = signInCardParameters;
+
+            const quickViewActionParameters = new QuickViewParameters();
+            quickViewActionParameters.View = "SIGN_IN_QUICK_VIEW";
+            const action = new SharepointAction();
+            action.Type = SharepointAction.ActionType.QuickView;
+            action.Parameters = quickViewActionParameters;
+            const button = new ActionButton();
+            button.Title = "Quick View";
+            button.Action = action;
+
+            const cardButtons = new Array();
+
+            cardButtons[0] = button;
+
+            signInCard.CardButtons = cardButtons;
+
+            this.cardViewMap.set(signInCard.ViewId, signInCard);
+        } catch(error) {
+            console.log(error);
+        }
+    }
+
+    async createQuickViews(){
+        try {
+            const basicQuickView = new GetQuickViewResponse();
+            basicQuickView.StackSize = 1;
+            basicQuickView.ViewId = "BASIC_QUICK_VIEW";
+            basicQuickView.Data = {};
+
+            const template = new AdaptiveCards.AdaptiveCard();
+
+            const container = new AdaptiveCards.Container();
+            container.separator = true;
+            const titleText = new AdaptiveCards.TextBlock();
+            titleText.text = "BENEFITS OF BOT ACES";
+            titleText.color = AdaptiveCards.TextColor.Dark;
+            titleText.weight = AdaptiveCards.TextWeight.Bolder;
+            titleText.size = AdaptiveCards.TextSize.Large;
+            titleText.wrap = true;
+            titleText.maxLines = 1;
+            titleText.spacing = AdaptiveCards.Spacing.None;
+            container.addItem(titleText);
+
+            const descriptionText = new AdaptiveCards.TextBlock();
+            descriptionText.text = "When a Bot powers an Ace it allows you to customize the content of an Ace without deploying a new package, learning about the SPFX toolchain, or having to deploy updates to your customer sites.";
+            descriptionText.color = AdaptiveCards.TextColor.Dark;
+            descriptionText.size = AdaptiveCards.TextSize.Medium;
+            descriptionText.wrap = true;
+            descriptionText.maxLines = 6;
+            descriptionText.spacing = AdaptiveCards.Spacing.None;
+            container.addItem(descriptionText);
+
+            template.addItem(container); 
+            basicQuickView.Template = template;
+            basicQuickView.Title = "Basic Quick View"
+
+            this.quickViewMap.set(basicQuickView.ViewId, basicQuickView)
+        } catch(error) {
+            console.log(error);
+        }
+    }
 }
-
-// function GetJustInTimeCardAttachment() {
-//     return CardFactory.adaptiveCard({
-//         actions: [
-//             {
-//                 type: 'Action.Submit',
-//                 title: 'Continue',
-//                 data: { msteams: { justInTimeInstall: true } }
-//             }
-//         ],
-//         body: [
-//             {
-//                 text: 'Looks like you have not used Action Messaging Extension app in this team/chat. Please click **Continue** to add this app.',
-//                 type: 'TextBlock',
-//                 wrap: true
-//             }
-//         ],
-//         type: 'AdaptiveCard',
-//         version: '1.0'
-//     });
-// }
-
-// function GetAdaptiveCardAttachment() {
-//     return CardFactory.adaptiveCard({
-//         actions: [{ type: 'Action.Submit', title: 'Close' }],
-//         body: [
-//             {
-//                 text: 'This app is installed in this conversation. You can now use it to do some great stuff!!!',
-//                 type: 'TextBlock',
-//                 isSubtle: false,
-//                 wrap: true
-//             }
-//         ],
-//         type: 'AdaptiveCard',
-//         version: '1.0'
-//     });
-// }
-
-// function createCardCommand(context, action) {
-//     // The user has chosen to create a card by choosing the 'Create Card' context menu command.
-//     const data = action.data;
-//     const heroCard = CardFactory.heroCard(data.title, data.text);
-//     heroCard.content.subtitle = data.subTitle;
-//     const attachment = { contentType: heroCard.contentType, content: heroCard.content, preview: heroCard };
-
-//     return {
-//         composeExtension: {
-//             type: 'result',
-//             attachmentLayout: 'list',
-//             attachments: [
-//                 attachment
-//             ]
-//         }
-//     };
-// }
-
-// function shareMessageCommand(context, action) {
-//     // The user has chosen to share a message by choosing the 'Share Message' context menu command.
-//     let userName = 'unknown';
-//     if (action.messagePayload.from &&
-//             action.messagePayload.from.user &&
-//             action.messagePayload.from.user.displayName) {
-//         userName = action.messagePayload.from.user.displayName;
-//     }
-
-//     // This Messaging Extension example allows the user to check a box to include an image with the
-//     // shared message.  This demonstrates sending custom parameters along with the message payload.
-//     let images = [];
-//     const includeImage = action.data.includeImage;
-//     if (includeImage === 'true') {
-//         images = ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtB3AwMUeNoq4gUBGe6Ocj8kyh3bXa9ZbV7u1fVKQoyKFHdkqU'];
-//     }
-//     const heroCard = CardFactory.heroCard(`${ userName } originally sent this message:`,
-//         action.messagePayload.body.content,
-//         images);
-
-//     if (action.messagePayload.attachments && action.messagePayload.attachments.length > 0) {
-//         // This sample does not add the MessagePayload Attachments.  This is left as an
-//         // exercise for the user.
-//         heroCard.content.subtitle = `(${ action.messagePayload.attachments.length } Attachments not included)`;
-//     }
-
-//     const attachment = { contentType: heroCard.contentType, content: heroCard.content, preview: heroCard };
-
-//     return {
-//         composeExtension: {
-//             type: 'result',
-//             attachmentLayout: 'list',
-//             attachments: [
-//                 attachment
-//             ]
-//         }
-//     };
-// }
-
-// function empDetails() {
-// 	console.log(baseurl);
-//     return {
-//         task: {
-//             type: 'continue',
-//             value: {
-//                 width: 350,
-//                 height: 300,
-//                 title: 'Task module WebView',
-//                 url: `${ baseurl }/customForm`
-//             }
-//         }
-//     };
-// }
-
-// function dateTimeInfo() {
-//     return {
-//         task: {
-//             type: 'continue',
-//             value: {
-//                 width: 450,
-//                 height: 125,
-//                 title: 'Task module Static HTML',
-//                 url: `${ baseurl }/staticPage`
-//             }
-//         }
-//     };
-// }
-
-// async function webViewResponse(action) {
-//     // The user has chosen to create a card by choosing the 'Create Card' context menu command.
-//     const data = await action.data;
-//     const heroCard = CardFactory.heroCard(`ID: ${ data.EmpId }`, `E-Mail: ${ data.EmpEmail }`);
-//     heroCard.content.subtitle = `Name: ${ data.EmpName }`;
-//     const attachment = { contentType: heroCard.contentType, content: heroCard.content, preview: heroCard };
-//     return {
-//         composeExtension: {
-//             type: 'result',
-//             attachmentLayout: 'list',
-//             attachments: [
-//                 attachment
-//             ]
-//         }
-//     };
-// }
-
-
 
 
 

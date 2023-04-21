@@ -3,6 +3,8 @@
 
 import { IQuickViewData } from './IQuickViewData';
 import { AdaptiveCard } from 'adaptivecards';
+import { ExternalLinkParameters } from './externalLinkParameters';
+import { FocusParameters } from './focusParameters';
 
 /**
  * Sharepoint GetQuickView response object
@@ -12,6 +14,9 @@ export class GetQuickViewResponse {
     private template: AdaptiveCard;
     private viewId: string;
     private stackSize: number;
+    private title: string = '';
+    private externalLink: ExternalLinkParameters;
+    private focusParameters: FocusParameters;
     /**
      * Initializes a new instance of the GetQuickViewResponse class
      */
@@ -73,5 +78,47 @@ export class GetQuickViewResponse {
      */
     public get StackSize(): number {
         return this.stackSize;
+    }
+
+    /**
+     * Sets title property of type string
+     */
+    public set Title(title: string){
+        this.title = title;
+    }
+
+    /**
+     * Gets title property of type string
+     */
+    public get Title(): string {
+        return this.title;
+    }
+
+    /**
+     * Sets externalLink property of type ExternalLinkParameters
+     */
+    public set ExternalLink(externalLink: ExternalLinkParameters){
+        this.externalLink = externalLink;
+    }
+
+    /**
+     * Gets externalLink property of type ExternalLinkParameters
+     */
+    public get ExternalLink(): ExternalLinkParameters {
+        return this.externalLink;
+    }
+
+    /**
+     * Sets focus parameters property of type FocusParameters
+     */
+    public set FocusParameters(focusParameters: FocusParameters){
+        this.focusParameters = focusParameters;
+    }
+
+    /**
+     * Gets title property of type FocusParameters
+     */
+    public get FocusParameters(): FocusParameters {
+        return this.focusParameters;
     }
 }
