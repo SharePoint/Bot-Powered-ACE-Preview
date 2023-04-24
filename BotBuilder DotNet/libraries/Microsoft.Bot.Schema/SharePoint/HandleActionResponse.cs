@@ -15,6 +15,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// </summary>
     /// <typeparam name="T">The first generic type parameter.</typeparam>
     public class HandleActionResponse<T>
+        where T : SharePointViewResponse
     {
         /// <summary>
         /// Gets or Sets ViewType for return handle action view.

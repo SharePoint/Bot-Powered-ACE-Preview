@@ -15,7 +15,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// SharePoint GetCardView response object.
     /// </summary>
-    public class GetCardViewResponse
+    public class GetCardViewResponse : SharePointViewResponse
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetCardViewResponse"/> class.
