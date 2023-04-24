@@ -65,7 +65,7 @@ namespace Microsoft.BotBuilderSamples.Bots
 
             HandleActionResponse response = new HandleActionResponse
             {
-                ViewType = HandleActionResponse.HandleActionCardType.Card,
+                ViewType = HandleActionResponse.HandleActionResponseType.Card,
                 RenderArguments = new RenderArgumentsBody
                 {
                     AceData = new AceData

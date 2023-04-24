@@ -18,7 +18,7 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// <summary>
         /// Card or QuickView.
         /// </summary>
-        public enum HandleActionCardType
+        public enum HandleActionResponseType
         {
             /// <summary>
             /// Card view type
@@ -28,16 +28,21 @@ namespace Microsoft.Bot.Schema.SharePoint
             /// <summary>
             /// QuickView view type
             /// </summary>
-            QuickView
+            QuickView,
+
+            /// <summary>
+            /// QuickView view type
+            /// </summary>
+            NoOp
         }
 
         /// <summary>
         /// Gets or Sets ViewType for return handle action view.
         /// </summary>
         /// <value>This value is the view type of the handle action response.</value>
-        [JsonProperty(PropertyName = "viewType")]
+        [JsonProperty(PropertyName = "resonseType")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public HandleActionCardType ViewType { get; set; }
+        public HandleActionResponseType ResponseType { get; set; }
 
         /// <summary>
         /// Gets or Sets the render arguments.
