@@ -13,29 +13,9 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// Handle Action Response.
     /// </summary>
-    public class HandleActionResponse
+    /// <typeparam name="T">The first generic type parameter.</typeparam>
+    public class HandleActionResponse<T>
     {
-        /// <summary>
-        /// Card or QuickView.
-        /// </summary>
-        public enum HandleActionResponseType
-        {
-            /// <summary>
-            /// Card view type
-            /// </summary>
-            Card,
-
-            /// <summary>
-            /// QuickView view type
-            /// </summary>
-            QuickView,
-
-            /// <summary>
-            /// QuickView view type
-            /// </summary>
-            NoOp
-        }
-
         /// <summary>
         /// Gets or Sets ViewType for return handle action view.
         /// </summary>
@@ -49,13 +29,6 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// </summary>
         /// <value>This value is the render arguments of the handle action response.</value>
         [JsonProperty(PropertyName = "renderArguments")]
-        public RenderArgumentsBody RenderArguments { get; set; }
-
-        /// <summary>
-        /// Gets or Sets the render arguments.
-        /// </summary>
-        /// <value>This value is the render arguments of the handle action response.</value>
-        [JsonProperty(PropertyName = "viewId")]
-        public string ViewId { get; set; }
+        public T RenderArguments { get; set; }
     }
 }

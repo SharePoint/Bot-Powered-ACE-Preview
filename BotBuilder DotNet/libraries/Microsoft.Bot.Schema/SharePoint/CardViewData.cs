@@ -35,5 +35,19 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// <value>This value is the primary text of the card view.</value>
         [JsonProperty(PropertyName = "primaryText")]
         public string PrimaryText { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the description of type <see cref="string"/>.
+        /// </summary>
+        /// <value>This value is the icon of the adaptive card extension.</value>
+        [JsonProperty(PropertyName = "description")]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the sign in button text of type <see cref="string"/>.
+        /// </summary>
+        /// <value>This value is the icon of the adaptive card extension.</value>
+        [JsonProperty(PropertyName = "signInButtonText")]
+        public string SignInButtonText { get; set; }
     }
 }
