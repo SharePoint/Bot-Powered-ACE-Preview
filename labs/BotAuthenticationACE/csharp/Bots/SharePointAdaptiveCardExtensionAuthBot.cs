@@ -77,7 +77,8 @@ namespace Microsoft.BotBuilderSamples.Bots
                         Title = _appTitle,
                         PrimaryText = displayText
                     }
-                }
+                },
+                ViewId = "MagicCodeSignedInView"
             };
 
             return response;

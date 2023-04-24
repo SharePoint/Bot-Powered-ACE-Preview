@@ -40,7 +40,7 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// Gets or Sets ViewType for return handle action view.
         /// </summary>
         /// <value>This value is the view type of the handle action response.</value>
-        [JsonProperty(PropertyName = "resonseType")]
+        [JsonProperty(PropertyName = "responseType")]
         [JsonConverter(typeof(StringEnumConverter))]
         public HandleActionResponseType ResponseType { get; set; }
 
@@ -50,5 +50,12 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// <value>This value is the render arguments of the handle action response.</value>
         [JsonProperty(PropertyName = "renderArguments")]
         public RenderArgumentsBody RenderArguments { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the render arguments.
+        /// </summary>
+        /// <value>This value is the render arguments of the handle action response.</value>
+        [JsonProperty(PropertyName = "viewId")]
+        public string ViewId { get; set; }
     }
 }
