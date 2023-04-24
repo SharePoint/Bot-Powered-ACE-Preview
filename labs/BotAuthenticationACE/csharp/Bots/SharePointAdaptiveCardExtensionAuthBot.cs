@@ -57,16 +57,15 @@ namespace Microsoft.BotBuilderSamples.Bots
             return Task.FromResult(GenerateSignInQuickView());
         }
 
-        protected override async Task<HandleActionResponse> OnSharePointTaskHandleActionAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        protected override async Task<HandleActionResponse<GetCardViewResponse>> OnSharePointTaskHandleActionAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
             var magicCode = (taskModuleRequest?.Data as JObject)?.GetValue("data")?.SelectToken("magicCode")?.ToString();
             var user = await TryGetAuthenticatedUser(magicCode, turnContext, cancellationToken);
-            var displayText = $"Hello, {user?.DisplayName}! You're signed in.";
 
-            HandleActionResponse response = new HandleActionResponse
+            return new HandleActionResponse<GetCardViewResponse>
             {
-                ViewType = HandleActionResponse.HandleActionResponseType.Card,
-                RenderArguments = new RenderArgumentsBody
+                ResponseType = HandleActionResponseType.Card,
+                RenderArguments = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryText)
                 {
                     AceData = new AceData
                     {
@@ -74,14 +73,16 @@ namespace Microsoft.BotBuilderSamples.Bots
                         Id = "SignedInView",
 
                         CardSize = AceData.AceCardSize.Large,
-                        Title = _appTitle,
-                        PrimaryText = displayText
+                        Title = _appTitle
                     },
-                    ViewId = "MagicCodeSignedInView"
-                },
+                    Data = new CardViewData
+                    {
+                        PrimaryText = "Signed In",
+                        Description = $"Hello, {user?.DisplayName}! You're signed in."
+                    },
+                    ViewId = "SignedInViewId"
+                }
             };
-
-            return response;
         }
 
         protected override Task OnSharePointTaskSetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
@@ -109,13 +110,14 @@ namespace Microsoft.BotBuilderSamples.Bots
 
                 CardSize = AceData.AceCardSize.Large,
                 Title = _appTitle,
-
-                PrimaryText = "Please Sign In",
-                Description = "Testing sign in through sign in template for bots",
-
-                SignInButtonText = "Sign In",
                 SignInUri = signInLink,
                 ConnectionName = _connectionName
+            };
+            var data = new CardViewData
+            {
+                PrimaryText = "Please Sign In",
+                Description = "Testing sign in through sign in template for bots",
+                SignInButtonText = "Sign In",
             };
             ActionButton completeSignInButton = new ActionButton
             {
@@ -237,11 +239,11 @@ namespace Microsoft.BotBuilderSamples.Bots
 
         private async Task<Graph.User> TryGetAuthenticatedUser(string magicCode, ITurnContext<IInvokeActivity> turnContext, CancellationToken cancellationToken)
         {
-            var response = await TryToGetUserToken(magicCode, turnContext, cancellationToken);
+            var response = await TryToGetUserToken(magicCode, turnContext, cancellationToken).ConfigureAwait(false);
             if (response != null && !string.IsNullOrEmpty(response.Token))
             {
                 var client = new SimpleGraphClient(response.Token);
-                return await client.GetMeAsync();
+                return await client.GetMeAsync().ConfigureAwait(false);
             }
 
             return null;
