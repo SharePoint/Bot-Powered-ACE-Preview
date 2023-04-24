@@ -59,7 +59,7 @@ namespace Microsoft.Bot.Builder.SharePoint
                             await OnSharePointTaskSetPropertyPaneConfigurationAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false);
                             return CreateInvokeResponse();
                         case "cardExtension/handleAction":
-                            return CreateInvokeResponse(OnSharePointTaskHandleActionAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false)); 
+                            return CreateInvokeResponse(await OnSharePointTaskHandleActionAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false)); 
                     }
                 }
             }
