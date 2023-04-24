@@ -76,9 +76,9 @@ namespace Microsoft.BotBuilderSamples.Bots
                         CardSize = AceData.AceCardSize.Large,
                         Title = _appTitle,
                         PrimaryText = displayText
-                    }
+                    },
+                    ViewId = "MagicCodeSignedInView"
                 },
-                ViewId = "MagicCodeSignedInView"
             };
 
             return response;
