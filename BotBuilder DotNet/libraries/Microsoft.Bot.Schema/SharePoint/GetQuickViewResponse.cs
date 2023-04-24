@@ -16,7 +16,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// SharePoint GetQuickView response object.
     /// </summary>
-    public class GetQuickViewResponse
+    public class GetQuickViewResponse : SharePointViewResponse
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetQuickViewResponse"/> class.

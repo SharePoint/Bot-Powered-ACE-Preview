@@ -80,5 +80,19 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// <value>This value is the icon of the adaptive card extension.</value>
         [JsonProperty(PropertyName = "iconProperty")]
         public string IconProperty { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the login uri of type <see cref="Uri"/>.
+        /// </summary>
+        /// <value>This value is the icon of the adaptive card extension.</value>
+        [JsonProperty(PropertyName = "uri")]
+        public Uri SignInUri { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the connection name of type <see cref="string"/>.
+        /// </summary>
+        /// <value>This value is the icon of the adaptive card extension.</value>
+        [JsonProperty(PropertyName = "connectionName")]
+        public string ConnectionName { get; set; }
     }
 }
