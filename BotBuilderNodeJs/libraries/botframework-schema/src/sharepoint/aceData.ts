@@ -11,7 +11,8 @@ export class AceData {
     private title: string;
     private iconProperty: string;
     private description: string;
-    
+    private properties: any;
+
     /**
      * Initializes a new instance of the AceData class
      */
@@ -101,6 +102,20 @@ export class AceData {
      */
     public get Description(): string {
         return this.description;
+    }
+
+    /**
+     * Sets the property bag of the ACE of type any
+     */
+    public set Properties(properties: any) {
+        this.properties = properties;
+    }
+
+    /**
+     * Gets the property bag of the ACE of type any
+     */
+    public get Properties(): any {
+        return this.properties;
     }
 }
 
