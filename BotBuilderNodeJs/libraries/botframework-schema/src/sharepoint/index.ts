@@ -10,6 +10,7 @@ export { GetCardViewResponse } from './getCardViewResponse';
 export { GetLocationActionParameters } from './getLocationActionParameters';
 export { GetPropertyPaneConfigurationResponse } from './getPropertyPaneConfigurationResponse';
 export { GetQuickViewResponse } from './getQuickViewResponse';
+export { HandleActionViewReponse } from './handleActionViewResponse';
 export { ImageCardParameters } from './imageCardParameters';
 export { IPropertyPaneFieldProperties } from './IPropertyPaneFieldProperties';
 export { IPropertyPaneGroupOrConditionalGroup } from './IPropertyPaneGroupOrConditionalGroup';
@@ -35,6 +36,7 @@ export { PropertyPaneTextFieldProperties } from './propertyPaneTextFieldProperti
 export { PropertyPaneToggleProperties } from './propertyPaneToggleProperties';
 export { QuickViewParameters } from './quickViewParameters';
 export { SelectMediaActionParameters } from './selectMediaActionParameters';
+export { SetPropertyPaneConfigurationResponse } from './setPropertyPaneConfigurationResponse';
 export { ShowLocationActionParameters } from './showLocationActionParameters';
 export { SignInCardParameters } from './signInCardParameters';
 export { SubmitAction } from './submitAction';

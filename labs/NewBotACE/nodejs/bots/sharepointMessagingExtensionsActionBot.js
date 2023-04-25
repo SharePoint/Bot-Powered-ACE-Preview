@@ -29,7 +29,9 @@ const {
     QuickViewParameters,
     PrimaryTextCardParameters,
     ImageCardParameters,
-    SignInCardParameters
+    SignInCardParameters,
+    HandleActionViewReponse,
+    SetPropertyPaneConfigurationResponse
 } = require('botframework-schema');
 const AdaptiveCards = require("adaptivecards");
 const baseurl = process.env.BaseUrl;
@@ -340,6 +342,9 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
                 }
             }
             this.cardViewMap.set(primaryTextCardView.ViewId, primaryTextCardView);
+            const response = new SetPropertyPaneConfigurationResponse();
+            response.ReponseType = SetPropertyPaneConfigurationResponse.ResponseType.CardView;
+            response.RenderArguments = primaryTextCardView;
             return primaryTextCardView;
         } catch (error){
             console.log(error);
@@ -360,14 +365,22 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
     }
 
     async OnSharePointTaskHandleActionAsync(context, taskModuleRequest){
-        const viewToNavigateTo = context.activity.value.data.data.viewToNavigateTo;
-        if (viewToNavigateTo.includes('CARD')){
-            this.currentView = viewToNavigateTo;
-            return this.cardViewMap.get(viewToNavigateTo);
-        } else if (viewToNavigateTo.includes('QUICK')){
-            this.currentView = viewToNavigateTo;
-            return this.quickViewMap.get(viewToNavigateTo);
-        }
+        const noOp = new HandleActionViewReponse();
+        noOp.ReponseType = HandleActionViewReponse.ResponseType.NoOp;
+        return noOp;
+        // const viewToNavigateTo = context.activity.value.data.data.viewToNavigateTo;
+        // if (viewToNavigateTo.includes('CARD')){
+        //     this.currentView = viewToNavigateTo;
+        //     response.ReponseType = HandleActionViewReponse.ResponseType.CardView;
+        //     response.RenderArguments = this.cardViewMap.get(viewToNavigateTo)
+        //     return response;
+        // } else if (viewToNavigateTo.includes('QUICK')){
+        //     this.currentView = viewToNavigateTo;
+        //     const response = new HandleActionViewReponse();
+        //     response.ReponseType = HandleActionViewReponse.ResponseType.QuickView;
+        //     response.RenderArguments = this.quickViewMap.get(viewToNavigateTo)
+        //     return response;
+        // }
     } 
     
     async createCardViews(){
