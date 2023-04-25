@@ -6,7 +6,7 @@ import { IPropertyPaneFieldProperties } from './IPropertyPaneFieldProperties';
 /**
  * Sharepoint PropertyPaneTextFieldProperties object
  */
-export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProperties{
+export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProperties {
     private label: string;
     private value: string;
     private ariaLabel: string;
@@ -27,14 +27,14 @@ export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProper
     /**
      * Initializes a new instance of the PropertyPaneTextFieldProperties class
      */
-    public PropertyPaneTextFieldProperties(){
+    public PropertyPaneTextFieldProperties() {
         // Do nothing
     }
 
     /**
      * Sets the label of type string
      */
-    public set Label(label: string){
+    public set Label(label: string) {
         this.label = label;
     }
 
@@ -48,7 +48,7 @@ export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProper
     /**
      * Sets the value of type string
      */
-    public set Value(value: string){
+    public set Value(value: string) {
         this.value = value;
     }
 
@@ -63,7 +63,7 @@ export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProper
     /**
      * Sets the aria label of type string
      */
-    public set AriaLabel(ariaLabel: string){
+    public set AriaLabel(ariaLabel: string) {
         this.ariaLabel = ariaLabel;
     }
 
@@ -77,7 +77,7 @@ export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProper
     /**
      * Sets the amount of time to wait before validating after the users stop typing in ms of type number
      */
-    public set DeferredValidationTime(deferredValidationTime: number){
+    public set DeferredValidationTime(deferredValidationTime: number) {
         this.deferredValidationTime = deferredValidationTime;
     }
 
@@ -91,7 +91,7 @@ export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProper
     /**
      * Sets the description of type string
      */
-    public set Description(description: string){
+    public set Description(description: string) {
         this.description = description;
     }
 
@@ -105,7 +105,7 @@ export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProper
     /**
      * Sets a value indicating whether this control is enabled or not of type boolean
      */
-     public set Disabled(disabled: boolean){
+     public set Disabled(disabled: boolean) {
         this.disabled = disabled;
     }
 
@@ -120,7 +120,7 @@ export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProper
     /**
      * Sets the error message of type string
      */
-     public set ErrorMessage(errorMessage: string){
+     public set ErrorMessage(errorMessage: string) {
         this.errorMessage = errorMessage;
     }
 
@@ -134,7 +134,7 @@ export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProper
     /**
      * Sets the name used to log PropertyPaneTextField value changes for engagement tracking of type string
      */
-    public set LogName(logName: string){
+    public set LogName(logName: string) {
         this.logName = logName;
     }
 
@@ -148,7 +148,7 @@ export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProper
     /**
      * Sets the maximum number of characters that the PropertyPaneTextField can have of type number
      */
-    public set MaxLength(maxLength: number){
+    public set MaxLength(maxLength: number) {
         this.maxLength = maxLength;
     }
 
@@ -162,7 +162,7 @@ export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProper
     /**
      * Sets a value indicating whether or not the text field is a multiline text field of type boolean
      */
-    public set Multiline(multiline: boolean){
+    public set Multiline(multiline: boolean) {
         this.multiline = multiline;
     }
 
@@ -176,7 +176,7 @@ export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProper
     /**
      * Sets the placeholder text to be displayed in the text field of type string
      */
-    public set Placeholder(placeholder: string){
+    public set Placeholder(placeholder: string) {
         this.placeholder = placeholder;
     }
 
@@ -190,7 +190,7 @@ export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProper
     /**
      * Sets a value indicating whether or not the multiline text field is resizable of type boolean
      */
-    public set Resizable(resizable: boolean){
+    public set Resizable(resizable: boolean) {
         this.resizable = resizable;
     }
 
@@ -205,7 +205,7 @@ export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProper
      * Sets the value that specifies the visible height of a text area(multiline text TextField), 
      * in lines.maximum number of characters that the PropertyPaneTextField can have of type number
      */
-    public set Rows(rows: number){
+    public set Rows(rows: number) {
         this.rows = rows;
     }
 
@@ -220,7 +220,7 @@ export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProper
     /**
      * Sets a value indicating whether or not the text field is underlined of type boolean
      */
-    public set Underlined(underlined: boolean){
+    public set Underlined(underlined: boolean) {
         this.underlined = underlined;
     }
 
@@ -235,7 +235,7 @@ export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProper
      * Sets a value indicating whether to run validation when the 
      * PropertyPaneTextField is focused of type boolean
      */
-    public set ValidateOnFocusIn(validateOnFocusIn: boolean){
+    public set ValidateOnFocusIn(validateOnFocusIn: boolean) {
         this.validateOnFocusIn = validateOnFocusIn;
     }
 
@@ -251,7 +251,7 @@ export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProper
      * Sets a value indicating whether to run validation when the 
      * PropertyPaneTextField is out of focus or on blur of type boolean
      */
-    public set ValidateOnFocusOut(validateOnFocusOut: boolean){
+    public set ValidateOnFocusOut(validateOnFocusOut: boolean) {
         this.validateOnFocusOut = validateOnFocusOut;
     }
 

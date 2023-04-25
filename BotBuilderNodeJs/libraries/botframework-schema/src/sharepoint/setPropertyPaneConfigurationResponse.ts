@@ -9,17 +9,18 @@ import { GetQuickViewResponse } from "./getQuickViewResponse";
 export class SetPropertyPaneConfigurationResponse {
     private responseType: SetPropertyPaneConfigurationResponse.ResponseType;
     private renderArguments?: GetCardViewResponse | GetQuickViewResponse;
+    
     /**
      * Initializes a new instance of the SetPropertyPaneConfigurationResponse class
      */
-    public SetPropertyPaneConfigurationResponse(){
+    public SetPropertyPaneConfigurationResponse() {
         // Do nothing
     }
 
     /**
      * Sets response type property of type SetPropertyPaneConfigurationResponse.ResponseType
      */
-    public set ReponseType(responseType: SetPropertyPaneConfigurationResponse.ResponseType){
+    public set ReponseType(responseType: SetPropertyPaneConfigurationResponse.ResponseType) {
         this.responseType = responseType;
     }
 
@@ -33,7 +34,7 @@ export class SetPropertyPaneConfigurationResponse {
     /**
      * Sets render arguments property of type GetCardViewResponse or GetQuickViewResponse
      */
-    public set RenderArguments(renderArguments: GetCardViewResponse | GetQuickViewResponse){
+    public set RenderArguments(renderArguments: GetCardViewResponse | GetQuickViewResponse) {
         this.renderArguments = renderArguments;
     }
 
@@ -45,8 +46,8 @@ export class SetPropertyPaneConfigurationResponse {
     }
 }
 
-export namespace SetPropertyPaneConfigurationResponse{
-    export enum ResponseType{
+export namespace SetPropertyPaneConfigurationResponse {
+    export enum ResponseType {
         CardView = "Card",
     }
 }

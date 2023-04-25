@@ -1,3 +1,3 @@
-export interface ICardParameters{
+export interface ICardParameters {
     
 }

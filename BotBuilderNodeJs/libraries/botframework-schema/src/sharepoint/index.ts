@@ -10,7 +10,7 @@ export { GetCardViewResponse } from './getCardViewResponse';
 export { GetLocationActionParameters } from './getLocationActionParameters';
 export { GetPropertyPaneConfigurationResponse } from './getPropertyPaneConfigurationResponse';
 export { GetQuickViewResponse } from './getQuickViewResponse';
-export { HandleActionViewReponse } from './handleActionViewResponse';
+export { HandleActionReponse } from './handleActionResponse';
 export { ImageCardParameters } from './imageCardParameters';
 export { IPropertyPaneFieldProperties } from './IPropertyPaneFieldProperties';
 export { IPropertyPaneGroupOrConditionalGroup } from './IPropertyPaneGroupOrConditionalGroup';

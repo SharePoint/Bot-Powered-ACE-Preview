@@ -9,17 +9,18 @@ import { Action } from './action';
 export class ActionButton {
     private title: string;
     private action: Action;
+    
     /**
      * Initializes a new instance of the ActionButton class
      */
-    public ActionButton(){
+    public ActionButton() {
         // Do nothing
     }
 
     /**
      * Sets title property of type string
      */
-    public set Title(title: string){
+    public set Title(title: string) {
         this.title = title;
     }
 
@@ -33,7 +34,7 @@ export class ActionButton {
     /**
      * Sets parameters property of type Action
      */
-    public set Action (action: Action){
+    public set Action (action: Action) {
         this.action = action;
     }
 

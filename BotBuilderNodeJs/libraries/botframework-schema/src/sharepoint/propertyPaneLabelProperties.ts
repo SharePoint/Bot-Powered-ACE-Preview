@@ -9,17 +9,18 @@ import { IPropertyPaneFieldProperties } from './IPropertyPaneFieldProperties';
 export class PropertyPaneLabelProperties implements IPropertyPaneFieldProperties {
     private text: string;
     private required: boolean;
+    
     /**
      * Initializes a new instance of the PropertyPaneLabelProperties class
      */
-    public PropertyPaneLabelProperties(){
+    public PropertyPaneLabelProperties() {
         // Do nothing
     }
 
     /**
      * Sets the label to display next to the checkbox of type string
      */
-    public set Text(text: string){
+    public set Text(text: string) {
         this.text = text;
     }
 
@@ -33,7 +34,7 @@ export class PropertyPaneLabelProperties implements IPropertyPaneFieldProperties
     /**
      * Sets a value indicating whether the associated form field is required or not of type boolean
      */
-     public set Required(required: boolean){
+     public set Required(required: boolean) {
         this.required = required;
     }
 

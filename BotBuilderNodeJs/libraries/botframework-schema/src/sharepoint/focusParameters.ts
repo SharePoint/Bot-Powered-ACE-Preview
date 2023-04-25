@@ -7,17 +7,18 @@
 export class FocusParameters {
     private focusTarget: string;
     private ariaLive: FocusParameters.AriaLive;
+    
     /**
      * Initializes a new instance of the FocusParameters class
      */
-    public FocusParameters(){
+    public FocusParameters() {
         // Do nothing
     }
 
     /**
      * Sets focus target property of type string
      */
-    public set FocusTarget(focusTarget: string){
+    public set FocusTarget(focusTarget: string) {
         this.focusTarget = focusTarget;
     }
 
@@ -31,7 +32,7 @@ export class FocusParameters {
     /**
      * Sets isTeamsDeepLink property of type boolean
      */
-    public set AriaLive (ariaLive: FocusParameters.AriaLive){
+    public set AriaLive (ariaLive: FocusParameters.AriaLive) {
         this.ariaLive = ariaLive;
     }
 

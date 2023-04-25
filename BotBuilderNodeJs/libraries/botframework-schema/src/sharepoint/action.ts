@@ -9,17 +9,18 @@ import { ICardActionParameters } from './ICardActionParameters';
 export class Action {
     private type: Action.ActionType;
     private parameters: ICardActionParameters;
+    
     /**
      * Initializes a new instance of the Action class
      */
-    public Action(){
+    public Action() {
         // Do nothing
     }
 
     /**
      * Sets type property of type Action.ActionType
      */
-    public set Type(type: Action.ActionType){
+    public set Type(type: Action.ActionType) {
         this.type = type;
     }
 
@@ -33,7 +34,7 @@ export class Action {
     /**
      * Sets parameters property of type ICardActionParameters
      */
-    public set Parameters (parameters: ICardActionParameters){
+    public set Parameters (parameters: ICardActionParameters) {
         this.parameters = parameters;
     }
 
@@ -45,8 +46,8 @@ export class Action {
     }
 }
 
-export namespace Action{
-    export enum ActionType{
+export namespace Action {
+    export enum ActionType {
         QuickView = 'QuickView',
         Submit = 'Submit',
         ExternalLink = 'ExternalLink',

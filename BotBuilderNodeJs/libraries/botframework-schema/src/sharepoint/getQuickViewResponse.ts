@@ -17,17 +17,18 @@ export class GetQuickViewResponse {
     private title: string = '';
     private externalLink: ExternalLinkParameters;
     private focusParameters: FocusParameters;
+    
     /**
      * Initializes a new instance of the GetQuickViewResponse class
      */
-    public GetQuickViewResponse(){
+    public GetQuickViewResponse() {
         // Do nothing
     }
 
     /**
      * Sets data for the quick view of type IQuickViewData
      */
-    public set Data(data: IQuickViewData){
+    public set Data(data: IQuickViewData) {
         this.data = data;
     }
 
@@ -41,7 +42,7 @@ export class GetQuickViewResponse {
     /**
      * Sets the quick view template of type QuickViewTemplate
      */
-    public set Template(template: AdaptiveCard){
+    public set Template(template: AdaptiveCard) {
         this.template = template;
     }
 
@@ -55,7 +56,7 @@ export class GetQuickViewResponse {
     /**
      * Sets view id property of type string
      */
-    public set ViewId(viewId: string){
+    public set ViewId(viewId: string) {
         this.viewId = viewId;
     }
 
@@ -69,7 +70,7 @@ export class GetQuickViewResponse {
     /**
      * Sets stackSize property of type number
      */
-    public set StackSize(stackSize: number){
+    public set StackSize(stackSize: number) {
         this.stackSize = stackSize;
     }
 
@@ -83,7 +84,7 @@ export class GetQuickViewResponse {
     /**
      * Sets title property of type string
      */
-    public set Title(title: string){
+    public set Title(title: string) {
         this.title = title;
     }
 
@@ -97,7 +98,7 @@ export class GetQuickViewResponse {
     /**
      * Sets externalLink property of type ExternalLinkParameters
      */
-    public set ExternalLink(externalLink: ExternalLinkParameters){
+    public set ExternalLink(externalLink: ExternalLinkParameters) {
         this.externalLink = externalLink;
     }
 
@@ -111,7 +112,7 @@ export class GetQuickViewResponse {
     /**
      * Sets focus parameters property of type FocusParameters
      */
-    public set FocusParameters(focusParameters: FocusParameters){
+    public set FocusParameters(focusParameters: FocusParameters) {
         this.focusParameters = focusParameters;
     }
 

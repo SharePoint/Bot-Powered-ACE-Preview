@@ -12,14 +12,14 @@ export class BasicCardParameters extends BaseCardParameters implements ICardPara
     /**
      * Initializes a new instance of the BasicCardParameters class
      */
-    public BasicCardParameters(){
+    public BasicCardParameters() {
         // Do nothing
     }
 
     /**
      * Sets primary text property of type string
      */
-    public set PrimaryText(primaryText: string){
+    public set PrimaryText(primaryText: string) {
         this.primaryText = primaryText;
     }
 

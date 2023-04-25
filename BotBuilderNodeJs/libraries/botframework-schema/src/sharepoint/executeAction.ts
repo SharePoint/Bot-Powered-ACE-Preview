@@ -7,17 +7,18 @@ import { Action } from './action';
  */
 export class ExecuteAction extends Action{
     private verb: string;
+    
     /**
      * Initializes a new instance of the ExecuteAction class
      */
-    public ExecuteAction(){
+    public ExecuteAction() {
         // Do nothing
     }
 
     /**
      * Sets verb property of type string
      */
-    public set ConfirmationDialog (verb: string){
+    public set ConfirmationDialog (verb: string) {
         this.verb = verb;
     }
 

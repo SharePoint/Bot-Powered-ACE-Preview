@@ -4,36 +4,37 @@ import { GetCardViewResponse } from "./getCardViewResponse";
 import { GetQuickViewResponse } from "./getQuickViewResponse";
 
 /**
- * Sharepoint HandleActionViewReponse object
+ * Sharepoint HandleActionReponse object
  */
-export class HandleActionViewReponse {
-    private responseType: HandleActionViewReponse.ResponseType;
+export class HandleActionReponse {
+    private responseType: HandleActionReponse.ResponseType;
     private renderArguments?: GetCardViewResponse | GetQuickViewResponse;
+
     /**
-     * Initializes a new instance of the HandleActionViewReponse class
+     * Initializes a new instance of the HandleActionReponse class
      */
-    public HandleActionViewReponse(){
+    public HandleActionReponse() {
         // Do nothing
     }
 
     /**
      * Sets response type property of type HandleActionViewReponse.ResponseType
      */
-    public set ReponseType(responseType: HandleActionViewReponse.ResponseType){
+    public set ReponseType(responseType: HandleActionReponse.ResponseType) {
         this.responseType = responseType;
     }
 
     /**
      * Gets response type property of type HandleActionViewReponse.ResponseType
      */
-    public get ReponseType(): HandleActionViewReponse.ResponseType {
+    public get ReponseType(): HandleActionReponse.ResponseType {
         return this.responseType;
     }
 
     /**
      * Sets render arguments property of type GetCardViewResponse or GetQuickViewResponse
      */
-    public set RenderArguments(renderArguments: GetCardViewResponse | GetQuickViewResponse){
+    public set RenderArguments(renderArguments: GetCardViewResponse | GetQuickViewResponse) {
         this.renderArguments = renderArguments;
     }
 
@@ -45,8 +46,8 @@ export class HandleActionViewReponse {
     }
 }
 
-export namespace HandleActionViewReponse{
-    export enum ResponseType{
+export namespace HandleActionReponse {
+    export enum ResponseType {
         CardView = "Card",
         QuickView = "QuickView",
         NoOp = "NoOp"

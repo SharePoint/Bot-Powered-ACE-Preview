@@ -12,14 +12,14 @@ export class BaseCardParameters {
     /**
      * Initializes a new instance of the BaseCardParameters class
      */
-    public BaseCardParameters(){
+    public BaseCardParameters() {
         // Do nothing
     }
 
     /**
      * Sets icon property property of type string
      */
-    public set IconProperty(iconProperty: string){
+    public set IconProperty(iconProperty: string) {
         this.iconProperty = iconProperty;
     }
 
@@ -33,7 +33,7 @@ export class BaseCardParameters {
     /**
      * Sets icon alt text property of type string
      */
-    public set IconAltText(iconAltText: string){
+    public set IconAltText(iconAltText: string) {
         this.iconAltText = iconAltText;
     }
 
@@ -47,7 +47,7 @@ export class BaseCardParameters {
     /**
      * Sets title property of type string
      */
-    public set Title(title: string){
+    public set Title(title: string) {
         this.title = title;
     }
 

@@ -7,19 +7,20 @@ import { IOnCardSelectionActionParameters } from './IOnCardSelectionActionParame
 /**
  * Sharepoint QuickViewParameters object for quick view action
  */
-export class QuickViewParameters implements ICardActionParameters, IOnCardSelectionActionParameters{
+export class QuickViewParameters implements ICardActionParameters, IOnCardSelectionActionParameters {
     private view: string;
+    
     /**
      * Initializes a new instance of the QuickViewParameters class
      */
-    public QuickViewParameters(){
+    public QuickViewParameters() {
         // Do nothing
     }
 
     /**
      * Sets the view id of type string
      */
-    public set View(view: string){
+    public set View(view: string) {
         this.view = view;
     }
 

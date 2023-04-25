@@ -6,22 +6,23 @@ import { IPropertyPaneFieldProperties } from './IPropertyPaneFieldProperties';
 /**
  * Sharepoint PropertyPaneGroupField object
  */
-export class PropertyPaneGroupField{
+export class PropertyPaneGroupField {
     private type: PropertyPaneGroupField.FieldType;
     private targetProperty: string; 
     private properties: IPropertyPaneFieldProperties;
     private shouldFocus: boolean;
+    
     /**
      * Initializes a new instance of the PropertyPaneField class
      */
-    public PropertyPaneGroupField(){
+    public PropertyPaneGroupField() {
         // Do nothing
     }
 
     /**
      * Sets the type of field
      */
-    public set Type(type: PropertyPaneGroupField.FieldType){
+    public set Type(type: PropertyPaneGroupField.FieldType) {
         this.type = type;
     }
 
@@ -35,7 +36,7 @@ export class PropertyPaneGroupField{
     /**
      * Sets the target property of type string
      */
-    public set TargetProperty(targetProperty: string){
+    public set TargetProperty(targetProperty: string) {
         this.targetProperty = targetProperty;
     }
 
@@ -49,7 +50,7 @@ export class PropertyPaneGroupField{
     /**
      * Sets the properties property of type IPropertyPaneFieldProperties
      */
-    public set Properties(properties: IPropertyPaneFieldProperties){
+    public set Properties(properties: IPropertyPaneFieldProperties) {
         this.properties = properties;
     }
 
@@ -63,7 +64,7 @@ export class PropertyPaneGroupField{
     /**
      * Sets a value indicating whether this control should be focused of type boolean
      */
-     public set ShouldFocus(shouldFocus: boolean){
+     public set ShouldFocus(shouldFocus: boolean) {
         this.shouldFocus = shouldFocus;
     }
 
@@ -75,8 +76,8 @@ export class PropertyPaneGroupField{
     }
 }
 
-export namespace PropertyPaneGroupField{
-    export enum FieldType{
+export namespace PropertyPaneGroupField {
+    export enum FieldType {
         CheckBox = 2,
         TextField = 3,
         Toggle = 5, 

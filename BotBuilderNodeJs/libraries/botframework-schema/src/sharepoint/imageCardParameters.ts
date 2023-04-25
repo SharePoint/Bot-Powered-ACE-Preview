@@ -14,14 +14,14 @@ export class ImageCardParameters extends BaseCardParameters implements ICardPara
     /**
      * Initializes a new instance of the ImageCardParameters class
      */
-    public ImageCardParameters(){
+    public ImageCardParameters() {
         // Do nothing
     }
 
     /**
      * Sets title property of type string
      */
-    public set PrimaryText(primaryText: string){
+    public set PrimaryText(primaryText: string) {
         this.primaryText = primaryText;
     }
 
@@ -35,7 +35,7 @@ export class ImageCardParameters extends BaseCardParameters implements ICardPara
     /**
      * Sets image url property of type string
      */
-    public set ImageUrl(imageUrl: string){
+    public set ImageUrl(imageUrl: string) {
         this.imageUrl = imageUrl;
     }
 
@@ -49,7 +49,7 @@ export class ImageCardParameters extends BaseCardParameters implements ICardPara
     /**
      * Sets image alt text property of type string
      */
-    public set ImageAltText(imageAltText: string){
+    public set ImageAltText(imageAltText: string) {
         this.imageAltText = imageAltText;
     }
 

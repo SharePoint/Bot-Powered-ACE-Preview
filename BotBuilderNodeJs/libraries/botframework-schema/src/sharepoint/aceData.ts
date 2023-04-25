@@ -11,17 +11,18 @@ export class AceData {
     private title: string;
     private iconProperty: string;
     private description: string;
+    
     /**
      * Initializes a new instance of the AceData class
      */
-    public AceData(){
+    public AceData() {
         // Do nothing
     }
 
     /**
      * Sets card size property of type AceCardSize
      */
-    public set CardSize(cardSize: AceData.AceCardSize){
+    public set CardSize(cardSize: AceData.AceCardSize) {
         this.cardSize = cardSize;
     }
 
@@ -35,7 +36,7 @@ export class AceData {
     /**
      * Sets data version property of type string
      */
-    public set DataVersion(dataVersion: string){
+    public set DataVersion(dataVersion: string) {
         this.dataVersion = dataVersion;
     }
 
@@ -63,7 +64,7 @@ export class AceData {
     /**
      * Sets title property of type string
      */
-    public set Title(title: string){
+    public set Title(title: string) {
         this.title = title;
     }
 
@@ -77,28 +78,28 @@ export class AceData {
     /**
      * Sets icon property of type string
      */
-    public set IconProperty(iconProperty: string){
+    public set IconProperty(iconProperty: string) {
         this.iconProperty = iconProperty;
     }
 
     /**
      * Gets icon property of type string
      */
-    public get IconProperty(): string{
+    public get IconProperty(): string {
         return this.iconProperty;
     }
 
     /**
      * Sets description property of type string
      */
-    public set Description(description: string){
+    public set Description(description: string) {
         this.description = description;
     }
 
     /**
      * Gets description property of type string
      */
-    public get Description(): string{
+    public get Description(): string {
         return this.description;
     }
 }

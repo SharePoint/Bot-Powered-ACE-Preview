@@ -10,19 +10,20 @@ export interface IConfirmationDialog{
 /**
  * Sharepoint action.submit 
  */
-export class SubmitAction extends Action{
+export class SubmitAction extends Action {
     private confirmationDialog: IConfirmationDialog;
+    
     /**
      * Initializes a new instance of the SubmitAction class
      */
-    public SubmitAction(){
+    public SubmitAction() {
         // Do nothing
     }
 
     /**
      * Sets confirmation dialog property of type IConfirmationDialog
      */
-    public set ConfirmationDialog (confirmationDialog: IConfirmationDialog){
+    public set ConfirmationDialog (confirmationDialog: IConfirmationDialog) {
         this.confirmationDialog = confirmationDialog;
     }
 

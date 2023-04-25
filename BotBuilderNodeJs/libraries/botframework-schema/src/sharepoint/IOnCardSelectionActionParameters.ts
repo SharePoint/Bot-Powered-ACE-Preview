@@ -1,1 +1,3 @@
-export interface IOnCardSelectionActionParameters{}
+export interface IOnCardSelectionActionParameters {
+    
+}

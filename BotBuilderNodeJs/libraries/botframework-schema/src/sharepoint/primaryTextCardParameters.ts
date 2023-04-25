@@ -13,14 +13,14 @@ export class PrimaryTextCardParameters extends BaseCardParameters implements ICa
     /**
      * Initializes a new instance of the PrimaryTextCardParameters class
      */
-    public PrimaryTextCardParameters(){
+    public PrimaryTextCardParameters() {
         // Do nothing
     }
 
     /**
      * Sets primary text property of type string
      */
-    public set PrimaryText(primaryText: string){
+    public set PrimaryText(primaryText: string) {
         this.primaryText = primaryText;
     }
 
@@ -34,7 +34,7 @@ export class PrimaryTextCardParameters extends BaseCardParameters implements ICa
     /**
      * Sets description property of type string
      */
-    public set Description(description: string){
+    public set Description(description: string) {
         this.description = description;
     }
 

@@ -4,19 +4,20 @@
 /**
  * Sharepoint PropertyPanePageHeader object
  */
-export class PropertyPanePageHeader{
+export class PropertyPanePageHeader {
     private description: string;
+    
     /**
      * Initializes a new instance of the PropertyPanePageHeader class
      */
-    public PropertyPanePageHeader(){
+    public PropertyPanePageHeader() {
         // Do nothing
     }
 
     /**
      * Sets the description of type string
      */
-    public set Description(description: string){
+    public set Description(description: string) {
         this.description = description;
     }
 

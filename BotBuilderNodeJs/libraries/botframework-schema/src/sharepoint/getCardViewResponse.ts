@@ -16,17 +16,18 @@ export class GetCardViewResponse {
     private viewId: string;
     private onCardSelection: IOnCardSelectionActionParameters;
     private cardButtons: ActionButton;
+
     /**
      * Initializes a new instance of the GetCardViewResponse class
      */
-    public GetCardViewResponse(templateType: GetCardViewResponse.CardViewTemplateType){
+    public GetCardViewResponse(templateType: GetCardViewResponse.CardViewTemplateType) {
         this.TemplateType = templateType;
     }
 
     /**
      * Sets templateType property of type CardViewTemplateType
      */
-    public set TemplateType(templateType: GetCardViewResponse.CardViewTemplateType){
+    public set TemplateType(templateType: GetCardViewResponse.CardViewTemplateType) {
         this.templateType = templateType;
     }
 
@@ -40,7 +41,7 @@ export class GetCardViewResponse {
     /**
      * Sets aceData property of type AceData
      */
-    public set AceData(aceData: AceData){
+    public set AceData(aceData: AceData) {
         this.aceData = aceData;
     }
 
@@ -54,7 +55,7 @@ export class GetCardViewResponse {
     /**
      * Sets data property of type ICardParameters
      */
-    public set Data(data: ICardParameters){
+    public set Data(data: ICardParameters) {
         this.data = data;
     }
 
@@ -68,7 +69,7 @@ export class GetCardViewResponse {
     /**
      * Sets on card selection property of type ICardActionParameters
      */
-    public set OnCardSelection(onCardSelection: IOnCardSelectionActionParameters){
+    public set OnCardSelection(onCardSelection: IOnCardSelectionActionParameters) {
         this.onCardSelection = onCardSelection;
     }
 
@@ -82,7 +83,7 @@ export class GetCardViewResponse {
     /**
      * Sets card buttons property of type ActionButton
      */
-    public set CardButtons(cardButtons: ActionButton){
+    public set CardButtons(cardButtons: ActionButton) {
         this.cardButtons = cardButtons;
     }
 
@@ -96,7 +97,7 @@ export class GetCardViewResponse {
     /**
      * Sets viewId property of type CardViewData
      */
-    public set ViewId(viewId: string){
+    public set ViewId(viewId: string) {
         this.viewId = viewId;
     }
 
@@ -111,9 +112,9 @@ export class GetCardViewResponse {
 export namespace GetCardViewResponse
 {
     export enum CardViewTemplateType {
-        PrimaryTextCardView = "PrimaryText",
-        ImageCardView = "Image",
         BasicCardView = "Basic",
+        ImageCardView = "Image",
+        PrimaryTextCardView = "PrimaryText",
         SignInCardView = "SignIn"
     }
 }

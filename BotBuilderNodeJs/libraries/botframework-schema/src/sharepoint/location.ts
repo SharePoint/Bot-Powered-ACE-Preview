@@ -9,17 +9,18 @@ export class Location {
     private longitude: number;
     private timestamp?: number;
     private accuracy?: number;
+    
     /**
      * Initializes a new instance of the Location class
      */
-    public Location(){
+    public Location() {
         // Do nothing
     }
 
     /**
      * Sets latitude property of type number
      */
-    public set Latitude(latitude: number){
+    public set Latitude(latitude: number) {
         this.latitude = latitude;
     }
 
@@ -33,7 +34,7 @@ export class Location {
     /**
      * Sets longitude property of type number
      */
-    public set Longitude(longitude: number){
+    public set Longitude(longitude: number) {
         this.longitude = longitude;
     }
 
@@ -47,7 +48,7 @@ export class Location {
     /**
      * Sets timestamp property of type number
      */
-    public set Timestamp(timestamp: number){
+    public set Timestamp(timestamp: number) {
         this.timestamp = timestamp;
     }
 
@@ -61,7 +62,7 @@ export class Location {
     /**
      * Sets accuracy property of type number
      */
-    public set Accuracy(accuracy: number){
+    public set Accuracy(accuracy: number) {
         this.accuracy = accuracy;
     }
 

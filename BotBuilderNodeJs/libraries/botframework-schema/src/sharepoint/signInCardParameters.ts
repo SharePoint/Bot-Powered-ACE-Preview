@@ -10,20 +10,18 @@ export class SignInCardParameters extends BaseCardParameters implements ICardPar
     private primaryText: string;
     private description: string;
     private signInButtonText: string;
-    private uri: string;
-    private connectionName: string;
 
     /**
      * Initializes a new instance of the SignInCardParameters class
      */
-    public SignInCardParameters(){
+    public SignInCardParameters() {
         // Do nothing
     }
 
     /**
      * Sets primary text property of type string
      */
-    public set PrimaryText(primaryText: string){
+    public set PrimaryText(primaryText: string) {
         this.primaryText = primaryText;
     }
 
@@ -37,7 +35,7 @@ export class SignInCardParameters extends BaseCardParameters implements ICardPar
     /**
      * Sets description property of type string
      */
-    public set Description(description: string){
+    public set Description(description: string) {
         this.description = description;
     }
 
@@ -51,7 +49,7 @@ export class SignInCardParameters extends BaseCardParameters implements ICardPar
     /**
      * Sets sign in button text property of type string
      */
-    public set SignInButtonText(signInButtonText: string){
+    public set SignInButtonText(signInButtonText: string) {
         this.signInButtonText = signInButtonText;
     }
 
@@ -60,33 +58,5 @@ export class SignInCardParameters extends BaseCardParameters implements ICardPar
      */
     public get SignInButtonText(): string {
         return this.signInButtonText;
-    }
-
-    /**
-     * Sets uri property of type string
-     */
-    public set Uri(uri: string){
-        this.uri = uri;
-    }
-
-    /**
-     * Gets uri property of type string
-     */
-    public get Uri(): string {
-        return this.uri;
-    }
-
-    /**
-     * Sets connection name property of type string
-     */
-    public set ConnectionName(connectionName: string){
-        this.connectionName = connectionName;
-    }
-
-    /**
-     * Gets connection name property of type string
-     */
-    public get ConnectionName(): string {
-        return this.connectionName;
     }
 }

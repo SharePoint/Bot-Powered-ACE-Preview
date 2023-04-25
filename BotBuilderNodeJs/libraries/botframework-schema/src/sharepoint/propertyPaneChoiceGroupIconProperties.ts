@@ -4,19 +4,20 @@
 /**
  * Sharepoint PropertyPaneChoiceGroupIconProperties object
  */
-export class PropertyPaneChoiceGroupIconProperties{
+export class PropertyPaneChoiceGroupIconProperties {
     private officeFabricIconFontName: string;
+    
     /**
      * Initializes a new instance of the PropertyPaneChoiceGroupIconProperties class
      */
-    public PropertyPaneChoiceGroupIconProperties(){
+    public PropertyPaneChoiceGroupIconProperties() {
         // Do nothing
     }
 
     /**
      * Sets the name of the icon to use from the Office Fabric icon set of type string
      */
-    public set OfficeFabricIconFontName(officeFabricIconFontName: string){
+    public set OfficeFabricIconFontName(officeFabricIconFontName: string) {
         this.officeFabricIconFontName = officeFabricIconFontName;
     }
 

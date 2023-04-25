@@ -8,19 +8,20 @@ import { Location } from './location';
 /**
  * Sharepoint ShowLocationActionParameters object for show location action
  */
-export class ShowLocationActionParameters implements ICardActionParameters, IOnCardSelectionActionParameters{
+export class ShowLocationActionParameters implements ICardActionParameters, IOnCardSelectionActionParameters {
     private locationCoordinates: Location;
+    
     /**
      * Initializes a new instance of the ShowLocationActionParameters class
      */
-    public ShowLocationActionParameters(){
+    public ShowLocationActionParameters() {
         // Do nothing
     }
 
     /**
      * Sets whether a location on the map can be chosen of type boolean
      */
-    public set LocationCoordinates(locationCoordinates: Location){
+    public set LocationCoordinates(locationCoordinates: Location) {
         this.locationCoordinates = locationCoordinates;
     }
 

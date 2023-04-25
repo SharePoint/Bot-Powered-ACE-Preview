@@ -7,22 +7,23 @@ import { IOnCardSelectionActionParameters } from './IOnCardSelectionActionParame
 /**
  * Sharepoint SelectMediaActionParameters object for select media action
  */
-export class SelectMediaActionParameters implements ICardActionParameters, IOnCardSelectionActionParameters{
+export class SelectMediaActionParameters implements ICardActionParameters, IOnCardSelectionActionParameters {
     private mediaType: SelectMediaActionParameters.MediaType;
     private allowMultipleCapture: boolean;
     private maxSizePerFile?: number;
     private supportedFileFormats?: string[];
+    
     /**
      * Initializes a new instance of the SelectMediaActionParameters class
      */
-    public SelectMediaActionParameters(){
+    public SelectMediaActionParameters() {
         // Do nothing
     }
 
     /**
      * Sets the media type of type string
      */
-    public set MediaType(mediaType: SelectMediaActionParameters.MediaType){
+    public set MediaType(mediaType: SelectMediaActionParameters.MediaType) {
         this.mediaType = mediaType;
     }
 
@@ -36,7 +37,7 @@ export class SelectMediaActionParameters implements ICardActionParameters, IOnCa
     /**
      * Sets if multiple files can be selected of type boolean
      */
-    public set AllowMultipleCapture(allowMultipleCapture: boolean){
+    public set AllowMultipleCapture(allowMultipleCapture: boolean) {
         this.allowMultipleCapture = allowMultipleCapture;
     }
 
@@ -50,7 +51,7 @@ export class SelectMediaActionParameters implements ICardActionParameters, IOnCa
     /**
      * Sets the max size per file of type number
      */
-    public set MaxSizePerFile(maxSizePerFile: number){
+    public set MaxSizePerFile(maxSizePerFile: number) {
         this.maxSizePerFile = maxSizePerFile;
     }
 
@@ -64,7 +65,7 @@ export class SelectMediaActionParameters implements ICardActionParameters, IOnCa
     /**
      * Sets the supported file formats of type string[]
      */
-    public set SupportedFileFormats(supportedFileFormats: string[]){
+    public set SupportedFileFormats(supportedFileFormats: string[]) {
         this.supportedFileFormats = supportedFileFormats;
     }
 
@@ -76,7 +77,7 @@ export class SelectMediaActionParameters implements ICardActionParameters, IOnCa
     }
 }
 
-export namespace SelectMediaActionParameters{
+export namespace SelectMediaActionParameters {
     export enum MediaType {
         Image = 1,
         Audio = 4,

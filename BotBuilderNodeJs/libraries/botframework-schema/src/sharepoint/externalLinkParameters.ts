@@ -7,17 +7,18 @@
 export class ExternalLinkParameters {
     private isTeamsDeepLink: boolean;
     private target: string;
+    
     /**
      * Initializes a new instance of the ExternalLinkParameters class
      */
-    public ExternalLinkParameters(){
+    public ExternalLinkParameters() {
         // Do nothing
     }
 
     /**
      * Sets target property of type string
      */
-    public set Target(target: string){
+    public set Target(target: string) {
         this.target = target;
     }
 
@@ -31,7 +32,7 @@ export class ExternalLinkParameters {
     /**
      * Sets isTeamsDeepLink property of type boolean
      */
-    public set IsTeamsDeepLink (isTeamsDeepLink: boolean){
+    public set IsTeamsDeepLink (isTeamsDeepLink: boolean) {
         this.isTeamsDeepLink = isTeamsDeepLink;
     }
 

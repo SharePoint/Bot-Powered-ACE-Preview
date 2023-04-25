@@ -15,14 +15,14 @@ export class GetPropertyPaneConfigurationResponse {
     /**
      * Initializes a new instance of the GetPropertyPaneConfigurationResponse class
      */
-    public GetPropertyPaneConfigurationResponse(){
+    public GetPropertyPaneConfigurationResponse() {
         // Do nothing
     }
 
     /**
      * Sets pages property of type [PropertyPanePage]
      */
-    public set Pages(pages: [PropertyPanePage]){
+    public set Pages(pages: [PropertyPanePage]) {
         this.pages = pages;
     }
 
@@ -36,7 +36,7 @@ export class GetPropertyPaneConfigurationResponse {
     /**
      * Sets the current page property of type number
      */
-    public set CurrentPage(currentPage: number){
+    public set CurrentPage(currentPage: number) {
         this.currentPage = currentPage;
     }
 
@@ -50,7 +50,7 @@ export class GetPropertyPaneConfigurationResponse {
     /**
      * Sets the loading indicator delay time of type number
      */
-    public set LoadingIndicatorDelayTime(loadingIndicatorDelayTime: number){
+    public set LoadingIndicatorDelayTime(loadingIndicatorDelayTime: number) {
         this.loadingIndicatorDelayTime = loadingIndicatorDelayTime;
     }
 
@@ -65,7 +65,7 @@ export class GetPropertyPaneConfigurationResponse {
      * Sets a value indicating whether the loading indicator should be displayed on top
      * of the property pane or not of property of type boolean
      */
-    public set ShowLoadingIndicator(showLoadingIndicator: boolean){
+    public set ShowLoadingIndicator(showLoadingIndicator: boolean) {
         this.showLoadingIndicator = showLoadingIndicator;
     }
 
