@@ -48,9 +48,11 @@ export class Action {
 export namespace Action{
     export enum ActionType{
         QuickView = 'QuickView',
+        Submit = 'Submit',
         ExternalLink = 'ExternalLink',
         SelectMedia = 'VivaAction.SelectMedia',
         GetLocation = 'VivaAction.GetLocation',
-        ShowLocation = 'VivaAction.ShowLocation'
+        ShowLocation = 'VivaAction.ShowLocation',
+        Execute = 'Execute'
     }
 }

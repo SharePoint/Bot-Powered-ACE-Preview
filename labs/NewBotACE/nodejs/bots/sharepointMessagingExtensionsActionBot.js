@@ -42,6 +42,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         this.quickViewsCreated = false;
         this.cardViewMap = new Map();
         this.quickViewMap = new Map();
+        this.currentView = "";
 	}
 	
     async handleTeamsMessagingExtensionSubmitAction(context, action) {
@@ -121,41 +122,8 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         if (!this.cardViewsCreated){
             this.createCardViews();
         }
-        return this.cardViewMap.get('PRIMARY_TEXT_CARD_VIEW');
-        try {
-            if(!this.cardViewResponse){
-                this.cardViewResponse = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView);
-                this.cardViewResponse.TemplateType = GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView;
-                this.cardViewResponse.ViewId = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f_CARD_VIEW"
-                this.cardViewResponse.AceData = new AceData();
-                this.cardViewResponse.AceData.CardSize = AceData.AceCardSize.Medium;
-                this.cardViewResponse.AceData.Title = "BOT DRIVEN ACE";
-                this.cardViewResponse.AceData.DataVersion = "1.0";
-                this.cardViewResponse.AceData.Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f";
-
-                this.cardViewResponse.Data = new CardViewData();
-                this.cardViewResponse.Data.PrimaryText = "My Bot!";
-                const button = new ActionButton();
-                button.Title = "DETAILS";
-                button.Action = new SharepointAction();
-                button.Action.Type = "QuickView";
-                button.Action.Parameters = new ActionParameters();
-                button.Action.Parameters.View =  "a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW";
-
-                const actionButtons = new Array();
-
-                actionButtons[0] = button;
-
-                this.cardViewResponse.Data.ActionButtons = actionButtons;
-
-                return this.cardViewResponse;
-            } else {
-                return this.cardViewResponse;
-            }
-            
-        } catch(error) {
-            console.log(error);
-        }
+        this.currentView = 'PRIMARY_TEXT_CARD_VIEW';
+        return this.cardViewMap.get('PRIMARY_TEXT_CARD_VIEW')
     }
 
     /**
@@ -169,7 +137,11 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         if (!this.quickViewsCreated){
             this.createQuickViews();
         }
-        return this.quickViewMap.get('BASIC_QUICK_VIEW');
+        let quickViewId;
+        if (this.currentView.includes("CARD")){
+            quickViewId = this.cardViewMap.get(this.currentView).OnCardSelection.Parameters.View;
+        }
+        return this.quickViewMap.get(quickViewId);
     }
 
     /**
@@ -386,6 +358,17 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         //     }
         return '';
     }
+
+    async OnSharePointTaskHandleActionAsync(context, taskModuleRequest){
+        const viewToNavigateTo = context.activity.value.data.data.viewToNavigateTo;
+        if (viewToNavigateTo.includes('CARD')){
+            this.currentView = viewToNavigateTo;
+            return this.cardViewMap.get(viewToNavigateTo);
+        } else if (viewToNavigateTo.includes('QUICK')){
+            this.currentView = viewToNavigateTo;
+            return this.quickViewMap.get(viewToNavigateTo);
+        }
+    } 
     
     async createCardViews(){
         try {
@@ -394,7 +377,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             basicCardView.ViewId = "BASIC_CARD_VIEW"
 
             const aceData = new AceData();
-            aceData.CardSize = AceData.AceCardSize.Medium;
+            aceData.CardSize = AceData.AceCardSize.Large;
             aceData.Title = "BOT DRIVEN ACE";
             aceData.Description= "bot description";
             aceData.DataVersion = "1.0";
@@ -407,12 +390,20 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
 
             const quickViewActionParameters = new QuickViewParameters();
             quickViewActionParameters.View = "BASIC_QUICK_VIEW";
-            const action = new SharepointAction();
-            action.Type = SharepointAction.ActionType.QuickView;
-            action.Parameters = quickViewActionParameters;
+            const quickViewAction = new SharepointAction();
+            quickViewAction.Type = SharepointAction.ActionType.QuickView;
+            quickViewAction.Parameters = quickViewActionParameters;
+            basicCardView.OnCardSelection = quickViewAction;
+
+            const viewNavAction = new SharepointAction();
+            viewNavAction.Type = SharepointAction.ActionType.Execute;
+            viewNavAction.Parameters = {
+                "viewToNavigateTo": "IMAGE_CARD_VIEW"
+            };
+
             const button = new ActionButton();
-            button.Title = "Quick View";
-            button.Action = action;
+            button.Title = "Image View";
+            button.Action = viewNavAction;
 
             const cardButtons = new Array();
 
@@ -430,7 +421,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             primaryTextCard.ViewId = "PRIMARY_TEXT_CARD_VIEW"
 
             const aceData = new AceData();
-            aceData.CardSize = AceData.AceCardSize.Medium;
+            aceData.CardSize = AceData.AceCardSize.Large;
             aceData.Title = "BOT DRIVEN ACE";
             aceData.Description= "bot description";
             aceData.DataVersion = "1.0";
@@ -444,12 +435,20 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
 
             const quickViewActionParameters = new QuickViewParameters();
             quickViewActionParameters.View = "PRIMARY_TEXT_QUICK_VIEW";
-            const action = new SharepointAction();
-            action.Type = SharepointAction.ActionType.QuickView;
-            action.Parameters = quickViewActionParameters;
+            const quickViewAction = new SharepointAction();
+            quickViewAction.Type = SharepointAction.ActionType.QuickView;
+            quickViewAction.Parameters = quickViewActionParameters;
+            primaryTextCard.OnCardSelection = quickViewAction;
+
+            const viewNavAction = new SharepointAction();
+            viewNavAction.Type = SharepointAction.ActionType.Execute;
+            viewNavAction.Parameters = {
+                "viewToNavigateTo": "BASIC_CARD_VIEW"
+            };
+            
             const button = new ActionButton();
-            button.Title = "Quick View";
-            button.Action = action;
+            button.Title = "Basic View";
+            button.Action = viewNavAction;
 
             const cardButtons = new Array();
 
@@ -467,7 +466,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             imageCard.ViewId = "IMAGE_CARD_VIEW"
 
             const aceData = new AceData();
-            aceData.CardSize = AceData.AceCardSize.Medium;
+            aceData.CardSize = AceData.AceCardSize.Large;
             aceData.Title = "BOT DRIVEN ACE";
             aceData.Description= "bot description";
             aceData.DataVersion = "1.0";
@@ -482,19 +481,26 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
 
             const quickViewActionParameters = new QuickViewParameters();
             quickViewActionParameters.View = "IMAGE_QUICK_VIEW";
-            const action = new SharepointAction();
-            action.Type = SharepointAction.ActionType.QuickView;
-            action.Parameters = quickViewActionParameters;
+            const quickViewAction = new SharepointAction();
+            quickViewAction.Type = SharepointAction.ActionType.QuickView;
+            quickViewAction.Parameters = quickViewActionParameters
+            imageCard.OnCardSelection = quickViewAction;
+
+            const viewNavAction = new SharepointAction();
+            viewNavAction.Type = SharepointAction.ActionType.Execute;
+            viewNavAction.Parameters = {
+                "viewToNavigateTo": "SIGN_IN_CARD_VIEW"
+            };
+            
             const button = new ActionButton();
-            button.Title = "Quick View";
-            button.Action = action;
+            button.Title = "Sign In View";
+            button.Action = viewNavAction;
 
             const cardButtons = new Array();
 
             cardButtons[0] = button;
 
             imageCard.CardButtons = cardButtons;
-            imageCard.OnCardSelection = action;
 
             this.cardViewMap.set(imageCard.ViewId, imageCard);
         } catch(error) {
@@ -506,7 +512,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             signInCard.ViewId = "SIGN_IN_CARD_VIEW"
 
             const aceData = new AceData();
-            aceData.CardSize = AceData.AceCardSize.Medium;
+            aceData.CardSize = AceData.AceCardSize.Large;
             aceData.Title = "BOT DRIVEN ACE";
             aceData.Description= "bot description";
             aceData.DataVersion = "1.0";
@@ -523,12 +529,20 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
 
             const quickViewActionParameters = new QuickViewParameters();
             quickViewActionParameters.View = "SIGN_IN_QUICK_VIEW";
-            const action = new SharepointAction();
-            action.Type = SharepointAction.ActionType.QuickView;
-            action.Parameters = quickViewActionParameters;
+            const quickViewAction = new SharepointAction();
+            quickViewAction.Type = SharepointAction.ActionType.QuickView;
+            quickViewAction.Parameters = quickViewActionParameters;
+            signInCard.OnCardSelection = quickViewAction;
+
+            const viewNavAction = new SharepointAction();
+            viewNavAction.Type = SharepointAction.ActionType.Execute;
+            viewNavAction.Parameters = {
+                "viewToNavigateTo": "PRIMARY_TEXT_CARD_VIEW"
+            };
+            
             const button = new ActionButton();
-            button.Title = "Quick View";
-            button.Action = action;
+            button.Title = "Primary Text View";
+            button.Action = viewNavAction;
 
             const cardButtons = new Array();
 
@@ -553,6 +567,51 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
 
             const container = new AdaptiveCards.Container();
             container.separator = true;
+            container.selectAction = new AdaptiveCards.SubmitAction();
+            container.selectAction.data = {
+                viewToNavigateTo: "IMAGE_QUICK_VIEW"
+            };
+            const titleText = new AdaptiveCards.TextBlock();
+            titleText.text = "BASIC CARD QUICK VIEW";
+            titleText.color = AdaptiveCards.TextColor.Dark;
+            titleText.weight = AdaptiveCards.TextWeight.Bolder;
+            titleText.size = AdaptiveCards.TextSize.Large;
+            titleText.wrap = true;
+            titleText.maxLines = 1;
+            titleText.spacing = AdaptiveCards.Spacing.None;
+            container.addItem(titleText);
+
+            const descriptionText = new AdaptiveCards.TextBlock();
+            descriptionText.text = "This is the quick view for the basic card.";
+            descriptionText.color = AdaptiveCards.TextColor.Dark;
+            descriptionText.size = AdaptiveCards.TextSize.Medium;
+            descriptionText.wrap = true;
+            descriptionText.maxLines = 6;
+            descriptionText.spacing = AdaptiveCards.Spacing.None;
+            container.addItem(descriptionText);
+
+            template.addItem(container); 
+            basicQuickView.Template = template;
+            basicQuickView.Title = "Basic Quick View"
+
+            this.quickViewMap.set(basicQuickView.ViewId, basicQuickView)
+        } catch(error) {
+            console.log(error);
+        }
+        try {
+            const primaryTextQuickView = new GetQuickViewResponse();
+            primaryTextQuickView.StackSize = 1;
+            primaryTextQuickView.ViewId = "PRIMARY_TEXT_QUICK_VIEW";
+            primaryTextQuickView.Data = {};
+
+            const template = new AdaptiveCards.AdaptiveCard();
+
+            const container = new AdaptiveCards.Container();
+            container.separator = true;
+            container.selectAction = new AdaptiveCards.SubmitAction();
+            container.selectAction.data = {
+                viewToNavigateTo: "BASIC_QUICK_VIEW"
+            };
             const titleText = new AdaptiveCards.TextBlock();
             titleText.text = "BENEFITS OF BOT ACES";
             titleText.color = AdaptiveCards.TextColor.Dark;
@@ -573,10 +632,92 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             container.addItem(descriptionText);
 
             template.addItem(container); 
-            basicQuickView.Template = template;
-            basicQuickView.Title = "Basic Quick View"
+            primaryTextQuickView.Template = template;
+            primaryTextQuickView.Title = "Primary Text Quick View"
 
-            this.quickViewMap.set(basicQuickView.ViewId, basicQuickView)
+            this.quickViewMap.set(primaryTextQuickView.ViewId, primaryTextQuickView)
+        } catch(error) {
+            console.log(error);
+        }
+        try {
+            const imageQuickView = new GetQuickViewResponse();
+            imageQuickView.StackSize = 1;
+            imageQuickView.ViewId = "IMAGE_QUICK_VIEW";
+            imageQuickView.Data = {};
+
+            const template = new AdaptiveCards.AdaptiveCard();
+
+            const container = new AdaptiveCards.Container();
+            container.separator = true;
+            container.selectAction = new AdaptiveCards.SubmitAction();
+            container.selectAction.data = {
+                viewToNavigateTo: "SIGN_IN_QUICK_VIEW"
+            };
+            const titleText = new AdaptiveCards.TextBlock();
+            titleText.text = "IMAGE QUICK VIEW";
+            titleText.color = AdaptiveCards.TextColor.Dark;
+            titleText.weight = AdaptiveCards.TextWeight.Bolder;
+            titleText.size = AdaptiveCards.TextSize.Large;
+            titleText.wrap = true;
+            titleText.maxLines = 1;
+            titleText.spacing = AdaptiveCards.Spacing.None;
+            container.addItem(titleText);
+
+            const descriptionText = new AdaptiveCards.TextBlock();
+            descriptionText.text = "This is the quick view for the image card.";
+            descriptionText.color = AdaptiveCards.TextColor.Dark;
+            descriptionText.size = AdaptiveCards.TextSize.Medium;
+            descriptionText.wrap = true;
+            descriptionText.maxLines = 6;
+            descriptionText.spacing = AdaptiveCards.Spacing.None;
+            container.addItem(descriptionText);
+
+            template.addItem(container); 
+            imageQuickView.Template = template;
+            imageQuickView.Title = "Image Quick View"
+
+            this.quickViewMap.set(imageQuickView.ViewId, imageQuickView)
+        } catch(error) {
+            console.log(error);
+        }
+        try {
+            const signInQuickView = new GetQuickViewResponse();
+            signInQuickView.StackSize = 1;
+            signInQuickView.ViewId = "SIGN_IN_QUICK_VIEW";
+            signInQuickView.Data = {};
+
+            const template = new AdaptiveCards.AdaptiveCard();
+
+            const container = new AdaptiveCards.Container();
+            container.separator = true;
+            container.selectAction = new AdaptiveCards.SubmitAction();
+            container.selectAction.data = {
+                viewToNavigateTo: "PRIMARY_TEXT_QUICK_VIEW"
+            };
+            const titleText = new AdaptiveCards.TextBlock();
+            titleText.text = "SIGN IN QUICK VIEW";
+            titleText.color = AdaptiveCards.TextColor.Dark;
+            titleText.weight = AdaptiveCards.TextWeight.Bolder;
+            titleText.size = AdaptiveCards.TextSize.Large;
+            titleText.wrap = true;
+            titleText.maxLines = 1;
+            titleText.spacing = AdaptiveCards.Spacing.None;
+            container.addItem(titleText);
+
+            const descriptionText = new AdaptiveCards.TextBlock();
+            descriptionText.text = "This is the quick view for the sign in card.";
+            descriptionText.color = AdaptiveCards.TextColor.Dark;
+            descriptionText.size = AdaptiveCards.TextSize.Medium;
+            descriptionText.wrap = true;
+            descriptionText.maxLines = 6;
+            descriptionText.spacing = AdaptiveCards.Spacing.None;
+            container.addItem(descriptionText);
+
+            template.addItem(container); 
+            signInQuickView.Template = template;
+            signInQuickView.Title = "Sign In Quick View"
+
+            this.quickViewMap.set(signInQuickView.ViewId, signInQuickView)
         } catch(error) {
             console.log(error);
         }

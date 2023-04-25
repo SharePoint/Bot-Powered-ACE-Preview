@@ -2,12 +2,13 @@
 // Licensed under the MIT License.
 
 import { ICardActionParameters } from './ICardActionParameters';
+import { IOnCardSelectionActionParameters } from './IOnCardSelectionActionParameters';
 import { Location } from './location';
 
 /**
  * Sharepoint ShowLocationActionParameters object for show location action
  */
-export class ShowLocationActionParameters implements ICardActionParameters{
+export class ShowLocationActionParameters implements ICardActionParameters, IOnCardSelectionActionParameters{
     private locationCoordinates: Location;
     /**
      * Initializes a new instance of the ShowLocationActionParameters class

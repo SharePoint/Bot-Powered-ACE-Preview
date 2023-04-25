@@ -3,7 +3,7 @@
 
 import { AceData } from './aceData';
 import { ICardParameters } from './ICardParameters';
-import { ICardActionParameters } from './ICardActionParameters';
+import { IOnCardSelectionActionParameters } from './IOnCardSelectionActionParameters'
 import { ActionButton } from './actionButton';
 
 /**
@@ -14,7 +14,7 @@ export class GetCardViewResponse {
     private aceData: AceData;
     private data: ICardParameters;
     private viewId: string;
-    private onCardSelection: ICardActionParameters;
+    private onCardSelection: IOnCardSelectionActionParameters;
     private cardButtons: ActionButton;
     /**
      * Initializes a new instance of the GetCardViewResponse class
@@ -68,14 +68,14 @@ export class GetCardViewResponse {
     /**
      * Sets on card selection property of type ICardActionParameters
      */
-    public set OnCardSelection(onCardSelection: ICardActionParameters){
+    public set OnCardSelection(onCardSelection: IOnCardSelectionActionParameters){
         this.onCardSelection = onCardSelection;
     }
 
     /**
      * Gets on card selection property of type ICardActionParameters
      */
-    public get OnCardSelection(): ICardActionParameters {
+    public get OnCardSelection(): IOnCardSelectionActionParameters {
         return this.onCardSelection;
     }
 

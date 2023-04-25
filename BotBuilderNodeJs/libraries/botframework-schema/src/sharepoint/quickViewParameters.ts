@@ -2,11 +2,12 @@
 // Licensed under the MIT License.
 
 import { ICardActionParameters } from './ICardActionParameters';
+import { IOnCardSelectionActionParameters } from './IOnCardSelectionActionParameters';
 
 /**
  * Sharepoint QuickViewParameters object for quick view action
  */
-export class QuickViewParameters implements ICardActionParameters{
+export class QuickViewParameters implements ICardActionParameters, IOnCardSelectionActionParameters{
     private view: string;
     /**
      * Initializes a new instance of the QuickViewParameters class
