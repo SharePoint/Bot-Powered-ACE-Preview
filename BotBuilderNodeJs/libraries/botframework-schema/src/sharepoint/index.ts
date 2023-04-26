@@ -3,6 +3,7 @@ export { Action as SharepointAction} from './action';
 export { ActionButton } from './actionButton';
 export { BaseCardParameters } from './baseCardParameters';
 export { BasicCardParameters } from './basicCardParameters';
+export { ConfirmationDialog } from './confirmationDialog';
 export { ExecuteAction } from './executeAction';
 export { ExternalLinkParameters } from './externalLinkParameters';
 export { FocusParameters } from './focusParameters';
