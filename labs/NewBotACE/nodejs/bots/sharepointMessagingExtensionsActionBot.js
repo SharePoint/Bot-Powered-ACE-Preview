@@ -345,7 +345,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             const response = new SetPropertyPaneConfigurationResponse();
             response.ReponseType = SetPropertyPaneConfigurationResponse.ResponseType.CardView;
             response.RenderArguments = primaryTextCardView;
-            return primaryTextCardView;
+            return response;
         } catch (error){
             console.log(error);
         }
