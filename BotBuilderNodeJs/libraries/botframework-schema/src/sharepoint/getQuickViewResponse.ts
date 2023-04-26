@@ -5,11 +5,12 @@ import { IQuickViewData } from './IQuickViewData';
 import { AdaptiveCard } from 'adaptivecards';
 import { ExternalLinkParameters } from './externalLinkParameters';
 import { FocusParameters } from './focusParameters';
+import { ISharepointViewResponse } from './ISharepointViewResponse';
 
 /**
  * Sharepoint GetQuickView response object
  */
-export class GetQuickViewResponse {
+export class GetQuickViewResponse implements ISharepointViewResponse {
     private data: IQuickViewData;
     private template: AdaptiveCard;
     private viewId: string;

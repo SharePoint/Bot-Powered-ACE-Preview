@@ -5,11 +5,12 @@ import { AceData } from './aceData';
 import { ICardParameters } from './ICardParameters';
 import { IOnCardSelectionActionParameters } from './IOnCardSelectionActionParameters'
 import { ActionButton } from './actionButton';
+import { ISharepointViewResponse } from './ISharepointViewResponse';
 
 /**
  * Sharepoint GetCardView response object
  */
-export class GetCardViewResponse {
+export class GetCardViewResponse implements ISharepointViewResponse {
     private templateType: GetCardViewResponse.CardViewTemplateType;
     private aceData: AceData;
     private data: ICardParameters;
