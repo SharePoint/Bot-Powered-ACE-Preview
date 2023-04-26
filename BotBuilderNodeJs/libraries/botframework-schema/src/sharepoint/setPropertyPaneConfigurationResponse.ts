@@ -50,5 +50,6 @@ export class SetPropertyPaneConfigurationResponse {
 export namespace SetPropertyPaneConfigurationResponse {
     export enum ResponseType {
         CardView = "Card",
+        NoOp = "NoOp"
     }
 }
