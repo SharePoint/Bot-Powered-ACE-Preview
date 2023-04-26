@@ -572,7 +572,6 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
     async createQuickViews(){
         try {
             const basicQuickView = new GetQuickViewResponse();
-            basicQuickView.StackSize = 1;
             basicQuickView.ViewId = "BASIC_QUICK_VIEW";
             basicQuickView.Data = {};
 
@@ -613,7 +612,6 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         }
         try {
             const primaryTextQuickView = new GetQuickViewResponse();
-            primaryTextQuickView.StackSize = 1;
             primaryTextQuickView.ViewId = "PRIMARY_TEXT_QUICK_VIEW";
             primaryTextQuickView.Data = {};
 
@@ -654,7 +652,6 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         }
         try {
             const imageQuickView = new GetQuickViewResponse();
-            imageQuickView.StackSize = 1;
             imageQuickView.ViewId = "IMAGE_QUICK_VIEW";
             imageQuickView.Data = {};
 
@@ -695,7 +692,6 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         }
         try {
             const signInQuickView = new GetQuickViewResponse();
-            signInQuickView.StackSize = 1;
             signInQuickView.ViewId = "SIGN_IN_QUICK_VIEW";
             signInQuickView.Data = {};
 

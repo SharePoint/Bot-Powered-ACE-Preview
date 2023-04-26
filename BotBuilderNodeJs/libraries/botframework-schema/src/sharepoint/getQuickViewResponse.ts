@@ -13,11 +13,10 @@ export class GetQuickViewResponse {
     private data: IQuickViewData;
     private template: AdaptiveCard;
     private viewId: string;
-    private stackSize: number;
     private title: string = '';
     private externalLink: ExternalLinkParameters;
     private focusParameters: FocusParameters;
-    
+
     /**
      * Initializes a new instance of the GetQuickViewResponse class
      */
@@ -65,20 +64,6 @@ export class GetQuickViewResponse {
      */
     public get ViewId(): string {
         return this.viewId;
-    }
-
-    /**
-     * Sets stackSize property of type number
-     */
-    public set StackSize(stackSize: number) {
-        this.stackSize = stackSize;
-    }
-
-    /**
-     * Gets stackSize property of type number
-     */
-    public get StackSize(): number {
-        return this.stackSize;
     }
 
     /**
