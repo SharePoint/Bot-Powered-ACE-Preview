@@ -1,18 +1,14 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 import { Action } from './action';
-
-export interface IConfirmationDialog{
-    title: string;
-    message: string;
-}
+import { ConfirmationDialog } from './confirmationDialog';
 
 /**
  * Sharepoint action.submit 
  */
 export class SubmitAction extends Action {
-    private confirmationDialog: IConfirmationDialog;
-    
+    private confirmationDialog: ConfirmationDialog;
+
     /**
      * Initializes a new instance of the SubmitAction class
      */
@@ -21,16 +17,16 @@ export class SubmitAction extends Action {
     }
 
     /**
-     * Sets confirmation dialog property of type IConfirmationDialog
+     * Sets confirmation dialog property of type ConfirmationDialog
      */
-    public set ConfirmationDialog (confirmationDialog: IConfirmationDialog) {
+    public set ConfirmationDialog (confirmationDialog: ConfirmationDialog) {
         this.confirmationDialog = confirmationDialog;
     }
 
     /**
-     * Gets confirmation dialog property of type IConfirmationDialog
+     * Gets confirmation dialog property of type ConfirmationDialog
      */
-    public get ConfirmationDialog(): IConfirmationDialog {
+    public get ConfirmationDialog(): ConfirmationDialog {
         return this.confirmationDialog; 
     }
 }
