@@ -7,14 +7,15 @@ import { PropertyPanePageHeader } from './propertyPanePageHeader';
 /**
  * Sharepoint PropertyPanePage object
  */
-export class PropertyPanePage{
+export class PropertyPanePage {
     private displayGroupsAsAccordion: boolean;
     private groups: [IPropertyPaneGroupOrConditionalGroup];
     private header: PropertyPanePageHeader;
+    
     /**
      * Initializes a new instance of the PropertyPanePage class
      */
-    public PropertyPanePage(){
+    public PropertyPanePage() {
         // Do nothing
     }
 
@@ -22,7 +23,7 @@ export class PropertyPanePage{
      * Sets a value indicating whether the groups on the PropertyPanePage 
      * are displayed as accordion or not of type boolean
      */
-    public set DisplayGroupsAsAccordion(displayGroupsAsAccordion: boolean){
+    public set DisplayGroupsAsAccordion(displayGroupsAsAccordion: boolean) {
         this.displayGroupsAsAccordion = displayGroupsAsAccordion;
     }
 
@@ -38,7 +39,7 @@ export class PropertyPanePage{
     /**
      * Sets the groups of type IPropertyPaneGroupOrConditionalGroup
      */
-    public set Groups(groups: [IPropertyPaneGroupOrConditionalGroup] ){
+    public set Groups(groups: [IPropertyPaneGroupOrConditionalGroup] ) {
         this.groups = groups;
     }
 
@@ -52,7 +53,7 @@ export class PropertyPanePage{
     /**
      * Sets the header for the property pane of type PropertyPanePageHeader
      */
-    public set Header(header: PropertyPanePageHeader ){
+    public set Header(header: PropertyPanePageHeader ) {
         this.header = header;
     }
 

@@ -1,46 +1,59 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { ActionParameters } from './actionParameters';
+import { ICardActionParameters } from './ICardActionParameters';
 
 /**
  * Sharepoint action
  */
 export class Action {
-    private type: string;
-    private parameters: ActionParameters;
+    private type: Action.ActionType;
+    private parameters: ICardActionParameters;
+    
     /**
      * Initializes a new instance of the Action class
      */
-    public Action(){
+    public Action() {
         // Do nothing
     }
 
     /**
-     * Sets type property of type string
+     * Sets type property of type Action.ActionType
      */
-    public set Type(type: string){
+    public set Type(type: Action.ActionType) {
         this.type = type;
     }
 
     /**
-     * Gets type property of type string
+     * Gets type property of type Action.ActionType
      */
-    public get Type(): string {
+    public get Type(): Action.ActionType {
         return this.type;
     }
 
     /**
-     * Sets parameters property of type ActionParameters
+     * Sets parameters property of type ICardActionParameters
      */
-    public set Parameters (parameters: ActionParameters){
+    public set Parameters (parameters: ICardActionParameters) {
         this.parameters = parameters;
     }
 
     /**
-     * Gets parameters property of type ActionParameters
+     * Gets parameters property of type ICardActionParameters
      */
-    public get Parameters(): ActionParameters {
+    public get Parameters(): ICardActionParameters {
         return this.parameters; 
+    }
+}
+
+export namespace Action {
+    export enum ActionType {
+        QuickView = 'QuickView',
+        Submit = 'Submit',
+        ExternalLink = 'ExternalLink',
+        SelectMedia = 'VivaAction.SelectMedia',
+        GetLocation = 'VivaAction.GetLocation',
+        ShowLocation = 'VivaAction.ShowLocation',
+        Execute = 'Execute'
     }
 }

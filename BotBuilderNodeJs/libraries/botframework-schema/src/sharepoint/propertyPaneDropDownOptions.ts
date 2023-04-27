@@ -9,17 +9,18 @@ export class PropertyPaneDropDownOption {
     private key: string;
     private text: string;
     private type: PropertyPaneDropDownOption.DropDownOptionType;
+    
     /**
      * Initializes a new instance of the PropertyPaneDropDownOption class
      */
-    public PropertyPaneDropDownOption(){
+    public PropertyPaneDropDownOption() {
         // Do nothing
     }
 
     /**
      * Sets index for this option of type number
      */
-    public set Index(index: number){
+    public set Index(index: number) {
         this.index = index;
     }
 
@@ -33,7 +34,7 @@ export class PropertyPaneDropDownOption {
     /**
      * Sets a key to uniquely identify this option of type string
      */
-    public set Key(key: string){
+    public set Key(key: string) {
         this.key = key;
     }
 
@@ -47,7 +48,7 @@ export class PropertyPaneDropDownOption {
     /**
      * Sets text to render for this option of type string
      */
-    public set Text(text: string){
+    public set Text(text: string) {
         this.text = text;
     }
 
@@ -61,7 +62,7 @@ export class PropertyPaneDropDownOption {
     /**
      * Sets the type of option. If omitted, the default is PropertyPaneDropdownMenuItemType.Normal of type DropDownOptionType
      */
-    public set Type(type: PropertyPaneDropDownOption.DropDownOptionType){
+    public set Type(type: PropertyPaneDropDownOption.DropDownOptionType) { 
         this.type = type;
     }
 
@@ -73,8 +74,8 @@ export class PropertyPaneDropDownOption {
     }
 }
 
-export namespace PropertyPaneDropDownOption{
-    export enum DropDownOptionType{
+export namespace PropertyPaneDropDownOption {
+    export enum DropDownOptionType {
         // Render normal menu item
         Normal = 0,
         // Render a divider

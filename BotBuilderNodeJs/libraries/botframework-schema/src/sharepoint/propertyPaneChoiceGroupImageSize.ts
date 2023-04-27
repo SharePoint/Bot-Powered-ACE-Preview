@@ -4,20 +4,21 @@
 /**
  * Sharepoint PropertyPaneChoiceGroupImageSize object
  */
-export class PropertyPaneChoiceGroupImageSize{
+export class PropertyPaneChoiceGroupImageSize {
     private width: number;
     private height: number;
+    
     /**
      * Initializes a new instance of the PropertyPaneChoiceGroupImageSize class
      */
-    public PropertyPaneChoiceGroupImageSize(){
+    public PropertyPaneChoiceGroupImageSize() {
         // Do nothing
     }
 
     /**
      * Sets the width of the image of type number
      */
-    public set Width(width: number){
+    public set Width(width: number) {
         this.width = width;
     }
 
@@ -31,7 +32,7 @@ export class PropertyPaneChoiceGroupImageSize{
     /**
      * Sets the height of the image of type number
      */
-    public set Height(height: number){
+    public set Height(height: number) {
         this.height = height;
     }
 

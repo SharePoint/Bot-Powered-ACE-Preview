@@ -52,7 +52,10 @@ export class SharePointActivityHandler extends ActivityHandler {
                         return ActivityHandler.createInvokeResponse(
                             await this.OnSharePointTaskSetPropertyPaneConfigurationAsync(context, (context.activity.value as TaskModuleRequest))
                         );
-
+                    case 'cardExtension/handleAction':
+                        return ActivityHandler.createInvokeResponse(
+                            await this.OnSharePointTaskHandleActionAsync(context, (context.activity.value as TaskModuleRequest))
+                        );
                     default:
                         return super.onInvokeActivity(context);
                 }
@@ -108,6 +111,17 @@ export class SharePointActivityHandler extends ActivityHandler {
      * @returns A task module response for the request
      */
     protected async OnSharePointTaskSetPropertyPaneConfigurationAsync(context: TurnContext, taskModuleRequest: TaskModuleRequest): Promise<TaskModuleResponse>{
+        throw new Error('NotImplemented');
+    } 
+
+    /**
+     * Override this in a derived class to provide logic for setting configuration pane properties.
+     * 
+     * @param context - A strongly-typed context object for this turn
+     * @param taskModuleRequest - The task module invoke request value payload
+     * @returns A task module response for the request
+     */
+    protected async OnSharePointTaskHandleActionAsync(context: TurnContext, taskModuleRequest: TaskModuleRequest): Promise<TaskModuleResponse>{
         throw new Error('NotImplemented');
     } 
 }

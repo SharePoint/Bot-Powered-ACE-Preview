@@ -10,17 +10,18 @@ export class PropertyPaneCheckboxProperties implements IPropertyPaneFieldPropert
     private text: string
     private disabled: boolean;
     private checked: boolean;
+    
     /**
      * Initializes a new instance of the PropertyPaneCheckboxProperties class
      */
-    public PropertyPaneCheckboxProperties(){
+    public PropertyPaneCheckboxProperties() {
         // Do nothing
     }
 
     /**
      * Sets the label to display next to the checkbox of type string
      */
-    public set Text(text: string){
+    public set Text(text: string) {
         this.text = text;
     }
 
@@ -34,7 +35,7 @@ export class PropertyPaneCheckboxProperties implements IPropertyPaneFieldPropert
     /**
      * Sets a value indicating whether this control is enabled or not of type boolean
      */
-    public set Disabled(disabled: boolean){
+    public set Disabled(disabled: boolean) {
         this.disabled = disabled;
     }
 
@@ -48,7 +49,7 @@ export class PropertyPaneCheckboxProperties implements IPropertyPaneFieldPropert
     /**
      * Sets a value indicating whether the property pane checkbox is checked or not of type boolean
      */
-    public set Checked(checked: boolean){
+    public set Checked(checked: boolean) {
         this.checked = checked;
     }
 

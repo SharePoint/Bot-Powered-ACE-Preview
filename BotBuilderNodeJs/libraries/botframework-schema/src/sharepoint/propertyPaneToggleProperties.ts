@@ -6,7 +6,7 @@ import { IPropertyPaneFieldProperties } from './IPropertyPaneFieldProperties';
 /**
  * Sharepoint PropertyPaneToggleProperties object
  */
-export class PropertyPaneToggleProperties implements IPropertyPaneFieldProperties{
+export class PropertyPaneToggleProperties implements IPropertyPaneFieldProperties {
     private ariaLabel: string;
     private label: string;
     private disabled: boolean;
@@ -16,17 +16,18 @@ export class PropertyPaneToggleProperties implements IPropertyPaneFieldPropertie
     private onText: string;
     private onAriaLabel: string;
     private offAriaLabel: string;
+    
     /**
      * Initializes a new instance of the PropertyPaneToggleProperties class
      */
-    public PropertyPaneToggleProperties(){
+    public PropertyPaneToggleProperties() {
         // Do nothing
     }
 
     /**
      * Sets the aria label of type string
      */
-    public set AriaLabel(ariaLabel: string){
+    public set AriaLabel(ariaLabel: string) {
         this.ariaLabel = ariaLabel;
     }
 
@@ -40,7 +41,7 @@ export class PropertyPaneToggleProperties implements IPropertyPaneFieldPropertie
     /**
      * Sets the label of type string
      */
-    public set Label(label: string){
+    public set Label(label: string) {
         this.label = label;
     }
 
@@ -54,7 +55,7 @@ export class PropertyPaneToggleProperties implements IPropertyPaneFieldPropertie
     /**
      * Sets a value indicating whether this control is enabled or not of type boolean
      */
-    public set Disabled(disabled: boolean){
+    public set Disabled(disabled: boolean) {
         this.disabled = disabled;
     }
 
@@ -68,7 +69,7 @@ export class PropertyPaneToggleProperties implements IPropertyPaneFieldPropertie
     /**
      * Sets a value indicating whether the property pane checkbox is checked or not of type boolean
      */
-    public set Checked(checked: boolean){
+    public set Checked(checked: boolean) {
         this.checked = checked;
     }
 
@@ -82,7 +83,7 @@ export class PropertyPaneToggleProperties implements IPropertyPaneFieldPropertie
     /**
      * Sets a key to uniquely identify the field of type string
      */
-    public set Key(key: string){
+    public set Key(key: string) {
         this.key = key;
     }
 
@@ -96,7 +97,7 @@ export class PropertyPaneToggleProperties implements IPropertyPaneFieldPropertie
     /**
      * Sets text to display when toggle is OFF of type string
      */
-    public set OffText(offText: string){
+    public set OffText(offText: string) {
         this.offText = offText;
     }
 
@@ -110,7 +111,7 @@ export class PropertyPaneToggleProperties implements IPropertyPaneFieldPropertie
     /**
      * Sets text to display when toggle is ON of type string
      */
-    public set OnText(onText: string){
+    public set OnText(onText: string) {
         this.onText = onText;
     }
 
@@ -124,7 +125,7 @@ export class PropertyPaneToggleProperties implements IPropertyPaneFieldPropertie
     /**
      * Sets text for screen-reader to announce when toggle is OFF of type string
      */
-    public set OffAriaLabel(offAriaLabel: string){
+    public set OffAriaLabel(offAriaLabel: string) {
         this.offAriaLabel = offAriaLabel;
     }
 
@@ -138,7 +139,7 @@ export class PropertyPaneToggleProperties implements IPropertyPaneFieldPropertie
     /**
      * Sets text for screen-reader to announce when toggle is ON of type string
      */
-    public set OnAriaLabel(onAriaLabel: string){
+    public set OnAriaLabel(onAriaLabel: string) {
         this.onAriaLabel = onAriaLabel;
     }
 

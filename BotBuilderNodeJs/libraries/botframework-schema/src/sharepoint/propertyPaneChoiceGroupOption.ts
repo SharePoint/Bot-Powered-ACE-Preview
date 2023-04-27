@@ -7,7 +7,7 @@ import { PropertyPaneChoiceGroupImageSize } from './propertyPaneChoiceGroupImage
 /**
  * Sharepoint PropertyPaneChoiceGroupOption object
  */
-export class PropertyPaneChoiceGroupOption{
+export class PropertyPaneChoiceGroupOption {
     private ariaLabel: string;
     private disabled: boolean;
     private checked: boolean;
@@ -20,14 +20,14 @@ export class PropertyPaneChoiceGroupOption{
     /**
      * Initializes a new instance of the PropertyPaneChoiceGroupOption class
      */
-    public PropertyPaneChoiceGroupOption(){
+    public PropertyPaneChoiceGroupOption() {
         // Do nothing
     }
 
     /**
      * Sets the aria label of type string
      */
-    public set AriaLabel(ariaLabel: string){
+    public set AriaLabel(ariaLabel: string) {
         this.ariaLabel = ariaLabel;
     }
 
@@ -41,7 +41,7 @@ export class PropertyPaneChoiceGroupOption{
      /**
      * Sets a value indicating whether this control is enabled or not of type boolean
      */
-     public set Disabled(disabled: boolean){
+     public set Disabled(disabled: boolean) {
         this.disabled = disabled;
     }
 
@@ -55,7 +55,7 @@ export class PropertyPaneChoiceGroupOption{
     /**
      * Sets a value indicating whether the property pane group option is checked or not of type boolean
      */
-    public set Checked(checked: boolean){
+    public set Checked(checked: boolean) {
         this.checked = checked;
     }
 
@@ -69,7 +69,7 @@ export class PropertyPaneChoiceGroupOption{
     /**
      * Sets the Icon component props for choice field of type PropertyPaneChoiceGroupIconProperties
      */
-    public set IconProps(iconProps: PropertyPaneChoiceGroupIconProperties){
+    public set IconProps(iconProps: PropertyPaneChoiceGroupIconProperties) {
         this.iconProps = iconProps;
     }
 
@@ -83,7 +83,7 @@ export class PropertyPaneChoiceGroupOption{
     /**
      * Sets the width and height of the image in px for choice field of type PropertyPaneChoiceGroupImageSize
      */
-     public set ImageSize(imageSize: PropertyPaneChoiceGroupImageSize){
+     public set ImageSize(imageSize: PropertyPaneChoiceGroupImageSize) {
         this.imageSize = imageSize;
     }
 
@@ -97,7 +97,7 @@ export class PropertyPaneChoiceGroupOption{
     /**
      * Sets the src of image for choice field of type string
      */
-     public set ImageSrc(imageSrc: string){
+     public set ImageSrc(imageSrc: string) {
         this.imageSrc = imageSrc;
     }
 
@@ -111,7 +111,7 @@ export class PropertyPaneChoiceGroupOption{
     /**
      * Sets a key to uniquely identify this option of type string
      */
-    public set Key(key: string){
+    public set Key(key: string) {
         this.key = key;
     }
 
@@ -125,7 +125,7 @@ export class PropertyPaneChoiceGroupOption{
     /**
      * Sets text to render for this option of type string
      */
-    public set Text(text: string){
+    public set Text(text: string) {
         this.text = text;
     }
 

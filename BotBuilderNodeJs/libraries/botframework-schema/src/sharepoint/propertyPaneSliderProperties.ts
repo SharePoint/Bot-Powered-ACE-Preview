@@ -6,7 +6,7 @@ import { IPropertyPaneFieldProperties } from './IPropertyPaneFieldProperties';
 /**
  * Sharepoint PropertyPaneSliderProperties object
  */
-export class PropertyPaneSliderProperties implements IPropertyPaneFieldProperties{
+export class PropertyPaneSliderProperties implements IPropertyPaneFieldProperties {
     private label: string;
     private value: string;
     private ariaLabel: string;
@@ -15,17 +15,18 @@ export class PropertyPaneSliderProperties implements IPropertyPaneFieldPropertie
     private min: number;
     private step: number;
     private showValue: boolean;
+    
     /**
      * Initializes a new instance of the PropertyPaneSliderProperties class
      */
-    public PropertyPaneSliderProperties(){
+    public PropertyPaneSliderProperties() {
         this.step = 1;
     }
 
     /**
      * Sets the label of type string
      */
-    public set Label(label: string){
+    public set Label(label: string) {
         this.label = label;
     }
 
@@ -39,7 +40,7 @@ export class PropertyPaneSliderProperties implements IPropertyPaneFieldPropertie
     /**
      * Sets the value of type string
      */
-    public set Value(value: string){
+    public set Value(value: string) {
         this.value = value;
     }
 
@@ -54,7 +55,7 @@ export class PropertyPaneSliderProperties implements IPropertyPaneFieldPropertie
     /**
      * Sets the aria label of type string
      */
-    public set AriaLabel(ariaLabel: string){
+    public set AriaLabel(ariaLabel: string) {
         this.ariaLabel = ariaLabel;
     }
 
@@ -69,7 +70,7 @@ export class PropertyPaneSliderProperties implements IPropertyPaneFieldPropertie
     /**
      * Sets a value indicating whether this control is enabled or not of type boolean
      */
-     public set Disabled(disabled: boolean){
+     public set Disabled(disabled: boolean) {
         this.disabled = disabled;
     }
 
@@ -83,7 +84,7 @@ export class PropertyPaneSliderProperties implements IPropertyPaneFieldPropertie
     /**
      * Sets the max value of the Slider of type number
      */
-    public set Max(max: number){
+    public set Max(max: number) {
         this.max = max;
     }
 
@@ -97,7 +98,7 @@ export class PropertyPaneSliderProperties implements IPropertyPaneFieldPropertie
     /**
      * Sets the min value of the Slider of type number
      */
-    public set Min(min: number){
+    public set Min(min: number) {
         this.min = min;
     }
 
@@ -111,7 +112,7 @@ export class PropertyPaneSliderProperties implements IPropertyPaneFieldPropertie
     /**
      * Sets the difference between the two adjacent values of the Slider. Defaults to 1. of type number
      */
-    public set Step(step: number){
+    public set Step(step: number) {
         this.step = step;
     }
 
@@ -125,7 +126,7 @@ export class PropertyPaneSliderProperties implements IPropertyPaneFieldPropertie
     /**
      * Sets a value indicating whether to show the value on the right of the Slider of type boolean
      */
-    public set ShowValue(showValue: boolean){
+    public set ShowValue(showValue: boolean) {
         this.showValue = showValue;
     }
 

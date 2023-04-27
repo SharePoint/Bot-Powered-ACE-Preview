@@ -7,23 +7,24 @@ import { PropertyPaneLinkPopupWindowProperties } from './propertyPaneLinkPopupWi
 /**
  * Sharepoint PropertyPaneLinkProperties object
  */
-export class PropertyPaneLinkProperties implements IPropertyPaneFieldProperties{
+export class PropertyPaneLinkProperties implements IPropertyPaneFieldProperties {
     private text: string;
     private target: string;
     private href: string;
     private disabled: boolean;
     private popupWindowProps: PropertyPaneLinkPopupWindowProperties;
+    
     /**
      * Initializes a new instance of the PropertyPaneLinkProperties class
      */
-    public PropertyPaneLinkProperties(){
+    public PropertyPaneLinkProperties() {
         // Do nothing
     }
 
     /**
      * Sets the label to display next to the checkbox of type string
      */
-    public set Text(text: string){
+    public set Text(text: string) {
         this.text = text;
     }
 
@@ -37,7 +38,7 @@ export class PropertyPaneLinkProperties implements IPropertyPaneFieldProperties{
     /**
      * Sets where to display the linked resource of type string
      */
-    public set Target(target: string){
+    public set Target(target: string) {
         this.target = target;
     }
 
@@ -51,7 +52,7 @@ export class PropertyPaneLinkProperties implements IPropertyPaneFieldProperties{
     /**
      * Sets the location to which the link is targeted to of type string
      */
-    public set Href(href: string){
+    public set Href(href: string) {
         this.href = href;
     }
 
@@ -65,7 +66,7 @@ export class PropertyPaneLinkProperties implements IPropertyPaneFieldProperties{
     /**
      * Sets a value indicating whether this control is enabled or not of type boolean
      */
-    public set Disabled(disabled: boolean){
+    public set Disabled(disabled: boolean) {
         this.disabled = disabled;
     }
 

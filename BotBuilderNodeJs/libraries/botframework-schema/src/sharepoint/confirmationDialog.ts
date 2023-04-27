@@ -1,19 +1,17 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { Action } from './action';
-
 /**
- * Sharepoint action button
+ * Sharepoint confirmation dialog for SubmitAction
  */
-export class ActionButton {
+export class ConfirmationDialog {
     private title: string;
-    private action: Action;
-    
+    private message: string;
+
     /**
-     * Initializes a new instance of the ActionButton class
+     * Initializes a new instance of the ConfirmationDialog class
      */
-    public ActionButton() {
+    public ConfirmationDialog() {
         // Do nothing
     }
 
@@ -32,16 +30,16 @@ export class ActionButton {
     }
 
     /**
-     * Sets parameters property of type Action
+     * Sets message property of type string
      */
-    public set Action (action: Action) {
-        this.action = action;
+     public set Message(message: string) {
+        this.message = message;
     }
 
     /**
-     * Gets parameters property of type Action
+     * Gets message property of type string
      */
-    public get Action(): Action {
-        return this.action; 
+    public get Message(): string {
+        return this.message;
     }
 }

@@ -12,17 +12,18 @@ export class PropertyPaneGroup implements IPropertyPaneGroupOrConditionalGroup {
     private groupName: string;
     private isCollapsed: boolean;
     private isGroupNameHidden: boolean;
+    
     /**
      * Initializes a new instance of the PropertyPaneGroup class
      */
-    public PropertyPaneGroup(){
+    public PropertyPaneGroup() {
         // Do nothing
     }
 
     /**
      * Sets the group fields of type PropertyPaneGroupField
      */
-    public set GroupFields(groupFields: [PropertyPaneGroupField]){
+    public set GroupFields(groupFields: [PropertyPaneGroupField]) {
         this.groupFields = groupFields;
     }
 
@@ -36,7 +37,7 @@ export class PropertyPaneGroup implements IPropertyPaneGroupOrConditionalGroup {
     /**
      * Sets the group name of type string
      */
-    public set GroupName(groupName: string){
+    public set GroupName(groupName: string) {
         this.groupName = groupName;
     }
 
@@ -50,7 +51,7 @@ export class PropertyPaneGroup implements IPropertyPaneGroupOrConditionalGroup {
     /**
      * Sets a value indicating whether the PropertyPane group is collapsed or not of type boolean
      */
-    public set IsCollapsed(isCollapsed: boolean){
+    public set IsCollapsed(isCollapsed: boolean)  {
         this.isCollapsed = isCollapsed;
     }
 
@@ -64,7 +65,7 @@ export class PropertyPaneGroup implements IPropertyPaneGroupOrConditionalGroup {
     /**
      * Sets a value indicating whether the group name should be hidden of type boolean
      */
-     public set IsGroupNameHidden(isGroupNameHidden: boolean){
+     public set IsGroupNameHidden(isGroupNameHidden: boolean) {
         this.isGroupNameHidden = isGroupNameHidden;
     }
 

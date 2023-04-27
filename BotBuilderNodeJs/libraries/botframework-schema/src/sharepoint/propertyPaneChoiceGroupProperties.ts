@@ -10,17 +10,18 @@ import { PropertyPaneChoiceGroupOption } from './propertyPaneChoiceGroupOption';
 export class PropertyPaneChoiceGroupProperties implements IPropertyPaneFieldProperties {
     private label: string;
     private options: [PropertyPaneChoiceGroupOption];
+    
     /**
      * Initializes a new instance of the PropertyPaneChoiceGroupProperties class
      */
-    public PropertyPaneChoiceGroupProperties(){
+    public PropertyPaneChoiceGroupProperties() {
         // Do nothing
     }
 
     /**
      * Sets the label of type string
      */
-    public set Label(label: string){
+    public set Label(label: string) {
         this.label = label;
     }
 
@@ -34,7 +35,7 @@ export class PropertyPaneChoiceGroupProperties implements IPropertyPaneFieldProp
     /**
      * Sets the collection of options for this choice group of type [PropertyPaneChoiceGroupOption]
      */
-     public set Options(options: [PropertyPaneChoiceGroupOption]){
+     public set Options(options: [PropertyPaneChoiceGroupOption]) {
         this.options = options;
     }
 

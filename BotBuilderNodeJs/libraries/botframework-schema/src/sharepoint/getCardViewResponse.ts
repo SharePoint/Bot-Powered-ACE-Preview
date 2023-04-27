@@ -2,27 +2,33 @@
 // Licensed under the MIT License.
 
 import { AceData } from './aceData';
-import { CardViewData } from './cardViewData';
+import { ICardParameters } from './ICardParameters';
+import { IOnCardSelectionActionParameters } from './IOnCardSelectionActionParameters'
+import { ActionButton } from './actionButton';
+import { ISharepointViewResponse } from './ISharepointViewResponse';
 
 /**
  * Sharepoint GetCardView response object
  */
-export class GetCardViewResponse {
+export class GetCardViewResponse implements ISharepointViewResponse {
     private templateType: GetCardViewResponse.CardViewTemplateType;
     private aceData: AceData;
-    private data: CardViewData;
+    private data: ICardParameters;
     private viewId: string;
+    private onCardSelection: IOnCardSelectionActionParameters;
+    private cardButtons: ActionButton;
+
     /**
      * Initializes a new instance of the GetCardViewResponse class
      */
-    public GetCardViewResponse(templateType: GetCardViewResponse.CardViewTemplateType){
+    public GetCardViewResponse(templateType: GetCardViewResponse.CardViewTemplateType) {
         this.TemplateType = templateType;
     }
 
     /**
      * Sets templateType property of type CardViewTemplateType
      */
-    public set TemplateType(templateType: GetCardViewResponse.CardViewTemplateType){
+    public set TemplateType(templateType: GetCardViewResponse.CardViewTemplateType) {
         this.templateType = templateType;
     }
 
@@ -36,7 +42,7 @@ export class GetCardViewResponse {
     /**
      * Sets aceData property of type AceData
      */
-    public set AceData(aceData: AceData){
+    public set AceData(aceData: AceData) {
         this.aceData = aceData;
     }
 
@@ -48,23 +54,51 @@ export class GetCardViewResponse {
     }
 
     /**
-     * Sets data property of type CardViewData
+     * Sets data property of type ICardParameters
      */
-    public set Data(data: CardViewData){
+    public set Data(data: ICardParameters) {
         this.data = data;
     }
 
     /**
-     * Gets data property of type CardViewData
+     * Gets data property of type ICardParameters
      */
-    public get Data(): CardViewData {
+    public get Data(): ICardParameters {
         return this.data;
+    }
+
+    /**
+     * Sets on card selection property of type ICardActionParameters
+     */
+    public set OnCardSelection(onCardSelection: IOnCardSelectionActionParameters) {
+        this.onCardSelection = onCardSelection;
+    }
+
+    /**
+     * Gets on card selection property of type ICardActionParameters
+     */
+    public get OnCardSelection(): IOnCardSelectionActionParameters {
+        return this.onCardSelection;
+    }
+
+    /**
+     * Sets card buttons property of type ActionButton
+     */
+    public set CardButtons(cardButtons: ActionButton) {
+        this.cardButtons = cardButtons;
+    }
+
+    /**
+     * Gets card buttons property of type ActionButton
+     */
+    public get CardButtons(): ActionButton {
+        return this.cardButtons;
     }
 
     /**
      * Sets viewId property of type CardViewData
      */
-    public set ViewId(viewId: string){
+    public set ViewId(viewId: string) {
         this.viewId = viewId;
     }
 
@@ -79,8 +113,9 @@ export class GetCardViewResponse {
 export namespace GetCardViewResponse
 {
     export enum CardViewTemplateType {
-        PrimaryTextCardView = "PrimaryText",
+        BasicCardView = "Basic",
         ImageCardView = "Image",
-        BasicCardView = "Basic"
+        PrimaryTextCardView = "PrimaryText",
+        SignInCardView = "SignIn"
     }
 }

@@ -16,17 +16,18 @@ export class PropertyPaneDropDownProperties implements IPropertyPaneFieldPropert
     private errorMessage: string;
     private selectedKey: string;
     private options: [PropertyPaneDropDownOption];
+    
     /**
      * Initializes a new instance of the PropertyPaneDropDownProperties class
      */
-    public PropertyPaneDropDownProperties(){
+    public PropertyPaneDropDownProperties() {
         // Do nothing
     }
 
     /**
      * Sets the aria label of type string
      */
-    public set AriaLabel(ariaLabel: string){
+    public set AriaLabel(ariaLabel: string) {
         this.ariaLabel = ariaLabel;
     }
 
@@ -41,7 +42,7 @@ export class PropertyPaneDropDownProperties implements IPropertyPaneFieldPropert
      * Sets an element's number or position in the current set of controls.
      * Maps to native aria-posinset attribute. It starts from 1 of type number
      */
-    public set AriaPositionInSet(ariaPositionInSet: number){
+    public set AriaPositionInSet(ariaPositionInSet: number) {
         this.ariaPositionInSet = ariaPositionInSet;
     }
 
@@ -56,7 +57,7 @@ export class PropertyPaneDropDownProperties implements IPropertyPaneFieldPropert
     /**
      * Sets the number of items in the current set of controls. Maps to native aria-setsize attribute of type number
      */
-    public set AriaSetSize(ariaSetSize: number){
+    public set AriaSetSize(ariaSetSize: number) {
         this.ariaSetSize = ariaSetSize;
     }
 
@@ -70,7 +71,7 @@ export class PropertyPaneDropDownProperties implements IPropertyPaneFieldPropert
     /**
      * Sets the label of type string
      */
-    public set Label(label: string){
+    public set Label(label: string) {
         this.label = label;
     }
 
@@ -84,7 +85,7 @@ export class PropertyPaneDropDownProperties implements IPropertyPaneFieldPropert
     /**
      * Sets a value indicating whether this control is enabled or not of type boolean
      */
-    public set Disabled(disabled: boolean){
+    public set Disabled(disabled: boolean) {
         this.disabled = disabled;
     }
 
@@ -98,7 +99,7 @@ export class PropertyPaneDropDownProperties implements IPropertyPaneFieldPropert
     /**
      * Sets the error message of type string
      */
-    public set ErrorMessage(errorMessage: string){
+    public set ErrorMessage(errorMessage: string) {
         this.errorMessage = errorMessage;
     }
 
@@ -112,7 +113,7 @@ export class PropertyPaneDropDownProperties implements IPropertyPaneFieldPropert
     /**
      * Sets the key of the initially selected option of type string
      */
-    public set SelectedKey(selectedKey: string){
+    public set SelectedKey(selectedKey: string) {
         this.selectedKey = selectedKey;
     }
 
@@ -126,7 +127,7 @@ export class PropertyPaneDropDownProperties implements IPropertyPaneFieldPropert
     /**
      * Sets the collection of options for this Dropdown of type [PropertyPaneDropDownOption]
      */
-    public set Options(options: [PropertyPaneDropDownOption]){
+    public set Options(options: [PropertyPaneDropDownOption]) {
         this.options = options;
     }
 

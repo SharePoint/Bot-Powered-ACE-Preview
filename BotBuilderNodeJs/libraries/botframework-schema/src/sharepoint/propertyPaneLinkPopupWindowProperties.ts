@@ -9,17 +9,18 @@ export class PropertyPaneLinkPopupWindowProperties {
     private height: number;
     private title: string;
     private positionWindowPosition: PropertyPaneLinkPopupWindowProperties.PopupWindowPosition;
+    
     /**
      * Initializes a new instance of the PropertyPaneLinkPopupWindowProperties class
      */
-    public PropertyPaneLinkPopupWindowProperties(){
+    public PropertyPaneLinkPopupWindowProperties() {
         // Do nothing
     }
 
      /**
      * Sets the width of the pop up window of type number
      */
-     public set Width(width: number){
+     public set Width(width: number) {
         this.width = width;
     }
 
@@ -33,7 +34,7 @@ export class PropertyPaneLinkPopupWindowProperties {
     /**
      * Sets the height of the pop up window of type number
      */
-    public set Height(height: number){
+    public set Height(height: number) {
         this.height = height;
     }
 
@@ -47,7 +48,7 @@ export class PropertyPaneLinkPopupWindowProperties {
     /**
      * Sets the title of pop up window of type string
      */
-    public set Title(title: string){
+    public set Title(title: string) { 
         this.title = title;
     }
 
@@ -61,7 +62,7 @@ export class PropertyPaneLinkPopupWindowProperties {
     /**
      * Sets the position of pop up window type PopupWindowPosition
      */
-     public set PositionWindowPosition(positionWindowPosition: PropertyPaneLinkPopupWindowProperties.PopupWindowPosition){
+     public set PositionWindowPosition(positionWindowPosition: PropertyPaneLinkPopupWindowProperties.PopupWindowPosition) {
         this.positionWindowPosition = positionWindowPosition;
     }
 
@@ -73,8 +74,8 @@ export class PropertyPaneLinkPopupWindowProperties {
     }
 }
 
-export namespace PropertyPaneLinkPopupWindowProperties{
-    export enum PopupWindowPosition{
+export namespace PropertyPaneLinkPopupWindowProperties {
+    export enum PopupWindowPosition {
         Center = 0,
         RightTop = 1,
         LeftTop = 2,
