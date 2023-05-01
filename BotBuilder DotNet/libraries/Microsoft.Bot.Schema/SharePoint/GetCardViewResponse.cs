@@ -15,7 +15,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// SharePoint GetCardView response object.
     /// </summary>
-    public class GetCardViewResponse : SharePointViewResponse
+    public class GetCardViewResponse : ISharePointViewResponse
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetCardViewResponse"/> class.
@@ -34,17 +34,22 @@ namespace Microsoft.Bot.Schema.SharePoint
             /// <summary>
             /// Primary text card view
             /// </summary>
-            PrimaryText,
+            BasicCardView = "Basic",
 
             /// <summary>
             /// Image card view
             /// </summary>
-            Image,
+            ImageCardView = "Image",
+
+            /// <summary>
+            /// Primary Text card view
+            /// </summary>
+            PrimaryTextCardView = "PrimaryText",
 
             /// <summary>
             /// Sign In card view
             /// </summary>
-            SignIn
+            SignInCardView = "SignIn"
         }
 
         /// <summary>
@@ -63,16 +68,30 @@ namespace Microsoft.Bot.Schema.SharePoint
         public AceData AceData { get; set; }
 
         /// <summary>
-        /// Gets or Sets CardViewData of type <see cref="CardViewData"/>.
+        /// Gets or Sets data associated with the card view of type <see cref="ICardParameters"/>.
         /// </summary>
         /// <value>This value is the data of the card view response.</value>
         [JsonProperty(PropertyName = "data")]
-        public CardViewData Data { get; set; }
+        public ICardParameters Data { get; set; }
+
+        /// <summary>
+        /// Gets or Sets action to be performed when card is selected of type <see cref="IOnCardSelectionActionParameters"/>.
+        /// </summary>
+        /// <value>This value is the action performed when card is clicked.</value>
+        [JsonProperty(PropertyName = "onCardSelection")]
+        public IOnCardSelectionActionParameters OnCardSelection { get; set; }
+
+        /// <summary>
+        /// Gets or Sets button(s) on the card view of type <see cref="ActionButton"/>.
+        /// </summary>
+        /// <value>This value is the button(s) associated with the card view.</value>
+        [JsonProperty(PropertyName = "cardButtons")]
+        public IEnumerable<ActionButton> CardButtons { get; set; }
 
         /// <summary>
         /// Gets or Sets the view Id of type <see cref="string"/>.
         /// </summary>
-        /// <value>This value is the primary text of the card view.</value>
+        /// <value>This value is the view id of the card view.</value>
         [JsonProperty(PropertyName = "viewId")]
         public string ViewId { get; set; }
     }

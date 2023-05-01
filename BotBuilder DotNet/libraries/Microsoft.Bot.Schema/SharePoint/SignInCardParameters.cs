@@ -1,8 +1,7 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
@@ -10,43 +9,36 @@ using Newtonsoft.Json;
 namespace Microsoft.Bot.Schema.SharePoint
 {
     /// <summary>
-    /// SharePoint Card View Data object.
+    /// SharePoint sign in card parameters.
     /// </summary>
-    public class CardViewData
+    public class SignInCardParameters: BaseCardParameters, ICardParameters
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CardViewData"/> class.
+        /// Initializes a new instance of the <see cref="SignInCardParameters"/> class.
         /// </summary>
-        public CardViewData()
+        public SignInCardParameters()
         {
             // Do nothing
         }
 
         /// <summary>
-        /// Gets or Sets the action buttons of type <see cref="ActionButton"/>.
-        /// </summary>
-        /// <value>This value is the action buttons of the card view.</value>
-        [JsonProperty(PropertyName = "actionButtons")]
-        public IEnumerable<ActionButton> ActionButtons { get; set; }
-
-        /// <summary>
         /// Gets or Sets the primary text of type <see cref="string"/>.
         /// </summary>
-        /// <value>This value is the primary text of the card view.</value>
+        /// <value>This value is the primary text to display</value>
         [JsonProperty(PropertyName = "primaryText")]
         public string PrimaryText { get; set; }
 
         /// <summary>
         /// Gets or Sets the description of type <see cref="string"/>.
         /// </summary>
-        /// <value>This value is the icon of the adaptive card extension.</value>
+        /// <value>This value is the description of the card view</value>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets the sign in button text of type <see cref="string"/>.
         /// </summary>
-        /// <value>This value is the icon of the adaptive card extension.</value>
+        /// <value>This value is the sign in button text of the card view</value>
         [JsonProperty(PropertyName = "signInButtonText")]
         public string SignInButtonText { get; set; }
     }

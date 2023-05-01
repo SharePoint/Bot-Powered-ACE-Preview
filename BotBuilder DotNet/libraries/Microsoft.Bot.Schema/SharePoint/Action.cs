@@ -9,22 +9,70 @@ using Newtonsoft.Json;
 namespace Microsoft.Bot.Schema.SharePoint
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ActionButton"/> class.
+    /// Initializes a new instance of the <see cref="Action"/> class.
     /// </summary>
     public class Action
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Action"/> class.
+        /// </summary>
+        public Action()
+        {
+            // Do nothing
+        }
+
+        /// <summary>
+        /// This enum contains the different types of actions available in the SPFx framework.
+        /// </summary>
+        public enum ActionType
+        {
+            /// <summary>
+            /// QuickView
+            /// </summary>
+            QuickView,
+
+            /// <summary>
+            /// Submit
+            /// </summary>
+            Submit, 
+
+            /// <summary>
+            /// ExternalLink
+            /// </summary>
+            ExternalLink,
+
+            /// <summary>
+            /// SelectMedia
+            /// </summary>
+            SelectMedia = "VivaAction.SelectMedia", 
+
+            /// <summary>
+            /// GetLocation
+            /// </summary>
+            GetLocation = "VivaAction.GetLocation",
+
+            /// <summary>
+            /// ShowLocation
+            /// </summary>
+            ShowLocation = "VivaAction.ShowLocation", 
+
+            /// <summary>
+            /// Execute
+            /// </summary>
+            Execute 
+        }
         /// <summary>
         /// Gets or Sets the type of type <see cref="string"/>.
         /// </summary>
         /// <value>This value is the type of the action.</value>
         [JsonProperty(PropertyName = "type")]
-        public string Type { get; set; }
+        public ActionType Type { get; set; }
 
         /// <summary>
-        /// Gets or Sets the action parameters of type <see cref="string"/>.
+        /// Gets or Sets the action parameters of type <see cref="ICardActionParameters"/>.
         /// </summary>
         /// <value>This value is the parameters of the action.</value>
         [JsonProperty(PropertyName = "parameters")]
-        public ActionParameters Parameters { get; set; }
+        public ICardActionParameters Parameters { get; set; }
     }
 }

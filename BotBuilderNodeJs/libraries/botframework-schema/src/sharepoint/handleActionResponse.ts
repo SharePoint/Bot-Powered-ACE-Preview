@@ -1,15 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
-import { ISharepointViewResponse } from "./ISharepointViewResponse";
-import { GetCardViewResponse } from "./getCardViewResponse";
-import { GetQuickViewResponse } from "./getQuickViewResponse";
+import { ISharePointViewResponse } from "./ISharePointViewResponse";
 
 /**
  * Sharepoint HandleActionReponse object
  */
 export class HandleActionReponse {
     private responseType: HandleActionReponse.ResponseType;
-    private renderArguments?: ISharepointViewResponse;
+    private renderArguments?: ISharePointViewResponse;
 
     /**
      * Initializes a new instance of the HandleActionReponse class
@@ -35,14 +33,14 @@ export class HandleActionReponse {
     /**
      * Sets render arguments property of type GetCardViewResponse or GetQuickViewResponse
      */
-    public set RenderArguments(renderArguments: ISharepointViewResponse) {
+    public set RenderArguments(renderArguments: ISharePointViewResponse) {
         this.renderArguments = renderArguments;
     }
 
     /**
      * Gets render arguments property of type GetCardViewResponse or GetQuickViewResponse
      */
-    public get RenderArguments(): ISharepointViewResponse {
+    public get RenderArguments(): ISharePointViewResponse {
         return this.renderArguments;
     }
 }

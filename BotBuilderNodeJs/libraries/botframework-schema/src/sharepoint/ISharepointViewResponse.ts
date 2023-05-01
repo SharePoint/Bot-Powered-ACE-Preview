@@ -1,3 +1,3 @@
-export interface ISharepointViewResponse {
+export interface ISharePointViewResponse {
     
 }

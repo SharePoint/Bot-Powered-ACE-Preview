@@ -11,6 +11,7 @@ export class PropertyPaneLinkProperties implements IPropertyPaneFieldProperties 
     private text: string;
     private target: string;
     private href: string;
+    private ariaLabel: string;
     private disabled: boolean;
     private popupWindowProps: PropertyPaneLinkPopupWindowProperties;
     
@@ -61,6 +62,20 @@ export class PropertyPaneLinkProperties implements IPropertyPaneFieldProperties 
      */
     public get Href(): string {
         return this.href;
+    }
+
+    /**
+     * Sets the aria label of type string
+     */
+    public set AriaLabel(ariaLabel: string) {
+        this.ariaLabel = ariaLabel;
+    }
+
+    /**
+     * Gets the aria label of type string
+     */
+    public get AriaLabel(): string {
+        return this.ariaLabel;
     }
 
     /**
