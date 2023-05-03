@@ -20,6 +20,13 @@ namespace Microsoft.Bot.Schema.SharePoint
         {
             // Do nothing
         }
+
+        /// <summary>
+        /// Gets or Sets the action parameters of type <see cref="IDictionary<string, Object>"/>.
+        /// </summary>
+        /// <value>This value is the parameters of the action.</value>
+        [JsonProperty(PropertyName = "parameters")]
+        public IDictionary<string, Object> Parameters { get; set; }
     
         /// <summary>
         /// Gets or Sets confirmation dialog associated with this action of type <see cref="ConfirmationDialog"/>.

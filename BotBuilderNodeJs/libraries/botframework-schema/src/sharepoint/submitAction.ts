@@ -7,6 +7,7 @@ import { ConfirmationDialog } from './confirmationDialog';
  * Sharepoint action.submit 
  */
 export class SubmitAction extends Action {
+    protected parameters: { [key: string] : unknown };
     private confirmationDialog: ConfirmationDialog;
 
     /**
@@ -14,6 +15,20 @@ export class SubmitAction extends Action {
      */
     public SubmitAction() {
         // Do nothing
+    }
+
+    /**
+     * Sets parameters property of type key:value pair
+     */
+    public set Parameters (parameters: { [key: string] : unknown }) {
+        this.parameters = parameters;
+    }
+
+    /**
+     * Gets parameters property of type key:value pair
+     */
+    public get Parameters(): { [key: string] : unknown } {
+        return this.parameters; 
     }
 
     /**

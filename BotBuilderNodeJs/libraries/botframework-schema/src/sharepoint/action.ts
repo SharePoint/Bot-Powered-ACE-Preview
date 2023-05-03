@@ -8,7 +8,7 @@ import { ICardActionParameters } from './ICardActionParameters';
  */
 export class Action {
     private type: Action.ActionType;
-    private parameters: ICardActionParameters;
+    protected parameters: ICardActionParameters;
     
     /**
      * Initializes a new instance of the Action class
