@@ -12,10 +12,12 @@ export { GetLocationActionParameters } from './getLocationActionParameters';
 export { GetPropertyPaneConfigurationResponse } from './getPropertyPaneConfigurationResponse';
 export { GetQuickViewResponse } from './getQuickViewResponse';
 export { HandleActionReponse } from './handleActionResponse';
+export { IExecuteCardParameters } from './IExecuteCardParameters';
 export { ImageCardParameters } from './imageCardParameters';
 export { IPropertyPaneFieldProperties } from './IPropertyPaneFieldProperties';
 export { IPropertyPaneGroupOrConditionalGroup } from './IPropertyPaneGroupOrConditionalGroup';
 export { IQuickViewData } from './IQuickViewData';
+export { ISubmitCardParameters } from './ISubmitCardParameters'
 export { Location } from './location';
 export { PrimaryTextCardParameters } from './primaryTextCardParameters';
 export { PropertyPaneCheckboxProperties } from './propertyPaneCheckboxProperties';
