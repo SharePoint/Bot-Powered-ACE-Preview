@@ -34,22 +34,26 @@ namespace Microsoft.Bot.Schema.SharePoint
             /// <summary>
             /// Primary text card view
             /// </summary>
-            BasicCardView = "Basic",
+            [EnumMember(Value = "Basic")]
+            BasicCardView,
 
             /// <summary>
             /// Image card view
             /// </summary>
-            ImageCardView = "Image",
+            [EnumMember(Value = "Image")]
+            ImageCardView,
 
             /// <summary>
             /// Primary Text card view
             /// </summary>
-            PrimaryTextCardView = "PrimaryText",
+            [EnumMember(Value = "PrimaryText")]
+            PrimaryTextCardView,
 
             /// <summary>
             /// Sign In card view
             /// </summary>
-            SignInCardView = "SignIn"
+            [EnumMember(Value = "SignIn")]
+            SignInCardView
         }
 
         /// <summary>

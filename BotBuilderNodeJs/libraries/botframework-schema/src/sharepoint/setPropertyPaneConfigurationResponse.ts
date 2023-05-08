@@ -6,7 +6,7 @@ import { ISharePointViewResponse } from "./ISharePointViewResponse";
  * Sharepoint SetPropertyPaneConfigurationresponse object
  */
 export class SetPropertyPaneConfigurationResponse {
-    private responseType: SetPropertyPaneConfigurationResponse.ResponseType;
+    private responseType: SetPropertyPaneConfigurationResponse.ResponseTypeOption;
     private renderArguments?: ISharePointViewResponse;
 
     /**
@@ -19,14 +19,14 @@ export class SetPropertyPaneConfigurationResponse {
     /**
      * Sets response type property of type SetPropertyPaneConfigurationResponse.ResponseType
      */
-    public set ReponseType(responseType: SetPropertyPaneConfigurationResponse.ResponseType) {
+    public set ReponseType(responseType: SetPropertyPaneConfigurationResponse.ResponseTypeOption) {
         this.responseType = responseType;
     }
 
     /**
      * Gets response type property of type SetPropertyPaneConfigurationResponse.ResponseType
      */
-    public get ReponseType(): SetPropertyPaneConfigurationResponse.ResponseType {
+    public get ReponseType(): SetPropertyPaneConfigurationResponse.ResponseTypeOption {
         return this.responseType;
     }
 
@@ -46,7 +46,7 @@ export class SetPropertyPaneConfigurationResponse {
 }
 
 export namespace SetPropertyPaneConfigurationResponse {
-    export enum ResponseType {
+    export enum ResponseTypeOption {
         CardView = "Card",
         NoOp = "NoOp"
     }

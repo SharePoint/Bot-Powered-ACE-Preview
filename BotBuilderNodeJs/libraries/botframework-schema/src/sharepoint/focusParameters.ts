@@ -6,7 +6,7 @@
  */
 export class FocusParameters {
     private focusTarget: string;
-    private ariaLive: FocusParameters.AriaLive;
+    private ariaLive: FocusParameters.AriaLiveOption;
     
     /**
      * Initializes a new instance of the FocusParameters class
@@ -32,21 +32,21 @@ export class FocusParameters {
     /**
      * Sets isTeamsDeepLink property of type boolean
      */
-    public set AriaLive (ariaLive: FocusParameters.AriaLive) {
+    public set AriaLive (ariaLive: FocusParameters.AriaLiveOption) {
         this.ariaLive = ariaLive;
     }
 
     /**
      * Gets isTeamsDeepLink property of type boolean
      */
-    public get AriaLive(): FocusParameters.AriaLive {
+    public get AriaLive(): FocusParameters.AriaLiveOption {
         return this.ariaLive; 
     }
 }
 
 export namespace FocusParameters
 {
-    export enum AriaLive {
+    export enum AriaLiveOption {
         Polite = "polite",
         Assertive = "assertive",
         Off = "off"

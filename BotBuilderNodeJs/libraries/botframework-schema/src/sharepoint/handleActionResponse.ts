@@ -6,7 +6,7 @@ import { ISharePointViewResponse } from "./ISharePointViewResponse";
  * Sharepoint HandleActionReponse object
  */
 export class HandleActionReponse {
-    private responseType: HandleActionReponse.ResponseType;
+    private responseType: HandleActionReponse.ResponseTypeOption;
     private renderArguments?: ISharePointViewResponse;
 
     /**
@@ -19,14 +19,14 @@ export class HandleActionReponse {
     /**
      * Sets response type property of type HandleActionViewReponse.ResponseType
      */
-    public set ReponseType(responseType: HandleActionReponse.ResponseType) {
+    public set ReponseType(responseType: HandleActionReponse.ResponseTypeOption) {
         this.responseType = responseType;
     }
 
     /**
      * Gets response type property of type HandleActionViewReponse.ResponseType
      */
-    public get ReponseType(): HandleActionReponse.ResponseType {
+    public get ReponseType(): HandleActionReponse.ResponseTypeOption {
         return this.responseType;
     }
 
@@ -46,7 +46,7 @@ export class HandleActionReponse {
 }
 
 export namespace HandleActionReponse {
-    export enum ResponseType {
+    export enum ResponseTypeOption {
         CardView = "Card",
         QuickView = "QuickView",
         NoOp = "NoOp"

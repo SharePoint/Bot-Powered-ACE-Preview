@@ -1,8 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
@@ -24,17 +25,22 @@ namespace Microsoft.Bot.Schema.SharePoint
             // Do nothing
         }
 
-        public enum ResponseType
+        /// <summary>
+        /// This enum contains the different types of responses possible after setting properties.
+        /// </summary>
+        public enum ResponseTypeOption
         {
             /// <summary>
             /// CardView
             /// </summary>
-            CardView = "Card",
+            [EnumMember(Value = "Card")]
+            CardView,
 
             /// <summary>
             /// NoOp
             /// </summary>
-            NoOp = "NoOp"
+            [EnumMember(Value = "NoOp")]
+            NoOp
         }
 
         /// <summary>
@@ -43,7 +49,7 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// <value>This value is the view type of the set property pane configuration response.</value>
         [JsonProperty(PropertyName = "responseType")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ResponseType ResponseType { get; set; }
+        public ResponseTypeOption ResponseType { get; set; }
 
         /// <summary>
         /// Gets or Sets the render arguments.

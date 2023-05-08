@@ -8,7 +8,7 @@ import { IOnCardSelectionActionParameters } from './IOnCardSelectionActionParame
  * Sharepoint SelectMediaActionParameters object for select media action
  */
 export class SelectMediaActionParameters implements ICardActionParameters, IOnCardSelectionActionParameters {
-    private mediaType: SelectMediaActionParameters.MediaType;
+    private mediaType: SelectMediaActionParameters.MediaTypeOption;
     private allowMultipleCapture: boolean;
     private maxSizePerFile?: number;
     private supportedFileFormats?: string[];
@@ -23,14 +23,14 @@ export class SelectMediaActionParameters implements ICardActionParameters, IOnCa
     /**
      * Sets the media type of type string
      */
-    public set MediaType(mediaType: SelectMediaActionParameters.MediaType) {
+    public set MediaType(mediaType: SelectMediaActionParameters.MediaTypeOption) {
         this.mediaType = mediaType;
     }
 
     /**
      * Gets the media type of type string
      */
-    public get MediaType(): SelectMediaActionParameters.MediaType {
+    public get MediaType(): SelectMediaActionParameters.MediaTypeOption {
         return this.mediaType;
     }
 
@@ -78,7 +78,7 @@ export class SelectMediaActionParameters implements ICardActionParameters, IOnCa
 }
 
 export namespace SelectMediaActionParameters {
-    export enum MediaType {
+    export enum MediaTypeOption {
         Image = 1,
         Audio = 4,
         Document = 8

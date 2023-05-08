@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 using System;
@@ -21,7 +21,7 @@ namespace Microsoft.Bot.Schema.SharePoint
             // Do nothing
         }
 
-        public enum MediaType
+        public enum MediaTypeOption
         {
             /// <summary>
             /// Image
@@ -40,11 +40,11 @@ namespace Microsoft.Bot.Schema.SharePoint
         }
 
         /// <summary>
-        /// Gets or Sets type of media to be selected of type <see cref="MediaType"/>.
+        /// Gets or Sets type of media to be selected of type <see cref="MediaTypeOption"/>.
         /// </summary>
         /// <value>This value is the type of media to be selected.</value>
         [JsonProperty(PropertyName = "mediaType")]
-        public MediaType MediaType { get; set; }
+        public MediaTypeOption MediaType { get; set; }
 
         /// <summary>
         /// Gets or Sets the allow multiple capture property of type <see cref="bool"/>.

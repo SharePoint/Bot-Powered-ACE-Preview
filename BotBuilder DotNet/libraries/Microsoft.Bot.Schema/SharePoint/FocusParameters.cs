@@ -1,8 +1,9 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
 
@@ -21,22 +22,28 @@ namespace Microsoft.Bot.Schema.SharePoint
             // Do nothing
         }
 
-        public enum AriaLive
+        /// <summary>
+        /// This enum contains the different types of aria live options available in the SPFx framework.
+        /// </summary>
+        public enum AriaLiveOption
         {
             /// <summary>
             /// Polite
             /// </summary>
-            Polite = "polite",
+            [EnumMember(Value = "polite")]
+            Polite,
 
             /// <summary>
             /// Assertive
             /// </summary>
-            Assertive = "assertive",
+            [EnumMember(Value = "assertive")]
+            Assertive,
 
             /// <summary>
             /// Off
             /// </summary>
-            Off = "off"
+            [EnumMember(Value = "off")]
+            Off
         }
 
 
@@ -48,10 +55,10 @@ namespace Microsoft.Bot.Schema.SharePoint
         public string FocusTarget { get; set; }
 
         /// <summary>
-        /// Gets or Sets the aria live property of type <see cref="AriaLive"/>.
+        /// Gets or Sets the aria live property of type <see cref="AriaLiveOption"/>.
         /// </summary>
         /// <value>This value sets the accessibility reading of the contents within the focus target.</value>
         [JsonProperty(PropertyName = "ariaLive")]
-        public AriaLive AriaLive { get; set; }
+        public AriaLiveOption AriaLive { get; set; }
     }
 }

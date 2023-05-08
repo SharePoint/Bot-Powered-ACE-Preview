@@ -7,7 +7,7 @@ import { ICardActionParameters } from './ICardActionParameters';
  * Sharepoint action
  */
 export class Action {
-    private type: Action.ActionType;
+    private type: Action.ActionTypeOption;
     protected parameters: ICardActionParameters;
     
     /**
@@ -20,14 +20,14 @@ export class Action {
     /**
      * Sets type property of type Action.ActionType
      */
-    public set Type(type: Action.ActionType) {
+    public set Type(type: Action.ActionTypeOption) {
         this.type = type;
     }
 
     /**
      * Gets type property of type Action.ActionType
      */
-    public get Type(): Action.ActionType {
+    public get Type(): Action.ActionTypeOption {
         return this.type;
     }
 
@@ -47,7 +47,7 @@ export class Action {
 }
 
 export namespace Action {
-    export enum ActionType {
+    export enum ActionTypeOption {
         QuickView = 'QuickView',
         Submit = 'Submit',
         ExternalLink = 'ExternalLink',

@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 using System;
@@ -22,11 +22,11 @@ namespace Microsoft.Bot.Schema.SharePoint
         }
 
         /// <summary>
-        /// Gets or Sets the action parameters of type <see cref="IDictionary<string, Object>"/>.
+        /// Gets or Sets the action parameters of type <see cref="Dictionary{TKey, TValue}"/>.
         /// </summary>
         /// <value>This value is the parameters of the action.</value>
         [JsonProperty(PropertyName = "parameters")]
-        public IDictionary<string, Object> Parameters { get; set; }
+        public new Dictionary<string, object> Parameters { get; set; }  
     
         /// <summary>
         /// Gets or Sets confirmation dialog associated with this action of type <see cref="ConfirmationDialog"/>.

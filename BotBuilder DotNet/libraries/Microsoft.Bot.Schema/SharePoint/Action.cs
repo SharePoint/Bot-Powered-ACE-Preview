@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
 
@@ -44,17 +45,20 @@ namespace Microsoft.Bot.Schema.SharePoint
             /// <summary>
             /// SelectMedia
             /// </summary>
-            SelectMedia = "VivaAction.SelectMedia", 
+            [EnumMember(Value = "VivaAction.SelectMedia")]
+            SelectMedia, 
 
             /// <summary>
             /// GetLocation
             /// </summary>
-            GetLocation = "VivaAction.GetLocation",
+            [EnumMember(Value = "VivaAction.GetLocation")]
+            GetLocation,
 
             /// <summary>
             /// ShowLocation
             /// </summary>
-            ShowLocation = "VivaAction.ShowLocation", 
+            [EnumMember(Value = "VivaAction.ShowLocation")]
+            ShowLocation, 
 
             /// <summary>
             /// Execute
