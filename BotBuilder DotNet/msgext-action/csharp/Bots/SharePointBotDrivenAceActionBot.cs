@@ -35,9 +35,7 @@ namespace Microsoft.BotBuilderSamples.Bots
         protected override Task<GetQuickViewResponse> OnSharePointTaskGetQuickViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
             GetQuickViewResponse response = new GetQuickViewResponse();
-            response.Data = new QuickViewData();
-            response.Data.Title = "BOT QUICK VIEW";
-            response.Data.Description = "BOT DESCRIPTION";
+            response.Title = "BOT QUICK VIEW";
             response.Template = new AdaptiveCard();
 
             AdaptiveContainer container = new AdaptiveContainer();
@@ -64,7 +62,6 @@ namespace Microsoft.BotBuilderSamples.Bots
             response.Template.Body.Add(container);
 
             response.ViewId = "qv1";
-            response.StackSize = 1;
             return Task.FromResult(response);
         }
 
@@ -118,27 +115,30 @@ namespace Microsoft.BotBuilderSamples.Bots
 
         protected override Task<GetCardViewResponse> OnSharePointTaskGetCardViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
-            GetCardViewResponse response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryText);
+            GetCardViewResponse response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView);
             response.AceData = new AceData();
             response.AceData.CardSize = AceData.AceCardSize.Medium;
             response.AceData.Title = "BOT DRIVEN ACE";
             response.AceData.DataVersion = "1.0";
             response.AceData.Id = "<App ID>";
-            response.Data = new CardViewData();
-            response.Data.PrimaryText = "MY BOT " + SharePointBotDrivenAceActionBot.index++.ToString();
+            response.Data = new PrimaryTextCardParameters()
+            {
+                PrimaryText = "MY BOT " + SharePointBotDrivenAceActionBot.index++.ToString()
+            };
             response.ViewId = "view1";
 
             ActionButton button = new ActionButton();
             button.Title = "DETAILS";
-            button.Action = new Microsoft.Bot.Schema.SharePoint.Action();
-            button.Action.Type = "QuickView";
-            button.Action.Parameters = new ActionParameters();
-            button.Action.Parameters.View = "appid_QUICK_VIEW";
+            button.Action = new SharepointAction();
+            button.Action.Type = SharepointAction.ActionType.QuickView;
+            button.Action.Parameters = new QuickViewParameters() { View = "appid_QUICK_VIEW" };
 
-            List<ActionButton> actionButtons = new List<ActionButton>();
-            actionButtons.Add(button);
+            List<ActionButton> actionButtons = new List<ActionButton>
+            {
+                button
+            };
 
-            response.Data.ActionButtons = actionButtons;
+            response.CardButtons = actionButtons;
 
             return Task.FromResult(response);
         }
@@ -330,8 +330,10 @@ namespace Microsoft.BotBuilderSamples.Bots
             };
             page.Groups = groups;
 
-            List<PropertyPanePage> pages = new List<PropertyPanePage>();
-            pages.Add(page);
+            List<PropertyPanePage> pages = new List<PropertyPanePage>
+            {
+                page
+            };
             response.Pages = pages;
 
             return Task.FromResult(response); 
@@ -360,13 +362,15 @@ namespace Microsoft.BotBuilderSamples.Bots
                 Text = cardData.DisplayData,
             };
 
-            var attachments = new List<MessagingExtensionAttachment>();
-            attachments.Add(new MessagingExtensionAttachment
+            var attachments = new List<MessagingExtensionAttachment>
             {
-                Content = card,
-                ContentType = HeroCard.ContentType,
-                Preview = card.ToAttachment(),
-            });
+                new MessagingExtensionAttachment
+                {
+                    Content = card,
+                    ContentType = HeroCard.ContentType,
+                    Preview = card.ToAttachment(),
+                }
+            };
 
             return new MessagingExtensionActionResponse
             {
@@ -391,13 +395,15 @@ namespace Microsoft.BotBuilderSamples.Bots
                 Text = createCardData.Text,
             };
 
-            var attachments = new List<MessagingExtensionAttachment>();
-            attachments.Add(new MessagingExtensionAttachment
+            var attachments = new List<MessagingExtensionAttachment>
             {
-                Content = card,
-                ContentType = HeroCard.ContentType,
-                Preview = card.ToAttachment(),
-            });
+                new MessagingExtensionAttachment
+                {
+                    Content = card,
+                    ContentType = HeroCard.ContentType,
+                    Preview = card.ToAttachment(),
+                }
+            };
 
             return new MessagingExtensionActionResponse
             {
@@ -470,13 +476,15 @@ namespace Microsoft.BotBuilderSamples.Bots
                 Images = new List<CardImage> { new CardImage { Url = imgUrl } },
             };
 
-            var attachments = new List<MessagingExtensionAttachment>();
-            attachments.Add(new MessagingExtensionAttachment
+            var attachments = new List<MessagingExtensionAttachment>
             {
-                Content = card,
-                ContentType = ThumbnailCard.ContentType,
-                Preview = card.ToAttachment(),
-            });
+                new MessagingExtensionAttachment
+                {
+                    Content = card,
+                    ContentType = ThumbnailCard.ContentType,
+                    Preview = card.ToAttachment(),
+                }
+            };
 
             return new MessagingExtensionActionResponse
             {

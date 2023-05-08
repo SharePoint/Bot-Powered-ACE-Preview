@@ -11,7 +11,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// Action.Submit.
     /// </summary>
-    public class SubmitAction : Action
+    public class SubmitAction : SharepointAction
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SubmitAction"/> class.

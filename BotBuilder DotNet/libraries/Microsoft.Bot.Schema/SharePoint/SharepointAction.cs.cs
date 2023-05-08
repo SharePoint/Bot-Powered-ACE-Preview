@@ -10,14 +10,14 @@ using Newtonsoft.Json;
 namespace Microsoft.Bot.Schema.SharePoint
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Action"/> class.
+    /// Initializes a new instance of the <see cref="SharepointAction"/> class.
     /// </summary>
-    public class Action
+    public class SharepointAction
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Action"/> class.
+        /// Initializes a new instance of the <see cref="SharepointAction"/> class.
         /// </summary>
-        public Action()
+        public SharepointAction()
         {
             // Do nothing
         }

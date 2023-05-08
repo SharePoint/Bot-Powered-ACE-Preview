@@ -11,7 +11,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// Action.Execute.
     /// </summary>
-    public class ExecuteAction : Action
+    public class ExecuteAction : SharepointAction
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ExecuteAction"/> class.

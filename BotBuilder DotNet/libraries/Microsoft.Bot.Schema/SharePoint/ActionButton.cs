@@ -33,6 +33,6 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// </summary>
         /// <value>This value is the action of the action button.</value>
         [JsonProperty(PropertyName = "action")]
-        public Action Action { get; set; }
+        public SharepointAction Action { get; set; }
     }
 }
