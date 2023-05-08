@@ -32,9 +32,7 @@ namespace Microsoft.BotBuilderSamples.Bots
         protected override Task<GetQuickViewResponse> OnSharePointTaskGetQuickViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
             GetQuickViewResponse response = new GetQuickViewResponse();
-            response.Data = new QuickViewData();
-            response.Data.Title = "Bot quick view";
-            response.Data.Description = "Bot description";
+            response.Title =  "Bot quick view";
             response.Template = new AdaptiveCard();
 
             AdaptiveContainer container = new AdaptiveContainer();
@@ -61,33 +59,38 @@ namespace Microsoft.BotBuilderSamples.Bots
             response.Template.Body.Add(container);
 
             response.ViewId = "qv1";
-            response.StackSize = 1;
             return Task.FromResult(response);
         }
 
         protected override Task<GetCardViewResponse> OnSharePointTaskGetCardViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
-            GetCardViewResponse response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryText);
+            GetCardViewResponse response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView);
             response.AceData = new AceData();
             response.AceData.CardSize = AceData.AceCardSize.Medium;
             response.AceData.Title = "Bot Ace Demo";
             response.AceData.DataVersion = "1.0";
             response.AceData.Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f";
-            response.Data = new CardViewData();
-            response.Data.PrimaryText = "My Bot";
+            response.Data = new PrimaryTextCardParameters()
+            {
+                PrimaryText = "My Bot"
+            };
             response.ViewId = "view1";
 
             ActionButton button = new ActionButton();
             button.Title = "Details";
-            button.Action = new Microsoft.Bot.Schema.SharePoint.Action();
-            button.Action.Type = "QuickView";
-            button.Action.Parameters = new ActionParameters();
-            button.Action.Parameters.View = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW";
+            button.Action = new SharepointAction();
+            button.Action.Type = SharepointAction.ActionType.QuickView;
+            button.Action.Parameters = new QuickViewParameters()
+            {
+                View = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f_QUICK_VIEW"
+            };
 
-            List<ActionButton> actionButtons = new List<ActionButton>();
-            actionButtons.Add(button);
+            List<ActionButton> actionButtons = new List<ActionButton>
+            {
+                button
+            };
 
-            response.Data.ActionButtons = actionButtons;
+            response.CardButtons = actionButtons;
 
             return Task.FromResult(response);
         }
@@ -233,8 +236,10 @@ namespace Microsoft.BotBuilderSamples.Bots
             };
             page.Groups = groups;
 
-            List<PropertyPanePage> pages = new List<PropertyPanePage>();
-            pages.Add(page);
+            List<PropertyPanePage> pages = new List<PropertyPanePage>
+            {
+                page
+            };
             response.Pages = pages;
 
             return Task.FromResult(response);

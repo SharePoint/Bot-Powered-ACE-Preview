@@ -365,22 +365,19 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
     }
 
     async OnSharePointTaskHandleActionAsync(context, taskModuleRequest){
-        const noOp = new HandleActionViewReponse();
-        noOp.ReponseType = HandleActionViewReponse.ResponseType.NoOp;
-        return noOp;
-        // const viewToNavigateTo = context.activity.value.data.data.viewToNavigateTo;
-        // if (viewToNavigateTo.includes('CARD')){
-        //     this.currentView = viewToNavigateTo;
-        //     response.ReponseType = HandleActionViewReponse.ResponseType.CardView;
-        //     response.RenderArguments = this.cardViewMap.get(viewToNavigateTo)
-        //     return response;
-        // } else if (viewToNavigateTo.includes('QUICK')){
-        //     this.currentView = viewToNavigateTo;
-        //     const response = new HandleActionViewReponse();
-        //     response.ReponseType = HandleActionViewReponse.ResponseType.QuickView;
-        //     response.RenderArguments = this.quickViewMap.get(viewToNavigateTo)
-        //     return response;
-        // }
+        const viewToNavigateTo = context.activity.value.data.data.viewToNavigateTo;
+        if (viewToNavigateTo.includes('CARD')){
+            this.currentView = viewToNavigateTo;
+            response.ReponseType = HandleActionViewReponse.ResponseType.CardView;
+            response.RenderArguments = this.cardViewMap.get(viewToNavigateTo)
+            return response;
+        } else if (viewToNavigateTo.includes('QUICK')){
+            this.currentView = viewToNavigateTo;
+            const response = new HandleActionViewReponse();
+            response.ReponseType = HandleActionViewReponse.ResponseType.QuickView;
+            response.RenderArguments = this.quickViewMap.get(viewToNavigateTo)
+            return response;
+        }
     } 
     
     async createCardViews(){

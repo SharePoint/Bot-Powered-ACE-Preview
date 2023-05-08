@@ -70,6 +70,13 @@ namespace Microsoft.Bot.Schema.SharePoint
         public string Title { get; set; }
 
         /// <summary>
+        /// Gets or Sets the description of type <see cref="string"/>.
+        /// </summary>
+        /// <value>This value is the description of the adaptive card extension.</value>
+        [JsonProperty(PropertyName = "description")]
+        public string Description { get; set; }
+
+        /// <summary>
         /// Gets or Sets the icon property of type <see cref="string"/>.
         /// </summary>
         /// <value>This value is the icon of the adaptive card extension.</value>
