@@ -2,19 +2,24 @@
 // Licensed under the MIT License.
 
 require('dotenv').config();
-const { SharePointActivityHandler, CardFactory, TeamsInfo, MessageFactory, CloudAdapterBase, TurnContext } = require('botbuilder');
-import { CloudAdapterBase, TurnContext } from 'botbuilder-core';
+const { SharePointActivityHandler, CardFactory, TeamsInfo, MessageFactory} = require('botbuilder');
+const { CloudAdapterBase, TurnContext } = require('botbuilder-core');
+const { SimpleGraphClient } = require('../simple-graph-client');
 const { 
     GetCardViewResponse, 
     AceData, 
     ActionButton, 
-    ActionParameters, 
-    GetQuickViewResponse, 
+    GetQuickViewResponse,
+    HandleActionReponse,
+    PrimaryTextCardParameters,
+    QuickViewParameters,
+    SignInCardParameters,
+    SharepointAction, 
 } = require('botframework-schema');
 const AdaptiveCards = require("adaptivecards");
 const baseurl = process.env.BaseUrl;
 const connectionName = process.env.ConnectionName;
-const appTitle = process.env.AppTitle;
+const appTitle = "Sign In Bot";
 
 class SharepointAuthenticationBot extends SharePointActivityHandler {
     
@@ -100,12 +105,12 @@ class SharepointAuthenticationBot extends SharePointActivityHandler {
         try {
             if (!this.cardViewResponse) {
                 // check to see if the user has already signed in
-                const user = await TryGetAuthenticatedUser(null, turnContext);
+                const user = await this.TryGetAuthenticatedUser(null, context);
                 if (user != null)
                 {
-                    return GenerateCardView(user);
+                    return this.GenerateCardView(user);
                 } else {
-                    return await GenerateSignInCardView(turnContext, cancellationToken);
+                    return await this.GenerateSignInCardView(context);
                 }
             } else {
                 return this.cardViewResponse;
@@ -125,40 +130,45 @@ class SharepointAuthenticationBot extends SharePointActivityHandler {
      */
     async OnSharePointTaskGetQuickViewAsync(context, taskModuleRequest) {
         try {
-            return GenerateSignInQuickView();
+            return this.GenerateSignInQuickView();
         } catch(error) {
             console.log(error);
         }
     }
 
     async OnSharePointTaskHandleActionAsync(turnContext, taskModuleRequest) {
-        const magicCode = (taskModuleRequest?.Data)?.GetValue("data")?.SelectToken("magicCode")?.ToString();
-        const user = await TryGetAuthenticatedUser(magicCode, turnContext);
+        const magicCode = turnContext.activity.value.data.data.magicCode;
+        const user = await this.TryGetAuthenticatedUser(magicCode, turnContext);
         const displayText = `Hello, ${user?.DisplayName}! You're signed in.`;
 
-        const response = new HandleActionResponse();
-        response.ResponseType = HandleActionResponseType.Card;
-        response.RenderArguments = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryText)
+        const response = new HandleActionReponse();
+        response.ResponseType = HandleActionReponse.ResponseType.CardView;
+        const cardView = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView);
+        cardView.TemplateType = GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView;
 
-        response.RenderArguments.AceData = new AceData();
-        response.RenderArguments.AceData.DataVersion = "1.0";
-        response.RenderArguments.AceData.Id = "SignedInView";
-        response.RenderArguments.AceData.CardSize = AceData.AceCardSize.Large;
-        response.RenderArguments.AceData.Title = appTitle
+        cardView.AceData = new AceData();
+        cardView.AceData.DataVersion = "1.0";
+        cardView.AceData.Id = "SignedInView";
+        cardView.AceData.CardSize = AceData.AceCardSize.Large;
+        cardView.AceData.Title = appTitle
 
-        response.RenderArguments.Data = {};
-        response.RenderArguments.Data.PrimaryText = "Signed In";
-        response.RenderArguments.Data.Description = displayText;
+        const params = new PrimaryTextCardParameters();
+        params.PrimaryText = "Signed In";
+        params.Description = displayText;
+        cardView.Data = params;
         
-        response.RenderArguments.ViewId = "SignedInViewId";
+        cardView.ViewId = "SignedInViewId";
+
+        response.RenderArguments = cardView;
 
         return response;
     }
 
     GenerateCardView(user) {
-        const displayText = `Hello, ${user?.DisplayName}! You're signed in.`;
+        const displayText = `Hello, ${user.displayName}! You're signed in.`;
 
-        const response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryText);
+        const response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView);
+        response.TemplateType = GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView;
         response.AceData = new AceData();
         response.AceData.DataVersion = "1.0";
         response.AceData.Id = "SignedInView";
@@ -166,49 +176,46 @@ class SharepointAuthenticationBot extends SharePointActivityHandler {
         response.AceData.Title = appTitle;
         response.ViewId = "SignedInView";
 
-        response.Data = {};
+        const params = new PrimaryTextCardParameters();
+        params.PrimaryText = "Signed In";
+        params.Description = displayText;
+        response.Data = params;
         return response;
     }
 
     async GenerateSignInCardView(turnContext) {
-        var signInResource = await TryGetSignInResource(turnContext);
-        var signInLink = signInResource != null ? new Uri(signInResource.SignInLink) : new Uri(string.Empty);
+        var signInResource = await this.TryGetSignInResource(turnContext);
+        var signInLink = signInResource != null ? signInResource.signInLink : string.Empty;
+        var aceData = new AceData();
+        aceData.DataVersion = "1.0";
+        aceData.Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f";
+        aceData.CardSize = AceData.AceCardSize.Large;
+        aceData.Title = appTitle;
 
-        var aceData = new AceData
-        {
-            DataVersion = "1.0",
-            Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f",
-
-            CardSize = AceData.AceCardSize.Large,
-            Title = appTitle
+        aceData.Properties = {
+            "uri": signInLink,
+            connectionName: connectionName
         };
-        aceData.Properties.SignInUri = signInLink;
-        aceData.Properties.ConnectionName = connectionName;
         
-        var data = {};
+        var data = new SignInCardParameters();
         data.PrimaryText = "Please Sign In";
         data.Description = "Testing sign in through sign in template for bots"
         data.SignInButtonText = "Sign In"
 
-        const completeSignInButton = new ActionButton
-        {
-            Title = "Complete Sign In",
-            Action = new Microsoft.Bot.Schema.SharePoint.Action
-            {
-                Type = "QuickView",
-                Parameters = new ActionParameters
-                {
-                    View = _signInQuickViewId
-                }
-            }
-        };
+        const completeSignInButton = new ActionButton();
+        completeSignInButton.Title = "Complete Sign In";
+        const buttonAction = new SharepointAction();
+        buttonAction.Type = SharepointAction.ActionType.QuickView;
+        const params =  new QuickViewParameters();
+        params.View = "signInQuickView";
+        buttonAction.Parameters = params;
+        completeSignInButton.Action = buttonAction;
 
-        const actionButtons = new List<ActionButton>
-        {
-            completeSignInButton
-        };
+        const actionButtons = [];
+        actionButtons[0] = completeSignInButton;
 
-        const response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.SignIn);
+        const response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.SignInCardView);
+        response.TemplateType = GetCardViewResponse.CardViewTemplateType.SignInCardView;
         response.AceData = aceData;
         response.CardButtons = actionButtons;
         response.Data = data;
@@ -219,56 +226,45 @@ class SharepointAuthenticationBot extends SharePointActivityHandler {
 
 
     GenerateSignInQuickView() {
-        const titleText = new AdaptiveTextBlock
-        {
-            Text = "Complete Sign In",
-            Color = AdaptiveTextColor.Dark,
-            Weight = AdaptiveTextWeight.Bolder,
-            Size = AdaptiveTextSize.Medium,
-            Wrap = true,
-            MaxLines = 1,
-            Spacing = AdaptiveSpacing.None
-        };
-        const descriptionText = new AdaptiveTextBlock
-        {
-            Text = "Input the magic code from signing into Azure Active Directory in order to continue.",
-            Color = AdaptiveTextColor.Dark,
-            Size = AdaptiveTextSize.Default,
-            Wrap = true,
-            MaxLines = 6,
-            Spacing = AdaptiveSpacing.None
-        };
-        const magicCodeInputField = new AdaptiveNumberInput
-        {
-            Placeholder = "Enter Magic Code",
-            Id = "magicCode",
-            IsRequired = true
-        };
-        const submitAction = new AdaptiveSubmitAction
-        {
-            Title = "Submit",
-            Id = "SubmitMagicCode"
-        };
-        const container = new AdaptiveContainer
-        {
-            Separator = true,
-            Items = new List<AdaptiveElement>
-            {
-                titleText, descriptionText, magicCodeInputField
-            }
-        };
+        const titleText = new AdaptiveCards.TextBlock();
+        titleText.text = "Complete Sign In";
+        titleText.color = AdaptiveCards.TextColor.Dark;
+        titleText.weight = AdaptiveCards.TextWeight.Bolder;
+        titleText.size = AdaptiveCards.TextSize.Medium;
+        titleText.wrap = true;
+        titleText.maxLines = 1;
+        titleText.spacing = AdaptiveCards.Spacing.None;
 
-        const ace = new AdaptiveCard(new AdaptiveSchemaVersion(1, 0));
-        ace.Body = new List<AdaptiveElement> { container };
-        ace.Actions = new List<AdaptiveAction> { submitAction };
-        const response = new GetQuickViewResponse
-        {
-            Template = ace,
-            ViewId = _signInQuickViewId,
-            StackSize = 1
-        };
-        response.Data.Title = "Complete Sign In";
-        response.Data.Description = "Complete signing into a third party identity provider.";
+        const descriptionText = new AdaptiveCards.TextBlock();
+        descriptionText.text = "Input the magic code from signing into Azure Active Directory in order to continue.";
+        descriptionText.color = AdaptiveCards.TextColor.Dark;
+        descriptionText.size = AdaptiveCards.TextSize.Default;
+        descriptionText.wrap = true;
+        descriptionText.maxLines = 6;
+        descriptionText.spacing = AdaptiveCards.Spacing.None;
+        
+        const magicCodeInputField = new AdaptiveCards.NumberInput();
+        magicCodeInputField.placeholder = "Enter Magic Code";
+        magicCodeInputField.id = "magicCode";
+        
+
+        const submitAction = new AdaptiveCards.SubmitAction();
+        submitAction.title = "Submit";
+        submitAction.id = "SubmitMagicCode";
+
+        const container =  new AdaptiveCards.Container();
+        container.separator = true;
+        container.addItem(titleText);
+        container.addItem(descriptionText);
+        container.addItem(magicCodeInputField);
+
+        const template = new AdaptiveCards.AdaptiveCard();
+        template.addItem(container);
+        template.addAction(submitAction);
+        const response = new GetQuickViewResponse();
+        response.Template = template;
+        response.ViewId = "signInQuickView"
+        response.Title = "Complete Sign In"
 
         return response;
     }
@@ -283,13 +279,15 @@ class SharepointAuthenticationBot extends SharePointActivityHandler {
      */
     async TryToGetUserToken(magicCode, turnContext)
     {
-        const userTokenClient = turnContext.turnState.get<UserTokenClient>(context.adapter.UserTokenClientKey);
+        // const userTokenClient = turnContext.turnState.get(turnContext.adapter.UserTokenClientKey);
+        const userTokenClient = turnContext.adapter;
         if (userTokenClient) {
             return userTokenClient.getUserToken(
-                turnContext.activity?.from?.id,
+                turnContext,
                 connectionName,
-                turnContext.activity?.channelId,
-                magicCode);
+                magicCode,
+            );
+            
         } else {
             throw new Error('userTokenClient is null');
         }
@@ -304,8 +302,8 @@ class SharepointAuthenticationBot extends SharePointActivityHandler {
      */
     async TryGetAuthenticatedUser(magicCode, turnContext)
     {
-        const response = await TryToGetUserToken(magicCode, turnContext);
-        if (response != null && !string.IsNullOrEmpty(response.Token))
+        const response = await this.TryToGetUserToken(magicCode, turnContext);
+        if (response != null && response.token)
         {
             const client = new SimpleGraphClient(response.token);
             return await client.getMe();
@@ -322,9 +320,9 @@ class SharepointAuthenticationBot extends SharePointActivityHandler {
      */
     async TryGetSignInResource(turnContext)
     {
-        const userTokenClient = turnContext.turnState.get < UserTokenClient > (context.adapter.UserTokenClientKey);
-        return userTokenClient.getSignInResource(connectionName, turnContext.activity, undefined);
+        const userTokenClient = turnContext.adapter;
+        return userTokenClient.getSignInResource(turnContext, connectionName, turnContext.activity.from.id, 'https://login.microsoftonline.com', undefined);
     }
 }
 
-module.exports.SharepointMessagingExtensionsActionBot = SharepointMessagingExtensionsActionBot;
+module.exports.SharepointAuthenticationBot = SharepointAuthenticationBot;

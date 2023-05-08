@@ -1,8 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 import { ISharepointViewResponse } from "./ISharepointViewResponse";
-import { GetCardViewResponse } from "./getCardViewResponse";
-import { GetQuickViewResponse } from "./getQuickViewResponse";
 
 /**
  * Sharepoint HandleActionReponse object
@@ -21,14 +19,14 @@ export class HandleActionReponse {
     /**
      * Sets response type property of type HandleActionViewReponse.ResponseType
      */
-    public set ReponseType(responseType: HandleActionReponse.ResponseType) {
+    public set ResponseType(responseType: HandleActionReponse.ResponseType) {
         this.responseType = responseType;
     }
 
     /**
      * Gets response type property of type HandleActionViewReponse.ResponseType
      */
-    public get ReponseType(): HandleActionReponse.ResponseType {
+    public get ResponseType(): HandleActionReponse.ResponseType {
         return this.responseType;
     }
 
