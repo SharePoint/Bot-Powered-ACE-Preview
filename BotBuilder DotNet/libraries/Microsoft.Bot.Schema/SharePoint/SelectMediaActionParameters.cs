@@ -11,7 +11,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// SharePoint parameters for a select media action.
     /// </summary>
-    public class SelectMediaActionParameters: ICardActionParameters, IOnCardSelectionActionParameters
+    public class SelectMediaActionParameters : ICardActionParameters, IOnCardSelectionActionParameters
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SelectMediaActionParameters"/> class.
@@ -21,6 +21,9 @@ namespace Microsoft.Bot.Schema.SharePoint
             // Do nothing
         }
 
+        /// <summary>
+        /// This enum contains the different types of media that can be selected.
+        /// </summary>
         public enum MediaTypeOption
         {
             /// <summary>
@@ -47,7 +50,7 @@ namespace Microsoft.Bot.Schema.SharePoint
         public MediaTypeOption MediaType { get; set; }
 
         /// <summary>
-        /// Gets or Sets the allow multiple capture property of type <see cref="bool"/>.
+        /// Gets or sets a value indicating whether the allow multiple capture property is enabled of type <see cref="bool"/>.
         /// </summary>
         /// <value>This value indicates whether multiple files can be selected.</value>
         [JsonProperty(PropertyName = "allowMultipleCapture")]

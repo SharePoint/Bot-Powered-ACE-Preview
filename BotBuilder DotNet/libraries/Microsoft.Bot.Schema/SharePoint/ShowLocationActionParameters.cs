@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 using System;
@@ -11,7 +11,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// SharePoint parameters for a show location action.
     /// </summary>
-    public class ShowLocationActionParameters: ICardActionParameters, IOnCardSelectionActionParameters
+    public class ShowLocationActionParameters : ICardActionParameters, IOnCardSelectionActionParameters
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ShowLocationActionParameters"/> class.

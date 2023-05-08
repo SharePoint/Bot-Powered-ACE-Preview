@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 using System;
@@ -11,11 +11,10 @@ using Newtonsoft.Json.Converters;
 namespace Microsoft.Bot.Schema.SharePoint
 {
     /// <summary>
-    /// Sharepoint Location object
+    /// Sharepoint Location object.
     /// </summary>
     public class Location 
     {
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Location"/> class.
         /// </summary>
@@ -51,6 +50,5 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// <value>This value is the accuracy of the location.</value>
         [JsonProperty(PropertyName = "accuracy")]
         public int Accuracy { get; set; }
-
     }
 }

@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 using System;
@@ -11,7 +11,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// SharePoint parameters for an External Link action.
     /// </summary>
-    public class ExternalLinkParameters: ICardActionParameters, IOnCardSelectionActionParameters
+    public class ExternalLinkParameters : ICardActionParameters, IOnCardSelectionActionParameters
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ExternalLinkParameters"/> class.
@@ -22,7 +22,7 @@ namespace Microsoft.Bot.Schema.SharePoint
         }
 
         /// <summary>
-        /// Gets or Sets the is teams deep link property of type <see cref="bool"/>.
+        /// Gets or Sets a value indicating whether this is a teams deep link property of type <see cref="bool"/>. 
         /// </summary>
         /// <value>This value indicates whether this is a Teams Deep Link.</value>
         [JsonProperty(PropertyName = "isTeamsDeepLink")]

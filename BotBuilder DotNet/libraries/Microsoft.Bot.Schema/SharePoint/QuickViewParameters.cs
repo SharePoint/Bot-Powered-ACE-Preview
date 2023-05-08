@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 using System;
@@ -11,7 +11,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// SharePoint parameters for an quick view action.
     /// </summary>
-    public class QuickViewParameters: ICardActionParameters, IOnCardSelectionActionParameters
+    public class QuickViewParameters : ICardActionParameters, IOnCardSelectionActionParameters
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="QuickViewParameters"/> class.

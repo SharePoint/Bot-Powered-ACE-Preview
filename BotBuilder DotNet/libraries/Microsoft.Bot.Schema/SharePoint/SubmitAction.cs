@@ -9,9 +9,9 @@ using Newtonsoft.Json;
 namespace Microsoft.Bot.Schema.SharePoint
 {
     /// <summary>
-    /// Action.Submit
+    /// Action.Submit.
     /// </summary>
-    public class SubmitAction: Action
+    public class SubmitAction : Action
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SubmitAction"/> class.
@@ -26,12 +26,12 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// </summary>
         /// <value>This value is the parameters of the action.</value>
         [JsonProperty(PropertyName = "parameters")]
-        public new Dictionary<string, object> Parameters { get; set; }  
-    
+        public new Dictionary<string, object> Parameters { get; set; }
+
         /// <summary>
         /// Gets or Sets confirmation dialog associated with this action of type <see cref="ConfirmationDialog"/>.
         /// </summary>
-        /// <value>This value is the confirmation dialog associated with this action</value>
+        /// <value>This value is the confirmation dialog associated with this action.</value>
         [JsonProperty(PropertyName = "confirmationDialog")]
         public ConfirmationDialog ConfirmationDialog { get; set; }
     }
