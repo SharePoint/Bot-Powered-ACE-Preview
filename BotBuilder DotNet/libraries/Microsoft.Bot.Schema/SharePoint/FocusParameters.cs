@@ -46,7 +46,6 @@ namespace Microsoft.Bot.Schema.SharePoint
             Off
         }
 
-
         /// <summary>
         /// Gets or Sets the focus target of type <see cref="string"/>.
         /// </summary>

@@ -26,6 +26,7 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// </summary>
         /// <value>This value is the parameters of the action.</value>
         [JsonProperty(PropertyName = "parameters")]
+        #pragma warning disable CA2227
         public new Dictionary<string, object> Parameters { get; set; }
 
         /// <summary>

@@ -16,7 +16,6 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// </summary>
     public class HandleActionResponse 
     {
-
         /// <summary>
         /// Initializes a new instance of the <see cref="HandleActionResponse"/> class.
         /// </summary>

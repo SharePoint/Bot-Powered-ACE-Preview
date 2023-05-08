@@ -9,9 +9,9 @@ using Newtonsoft.Json;
 namespace Microsoft.Bot.Schema.SharePoint
 {
     /// <summary>
-    /// Action.Execute
+    /// Action.Execute.
     /// </summary>
-    public class ExecuteAction: Action
+    public class ExecuteAction : Action
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ExecuteAction"/> class.
@@ -26,12 +26,13 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// </summary>
         /// <value>This value is the parameters of the action.</value>
         [JsonProperty(PropertyName = "parameters")]
+        #pragma warning disable CA2227
         public new Dictionary<string, object> Parameters { get; set; }
 
         /// <summary>
         /// Gets or Sets the verb associated with this action of type <see cref="string"/>.
         /// </summary>
-        /// <value>This value is the verb associated with the action</value>
+        /// <value>This value is the verb associated with the action.</value>
         [JsonProperty(PropertyName = "verb")]
         public string Verb { get; set; }
     }

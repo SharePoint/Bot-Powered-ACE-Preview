@@ -65,6 +65,7 @@ namespace Microsoft.Bot.Schema.SharePoint
             /// </summary>
             Execute 
         }
+
         /// <summary>
         /// Gets or Sets the type of type <see cref="string"/>.
         /// </summary>

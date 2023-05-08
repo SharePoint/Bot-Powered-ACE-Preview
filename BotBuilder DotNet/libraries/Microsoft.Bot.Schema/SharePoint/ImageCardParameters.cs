@@ -32,6 +32,7 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// Gets or Sets the image url of type <see cref="string"/>.
         /// </summary>
         /// <value>This value is the image url of the card view.</value>
+        #pragma warning disable CA1056
         [JsonProperty(PropertyName = "imageUrl")]
         public string ImageUrl { get; set; }
 

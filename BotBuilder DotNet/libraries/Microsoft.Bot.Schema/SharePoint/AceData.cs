@@ -81,6 +81,7 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// </summary>
         /// <value>This value is the property bag of the adaptive card extension.</value>
         [JsonProperty(PropertyName = "properties")]
+        #pragma warning disable CA2227
         public JObject Properties { get; set; }
     }
 }
