@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Bot.Schema.SharePoint
 {
@@ -35,11 +37,13 @@ namespace Microsoft.Bot.Schema.SharePoint
             /// <summary>
             /// Submit
             /// </summary>
-            Submit, 
+            [EnumMember(Value = "Submit")]
+            Submit,
 
             /// <summary>
             /// ExternalLink
             /// </summary>
+            [EnumMember(Value = "ExternalLink")]
             ExternalLink,
 
             /// <summary>
@@ -58,12 +62,13 @@ namespace Microsoft.Bot.Schema.SharePoint
             /// ShowLocation
             /// </summary>
             [EnumMember(Value = "VivaAction.ShowLocation")]
-            ShowLocation, 
+            ShowLocation,
 
             /// <summary>
             /// Execute
             /// </summary>
-            Execute 
+            [EnumMember(Value = "Execute")]
+            Execute
         }
 
         /// <summary>
@@ -71,6 +76,7 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// </summary>
         /// <value>This value is the type of the action.</value>
         [JsonProperty(PropertyName = "type")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public ActionType Type { get; set; }
 
         /// <summary>

@@ -79,11 +79,11 @@ namespace Microsoft.Bot.Schema.SharePoint
         public ICardParameters Data { get; set; }
 
         /// <summary>
-        /// Gets or Sets action to be performed when card is selected of type <see cref="IOnCardSelectionActionParameters"/>.
+        /// Gets or Sets action to be performed when card is selected of type <see cref="SharepointAction"/>.
         /// </summary>
         /// <value>This value is the action performed when card is clicked.</value>
         [JsonProperty(PropertyName = "onCardSelection")]
-        public IOnCardSelectionActionParameters OnCardSelection { get; set; }
+        public SharepointAction OnCardSelection { get; set; }
 
         /// <summary>
         /// Gets or Sets button(s) on the card view of type <see cref="ActionButton"/>.
