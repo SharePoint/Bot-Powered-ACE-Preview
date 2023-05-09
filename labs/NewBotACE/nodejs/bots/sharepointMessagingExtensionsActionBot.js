@@ -349,18 +349,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         } catch (error){
             console.log(error);
         }
-        
-        // dynamic json = JsonConvert.DeserializeObject(TeamsMessagingExtensionsActionBot.cardView);
-        // foreach (dynamic property in aceProperties)
-        // {
-        //     if (property.Key.Equals("title") || property.Key.Equals("description" ))
-        //     {
-        //         json.aceData[property.Key] = aceProperties[property.Key];
-        //     }
-        //     else
-        //     {
-        //         json.data[property.Key] = aceProperties[property.Key];
-        //     }
+
         return '';
     }
 

@@ -6,6 +6,7 @@ import { ICardParameters } from './ICardParameters';
 import { IOnCardSelectionActionParameters } from './IOnCardSelectionActionParameters'
 import { ActionButton } from './actionButton';
 import { ISharePointViewResponse } from './ISharepointViewResponse';
+import { SharepointAction } from '.';
 
 /**
  * Sharepoint GetCardView response object
@@ -15,7 +16,7 @@ export class GetCardViewResponse implements ISharePointViewResponse {
     private aceData: AceData;
     private data: ICardParameters;
     private viewId: string;
-    private onCardSelection: IOnCardSelectionActionParameters;
+    private onCardSelection: SharepointAction;
     private cardButtons: ActionButton;
 
     /**
@@ -68,16 +69,16 @@ export class GetCardViewResponse implements ISharePointViewResponse {
     }
 
     /**
-     * Sets on card selection property of type ICardActionParameters
+     * Sets on card selection property of type SharepointAction
      */
-    public set OnCardSelection(onCardSelection: IOnCardSelectionActionParameters) {
+    public set OnCardSelection(onCardSelection: SharepointAction) {
         this.onCardSelection = onCardSelection;
     }
 
     /**
-     * Gets on card selection property of type ICardActionParameters
+     * Gets on card selection property of type SharepointAction
      */
-    public get OnCardSelection(): IOnCardSelectionActionParameters {
+    public get OnCardSelection(): SharepointAction {
         return this.onCardSelection;
     }
 
