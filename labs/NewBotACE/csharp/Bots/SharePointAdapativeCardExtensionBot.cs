@@ -33,175 +33,179 @@ namespace Microsoft.BotBuilderSamples.Bots
             SharePointAdapativeCardExtensionBot.cardViewDict = new Dictionary<string, GetCardViewResponse>();
             SharePointAdapativeCardExtensionBot.quickViewDict = new Dictionary<string, GetQuickViewResponse>();
 
-            GetCardViewResponse primaryTextCard = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView);
-            primaryTextCard.AceData = new AceData();
-            primaryTextCard.AceData.CardSize = AceData.AceCardSize.Large;
-            primaryTextCard.AceData.Title = "Bot Ace Demo";
-            primaryTextCard.AceData.DataVersion = "1.0";
-            primaryTextCard.AceData.Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f";
-            primaryTextCard.Data = new PrimaryTextCardParameters()
+            if (!SharePointAdapativeCardExtensionBot.cardViewDict.ContainsKey("PRIMARY_TEXT_CARD_VIEW"))
             {
-                PrimaryText = "My Bot",
-                Description = "This is the description of a bot"
-            };
-            primaryTextCard.ViewId = "PRIMARY_TEXT_CARD_VIEW";
-
-            primaryTextCard.OnCardSelection = new SharepointAction()
-            {
-                Type = SharepointAction.ActionType.QuickView,
-                Parameters = new QuickViewParameters()
+                GetCardViewResponse primaryTextCard = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView);
+                primaryTextCard.AceData = new AceData();
+                primaryTextCard.AceData.CardSize = AceData.AceCardSize.Large;
+                primaryTextCard.AceData.Title = "Bot Ace Demo";
+                primaryTextCard.AceData.DataVersion = "1.0";
+                primaryTextCard.AceData.Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f";
+                primaryTextCard.Data = new PrimaryTextCardParameters()
                 {
-                    View = "PRIMARY_TEXT_QUICK_VIEW"
-                }
-            };
+                    PrimaryText = "My Bot",
+                    Description = "This is the description of a bot"
+                };
+                primaryTextCard.ViewId = "PRIMARY_TEXT_CARD_VIEW";
 
-            ActionButton primaryTextButton = new ActionButton();
-            primaryTextButton.Title = "Basic View";
-            SubmitAction primaryTextSubmitAction = new SubmitAction();
-            primaryTextSubmitAction.Parameters = new Dictionary<string, object>(){
-                {"viewToNavigateTo", "BASIC_CARD_VIEW"}
-            };
-            primaryTextSubmitAction.Type = SharepointAction.ActionType.Submit;
-            primaryTextButton.Action = primaryTextSubmitAction;
-
-            List<ActionButton> actionButtons = new List<ActionButton>
-            {
-                primaryTextButton
-            };
-
-            primaryTextCard.CardButtons = actionButtons;
-            SharePointAdapativeCardExtensionBot.cardViewDict.Add(primaryTextCard.ViewId, primaryTextCard);
-
-            // BASIC
-            GetCardViewResponse basicCard = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.BasicCardView);
-            basicCard.AceData = new AceData();
-            basicCard.AceData.CardSize = AceData.AceCardSize.Large;
-            basicCard.AceData.Title = "BOT ACE DEMO";
-            basicCard.AceData.Description = "BOT ACE DESCRIPTION";
-            basicCard.AceData.DataVersion = "1.0";
-            basicCard.AceData.Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f";
-            basicCard.Data = new BasicCardParameters()
-            {
-                PrimaryText = "Basic Card",
-            };
-
-            basicCard.ViewId = "BASIC_CARD_VIEW";
-
-            basicCard.OnCardSelection = new SharepointAction()
-            {
-                Type = SharepointAction.ActionType.QuickView,
-                Parameters = new QuickViewParameters()
+                primaryTextCard.OnCardSelection = new SharepointAction()
                 {
-                    View = "BASIC_QUICK_VIEW"
-                }
-            };
+                    Type = SharepointAction.ActionType.QuickView,
+                    Parameters = new QuickViewParameters()
+                    {
+                        View = "PRIMARY_TEXT_QUICK_VIEW"
+                    }
+                };
 
-            ActionButton basicButton = new ActionButton();
-            basicButton.Title = "Image View";
-            SubmitAction basicSubmitAction = new SubmitAction();
-            basicSubmitAction.Parameters = new Dictionary<string, object>(){
-                {"viewToNavigateTo", "IMAGE_CARD_VIEW"}
-            };
-            basicSubmitAction.Type = SharepointAction.ActionType.Submit;
-            basicButton.Action = basicSubmitAction;
+                ActionButton primaryTextButton = new ActionButton();
+                primaryTextButton.Title = "Basic View";
+                SubmitAction primaryTextSubmitAction = new SubmitAction();
+                primaryTextSubmitAction.Parameters = new Dictionary<string, object>(){
+                    {"viewToNavigateTo", "BASIC_CARD_VIEW"}
+                };
+                primaryTextSubmitAction.Type = SharepointAction.ActionType.Submit;
+                primaryTextButton.Action = primaryTextSubmitAction;
 
-            List<ActionButton> basicActionButtons = new List<ActionButton>
-            {
-                basicButton
-            };
-
-            basicCard.CardButtons = basicActionButtons;
-            SharePointAdapativeCardExtensionBot.cardViewDict.Add(basicCard.ViewId, basicCard);
-
-            GetCardViewResponse imageCard = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.ImageCardView);
-            imageCard.AceData = new AceData();
-            imageCard.AceData.CardSize = AceData.AceCardSize.Large;
-            imageCard.AceData.Title = "BOT ACE DEMO";
-            imageCard.AceData.Description = "BOT ACE DESCRIPTION";
-            imageCard.AceData.DataVersion = "1.0";
-            imageCard.AceData.Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f";
-            imageCard.Data = new ImageCardParameters()
-            {
-                PrimaryText = "My bot's image card",
-                ImageUrl = "https://download.logo.wine/logo/SharePoint/SharePoint-Logo.wine.png",
-                ImageAltText = "Sharepoint logo"
-            };
-
-            imageCard.ViewId = "IMAGE_CARD_VIEW";
-
-            imageCard.OnCardSelection = new SharepointAction()
-            {
-                Type = SharepointAction.ActionType.QuickView,
-                Parameters = new QuickViewParameters()
+                List<ActionButton> actionButtons = new List<ActionButton>
                 {
-                    View = "IMAGE_QUICK_VIEW"
-                }
-            };
+                    primaryTextButton
+                };
 
-            ActionButton imageButton = new ActionButton();
-            imageButton.Title = "Sign In View";
-            SubmitAction imageSubmitAction = new SubmitAction();
-            imageSubmitAction.Parameters = new Dictionary<string, object>(){
-                {"viewToNavigateTo", "SIGN_IN_CARD_VIEW"}
-            };
-            imageSubmitAction.Type = SharepointAction.ActionType.Submit;
-            imageButton.Action = imageSubmitAction;
+                primaryTextCard.CardButtons = actionButtons;
+                SharePointAdapativeCardExtensionBot.cardViewDict.Add(primaryTextCard.ViewId, primaryTextCard);
 
-            List<ActionButton> imageActionButtons = new List<ActionButton>
-            {
-                imageButton
-            };
-
-            imageCard.CardButtons = imageActionButtons;
-            SharePointAdapativeCardExtensionBot.cardViewDict.Add(imageCard.ViewId, imageCard);
-
-            // Sign In
-            GetCardViewResponse signInCard = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.SignInCardView);
-            signInCard.AceData = new AceData();
-            signInCard.AceData.CardSize = AceData.AceCardSize.Large;
-            signInCard.AceData.Title = "BOT ACE DEMO";
-            signInCard.AceData.Description = "BOT ACE DESCRIPTION";
-            signInCard.AceData.DataVersion = "1.0";
-            signInCard.AceData.Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f";
-            dynamic props = new JObject();
-            props.uri = "placeholder";
-            props.connectionName = "placeholder";
-            signInCard.AceData.Properties = props;
-            
-            signInCard.Data = new SignInCardParameters()
-            {
-                PrimaryText = "My bot's sign in card",
-                SignInButtonText = "Sign in",
-                Description = "This is a sign in card template!"
-            };
-
-            signInCard.ViewId = "SIGN_IN_CARD_VIEW";
-
-            signInCard.OnCardSelection = new SharepointAction()
-            {
-                Type = SharepointAction.ActionType.QuickView,
-                Parameters = new QuickViewParameters()
+                // BASIC
+                GetCardViewResponse basicCard = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.BasicCardView);
+                basicCard.AceData = new AceData();
+                basicCard.AceData.CardSize = AceData.AceCardSize.Large;
+                basicCard.AceData.Title = "BOT ACE DEMO";
+                basicCard.AceData.Description = "BOT ACE DESCRIPTION";
+                basicCard.AceData.DataVersion = "1.0";
+                basicCard.AceData.Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f";
+                basicCard.Data = new BasicCardParameters()
                 {
-                    View = "SIGN_IN_QUICK_VIEW"
-                }
-            };
+                    PrimaryText = "Basic Card",
+                };
 
-            ActionButton signInButton = new ActionButton();
-            signInButton.Title = "Primary Text View";
-            SubmitAction signInSubmitAction = new SubmitAction();
-            signInSubmitAction.Parameters = new Dictionary<string, object>(){
-                {"viewToNavigateTo", "PRIMARY_TEXT_CARD_VIEW"}
-            };
-            signInSubmitAction.Type = SharepointAction.ActionType.Submit;
-            signInButton.Action = signInSubmitAction;
+                basicCard.ViewId = "BASIC_CARD_VIEW";
 
-            List<ActionButton> signInActionButtons = new List<ActionButton>
-            {
-                signInButton
-            };
+                basicCard.OnCardSelection = new SharepointAction()
+                {
+                    Type = SharepointAction.ActionType.QuickView,
+                    Parameters = new QuickViewParameters()
+                    {
+                        View = "BASIC_QUICK_VIEW"
+                    }
+                };
 
-            signInCard.CardButtons = signInActionButtons;
-            SharePointAdapativeCardExtensionBot.cardViewDict.Add(signInCard.ViewId, signInCard);
+                ActionButton basicButton = new ActionButton();
+                basicButton.Title = "Image View";
+                SubmitAction basicSubmitAction = new SubmitAction();
+                basicSubmitAction.Parameters = new Dictionary<string, object>(){
+                    {"viewToNavigateTo", "IMAGE_CARD_VIEW"}
+                };
+                basicSubmitAction.Type = SharepointAction.ActionType.Submit;
+                basicButton.Action = basicSubmitAction;
+
+                List<ActionButton> basicActionButtons = new List<ActionButton>
+                {
+                    basicButton
+                };
+
+                basicCard.CardButtons = basicActionButtons;
+                SharePointAdapativeCardExtensionBot.cardViewDict.Add(basicCard.ViewId, basicCard);
+
+                GetCardViewResponse imageCard = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.ImageCardView);
+                imageCard.AceData = new AceData();
+                imageCard.AceData.CardSize = AceData.AceCardSize.Large;
+                imageCard.AceData.Title = "BOT ACE DEMO";
+                imageCard.AceData.Description = "BOT ACE DESCRIPTION";
+                imageCard.AceData.DataVersion = "1.0";
+                imageCard.AceData.Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f";
+                imageCard.Data = new ImageCardParameters()
+                {
+                    PrimaryText = "My bot's image card",
+                    ImageUrl = "https://download.logo.wine/logo/SharePoint/SharePoint-Logo.wine.png",
+                    ImageAltText = "Sharepoint logo"
+                };
+
+                imageCard.ViewId = "IMAGE_CARD_VIEW";
+
+                imageCard.OnCardSelection = new SharepointAction()
+                {
+                    Type = SharepointAction.ActionType.QuickView,
+                    Parameters = new QuickViewParameters()
+                    {
+                        View = "IMAGE_QUICK_VIEW"
+                    }
+                };
+
+                ActionButton imageButton = new ActionButton();
+                imageButton.Title = "Sign In View";
+                SubmitAction imageSubmitAction = new SubmitAction();
+                imageSubmitAction.Parameters = new Dictionary<string, object>(){
+                    {"viewToNavigateTo", "SIGN_IN_CARD_VIEW"}
+                };
+                imageSubmitAction.Type = SharepointAction.ActionType.Submit;
+                imageButton.Action = imageSubmitAction;
+
+                List<ActionButton> imageActionButtons = new List<ActionButton>
+                {
+                    imageButton
+                };
+
+                imageCard.CardButtons = imageActionButtons;
+                SharePointAdapativeCardExtensionBot.cardViewDict.Add(imageCard.ViewId, imageCard);
+
+                // Sign In
+                GetCardViewResponse signInCard = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.SignInCardView);
+                signInCard.AceData = new AceData();
+                signInCard.AceData.CardSize = AceData.AceCardSize.Large;
+                signInCard.AceData.Title = "BOT ACE DEMO";
+                signInCard.AceData.Description = "BOT ACE DESCRIPTION";
+                signInCard.AceData.DataVersion = "1.0";
+                signInCard.AceData.Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f";
+                dynamic props = new JObject();
+                props.uri = "placeholder";
+                props.connectionName = "placeholder";
+                signInCard.AceData.Properties = props;
+
+                signInCard.Data = new SignInCardParameters()
+                {
+                    PrimaryText = "My bot's sign in card",
+                    SignInButtonText = "Sign in",
+                    Description = "This is a sign in card template!"
+                };
+
+                signInCard.ViewId = "SIGN_IN_CARD_VIEW";
+
+                signInCard.OnCardSelection = new SharepointAction()
+                {
+                    Type = SharepointAction.ActionType.QuickView,
+                    Parameters = new QuickViewParameters()
+                    {
+                        View = "SIGN_IN_QUICK_VIEW"
+                    }
+                };
+
+                ActionButton signInButton = new ActionButton();
+                signInButton.Title = "Primary Text View";
+                SubmitAction signInSubmitAction = new SubmitAction();
+                signInSubmitAction.Parameters = new Dictionary<string, object>(){
+                    {"viewToNavigateTo", "PRIMARY_TEXT_CARD_VIEW"}
+                };
+                signInSubmitAction.Type = SharepointAction.ActionType.Submit;
+                signInButton.Action = signInSubmitAction;
+
+                List<ActionButton> signInActionButtons = new List<ActionButton>
+                {
+                    signInButton
+                };
+
+                signInCard.CardButtons = signInActionButtons;
+                SharePointAdapativeCardExtensionBot.cardViewDict.Add(signInCard.ViewId, signInCard);
+            }
+
         }
 
         protected override Task<GetCardViewResponse> OnSharePointTaskGetCardViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
@@ -246,21 +250,42 @@ namespace Microsoft.BotBuilderSamples.Bots
 
         protected override Task<GetPropertyPaneConfigurationResponse> OnSharePointTaskGetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
-        // note that the following code is currently not used by the card either in rendering the card view nor the quick view.
-        //however this is an example of the syntaxt that needs to be used to surface controls in the property pane.
+        // note that the majority of the following code is currently not used by the card either in rendering the card view nor the quick view.
+        // this is an example of the syntaxt that needs to be used to surface controls in the property pane.
+        // However, setting the title, primary text, and description text fields will provide a sneak peek of applying property pane changes. 
             GetPropertyPaneConfigurationResponse response = new GetPropertyPaneConfigurationResponse();
             PropertyPanePage page = new PropertyPanePage();
             page.Header = new PropertyPanePageHeader();
             page.Header.Description = "Property pane for control";
 
             PropertyPaneGroup group = new PropertyPaneGroup();
-            PropertyPaneGroupField text = new PropertyPaneGroupField();
-            text.TargetProperty = "title";
-            text.Type = PropertyPaneGroupField.FieldType.TextField;
-            PropertyPaneTextFieldProperties textProperties = new PropertyPaneTextFieldProperties();
-            textProperties.Value = "Bot Ace Demo";
-            textProperties.Label = "Title";
-            text.Properties = textProperties;
+            PropertyPaneGroupField titleText = new PropertyPaneGroupField();
+            titleText.TargetProperty = "title";
+            titleText.Type = PropertyPaneGroupField.FieldType.TextField;
+            PropertyPaneTextFieldProperties titleTextProperties = new PropertyPaneTextFieldProperties();
+            titleTextProperties.Value = "Bot Ace Demo";
+            titleTextProperties.Label = "Title";
+            titleTextProperties.Disabled = false;
+            titleTextProperties.MaxLength = 10;
+            titleText.Properties = titleTextProperties;
+
+            PropertyPaneGroupField primaryText = new PropertyPaneGroupField();
+            primaryText.TargetProperty = "primaryText";
+            primaryText.Type = PropertyPaneGroupField.FieldType.TextField;
+            PropertyPaneTextFieldProperties primaryTextProperties = new PropertyPaneTextFieldProperties();
+            primaryTextProperties.Value = "My Bot's primary text";
+            primaryTextProperties.Label = "Primary Text";
+            primaryTextProperties.MaxLength = 10;
+            primaryText.Properties = primaryTextProperties;
+
+            PropertyPaneGroupField descriptionText = new PropertyPaneGroupField();
+            descriptionText.TargetProperty = "description";
+            descriptionText.Type = PropertyPaneGroupField.FieldType.TextField;
+            PropertyPaneTextFieldProperties descriptionTextProperties = new PropertyPaneTextFieldProperties();
+            descriptionTextProperties.Value = "My Bot's description";
+            descriptionTextProperties.Label = "Description Text";
+            descriptionTextProperties.MaxLength = 10;
+            descriptionText.Properties = descriptionTextProperties;
 
             PropertyPaneGroupField toggle = new PropertyPaneGroupField();
             toggle.TargetProperty = "toggle";
@@ -367,7 +392,9 @@ namespace Microsoft.BotBuilderSamples.Bots
 
             List<PropertyPaneGroupField> fields = new List<PropertyPaneGroupField>()
             {
-                text,
+                titleText,
+                primaryText,
+                descriptionText,
                 toggle,
                 dropDown,
                 label,
@@ -396,15 +423,33 @@ namespace Microsoft.BotBuilderSamples.Bots
 
         protected override Task<SetPropertyPaneConfigurationResponse> OnSharePointTaskSetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
-            if (turnContext != null)
+            GetCardViewResponse primaryTextCardView = SharePointAdapativeCardExtensionBot.cardViewDict["PRIMARY_TEXT_CARD_VIEW"];
+
+            JObject activityObject = turnContext.Activity.Value as JObject;
+            JObject aceProperties = (JObject)activityObject.Property("data").Value;
+
+            foreach (dynamic property in aceProperties)
             {
-                if (cancellationToken.IsCancellationRequested)
+                switch (property.Key)
                 {
-                    cancellationToken.ThrowIfCancellationRequested();
+                    case "title":
+                        primaryTextCardView.AceData.Title = aceProperties[property.Key];
+                        break;
+                    case "primaryText":
+                        (primaryTextCardView.Data as PrimaryTextCardParameters).PrimaryText = aceProperties[property.Key];
+                        break;
+                    case "description":
+                        (primaryTextCardView.Data as PrimaryTextCardParameters).Description = aceProperties[property.Key];
+                        break;
+                    default:
+                        break;
                 }
             }
-            return Task.FromResult(new SetPropertyPaneConfigurationResponse());
 
+            SetPropertyPaneConfigurationResponse response = new SetPropertyPaneConfigurationResponse();
+            response.ResponseType = SetPropertyPaneConfigurationResponse.ResponseTypeOption.CardView;
+            response.RenderArguments = primaryTextCardView;
+            return Task.FromResult(response);
         }
 
         protected override Task<HandleActionResponse> OnSharePointTaskHandleActionAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)

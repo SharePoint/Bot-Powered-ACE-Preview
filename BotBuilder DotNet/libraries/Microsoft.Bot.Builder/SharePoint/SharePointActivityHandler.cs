@@ -48,16 +48,12 @@ namespace Microsoft.Bot.Builder.SharePoint
                     {
                         case "cardExtension/getCardView":
                             return CreateInvokeResponse(await OnSharePointTaskGetCardViewAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false));
-
                         case "cardExtension/getQuickView":
                             return CreateInvokeResponse(await OnSharePointTaskGetQuickViewAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false));
-
                         case "cardExtension/getPropertyPaneConfiguration":
                             return CreateInvokeResponse(await OnSharePointTaskGetPropertyPaneConfigurationAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false));
-
                         case "cardExtension/setPropertyPaneConfiguration":
-                            await OnSharePointTaskSetPropertyPaneConfigurationAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false);
-                            return CreateInvokeResponse();
+                            return CreateInvokeResponse(await OnSharePointTaskSetPropertyPaneConfigurationAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false));
                         case "cardExtension/handleAction":
                             return CreateInvokeResponse(await OnSharePointTaskHandleActionAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false)); 
                     }
