@@ -1,10 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+import { ICardActionParameters } from "./ICardActionParameters";
+import { IOnCardSelectionActionParameters } from "./IOnCardSelectionActionParameters";
+
 /**
  * Sharepoint ExternalLinkParameters object
  */
-export class ExternalLinkParameters {
+export class ExternalLinkParameters implements ICardActionParameters, IOnCardSelectionActionParameters{
     private isTeamsDeepLink: boolean;
     private target: string;
     

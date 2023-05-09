@@ -24,7 +24,6 @@ using Microsoft.Graph;
 using Microsoft.Identity.Core.Cache;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using static Microsoft.Bot.Schema.SharePoint.GetCardViewResponse;
 
 namespace Microsoft.BotBuilderSamples.Bots
 {
@@ -59,32 +58,29 @@ namespace Microsoft.BotBuilderSamples.Bots
             return Task.FromResult(GenerateSignInQuickView());
         }
 
-        protected override async Task<HandleActionResponse<GetCardViewResponse>> OnSharePointTaskHandleActionAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        protected override async Task<HandleActionResponse> OnSharePointTaskHandleActionAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
             var magicCode = (taskModuleRequest?.Data as JObject)?.GetValue("data")?.SelectToken("magicCode")?.ToString();
             var user = await TryGetAuthenticatedUser(magicCode, turnContext, cancellationToken);
 
-            return new HandleActionResponse<GetCardViewResponse>
-            {
-                ResponseType = HandleActionResponseType.Card,
-                RenderArguments = new GetCardViewResponse(CardViewTemplateType.PrimaryText)
-                {
-                    AceData = new AceData
-                    {
-                        DataVersion = "1.0",
-                        Id = "SignedInView",
+            var response = new HandleActionResponse();
+            response.ResponseType = HandleActionResponse.ResponseTypeOption.CardView;
 
-                        CardSize = AceData.AceCardSize.Large,
-                        Title = _appTitle
-                    },
-                    Data = new CardViewData
-                    {
-                        PrimaryText = "Signed In",
-                        Description = $"Hello, {user?.DisplayName}! You're signed in."
-                    },
-                    ViewId = "SignedInViewId"
-                }
-            };
+            var renderArguments = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView);
+            renderArguments.AceData = new AceData();
+            renderArguments.AceData.Title = _appTitle;
+            renderArguments.AceData.DataVersion = "1.0";
+            renderArguments.AceData.Id = "SignedInView";
+            renderArguments.AceData.CardSize = AceData.AceCardSize.Large;
+
+            var param = new PrimaryTextCardParameters();
+            param.PrimaryText = "Signed In";
+            param.Description = $"Hello, {user?.DisplayName}! You're signed in.";
+            renderArguments.Data = param;
+            renderArguments.ViewId = "SignedInViewId";
+            response.RenderArguments = renderArguments;
+
+            return response;
         }
 
         protected override Task OnSharePointTaskSetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
@@ -105,46 +101,37 @@ namespace Microsoft.BotBuilderSamples.Bots
             var signInResource = await TryGetSignInResource(turnContext, cancellationToken, null);
             var signInLink = signInResource != null ? new Uri(signInResource.SignInLink) : new Uri(string.Empty);
 
-            var aceData = new AceData
-            {
-                DataVersion = "1.0",
-                Id = "a1de36bb-9e9e-4b8e-81f8-853c3bba483f",
+            GetCardViewResponse response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.SignInCardView);
+            response.AceData = new AceData();
+            response.AceData.CardSize = AceData.AceCardSize.Large;
+            response.AceData.DataVersion = "1.0";
+            response.AceData.Id = "a1de36bb - 9e9e - 4b8e - 81f8 - 853c3bba483f";
+            response.AceData.Title = _appTitle;
+            var props = JsonConvert.SerializeObject(new { signInUri = signInLink, _connectionName = _connectionName });
+            response.AceData.Properties = (JObject)JsonConvert.DeserializeObject(props);
 
-                CardSize = AceData.AceCardSize.Large,
-                Title = _appTitle,
-                SignInUri = signInLink,
-                ConnectionName = _connectionName
-            };
-            var data = new CardViewData
-            {
-                PrimaryText = "Please Sign In",
-                Description = "Testing sign in through sign in template for bots",
-                SignInButtonText = "Sign In",
-            };
-            ActionButton completeSignInButton = new ActionButton
-            {
-                Title = "Complete Sign In",
-                Action = new Microsoft.Bot.Schema.SharePoint.Action
-                {
-                    Type = "QuickView",
-                    Parameters = new ActionParameters
-                    {
-                        View = _signInQuickViewId
-                    }
-                }
-            };
+            SignInCardParameters param = new SignInCardParameters();
+            param.PrimaryText = "Please Sign In";
+            param.Description = "Testing sign in through sign in template for bots";
+            param.SignInButtonText = "Sign In";
+            response.Data = param;
+
+            SharepointAction buttonAction = new SharepointAction();
+            buttonAction.Type = SharepointAction.ActionType.QuickView;
+            QuickViewParameters buttonParams = new QuickViewParameters();
+            buttonParams.View = _signInQuickViewId;
+            buttonAction.Parameters = buttonParams;
+
+            ActionButton completeSignInButton = new ActionButton();
+            completeSignInButton.Title = "Complete Sign In";
+            completeSignInButton.Action = buttonAction;
 
             List<ActionButton> actionButtons = new List<ActionButton>
             {
                 completeSignInButton
             };
 
-            GetCardViewResponse response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.SignIn);
-            response.AceData = aceData;
-            response.Data = new CardViewData
-            {
-                ActionButtons = actionButtons
-            };
+            response.CardButtons = actionButtons;
             response.ViewId = "signInCard";
 
             return response;
@@ -194,17 +181,10 @@ namespace Microsoft.BotBuilderSamples.Bots
             AdaptiveCard ace = new AdaptiveCard(new AdaptiveSchemaVersion(1, 0));
             ace.Body = new List<AdaptiveElement> { container };
             ace.Actions = new List<AdaptiveAction> { submitAction };
-            GetQuickViewResponse response = new GetQuickViewResponse
-            {
-                Data = new QuickViewData
-                {
-                    Title = "Complete Sign In",
-                    Description = "Complete signing into a third party identity provider."
-                },
-                Template = ace,
-                ViewId = _signInQuickViewId,
-                StackSize = 1
-            };
+            GetQuickViewResponse response = new GetQuickViewResponse();
+            response.Title = "Complete Sign In";
+            response.Template = ace;
+            response.ViewId = _signInQuickViewId;
 
             return response;
         }
@@ -213,19 +193,16 @@ namespace Microsoft.BotBuilderSamples.Bots
         {
             var displayText = $"Hello, {user?.DisplayName}! You're signed in.";
 
-            var aceData = new AceData
-            {
-                DataVersion = "1.0",
-                Id = "SignedInView",
+            AceData aceData = new AceData();
+            aceData.DataVersion = "1.0";
+            aceData.Id = "SignedInView";
+            aceData.CardSize = AceData.AceCardSize.Large;
+            aceData.Title = _appTitle;
 
-                CardSize = AceData.AceCardSize.Large,
-                Title = _appTitle,
-            };
-
-            GetCardViewResponse response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryText);
+            GetCardViewResponse response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView);
             response.AceData = aceData;
             response.ViewId = "SignedInView";
-            response.Data = new CardViewData
+            response.Data = new PrimaryTextCardParameters
             {
                 PrimaryText = displayText
             };

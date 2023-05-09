@@ -87,10 +87,5 @@ export namespace PropertyPaneGroupField {
         ChoiceGroup = 10,
         HorizontalRule = 12,
         Link = 13,
-        DynamicField = 14,
-        DynamicFieldSet = 16,
-        SpinButton = 17,
-        ThumbnailPicker = 18,
-        IconPicker = 19
     }
 }

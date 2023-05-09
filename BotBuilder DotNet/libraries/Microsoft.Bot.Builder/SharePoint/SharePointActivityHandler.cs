@@ -48,16 +48,12 @@ namespace Microsoft.Bot.Builder.SharePoint
                     {
                         case "cardExtension/getCardView":
                             return CreateInvokeResponse(await OnSharePointTaskGetCardViewAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false));
-
                         case "cardExtension/getQuickView":
                             return CreateInvokeResponse(await OnSharePointTaskGetQuickViewAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false));
-
                         case "cardExtension/getPropertyPaneConfiguration":
                             return CreateInvokeResponse(await OnSharePointTaskGetPropertyPaneConfigurationAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false));
-
                         case "cardExtension/setPropertyPaneConfiguration":
-                            await OnSharePointTaskSetPropertyPaneConfigurationAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false);
-                            return CreateInvokeResponse();
+                            return CreateInvokeResponse(await OnSharePointTaskSetPropertyPaneConfigurationAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false));
                         case "cardExtension/handleAction":
                             return CreateInvokeResponse(await OnSharePointTaskHandleActionAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false)); 
                     }
@@ -105,7 +101,7 @@ namespace Microsoft.Bot.Builder.SharePoint
         /// <param name="cancellationToken">A cancellation token that can be used by other objects
         /// or threads to receive notice of cancellation.</param>
         /// <returns>A Task Module Response for the request.</returns>
-        protected virtual Task<HandleActionResponse<GetCardViewResponse>> OnSharePointTaskHandleActionAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        protected virtual Task<HandleActionResponse> OnSharePointTaskHandleActionAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
             throw new InvokeResponseException(HttpStatusCode.NotImplemented);
         }
@@ -131,7 +127,7 @@ namespace Microsoft.Bot.Builder.SharePoint
         /// <param name="cancellationToken">A cancellation token that can be used by other objects
         /// or threads to receive notice of cancellation.</param>
         /// <returns>A Task Module Response for the request.</returns>
-        protected virtual Task OnSharePointTaskSetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        protected virtual Task<SetPropertyPaneConfigurationResponse> OnSharePointTaskSetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
             throw new InvokeResponseException(HttpStatusCode.NotImplemented);
         }

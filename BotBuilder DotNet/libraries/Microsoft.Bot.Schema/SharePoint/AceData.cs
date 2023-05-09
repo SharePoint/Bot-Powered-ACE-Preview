@@ -30,11 +30,6 @@ namespace Microsoft.Bot.Schema.SharePoint
         public enum AceCardSize
         {
             /// <summary>
-            /// Small
-            /// </summary>
-            Small,
-
-            /// <summary>
             /// Medium
             /// </summary>
             Medium,
@@ -75,6 +70,13 @@ namespace Microsoft.Bot.Schema.SharePoint
         public string Title { get; set; }
 
         /// <summary>
+        /// Gets or Sets the description of type <see cref="string"/>.
+        /// </summary>
+        /// <value>This value is the description of the adaptive card extension.</value>
+        [JsonProperty(PropertyName = "description")]
+        public string Description { get; set; }
+
+        /// <summary>
         /// Gets or Sets the icon property of type <see cref="string"/>.
         /// </summary>
         /// <value>This value is the icon of the adaptive card extension.</value>
@@ -82,17 +84,11 @@ namespace Microsoft.Bot.Schema.SharePoint
         public string IconProperty { get; set; }
 
         /// <summary>
-        /// Gets or Sets the login uri of type <see cref="Uri"/>.
+        /// Gets or Sets the property bag of type <see cref="Uri"/>.
         /// </summary>
-        /// <value>This value is the icon of the adaptive card extension.</value>
-        [JsonProperty(PropertyName = "uri")]
-        public Uri SignInUri { get; set; }
-
-        /// <summary>
-        /// Gets or Sets the connection name of type <see cref="string"/>.
-        /// </summary>
-        /// <value>This value is the icon of the adaptive card extension.</value>
-        [JsonProperty(PropertyName = "connectionName")]
-        public string ConnectionName { get; set; }
+        /// <value>This value is the property bag of the adaptive card extension.</value>
+        [JsonProperty(PropertyName = "properties")]
+        #pragma warning disable CA2227
+        public JObject Properties { get; set; }
     }
 }

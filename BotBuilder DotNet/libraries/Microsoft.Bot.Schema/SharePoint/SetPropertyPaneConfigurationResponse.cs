@@ -12,20 +12,20 @@ using Newtonsoft.Json.Converters;
 namespace Microsoft.Bot.Schema.SharePoint
 {
     /// <summary>
-    /// Handle Action Response.
+    /// Set property pane configuration Response.
     /// </summary>
-    public class HandleActionResponse 
+    public class SetPropertyPaneConfigurationResponse 
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="HandleActionResponse"/> class.
+        /// Initializes a new instance of the <see cref="SetPropertyPaneConfigurationResponse"/> class.
         /// </summary>
-        public HandleActionResponse()
+        public SetPropertyPaneConfigurationResponse()
         {
             // Do nothing
         }
 
         /// <summary>
-        /// This enum contains the different types of responses possible after handling an action.
+        /// This enum contains the different types of responses possible after setting properties.
         /// </summary>
         public enum ResponseTypeOption
         {
@@ -36,12 +36,6 @@ namespace Microsoft.Bot.Schema.SharePoint
             CardView,
 
             /// <summary>
-            /// QuickView
-            /// </summary>
-            [EnumMember(Value = "QuickView")]
-            QuickView,
-
-            /// <summary>
             /// NoOp
             /// </summary>
             [EnumMember(Value = "NoOp")]
@@ -49,9 +43,9 @@ namespace Microsoft.Bot.Schema.SharePoint
         }
 
         /// <summary>
-        /// Gets or Sets ViewType for return handle action view.
+        /// Gets or Sets ViewType for return set property pane configuration view.
         /// </summary>
-        /// <value>This value is the view type of the handle action response.</value>
+        /// <value>This value is the view type of the set property pane configuration response.</value>
         [JsonProperty(PropertyName = "responseType")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ResponseTypeOption ResponseType { get; set; }
@@ -59,7 +53,7 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// <summary>
         /// Gets or Sets the render arguments.
         /// </summary>
-        /// <value>This value is the render arguments of the handle action response.</value>
+        /// <value>This value is the render arguments of the set property pane configuration response.</value>
         [JsonProperty(PropertyName = "renderArguments")]
         public ISharePointViewResponse RenderArguments { get; set; }
     }
