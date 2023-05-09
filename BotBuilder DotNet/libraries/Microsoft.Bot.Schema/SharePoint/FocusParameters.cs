@@ -58,6 +58,7 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// </summary>
         /// <value>This value sets the accessibility reading of the contents within the focus target.</value>
         [JsonProperty(PropertyName = "ariaLive")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public AriaLiveOption AriaLive { get; set; }
     }
 }
