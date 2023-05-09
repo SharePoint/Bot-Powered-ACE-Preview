@@ -309,7 +309,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         const pages = [page];
         response.Pages = pages;
 
-        return JSON.stringify(response); 
+        return response; 
     }
 
     /**
