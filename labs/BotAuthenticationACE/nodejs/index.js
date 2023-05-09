@@ -19,7 +19,7 @@ server.set('views', __dirname);
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
 const { BotFrameworkAdapter } = require('botbuilder');
 
-const { SharepointMessagingExtensionsActionBot } = require('./bots/sharepointMessagingExtensionsActionBot');
+const { SharepointAuthenticationBot } = require('./bots/sharepointAuthenticationBot');
 
 // Create adapter.
 // See https://aka.ms/about-bot-adapter to learn more about adapters.
@@ -49,7 +49,7 @@ adapter.onTurnError = async (context, error) => {
 };
 
 // Create the bot that will handle incoming messages.
-const bot = new SharepointMessagingExtensionsActionBot();
+const bot = new SharepointAuthenticationBot();
 
 server.listen(PORT, () => {
     console.log(`Server listening on http://localhost:${PORT}`);
