@@ -1,0 +1,58 @@
+{
+  "name": "botbuilder-ai-orchestrator",
+  "author": "Microsoft Corp.",
+  "description": "The Orchestrator package contains Bot Framework recognizer for detecting and routing user intents.",
+  "homepage": "https://aka.ms/bf-orchestrator-package-readme",
+  "version": "4.1.6",
+  "license": "MIT",
+  "keywords": [
+    "botbuilder",
+    "botframework",
+    "orchestrator",
+    "msbot-component",
+    "msbot-recognizer"
+  ],
+  "bugs": {
+    "url": "https://github.com/Microsoft/botbuilder-js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Microsoft/botbuilder-js.git"
+  },
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "typesVersions": {
+    "<3.9": {
+      "*": [
+        "_ts3.4/*"
+      ]
+    }
+  },
+  "dependencies": {
+    "adaptive-expressions": "4.1.6",
+    "botbuilder-core": "4.1.6",
+    "botbuilder-dialogs": "4.1.6",
+    "botbuilder-dialogs-adaptive": "4.1.6",
+    "botbuilder-dialogs-adaptive-runtime-core": "4.1.6",
+    "botbuilder-dialogs-declarative": "4.1.6",
+    "@microsoft/orchestrator-core": "~4.14.4",
+    "uuid": "^8.3.2"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "build-docs": "typedoc --theme markdown --entryPoint botbuilder-ai-orchestrator --excludePrivate --includeDeclarations --ignoreCompilerErrors --module amd --out ..\\..\\doc\\botbuilder-ai-orchestrator .\\lib\\index.d.ts --hideGenerator --name \"Bot Builder SDK - Orchestrator\" --readme none",
+    "build:rollup": "yarn clean && yarn build && api-extractor run --verbose --local",
+    "clean": "rimraf _ts3.4 lib tsconfig.tsbuildinfo",
+    "depcheck": "depcheck --config ../../.depcheckrc",
+    "lint": "eslint . --ext .js,.ts",
+    "postbuild": "downlevel-dts lib _ts3.4/lib --checksum",
+    "test": "yarn build && nyc mocha tests/",
+    "test:compat": "api-extractor run --verbose"
+  },
+  "files": [
+    "_ts3.4",
+    "lib",
+    "schemas",
+    "src"
+  ]
+}

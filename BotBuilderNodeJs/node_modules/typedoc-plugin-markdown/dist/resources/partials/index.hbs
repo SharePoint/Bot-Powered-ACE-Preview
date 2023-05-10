@@ -1,0 +1,31 @@
+{{#if groups}}
+
+## Index
+
+{{#each groups}}
+
+{{#if categories}}
+
+{{#each categories}}
+
+### {{title}} {{../title}}
+
+{{#each children}}
+* [{{{escape name}}}]({{relativeURL url}})
+{{/each}}
+
+{{/each}}
+
+{{else}}
+
+### {{title}}
+
+{{#each children}}
+* [{{{escape name}}}]({{relativeURL url}})
+{{/each}}
+
+{{/if}}
+
+{{/each}}
+
+{{/if}}
