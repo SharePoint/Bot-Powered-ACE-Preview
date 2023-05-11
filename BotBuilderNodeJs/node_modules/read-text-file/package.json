@@ -1,0 +1,35 @@
+{
+  "name": "read-text-file",
+  "version": "1.1.0",
+  "keywords": [
+    "textfile",
+    "text",
+    "file",
+    "bom",
+    "byte order mark"
+  ],
+  "author": "matgr1",
+  "license": "MIT",
+  "main": "dist/read-text-file.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "typings": "dist/read-text-file.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matgr1/read-text-file"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.21",
+    "@types/iconv-lite": "^0.0.1",
+    "typescript": "^2.2.0"
+  },
+  "dependencies": {
+    "iconv-lite": "^0.4.17",
+    "jschardet": "^1.4.2"
+  },
+  "scripts": {
+    "build": "tsc -p ./tsconfig.json",
+    "prepublish": "npm run build"
+  }
+}

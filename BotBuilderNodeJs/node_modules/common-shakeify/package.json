@@ -1,0 +1,46 @@
+{
+  "name": "common-shakeify",
+  "version": "0.6.2",
+  "description": "browserify tree shaking plugin using @indutny common-shake",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/browserify/common-shakeify.git"
+  },
+  "keywords": [
+    "browserify",
+    "common-shake",
+    "tree-shaking"
+  ],
+  "author": "Renée Kooi <renee@kooi.me>",
+  "contributors": [
+    "Damian Krzeminski (https://github.com/pirxpilot)",
+    "Seph Gentle (https://github.com/josephg)",
+    "Titus (https://github.com/wooorm)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/browserify/common-shakeify/issues"
+  },
+  "homepage": "https://github.com/browserify/common-shakeify#readme",
+  "dependencies": {
+    "@goto-bus-stop/common-shake": "^2.2.0",
+    "convert-source-map": "^1.5.1",
+    "through2": "^2.0.3",
+    "transform-ast": "^2.4.3",
+    "wrap-comment": "^1.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babelify": "^8.0.0",
+    "browserify": "^16.1.1",
+    "concat-stream": "^1.6.1",
+    "net-browserify-stub": "0.0.1",
+    "tape": "^4.9.0",
+    "uglify-js": "^3.3.15"
+  }
+}

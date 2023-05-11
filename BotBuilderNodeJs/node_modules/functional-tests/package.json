@@ -1,0 +1,19 @@
+{
+  "name": "functional-tests",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Test that hits services",
+  "main": "",
+  "dependencies": {
+    "swagger-client": "^2.1.18"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha tests/*.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
