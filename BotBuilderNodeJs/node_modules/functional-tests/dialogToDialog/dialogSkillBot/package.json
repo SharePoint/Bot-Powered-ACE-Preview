@@ -1,0 +1,23 @@
+{
+  "name": "dialog-skill-bot",
+  "private": true,
+  "version": "0.0.0-local",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "tsc && node lib/index.js"
+  },
+  "keywords": [],
+  "author": "Microsoft Corp.",
+  "license": "MIT",
+  "dependencies": {
+    "botbuilder": "4.1.6",
+    "botbuilder-dialogs": "4.1.6",
+    "botframework-connector": "4.1.6",
+    "dotenv": "^6.2.0",
+    "restify": "^8.5.1"
+  },
+  "devDependencies": {
+    "typescript": "3.5.3"
+  }
+}

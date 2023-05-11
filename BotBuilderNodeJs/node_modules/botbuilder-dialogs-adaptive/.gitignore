@@ -1,0 +1,7 @@
+/**/node_modules
+/**/.vscode
+/**/lib/*
+coverage
+.nyc_output
+tests/choiceSet.test.js
+tests/expressionProperty.test.js

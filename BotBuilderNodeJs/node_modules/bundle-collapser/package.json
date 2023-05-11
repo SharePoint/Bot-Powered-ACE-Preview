@@ -1,0 +1,41 @@
+{
+  "name": "bundle-collapser",
+  "version": "1.4.0",
+  "description": "convert bundle paths to IDS to save bytes in browserify bundles",
+  "main": "index.js",
+  "bin": {
+    "bundle-collapser": "bin/cmd.js"
+  },
+  "dependencies": {
+    "browser-pack": "^6.0.2",
+    "browser-unpack": "^1.1.0",
+    "concat-stream": "^1.5.0",
+    "falafel": "^2.1.0",
+    "minimist": "^1.1.1",
+    "through2": "^2.0.0"
+  },
+  "devDependencies": {
+    "tape": "^4.0.1"
+  },
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/browserify/bundle-collapser.git"
+  },
+  "homepage": "https://github.com/browserify/bundle-collapser",
+  "keywords": [
+    "browserify",
+    "bundle",
+    "compress",
+    "minify",
+    "require"
+  ],
+  "author": {
+    "email": "mail@substack.net",
+    "name": "James Halliday",
+    "url": "http://substack.net"
+  },
+  "license": "MIT"
+}
