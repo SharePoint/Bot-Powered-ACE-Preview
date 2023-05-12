@@ -176,10 +176,10 @@ namespace Microsoft.Bot.Builder.SharePoint.Tests
                 return Task.FromResult(new GetQuickViewResponse());
             }
 
-            protected override Task OnSharePointTaskSetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+            protected override Task<SetPropertyPaneConfigurationResponse> OnSharePointTaskSetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
             {
                 Record.Add(MethodBase.GetCurrentMethod().Name);
-                return Task.CompletedTask;
+                return Task.FromResult(new SetPropertyPaneConfigurationResponse());
             }
         }
     }
