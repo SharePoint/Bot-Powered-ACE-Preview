@@ -122,6 +122,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
      * @returns A task module response for the request
      */
     async OnSharePointTaskGetCardViewAsync(context, taskModuleRequest){
+        console.log('Starting to get card view');
         if (!this.cardViewsCreated){
             this.createCardViews();
         }
@@ -129,6 +130,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             return this.updatedView;
         }
         this.currentView = 'PRIMARY_TEXT_CARD_VIEW';
+        console.log('Card view created!');
         return this.cardViewMap.get('PRIMARY_TEXT_CARD_VIEW');
     }
 
@@ -140,6 +142,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
      * @returns A task module response for the request
      */
     async OnSharePointTaskGetQuickViewAsync(context, taskModuleRequest){
+        console.log('Starting to get quick view');
         if (!this.quickViewsCreated){
             this.createQuickViews();
         }
@@ -147,6 +150,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         if (this.currentView.includes("CARD")){
             quickViewId = this.cardViewMap.get(this.currentView).OnCardSelection.Parameters.View;
         }
+        console.log('Quick view created!');
         return this.quickViewMap.get(quickViewId);
     }
 
@@ -158,6 +162,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
      * @returns A task module response for the request
      */
     async OnSharePointTaskGetPropertyPaneConfigurationAsync(context, taskModuleRequest){
+        console.log('Starting to create a Property Pane Configuration!')
         const response = new GetPropertyPaneConfigurationResponse();
         const page = new PropertyPanePage();
         page.Header = new PropertyPanePageHeader();
@@ -323,6 +328,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         const pages = [page];
         response.Pages = pages;
 
+        console.log('Property Pane Configuration Created!');
         return response; 
     }
 
@@ -339,7 +345,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
      */
     async OnSharePointTaskSetPropertyPaneConfigurationAsync(context, taskModuleRequest){
         try {
-            
+            console.log('Starting to set properties!');
             const primaryTextCardView = this.cardViewMap.get("PRIMARY_TEXT_CARD_VIEW");
             const changedProperties = context.activity.value.data;
             console.log(changedProperties);
@@ -366,6 +372,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             response.ReponseType = SetPropertyPaneConfigurationResponse.ResponseTypeOption.CardView;
             response.RenderArguments = primaryTextCardView;
             this.updatedView = response.RenderArguments;
+            console.log('Properties updated!');
             return response;
         } catch (error){
             console.log(error);
@@ -373,17 +380,20 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
     }
 
     async OnSharePointTaskHandleActionAsync(context, taskModuleRequest){
+        console.log('Starting to handle an action!');
         const viewToNavigateTo = context.activity.value.data.data.viewToNavigateTo;
         if (viewToNavigateTo.includes('CARD')){
             const response = new HandleActionReponse();
             this.currentView = viewToNavigateTo;
             response.ReponseType = HandleActionReponse.ResponseTypeOption.CardView;
-            response.RenderArguments = this.cardViewMap.get(viewToNavigateTo)
+            response.RenderArguments = this.cardViewMap.get(viewToNavigateTo);
+            console.log('Action handled!');
             return response;
         } else if (viewToNavigateTo.includes('QUICK')){
             const response = new HandleActionReponse();
             response.ReponseType = HandleActionReponse.ResponseTypeOption.QuickView;
-            response.RenderArguments = this.quickViewMap.get(viewToNavigateTo)
+            response.RenderArguments = this.quickViewMap.get(viewToNavigateTo);
+            console.log('Action handled!');
             return response;
         }
     } 
