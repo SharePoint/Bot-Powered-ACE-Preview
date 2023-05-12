@@ -360,7 +360,6 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             response.RenderArguments = this.cardViewMap.get(viewToNavigateTo)
             return response;
         } else if (viewToNavigateTo.includes('QUICK')){
-            this.currentView = viewToNavigateTo;
             const response = new HandleActionReponse();
             response.ReponseType = HandleActionReponse.ResponseTypeOption.QuickView;
             response.RenderArguments = this.quickViewMap.get(viewToNavigateTo)
