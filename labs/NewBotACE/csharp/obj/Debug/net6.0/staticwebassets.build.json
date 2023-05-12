@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "l1Q5UBq+vfxdc0qQziyQ8rUzmaNa5ZsDho7R0kBoLM4=",
+  "Hash": "XIKl8phKcqYbB6U33WflWuP05Y1lBe9wxwZKldgjayo=",
   "Source": "TeamsMessagingExtensionsAction",
   "BasePath": "_content/TeamsMessagingExtensionsAction",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "TeamsMessagingExtensionsAction\\wwwroot",
       "Source": "TeamsMessagingExtensionsAction",
-      "ContentRoot": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\wwwroot\\",
+      "ContentRoot": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\",
       "BasePath": "_content/TeamsMessagingExtensionsAction",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\wwwroot\\css\\custom.css",
+      "Identity": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\css\\custom.css",
       "SourceId": "TeamsMessagingExtensionsAction",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\wwwroot\\",
+      "ContentRoot": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\",
       "BasePath": "_content/TeamsMessagingExtensionsAction",
       "RelativePath": "css/custom.css",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\css\\custom.css"
     },
     {
-      "Identity": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\wwwroot\\css\\msteams-16.css",
+      "Identity": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\css\\msteams-16.css",
       "SourceId": "TeamsMessagingExtensionsAction",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\wwwroot\\",
+      "ContentRoot": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\",
       "BasePath": "_content/TeamsMessagingExtensionsAction",
       "RelativePath": "css/msteams-16.css",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\css\\msteams-16.css"
     },
     {
-      "Identity": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\wwwroot\\css\\Site.css",
+      "Identity": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\css\\Site.css",
       "SourceId": "TeamsMessagingExtensionsAction",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\wwwroot\\",
+      "ContentRoot": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\",
       "BasePath": "_content/TeamsMessagingExtensionsAction",
       "RelativePath": "css/Site.css",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Site.css"
     },
     {
-      "Identity": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\wwwroot\\default.html",
+      "Identity": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\default.html",
       "SourceId": "TeamsMessagingExtensionsAction",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\wwwroot\\",
+      "ContentRoot": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\",
       "BasePath": "_content/TeamsMessagingExtensionsAction",
       "RelativePath": "default.html",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\default.html"
     },
     {
-      "Identity": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\wwwroot\\profile-image.png",
+      "Identity": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\profile-image.png",
       "SourceId": "TeamsMessagingExtensionsAction",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\wwwroot\\",
+      "ContentRoot": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\",
       "BasePath": "_content/TeamsMessagingExtensionsAction",
       "RelativePath": "profile-image.png",
       "AssetKind": "All",
