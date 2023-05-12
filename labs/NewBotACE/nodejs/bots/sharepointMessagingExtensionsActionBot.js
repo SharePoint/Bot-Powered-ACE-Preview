@@ -45,6 +45,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         this.cardViewMap = new Map();
         this.quickViewMap = new Map();
         this.currentView = "";
+        this.updatedView = null;
 	}
 	
     async handleTeamsMessagingExtensionSubmitAction(context, action) {
@@ -124,8 +125,11 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         if (!this.cardViewsCreated){
             this.createCardViews();
         }
+        if (this.updatedView){
+            return this.updatedView;
+        }
         this.currentView = 'PRIMARY_TEXT_CARD_VIEW';
-        return this.cardViewMap.get('PRIMARY_TEXT_CARD_VIEW')
+        return this.cardViewMap.get('PRIMARY_TEXT_CARD_VIEW');
     }
 
     /**
@@ -335,8 +339,10 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
      */
     async OnSharePointTaskSetPropertyPaneConfigurationAsync(context, taskModuleRequest){
         try {
+            
             const primaryTextCardView = this.cardViewMap.get("PRIMARY_TEXT_CARD_VIEW");
             const changedProperties = context.activity.value.data;
+            console.log(changedProperties);
             for (const property in changedProperties) {
                 if (Object.prototype.hasOwnProperty.call(changedProperties, property)) {
                     switch (property){
@@ -359,6 +365,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             const response = new SetPropertyPaneConfigurationResponse();
             response.ReponseType = SetPropertyPaneConfigurationResponse.ResponseTypeOption.CardView;
             response.RenderArguments = primaryTextCardView;
+            this.updatedView = response.RenderArguments;
             return response;
         } catch (error){
             console.log(error);
