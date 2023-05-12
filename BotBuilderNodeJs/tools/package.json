@@ -49,7 +49,7 @@
     "gulp-exec": "2.1.2",
     "jshint": "^2.9.6",
     "minami": "github:devigned/minami#master",
-    "mocha": "^5.2.0",
+    "mocha": "^10.2.0",
     "nock": "^11.9.1",
     "node-forge": "1.3.0",
     "nyc": "^11.9.0",
