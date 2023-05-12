@@ -55,11 +55,11 @@ namespace Microsoft.Bot.Schema.SharePoint
         public string Title { get; set; }
 
         /// <summary>
-        /// Gets or Sets the external link parameters of type <see cref="ExternalLinkParameters"/>.
+        /// Gets or Sets the external link parameters of type <see cref="ExternalLinkActionParameters"/>.
         /// </summary>
         /// <value>This value is the external link parameters of the quick view response.</value>
         [JsonProperty(PropertyName = "externalLink")]
-        public ExternalLinkParameters ExternalLink { get; set; }
+        public ExternalLinkActionParameters ExternalLink { get; set; }
 
         /// <summary>
         /// Gets or Sets focus parameters of type <see cref="FocusParameters"/>.

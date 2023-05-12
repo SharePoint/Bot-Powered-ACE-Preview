@@ -11,7 +11,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// SharePoint parameters for a show location action.
     /// </summary>
-    public class ShowLocationActionParameters : ICardActionParameters, IOnCardSelectionActionParameters
+    public class ShowLocationActionParameters
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ShowLocationActionParameters"/> class.

@@ -11,12 +11,12 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// SharePoint parameters for an quick view action.
     /// </summary>
-    public class QuickViewParameters : ICardActionParameters, IOnCardSelectionActionParameters
+    public class QuickViewActionParameters
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="QuickViewParameters"/> class.
+        /// Initializes a new instance of the <see cref="QuickViewActionParameters"/> class.
         /// </summary>
-        public QuickViewParameters()
+        public QuickViewActionParameters()
         {
             // Do nothing
         }

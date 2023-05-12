@@ -1,13 +1,14 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
-import { Action } from './action';
+import { IAction } from './IAction';
 import { ConfirmationDialog } from './confirmationDialog';
 
 /**
  * Sharepoint action.submit 
  */
-export class SubmitAction extends Action {
-    protected parameters: { [key: string] : unknown };
+export class SubmitAction implements IAction{
+    private type: string = 'Submit';
+    private parameters: { [key: string] : unknown };
     private confirmationDialog: ConfirmationDialog;
 
     /**

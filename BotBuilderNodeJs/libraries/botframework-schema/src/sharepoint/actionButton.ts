@@ -1,14 +1,14 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { Action } from './action';
+import { IAction } from "./IAction";
 
 /**
  * Sharepoint action button
  */
 export class ActionButton {
     private title: string;
-    private action: Action;
+    private action: IAction;
     private id: string;
     private style: ActionButton.ActionStyle;
     
@@ -34,16 +34,16 @@ export class ActionButton {
     }
 
     /**
-     * Sets parameters property of type Action
+     * Sets parameters property of type IAction
      */
-    public set Action (action: Action) {
+    public set Action (action: IAction) {
         this.action = action;
     }
 
     /**
-     * Gets parameters property of type Action
+     * Gets parameters property of type IAction
      */
-    public get Action(): Action {
+    public get Action(): IAction {
         return this.action; 
     }
 

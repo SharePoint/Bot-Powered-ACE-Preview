@@ -4,10 +4,9 @@
 require('dotenv').config();
 const {  SharePointActivityHandler, CardFactory, TeamsInfo, MessageFactory } = require('botbuilder');
 const { 
-    GetCardViewResponse, 
     AceData,
-    ActionButton, 
-    SharepointAction, 
+    ActionButton,
+    BasicCardViewResponse, 
     GetQuickViewResponse, 
     PropertyPanePageHeader, 
     PropertyPaneDropDownProperties, 
@@ -26,12 +25,17 @@ const {
     PropertyPaneLinkProperties,
     PropertyPaneLinkPopupWindowProperties,
     BasicCardParameters,
-    QuickViewParameters,
+    QuickViewActionParameters,
     PrimaryTextCardParameters,
+    PrimaryTextCardViewResponse,
     ImageCardParameters,
+    ImageCardViewResponse,
     SignInCardParameters,
+    SignInCardViewResponse,
     HandleActionReponse,
-    SetPropertyPaneConfigurationResponse
+    SetPropertyPaneConfigurationResponse,
+    QuickViewAction,
+    ExecuteAction
 } = require('botframework-schema');
 const AdaptiveCards = require("adaptivecards");
 const baseurl = process.env.BaseUrl;
@@ -400,8 +404,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
     
     async createCardViews(){
         try {
-            const basicCardView = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.BasicCardView);
-            basicCardView.TemplateType = GetCardViewResponse.CardViewTemplateType.BasicCardView;
+            const basicCardView = new BasicCardViewResponse();
             basicCardView.ViewId = "BASIC_CARD_VIEW"
 
             const aceData = new AceData();
@@ -418,13 +421,11 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
 
             const quickViewActionParameters = new QuickViewParameters();
             quickViewActionParameters.View = "BASIC_QUICK_VIEW";
-            const quickViewAction = new SharepointAction();
-            quickViewAction.Type = SharepointAction.ActionTypeOption.QuickView;
+            const quickViewAction = new QuickViewAction();
             quickViewAction.Parameters = quickViewActionParameters;
             basicCardView.OnCardSelection = quickViewAction;
 
-            const viewNavAction = new SharepointAction();
-            viewNavAction.Type = SharepointAction.ActionTypeOption.Execute;
+            const viewNavAction = new ExecuteAction();
             viewNavAction.Parameters = {
                 "viewToNavigateTo": "IMAGE_CARD_VIEW"
             };
@@ -444,8 +445,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             console.log(error);
         }
         try {
-            const primaryTextCard = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView);
-            primaryTextCard.TemplateType = GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView;
+            const primaryTextCard = new PrimaryTextCardViewResponse();
             primaryTextCard.ViewId = "PRIMARY_TEXT_CARD_VIEW"
 
             const aceData = new AceData();
@@ -463,13 +463,11 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
 
             const quickViewActionParameters = new QuickViewParameters();
             quickViewActionParameters.View = "PRIMARY_TEXT_QUICK_VIEW";
-            const quickViewAction = new SharepointAction();
-            quickViewAction.Type = SharepointAction.ActionTypeOption.QuickView;
+            const quickViewAction = new QuickViewAction();
             quickViewAction.Parameters = quickViewActionParameters;
             primaryTextCard.OnCardSelection = quickViewAction;
 
-            const viewNavAction = new SharepointAction();
-            viewNavAction.Type = SharepointAction.ActionTypeOption.Execute;
+            const viewNavAction = new ExecuteAction();
             viewNavAction.Parameters = {
                 "viewToNavigateTo": "BASIC_CARD_VIEW"
             };
@@ -489,8 +487,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             console.log(error);
         }
         try {
-            const imageCard = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.ImageCardView);
-            imageCard.TemplateType = GetCardViewResponse.CardViewTemplateType.ImageCardView;
+            const imageCard = new ImageCardViewResponse();
             imageCard.ViewId = "IMAGE_CARD_VIEW"
 
             const aceData = new AceData();
@@ -509,13 +506,11 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
 
             const quickViewActionParameters = new QuickViewParameters();
             quickViewActionParameters.View = "IMAGE_QUICK_VIEW";
-            const quickViewAction = new SharepointAction();
-            quickViewAction.Type = SharepointAction.ActionTypeOption.QuickView;
+            const quickViewAction = new QuickViewAction();
             quickViewAction.Parameters = quickViewActionParameters
             imageCard.OnCardSelection = quickViewAction;
 
-            const viewNavAction = new SharepointAction();
-            viewNavAction.Type = SharepointAction.ActionTypeOption.Execute;
+            const viewNavAction = new ExecuteAction();
             viewNavAction.Parameters = {
                 "viewToNavigateTo": "SIGN_IN_CARD_VIEW"
             };
@@ -535,8 +530,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             console.log(error);
         }
         try {
-            const signInCard = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.SignInCardView);
-            signInCard.TemplateType = GetCardViewResponse.CardViewTemplateType.SignInCardView;
+            const signInCard = new SignInCardViewResponse();
             signInCard.ViewId = "SIGN_IN_CARD_VIEW"
 
             const aceData = new AceData();
@@ -561,13 +555,11 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
 
             const quickViewActionParameters = new QuickViewParameters();
             quickViewActionParameters.View = "SIGN_IN_QUICK_VIEW";
-            const quickViewAction = new SharepointAction();
-            quickViewAction.Type = SharepointAction.ActionTypeOption.QuickView;
+            const quickViewAction = new QuickViewAction();
             quickViewAction.Parameters = quickViewActionParameters;
             signInCard.OnCardSelection = quickViewAction;
 
-            const viewNavAction = new SharepointAction();
-            viewNavAction.Type = SharepointAction.ActionTypeOption.Execute;
+            const viewNavAction = new ExecuteAction();
             viewNavAction.Parameters = {
                 "viewToNavigateTo": "PRIMARY_TEXT_CARD_VIEW"
             };

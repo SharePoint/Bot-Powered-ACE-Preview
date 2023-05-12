@@ -1,13 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { ICardActionParameters } from './ICardActionParameters';
-import { IOnCardSelectionActionParameters } from './IOnCardSelectionActionParameters';
-
 /**
  * Sharepoint SelectMediaActionParameters object for select media action
  */
-export class SelectMediaActionParameters implements ICardActionParameters, IOnCardSelectionActionParameters {
+export class SelectMediaActionParameters {
     private mediaType: SelectMediaActionParameters.MediaTypeOption;
     private allowMultipleCapture: boolean;
     private maxSizePerFile?: number;

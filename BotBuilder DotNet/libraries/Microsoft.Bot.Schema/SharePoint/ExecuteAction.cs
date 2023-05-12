@@ -11,7 +11,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// Action.Execute.
     /// </summary>
-    public class ExecuteAction : SharepointAction
+    public class ExecuteAction: IAction
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ExecuteAction"/> class.
@@ -27,7 +27,7 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// <value>This value is the parameters of the action.</value>
         [JsonProperty(PropertyName = "parameters")]
         #pragma warning disable CA2227
-        public new Dictionary<string, object> Parameters { get; set; }
+        public Dictionary<string, object> Parameters { get; set; }
 
         /// <summary>
         /// Gets or Sets the verb associated with this action of type <see cref="string"/>.
