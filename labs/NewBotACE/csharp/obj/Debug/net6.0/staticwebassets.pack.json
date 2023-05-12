@@ -1,23 +1,23 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\wwwroot\\css\\Site.css",
+      "Id": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\css\\Site.css",
       "PackagePath": "staticwebassets\\css\\Site.css"
     },
     {
-      "Id": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\wwwroot\\css\\custom.css",
+      "Id": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\css\\custom.css",
       "PackagePath": "staticwebassets\\css\\custom.css"
     },
     {
-      "Id": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\wwwroot\\css\\msteams-16.css",
+      "Id": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\css\\msteams-16.css",
       "PackagePath": "staticwebassets\\css\\msteams-16.css"
     },
     {
-      "Id": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\wwwroot\\default.html",
+      "Id": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\default.html",
       "PackagePath": "staticwebassets\\default.html"
     },
     {
-      "Id": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\wwwroot\\profile-image.png",
+      "Id": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\profile-image.png",
       "PackagePath": "staticwebassets\\profile-image.png"
     },
     {

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\TeamsMessagingExtensionsAction.csproj": {}
+    "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\TeamsMessagingExtensionsAction.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\TeamsMessagingExtensionsAction.csproj": {
+    "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\TeamsMessagingExtensionsAction.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\TeamsMessagingExtensionsAction.csproj",
+        "projectUniqueName": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\TeamsMessagingExtensionsAction.csproj",
         "projectName": "TeamsMessagingExtensionsAction",
-        "projectPath": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\TeamsMessagingExtensionsAction.csproj",
-        "packagesPath": "C:\\Users\\lucaband\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucaband\\Downloads\\msgext-action\\csharp\\obj\\",
+        "projectPath": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\TeamsMessagingExtensionsAction.csproj",
+        "packagesPath": "C:\\Users\\bentsai\\.nuget\\packages\\",
+        "outputPath": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\lucaband\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bentsai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "D:\\BotPoweredACEPreview\\BotBuilder DotNet\\outputpackages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -48,9 +53,17 @@
               "target": "Package",
               "version": "[6.0.11, )"
             },
+            "Microsoft.Bot.Builder": {
+              "target": "Package",
+              "version": "[0.0.0, )"
+            },
             "Microsoft.Bot.Builder.Integration.AspNet.Core": {
               "target": "Package",
-              "version": "[4.18.1, )"
+              "version": "[0.0.0, )"
+            },
+            "Microsoft.Bot.Schema": {
+              "target": "Package",
+              "version": "[0.0.0, )"
             }
           },
           "imports": [
@@ -72,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
