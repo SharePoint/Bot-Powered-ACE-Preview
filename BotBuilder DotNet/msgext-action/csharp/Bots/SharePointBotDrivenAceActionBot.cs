@@ -349,7 +349,7 @@ namespace Microsoft.BotBuilderSamples.Bots
                 }
             }
 
-            return Task.FromResult(new SetPropertyPaneConfigurationResponse());
+            return Task.CompletedTask;
         }
 
         private MessagingExtensionActionResponse RazorViewResponse(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionAction action)
