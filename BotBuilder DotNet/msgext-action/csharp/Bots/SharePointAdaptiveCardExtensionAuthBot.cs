@@ -83,7 +83,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             return response;
         }
 
-        protected override Task<SetPropertyPaneConfigurationResponse> OnSharePointTaskSetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        protected override Task OnSharePointTaskSetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
             if (turnContext != null)
             {
@@ -93,7 +93,7 @@ namespace Microsoft.BotBuilderSamples.Bots
                 }
             }
 
-            return Task.FromResult(new SetPropertyPaneConfigurationResponse());
+            return Task.CompletedTask;
         }
 
         private async Task<GetCardViewResponse> GenerateSignInCardView(ITurnContext<IInvokeActivity> turnContext, CancellationToken cancellationToken)
