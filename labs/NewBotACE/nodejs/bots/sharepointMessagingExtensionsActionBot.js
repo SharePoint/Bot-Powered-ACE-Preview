@@ -159,7 +159,10 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         page.Header = new PropertyPanePageHeader();
         page.Header.Description = "Property pane for control";
 
-        const group = new PropertyPaneGroup();
+        const configurableGroup = new PropertyPaneGroup();
+        configurableGroup.GroupName = 'Configurable Properties';
+        
+
         const text = new PropertyPaneGroupField();
         text.TargetProperty = "title";
         text.Type = PropertyPaneGroupField.FieldType.TextField;
@@ -183,6 +186,10 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         descriptionTextProperties.Value = "";
         descriptionTextProperties.Label = "Description";
         descriptionText.Properties = descriptionTextProperties;
+
+        // To make these properties "configurable", edit the logic in OnSharePointTaskSetPropertyPaneConfigurationAsync
+        const dummyGroup = new PropertyPaneGroup();
+        dummyGroup.GroupName = 'Nonconfigurable Props (see code!)';
 
         const toggle = new PropertyPaneGroupField();
 
@@ -288,10 +295,12 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         link.Properties = linkProperties;
 
 
-        const fields = [
+        const configurableFields = [
             text,
             primaryText,
             descriptionText,
+        ];
+        const dummyFields = [
             toggle,
             dropDown,
             label,
@@ -301,9 +310,10 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             link
         ];
 
-        group.GroupFields = fields;
+        configurableGroup.GroupFields = configurableFields;
+        dummyGroup.GroupFields = dummyFields;
 
-        const groups = [group];
+        const groups = [configurableGroup, dummyGroup];
         page.Groups = groups;
 
         const pages = [page];
@@ -314,6 +324,10 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
 
     /**
      * Override this in a derived class to provide logic for setting configuration pane properties.
+     * The bot will send back the properties that were changed in the property pane with
+     * the key being the property name and the value being the new value of the property.
+     * 
+     * To access the properties that were changed use: context.activity.value.data.data
      * 
      * @param context - A strongly-typed context object for this turn
      * @param taskModuleRequest - The task module invoke request value payload
