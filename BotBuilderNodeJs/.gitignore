@@ -243,6 +243,7 @@ FakesAssemblies/
 
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
+node_modules/
 
 # Typescript v1 declaration files
 typings/
@@ -294,6 +295,7 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+/**/node_modules
 
 # Exception for including the ESLint extension in vscode
 !.vscode/
