@@ -9,6 +9,8 @@ import { Action } from './action';
 export class ActionButton {
     private title: string;
     private action: Action;
+    private id: string;
+    private style: ActionButton.ActionStyle;
     
     /**
      * Initializes a new instance of the ActionButton class
@@ -43,5 +45,42 @@ export class ActionButton {
      */
     public get Action(): Action {
         return this.action; 
+    }
+
+    /**
+     * Sets id property of type string
+     */
+    public set Id (id: string) {
+        this.id = id;
+    }
+
+    /**
+     * Gets id property of type string
+     */
+    public get Id(): string {
+        return this.id; 
+    }
+
+    /**
+     * Sets style property of type string
+     */
+    public set Style (style: ActionButton.ActionStyle) {
+        this.style = style;
+    }
+
+    /**
+     * Gets style property of type string
+     */
+    public get Style(): ActionButton.ActionStyle {
+        return this.style; 
+    }
+}
+
+export namespace ActionButton
+{
+    export enum ActionStyle {
+        Default = "default",
+        Positive = "positive",
+        Destructive = "destructive"
     }
 }
