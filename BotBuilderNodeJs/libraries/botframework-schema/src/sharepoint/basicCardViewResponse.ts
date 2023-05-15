@@ -16,7 +16,7 @@ export class BasicCardViewResponse implements ICardViewResponse {
     private data: BasicCardParameters;
     private viewId: string;
     private onCardSelection: IOnCardSelectionAction;
-    private cardButtons: ActionButton;
+    private cardButtons: [ActionButton] | [ActionButton, ActionButton];
 
     /**
      * Initializes a new instance of the BasicCardViewResponse class
@@ -68,14 +68,18 @@ export class BasicCardViewResponse implements ICardViewResponse {
     /**
      * Sets card buttons property of type ActionButton
      */
-    public set CardButtons(cardButtons: ActionButton) {
-        this.cardButtons = cardButtons;
+    public set CardButtons(cardButtons: [ActionButton] | [ActionButton, ActionButton]) {
+        if (cardButtons.length > 2) {
+            this.cardButtons = cardButtons.splice(0,2) as [ActionButton];
+        } else {
+            this.cardButtons = cardButtons;
+        }
     }
 
     /**
      * Gets card buttons property of type ActionButton
      */
-    public get CardButtons(): ActionButton {
+    public get CardButtons(): [ActionButton] | [ActionButton, ActionButton] {
         return this.cardButtons;
     }
 
