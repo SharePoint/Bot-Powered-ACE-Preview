@@ -158,10 +158,10 @@ namespace Microsoft.Bot.Builder.SharePoint.Tests
             public List<string> Record { get; } = new List<string>();
 
             // Invoke
-            protected override Task<GetCardViewResponse> OnSharePointTaskGetCardViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+            protected override Task<ICardViewResponse> OnSharePointTaskGetCardViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
             {
                 Record.Add(MethodBase.GetCurrentMethod().Name);
-                return Task.FromResult(new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView));
+                return Task.FromResult(new PrimaryTextCardViewResponse() as ICardViewResponse);
             }
 
             protected override Task<GetPropertyPaneConfigurationResponse> OnSharePointTaskGetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)

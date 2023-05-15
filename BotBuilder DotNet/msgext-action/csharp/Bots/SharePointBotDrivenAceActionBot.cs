@@ -7,6 +7,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using AdaptiveCards;
+using Microsoft.AspNetCore.Components;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.SharePoint;
 using Microsoft.Bot.Schema;
@@ -113,9 +114,9 @@ namespace Microsoft.BotBuilderSamples.Bots
             };
         }*/
 
-        protected override Task<GetCardViewResponse> OnSharePointTaskGetCardViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        protected override Task<ICardViewResponse> OnSharePointTaskGetCardViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
-            GetCardViewResponse response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView);
+            PrimaryTextCardViewResponse response = new PrimaryTextCardViewResponse();
             response.AceData = new AceData();
             response.AceData.CardSize = AceData.AceCardSize.Medium;
             response.AceData.Title = "BOT DRIVEN ACE";
@@ -129,9 +130,10 @@ namespace Microsoft.BotBuilderSamples.Bots
 
             ActionButton button = new ActionButton();
             button.Title = "DETAILS";
-            button.Action = new SharepointAction();
-            button.Action.Type = SharepointAction.ActionType.QuickView;
-            button.Action.Parameters = new QuickViewParameters() { View = "appid_QUICK_VIEW" };
+            button.Action = new QuickViewAction()
+            {
+                Parameters = new QuickViewActionParameters() { View = "appid_QUICK_VIEW" }
+            };
 
             List<ActionButton> actionButtons = new List<ActionButton>
             {
@@ -140,7 +142,7 @@ namespace Microsoft.BotBuilderSamples.Bots
 
             response.CardButtons = actionButtons;
 
-            return Task.FromResult(response);
+            return Task.FromResult(response as ICardViewResponse);
         }
 
         /*
@@ -349,7 +351,7 @@ namespace Microsoft.BotBuilderSamples.Bots
                 }
             }
 
-            return Task.CompletedTask;
+            return Task.FromResult(new SetPropertyPaneConfigurationResponse());
         }
 
         private MessagingExtensionActionResponse RazorViewResponse(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionAction action)

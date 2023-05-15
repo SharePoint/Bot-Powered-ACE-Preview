@@ -56,11 +56,11 @@ namespace Microsoft.Bot.Schema.SharePoint
         public string Title { get; set; }
 
         /// <summary>
-        /// Gets or Sets the action of type <see cref="SharepointAction"/>.
+        /// Gets or Sets the action of type <see cref="IAction"/>.
         /// </summary>
         /// <value>This value is the action of the action button.</value>
         [JsonProperty(PropertyName = "action")]
-        public SharepointAction Action { get; set; }
+        public IAction Action { get; set; }
 
         /// <summary>
         /// Gets or Sets the id of type <see cref="string"/>.

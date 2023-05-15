@@ -419,7 +419,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             basicCardParameters.PrimaryText = "My bot's basic card";
             basicCardView.Data = basicCardParameters;
 
-            const quickViewActionParameters = new QuickViewParameters();
+            const quickViewActionParameters = new QuickViewActionParameters();
             quickViewActionParameters.View = "BASIC_QUICK_VIEW";
             const quickViewAction = new QuickViewAction();
             quickViewAction.Parameters = quickViewActionParameters;
@@ -461,7 +461,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             primaryTextCardParameters.Description = "A nice description"
             primaryTextCard.Data = primaryTextCardParameters;
 
-            const quickViewActionParameters = new QuickViewParameters();
+            const quickViewActionParameters = new QuickViewActionParameters();
             quickViewActionParameters.View = "PRIMARY_TEXT_QUICK_VIEW";
             const quickViewAction = new QuickViewAction();
             quickViewAction.Parameters = quickViewActionParameters;
@@ -504,7 +504,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             imageCardParameters.PrimaryText = "My bot's image card";
             imageCard.Data = imageCardParameters;
 
-            const quickViewActionParameters = new QuickViewParameters();
+            const quickViewActionParameters = new QuickViewActionParameters();
             quickViewActionParameters.View = "IMAGE_QUICK_VIEW";
             const quickViewAction = new QuickViewAction();
             quickViewAction.Parameters = quickViewActionParameters
@@ -553,7 +553,7 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             signInCardParameters.ConnectionName = "...";
             signInCard.Data = signInCardParameters;
 
-            const quickViewActionParameters = new QuickViewParameters();
+            const quickViewActionParameters = new QuickViewActionParameters();
             quickViewActionParameters.View = "SIGN_IN_QUICK_VIEW";
             const quickViewAction = new QuickViewAction();
             quickViewAction.Parameters = quickViewActionParameters;

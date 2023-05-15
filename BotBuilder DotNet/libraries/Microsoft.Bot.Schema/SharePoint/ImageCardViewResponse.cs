@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
 using System;
@@ -17,7 +17,12 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// </summary>
     public class ImageCardViewResponse : ICardViewResponse
     {
+#pragma warning disable CA1823 // Avoid unused private fields
+#pragma warning disable CS0414 // The field 'ImageCardViewResponse.templateType' is assigned but its value is never used
         private string templateType = "Image";
+#pragma warning restore CS0414 // The field 'ImageCardViewResponse.templateType' is assigned but its value is never used
+#pragma warning restore CA1823 // Avoid unused private fields
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ImageCardViewResponse"/> class.
         /// </summary>
@@ -40,11 +45,11 @@ namespace Microsoft.Bot.Schema.SharePoint
         public ImageCardParameters Data { get; set; }
 
         /// <summary>
-        /// Gets or Sets action to be performed when card is selected of type <see cref="SharepointAction"/>.
+        /// Gets or Sets action to be performed when card is selected of type <see cref="IOnCardSelectionAction"/>.
         /// </summary>
         /// <value>This value is the action performed when card is clicked.</value>
         [JsonProperty(PropertyName = "onCardSelection")]
-        public SharepointAction OnCardSelection { get; set; }
+        public IOnCardSelectionAction OnCardSelection { get; set; }
 
         /// <summary>
         /// Gets or Sets button(s) on the card view of type <see cref="ActionButton"/>.

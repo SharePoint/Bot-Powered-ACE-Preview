@@ -11,9 +11,13 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// Action.Submit.
     /// </summary>
-    public class SubmitAction: IAction
+    public class SubmitAction : IAction
     {
+#pragma warning disable CA1823 // Avoid unused private fields
+#pragma warning disable CS0414 // The field 'SubmitAction.type' is assigned but its value is never used
         private string type = "Submit";
+#pragma warning restore CS0414 // The field 'SubmitAction.type' is assigned but its value is never used
+#pragma warning restore CA1823 // Avoid unused private fields
         /// <summary>
         /// Initializes a new instance of the <see cref="SubmitAction"/> class.
         /// </summary>

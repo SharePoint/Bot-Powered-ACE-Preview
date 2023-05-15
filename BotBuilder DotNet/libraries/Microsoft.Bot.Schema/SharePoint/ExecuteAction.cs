@@ -11,8 +11,14 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// Action.Execute.
     /// </summary>
-    public class ExecuteAction: IAction
+    public class ExecuteAction : IAction
     {
+#pragma warning disable CA1823 // Avoid unused private fields
+#pragma warning disable CS0414 // The field 'ExecuteAction.type' is assigned but its value is never used
+        private string type = "Execute";
+#pragma warning restore CS0414 // The field 'ExecuteAction.type' is assigned but its value is never used
+#pragma warning restore CA1823 // Avoid unused private fields
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ExecuteAction"/> class.
         /// </summary>
