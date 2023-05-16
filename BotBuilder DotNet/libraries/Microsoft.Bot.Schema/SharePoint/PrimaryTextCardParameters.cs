@@ -11,7 +11,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// SharePoint primary text card parameters.
     /// </summary>
-    public class PrimaryTextCardParameters : BaseCardParameters, ICardParameters
+    public class PrimaryTextCardParameters : BaseCardParameters
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PrimaryTextCardParameters"/> class.
