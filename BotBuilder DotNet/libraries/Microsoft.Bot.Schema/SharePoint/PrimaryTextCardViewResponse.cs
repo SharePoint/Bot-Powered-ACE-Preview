@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using Microsoft.Bot.Schema.Teams;
@@ -22,6 +23,7 @@ namespace Microsoft.Bot.Schema.SharePoint
         private string templateType = "PrimaryText";
 #pragma warning restore CS0414 // The field 'PrimaryTextCardViewResponse.templateType' is assigned but its value is never used
 #pragma warning restore CA1823 // Avoid unused private fields
+        private IEnumerable<ActionButton> cardButtons;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PrimaryTextCardViewResponse"/> class.
@@ -56,7 +58,21 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// </summary>
         /// <value>This value is the button(s) associated with the card view.</value>
         [JsonProperty(PropertyName = "cardButtons")]
-        public IEnumerable<ActionButton> CardButtons { get; set; }
+        public IEnumerable<ActionButton> CardButtons 
+        {
+            get
+            {
+                return this.cardButtons;
+            }
+
+            set
+            {
+                if (value.Count() > 2)
+                {
+                    this.cardButtons = value.Take(2);
+                }
+            }
+        }
 
         /// <summary>
         /// Gets or Sets the view Id of type <see cref="string"/>.

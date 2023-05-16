@@ -50,7 +50,7 @@ namespace Microsoft.BotBuilderSamples.Bots
 
                 primaryTextCard.OnCardSelection = new QuickViewAction()
                 {
-                    Parameters = new QuickViewParameters()
+                    Parameters = new QuickViewActionParameters()
                     {
                         View = "PRIMARY_TEXT_QUICK_VIEW"
                     }
@@ -62,6 +62,14 @@ namespace Microsoft.BotBuilderSamples.Bots
                 primaryTextSubmitAction.Parameters = new Dictionary<string, object>(){
                     {"viewToNavigateTo", "BASIC_CARD_VIEW"}
                 };
+                primaryTextButton.Action = primaryTextSubmitAction;
+
+                ActionButton primaryTextButton2= new ActionButton();
+                primaryTextButton2.Title="sic View";
+                primaryTextButton.Action = primaryTextSubmitAction;
+
+                ActionButton primaryTextButton3=new ActionButton();
+                primaryTextButton3.Title = "Basic View";
                 primaryTextButton.Action = primaryTextSubmitAction;
 
                 List<ActionButton> actionButtons = new List<ActionButton>
@@ -89,7 +97,7 @@ namespace Microsoft.BotBuilderSamples.Bots
 
                 basicCard.OnCardSelection = new QuickViewAction()
                 {
-                    Parameters = new QuickViewParameters()
+                    Parameters = new QuickViewActionParameters()
                     {
                         View = "BASIC_QUICK_VIEW"
                     }
@@ -129,7 +137,7 @@ namespace Microsoft.BotBuilderSamples.Bots
 
                 imageCard.OnCardSelection = new QuickViewAction()
                 {
-                    Parameters = new QuickViewParameters()
+                    Parameters = new QuickViewActionParameters()
                     {
                         View = "IMAGE_QUICK_VIEW"
                     }
@@ -175,7 +183,7 @@ namespace Microsoft.BotBuilderSamples.Bots
 
                 signInCard.OnCardSelection = new QuickViewAction()
                 {
-                    Parameters = new QuickViewParameters()
+                    Parameters = new QuickViewActionParameters()
                     {
                         View = "SIGN_IN_QUICK_VIEW"
                     }
@@ -415,7 +423,7 @@ namespace Microsoft.BotBuilderSamples.Bots
 
         protected override Task<SetPropertyPaneConfigurationResponse> OnSharePointTaskSetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
-            PrimaryTextCardViewResponse primaryTextCardView = SharePointAdapativeCardExtensionBot.cardViewDict["PRIMARY_TEXT_CARD_VIEW"];
+            PrimaryTextCardViewResponse primaryTextCardView = SharePointAdapativeCardExtensionBot.cardViewDict["PRIMARY_TEXT_CARD_VIEW"] as PrimaryTextCardViewResponse;
 
             JObject activityObject = turnContext.Activity.Value as JObject;
             JObject aceProperties = (JObject)activityObject.Property("data").Value;

@@ -12,12 +12,13 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.Bot.Schema.SharePoint
 {
     /// <summary>
-    /// SharePoint show location action.
+    /// SharePoint Quick View action.
     /// </summary>
     public class QuickViewAction : IAction, IOnCardSelectionAction
     {
 #pragma warning disable CA1823 // Avoid unused private fields
 #pragma warning disable CS0414 // The field 'QuickViewAction.type' is assigned but its value is never used
+        [JsonProperty(PropertyName = "type")]
         private string type = "QuickView";
 #pragma warning restore CS0414 // The field 'QuickViewAction.type' is assigned but its value is never used
 #pragma warning restore CA1823 // Avoid unused private fields
@@ -28,6 +29,20 @@ namespace Microsoft.Bot.Schema.SharePoint
         {
             // Do nothing
         }
+
+        /// <summary>
+        /// Gets the action type of type <see cref="string"/>.
+        /// </summary>
+        /// <value>This value is the action type of the action.</value>
+        /**
+        [JsonProperty(PropertyName = "type")]
+        public string Type
+        {
+            get 
+            {
+                return "QuickView";   
+            }
+        }*/
         
         /// <summary>
         /// Gets or Sets the action parameters of type <see cref="QuickViewActionParameters"/>.
