@@ -127,6 +127,8 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
      */
     async OnSharePointTaskGetCardViewAsync(context, taskModuleRequest){
         console.log('Starting to get card view');
+        //Instance id of your bot ACE will be accessible via the value below whenever a request is sent!
+        console.log(context.activity.value.data);
         if (!this.cardViewsCreated){
             this.createCardViews();
         }
@@ -352,7 +354,6 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
             console.log('Starting to set properties!');
             const primaryTextCardView = this.cardViewMap.get("PRIMARY_TEXT_CARD_VIEW");
             const changedProperties = context.activity.value.data;
-            console.log(changedProperties);
             for (const property in changedProperties) {
                 if (Object.prototype.hasOwnProperty.call(changedProperties, property)) {
                     switch (property){
