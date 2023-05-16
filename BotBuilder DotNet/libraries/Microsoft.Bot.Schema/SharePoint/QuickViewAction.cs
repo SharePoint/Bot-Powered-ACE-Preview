@@ -29,20 +29,6 @@ namespace Microsoft.Bot.Schema.SharePoint
         {
             // Do nothing
         }
-
-        /// <summary>
-        /// Gets the action type of type <see cref="string"/>.
-        /// </summary>
-        /// <value>This value is the action type of the action.</value>
-        /**
-        [JsonProperty(PropertyName = "type")]
-        public string Type
-        {
-            get 
-            {
-                return "QuickView";   
-            }
-        }*/
         
         /// <summary>
         /// Gets or Sets the action parameters of type <see cref="QuickViewActionParameters"/>.
