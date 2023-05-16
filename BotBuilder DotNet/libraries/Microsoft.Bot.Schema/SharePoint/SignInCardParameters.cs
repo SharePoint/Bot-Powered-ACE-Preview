@@ -11,7 +11,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// SharePoint sign in card parameters.
     /// </summary>
-    public class SignInCardParameters : BaseCardParameters, ICardParameters
+    public class SignInCardParameters : BaseCardParameters
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SignInCardParameters"/> class.
