@@ -1,11 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
-import { Action } from './action';
+
+import { IAction } from "./IAction";
 
 /**
  * Sharepoint action.execute 
  */
-export class ExecuteAction extends Action{
+export class ExecuteAction implements IAction {
+    private type: string = "Execute";
     protected parameters: { [key: string] : unknown };
     private verb: string;
 

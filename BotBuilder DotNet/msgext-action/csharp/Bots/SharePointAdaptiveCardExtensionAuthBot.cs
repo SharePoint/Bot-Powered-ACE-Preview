@@ -40,7 +40,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             this._connectionName = configuration["ConnectionName"];
         }
 
-        protected override async Task<GetCardViewResponse> OnSharePointTaskGetCardViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        protected override async Task<ICardViewResponse> OnSharePointTaskGetCardViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
             // check to see if the user has already signed in
             var magicCode = (taskModuleRequest?.Data as JObject)?.GetValue("data")?.SelectToken("magicCode")?.ToString();
@@ -66,7 +66,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             var response = new HandleActionResponse();
             response.ResponseType = HandleActionResponse.ResponseTypeOption.CardView;
 
-            var renderArguments = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView);
+            PrimaryTextCardViewResponse renderArguments = new PrimaryTextCardViewResponse();
             renderArguments.AceData = new AceData();
             renderArguments.AceData.Title = _appTitle;
             renderArguments.AceData.DataVersion = "1.0";
@@ -96,12 +96,12 @@ namespace Microsoft.BotBuilderSamples.Bots
             return Task.FromResult(new SetPropertyPaneConfigurationResponse());
         }
 
-        private async Task<GetCardViewResponse> GenerateSignInCardView(ITurnContext<IInvokeActivity> turnContext, CancellationToken cancellationToken)
+        private async Task<ICardViewResponse> GenerateSignInCardView(ITurnContext<IInvokeActivity> turnContext, CancellationToken cancellationToken)
         {
             var signInResource = await TryGetSignInResource(turnContext, cancellationToken, null);
             var signInLink = signInResource != null ? new Uri(signInResource.SignInLink) : new Uri(string.Empty);
 
-            GetCardViewResponse response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.SignInCardView);
+            SignInCardViewResponse response = new SignInCardViewResponse();
             response.AceData = new AceData();
             response.AceData.CardSize = AceData.AceCardSize.Large;
             response.AceData.DataVersion = "1.0";
@@ -116,9 +116,8 @@ namespace Microsoft.BotBuilderSamples.Bots
             param.SignInButtonText = "Sign In";
             response.Data = param;
 
-            SharepointAction buttonAction = new SharepointAction();
-            buttonAction.Type = SharepointAction.ActionType.QuickView;
-            QuickViewParameters buttonParams = new QuickViewParameters();
+            QuickViewAction buttonAction = new QuickViewAction();
+            QuickViewActionParameters buttonParams = new QuickViewActionParameters();
             buttonParams.View = _signInQuickViewId;
             buttonAction.Parameters = buttonParams;
 
@@ -189,7 +188,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             return response;
         }
 
-        private GetCardViewResponse GenerateCardView(Graph.User user, ITurnContext<IInvokeActivity> turnContext, CancellationToken cancellationToken)
+        private ICardViewResponse GenerateCardView(Graph.User user, ITurnContext<IInvokeActivity> turnContext, CancellationToken cancellationToken)
         {
             var displayText = $"Hello, {user?.DisplayName}! You're signed in.";
 
@@ -199,7 +198,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             aceData.CardSize = AceData.AceCardSize.Large;
             aceData.Title = _appTitle;
 
-            GetCardViewResponse response = new GetCardViewResponse(GetCardViewResponse.CardViewTemplateType.PrimaryTextCardView);
+            PrimaryTextCardViewResponse response = new PrimaryTextCardViewResponse();
             response.AceData = aceData;
             response.ViewId = "SignedInView";
             response.Data = new PrimaryTextCardParameters

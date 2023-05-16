@@ -11,12 +11,12 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// SharePoint parameters for an External Link action.
     /// </summary>
-    public class ExternalLinkParameters : ICardActionParameters, IOnCardSelectionActionParameters
+    public class ExternalLinkActionParameters
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ExternalLinkParameters"/> class.
+        /// Initializes a new instance of the <see cref="ExternalLinkActionParameters"/> class.
         /// </summary>
-        public ExternalLinkParameters()
+        public ExternalLinkActionParameters()
         {
             // Do nothing
         }

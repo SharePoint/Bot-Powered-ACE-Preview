@@ -1,12 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { ICardActionParameters } from './ICardActionParameters';
-
 /**
  * Sharepoint GetLocationActionParameters object for get location action
  */
-export class GetLocationActionParameters implements ICardActionParameters {
+export class GetLocationActionParameters {
     private chooseLocationOnMap: boolean;
     
     /**

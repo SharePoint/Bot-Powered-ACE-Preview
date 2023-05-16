@@ -3,7 +3,7 @@
 
 import { IQuickViewData } from './IQuickViewData';
 import { AdaptiveCard } from 'adaptivecards';
-import { ExternalLinkParameters } from './externalLinkParameters';
+import { ExternalLinkActionParameters } from './externalLinkActionParameters';
 import { FocusParameters } from './focusParameters';
 import { ISharePointViewResponse } from './ISharePointViewResponse';
 
@@ -15,7 +15,7 @@ export class GetQuickViewResponse implements ISharePointViewResponse {
     private template: AdaptiveCard;
     private viewId: string;
     private title: string = '';
-    private externalLink: ExternalLinkParameters;
+    private externalLink: ExternalLinkActionParameters;
     private focusParameters: FocusParameters;
 
     /**
@@ -82,16 +82,16 @@ export class GetQuickViewResponse implements ISharePointViewResponse {
     }
 
     /**
-     * Sets externalLink property of type ExternalLinkParameters
+     * Sets externalLink property of type ExternalLinkActionParameters
      */
-    public set ExternalLink(externalLink: ExternalLinkParameters) {
+    public set ExternalLink(externalLink: ExternalLinkActionParameters) {
         this.externalLink = externalLink;
     }
 
     /**
-     * Gets externalLink property of type ExternalLinkParameters
+     * Gets externalLink property of type ExternalLinkActionParameters
      */
-    public get ExternalLink(): ExternalLinkParameters {
+    public get ExternalLink(): ExternalLinkActionParameters {
         return this.externalLink;
     }
 

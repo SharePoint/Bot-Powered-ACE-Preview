@@ -11,7 +11,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// SharePoint parameters for a select media action.
     /// </summary>
-    public class SelectMediaActionParameters : ICardActionParameters, IOnCardSelectionActionParameters
+    public class SelectMediaActionParameters
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SelectMediaActionParameters"/> class.

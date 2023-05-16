@@ -8,10 +8,10 @@ using System.Text;
 namespace Microsoft.Bot.Schema.SharePoint
 {
     /// <summary>
-    /// Interface for action parameters upon card selection.
+    /// Interface for action upon card selection.
     /// </summary>
 #pragma warning disable CA1040 // Avoid empty interfaces
-    public interface IOnCardSelectionActionParameters
+    public interface IOnCardSelectionAction
 #pragma warning restore CA1040 // Avoid empty interfaces
     {
         // This interface has no common methods.

@@ -11,7 +11,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// SharePoint parameters for a Get Location action.
     /// </summary>
-    public class GetLocationActionParameters : ICardActionParameters
+    public class GetLocationActionParameters
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetLocationActionParameters"/> class.
