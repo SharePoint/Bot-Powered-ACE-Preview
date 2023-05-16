@@ -15,6 +15,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     {
 #pragma warning disable CA1823 // Avoid unused private fields
 #pragma warning disable CS0414 // The field 'ExecuteAction.type' is assigned but its value is never used
+        [JsonProperty(PropertyName = "type")]
         private string type = "Execute";
 #pragma warning restore CS0414 // The field 'ExecuteAction.type' is assigned but its value is never used
 #pragma warning restore CA1823 // Avoid unused private fields

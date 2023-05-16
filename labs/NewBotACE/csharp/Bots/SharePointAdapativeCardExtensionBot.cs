@@ -66,15 +66,17 @@ namespace Microsoft.BotBuilderSamples.Bots
 
                 ActionButton primaryTextButton2= new ActionButton();
                 primaryTextButton2.Title="sic View";
-                primaryTextButton.Action = primaryTextSubmitAction;
+                primaryTextButton2.Action = primaryTextSubmitAction;
 
                 ActionButton primaryTextButton3=new ActionButton();
                 primaryTextButton3.Title = "Basic View";
-                primaryTextButton.Action = primaryTextSubmitAction;
+                primaryTextButton3.Action = primaryTextSubmitAction;
 
                 List<ActionButton> actionButtons = new List<ActionButton>
                 {
-                    primaryTextButton
+                    primaryTextButton, 
+                    primaryTextButton2,
+                    primaryTextButton3
                 };
 
                 primaryTextCard.CardButtons = actionButtons;
