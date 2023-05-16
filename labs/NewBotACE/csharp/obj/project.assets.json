@@ -2380,7 +2380,7 @@
       ]
     },
     "Microsoft.Bot.Builder/0.0.0": {
-      "sha512": "RCWIjX7bcf0rFx/IvifPu9V88DBOPWrna539Fko4JyebV5XtxZSuIRpnciQjt473asg2wljOH3s0SxFKQlTwbg==",
+      "sha512": "h//JXcWADU5ag8pHgolPqzF+Jko1uVCUw75dEP/WKLQQupfjNFiwT6prQ80tdSGjiwcgWripcTohNd4eTlaojg==",
       "type": "package",
       "path": "microsoft.bot.builder/0.0.0",
       "files": [
@@ -2393,7 +2393,7 @@
       ]
     },
     "Microsoft.Bot.Builder.Integration.AspNet.Core/0.0.0": {
-      "sha512": "PRATi4utm11HADcdkdYvn+tAGMEvzU8l7CS3ktG95sOnX/4vnLXH3ukVBGwNoIXKR6TTprQIGmOGpVQIhvLLhg==",
+      "sha512": "TruhtcObkHl5XE8w/L649iEQz9+RWm6SuZa7YIWnbcIkhi0q50PjeYC2EXJsy/cDhUulr8Rgnbkt4/9vIpVsqQ==",
       "type": "package",
       "path": "microsoft.bot.builder.integration.aspnet.core/0.0.0",
       "files": [
@@ -2410,7 +2410,7 @@
       ]
     },
     "Microsoft.Bot.Configuration/0.0.0": {
-      "sha512": "ycOxEfULncAMCx0pnN2DI7R/V7qWc61N2jAnC3raF0avZYTrQs5RSitWh5L7wuYuAT11q4VpGmkJWmHH/rQpIw==",
+      "sha512": "TxMJfO4gjRciYmqH+/PZsmjPmRDT9oBAS4NgfdxKLLcRSRosAyTRLJY2ZqJVQaqoRwnYmZH0Ynbn7eYGzROQkw==",
       "type": "package",
       "path": "microsoft.bot.configuration/0.0.0",
       "files": [
@@ -2423,7 +2423,7 @@
       ]
     },
     "Microsoft.Bot.Connector/0.0.0": {
-      "sha512": "lU+rLlaOEfergg2edTyPQYkcAXsbsQrY0HUITIf9N6SSsTMVTc4nv0+FezWsgbxwPEbFqE6roCOMfnSUP9on1A==",
+      "sha512": "TWedBlzs024JCWCo7C9pZMb0Oayt6yEg/Z5ZdYM5CDdIuKaqyzuQxtpvTmx43BP7Pk6Dj6j/ekegTz9tBP6VJg==",
       "type": "package",
       "path": "microsoft.bot.connector/0.0.0",
       "files": [
@@ -2436,7 +2436,7 @@
       ]
     },
     "Microsoft.Bot.Connector.Streaming/0.0.0": {
-      "sha512": "ef7COQ7hY9NJAe61Pm05kh+fOnUhuYdvyKciS/VIRiiX8nf+fH8PriNihB+bV+65zgAAkfWKe8s61pgAv7WkzA==",
+      "sha512": "RrGIjZCNgag9X0mc+4spakCEiPr8pCALuOvYeTmflfIb4qPuFqUKL68ddTOiCuX6bY1kE+xK+piiCzoCqJSMgQ==",
       "type": "package",
       "path": "microsoft.bot.connector.streaming/0.0.0",
       "files": [
@@ -2450,7 +2450,7 @@
       ]
     },
     "Microsoft.Bot.Schema/0.0.0": {
-      "sha512": "UlwYJb32hSN71RqG/e77lFXbh6eatb+0GMbjoh8Mbg9rPpVNJ6l+WX78r+5Hrd59cNBoy7NiYBqcz454LWsvaw==",
+      "sha512": "nQU+Uqjl7D0pF4Z3XWuj8oJw2VP8MtW9OKB25PEaXKIaZIsvv8N148upGoU8A1UCk953OImHKDjSS1zLGmFiSw==",
       "type": "package",
       "path": "microsoft.bot.schema/0.0.0",
       "files": [
@@ -2463,7 +2463,7 @@
       ]
     },
     "Microsoft.Bot.Streaming/0.0.0": {
-      "sha512": "6yUXC88Dw0FoEnXMwPGT+IHJrWB8OMVafix5sBDEXoXX2h4tyvHzz5wEpvG//akgL4LCyJ0z1nCxJas1EM9kmA==",
+      "sha512": "mV8js7ee0UfQyAKV9nLG/0hPIfWCZ16zATzXTvU+N7GGUsvUSI5a+Azi6V9hak/tddN0U2gS6QoIKs5zCPkvKQ==",
       "type": "package",
       "path": "microsoft.bot.streaming/0.0.0",
       "files": [
