@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using Microsoft.Bot.Schema.Teams;
@@ -64,12 +63,15 @@ namespace Microsoft.Bot.Schema.SharePoint
             {
                 return this.cardButtons;
             }
-
-            set
+            set 
             {
-                if (value.Count() > 2)
+                if(value.Count() > 2)
                 {
                     this.cardButtons = value.Take(2);
+                }
+                else
+                {
+                    this.cardButtons = value;
                 }
             }
         }
