@@ -1,12 +1,11 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 import { BaseCardParameters } from './baseCardParameters';
-import { ICardParameters } from './ICardParameters';
 
 /**
  * Sharepoint basic card view parameters
  */
-export class BasicCardParameters extends BaseCardParameters implements ICardParameters {
+export class BasicCardParameters extends BaseCardParameters {
     private primaryText: string;
 
     /**
