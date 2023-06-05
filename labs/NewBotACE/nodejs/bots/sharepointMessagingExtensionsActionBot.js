@@ -182,7 +182,6 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         text.TargetProperty = "title";
         text.Type = PropertyPaneGroupField.FieldType.TextField;
         const textProperties = new PropertyPaneTextFieldProperties();
-        textProperties.Value = "Bot Ace Demo";
         textProperties.Label = "Title";
         text.Properties = textProperties;
 
@@ -190,7 +189,6 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         primaryText.TargetProperty = "primaryText";
         primaryText.Type = PropertyPaneGroupField.FieldType.TextField;
         const primaryTextProperties = new PropertyPaneTextFieldProperties();
-        primaryTextProperties.Value = "My Bot!";
         primaryTextProperties.Label = "Primary Text";
         primaryText.Properties = primaryTextProperties;
 
@@ -198,7 +196,6 @@ class SharepointMessagingExtensionsActionBot extends SharePointActivityHandler {
         descriptionText.TargetProperty = "description";
         descriptionText.Type = PropertyPaneGroupField.FieldType.TextField;
         const descriptionTextProperties = new PropertyPaneTextFieldProperties();
-        descriptionTextProperties.Value = "";
         descriptionTextProperties.Label = "Description";
         descriptionText.Properties = descriptionTextProperties;
 
