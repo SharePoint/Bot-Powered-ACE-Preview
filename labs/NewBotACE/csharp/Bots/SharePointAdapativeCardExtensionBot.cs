@@ -265,7 +265,6 @@ namespace Microsoft.BotBuilderSamples.Bots
             titleText.TargetProperty = "title";
             titleText.Type = PropertyPaneGroupField.FieldType.TextField;
             PropertyPaneTextFieldProperties titleTextProperties = new PropertyPaneTextFieldProperties();
-            titleTextProperties.Value = "Bot Ace Demo";
             titleTextProperties.Label = "Title";
             titleTextProperties.Disabled = false;
             titleTextProperties.MaxLength = 255;
@@ -275,7 +274,6 @@ namespace Microsoft.BotBuilderSamples.Bots
             primaryText.TargetProperty = "primaryText";
             primaryText.Type = PropertyPaneGroupField.FieldType.TextField;
             PropertyPaneTextFieldProperties primaryTextProperties = new PropertyPaneTextFieldProperties();
-            primaryTextProperties.Value = "My Bot's primary text";
             primaryTextProperties.Label = "Primary Text";
             primaryTextProperties.MaxLength = 255;
             primaryText.Properties = primaryTextProperties;
@@ -284,7 +282,6 @@ namespace Microsoft.BotBuilderSamples.Bots
             descriptionText.TargetProperty = "description";
             descriptionText.Type = PropertyPaneGroupField.FieldType.TextField;
             PropertyPaneTextFieldProperties descriptionTextProperties = new PropertyPaneTextFieldProperties();
-            descriptionTextProperties.Value = "My Bot's description";
             descriptionTextProperties.Label = "Description Text";
             descriptionTextProperties.MaxLength = 255;
             descriptionText.Properties = descriptionTextProperties;
