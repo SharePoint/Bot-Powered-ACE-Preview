@@ -31,7 +31,7 @@ Note: we're using a fork of the BotBuilder framework due to anticipating changes
         labs
         <ul>
             <li>This folder contains the available hands-on-labs that will serve as tutorials to key features of Bot-Driven ACEs. The labs are available in both CSharp and JavaScript.</li>
-            <li>Follow the instruction of the labs available here to get started: <a>https://github.com/SharePoint/BotPoweredACEPreview/wiki</a>. We'll use also this wiki for sharing any updates, which will also be shared with you in direct messages to reduce the impact of potential breaking changes for your testing.</li>
+            <li>Follow the instruction of the labs available <a href='https://github.com/SharePoint/BotPoweredACEPreview/wiki'>here</a> to get started. We'll use also this wiki for sharing any updates, which will also be shared with you in direct messages to reduce the impact of potential breaking changes for your testing.</li>
         </ul>
     </li>
 </ul>
