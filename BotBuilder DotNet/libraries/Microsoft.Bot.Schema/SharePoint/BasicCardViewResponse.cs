@@ -20,6 +20,7 @@ namespace Microsoft.Bot.Schema.SharePoint
     {
 #pragma warning disable CS0414 // The field 'BasicCardViewResponse.templateType' is assigned but its value is never used
 #pragma warning disable CA1823 // Avoid unused private fields
+        [JsonProperty(PropertyName = "templateType")]
         private string templateType = "Basic";
 #pragma warning restore CA1823 // Avoid unused private fields
 #pragma warning restore CS0414 // The field 'BasicCardViewResponse.templateType' is assigned but its value is never used
