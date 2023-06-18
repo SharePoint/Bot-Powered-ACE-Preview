@@ -2,8 +2,18 @@
 
 Welcome to the Bot-Driven Adaptive Card Extension preview program!
 
+<h2>Why Bot-Driven ACEs?</h2>
+<h6>Problem Statement</h6>
+Currently, the model for building an ACE works for developers that can both invest resources to build a solution from scratch and possess JavaScript and TypeScript knowledge. As a result, developers who have already invested in bot solutions for Microsoft 365 and are more specialized in server-side programming languages, such as Java or C#, are automatically excluded from being able to reap the benefits of an ACE. <br><br>
+
+In addition, currently, within SharePoint, there's no way to provide a seamless silent sign-on (SSO) experience where the solution uses external or third party identity providers (IDPs). This limits the third party resources a developer can access or utilize through an ACE.  
+
+<h6>The Solution: Bot-Driven ACEs</h6>
+Bot-Driven ACEs reduce the requirements needed to develop cards from scratch and allow bot developers to integrate their existing investments on a bot to create an ACE. <br><br>
+
+Furthermore, Bot-Driven ACEs prevent bots and other third party code from accessing data from other bots by hosting the bot responses to SharePoint Viva Connections in an iFrame.
+
 <h2>Before Getting Started</h2>
-To get a better understanding of the use cases of Bot-Driven ACEs and the motivation behind developing this feature, please refer to this document. <br><br>
 
 For more information on the bot builder framework, see the [bot builder framework repository](https://github.com/Microsoft/botframework-sdk).
 
@@ -17,14 +27,14 @@ Note: we're using a fork of the BotBuilder framework due to anticipating changes
         BotBuilder DotNet
         <ul>
             <li>This folder contains a fork of the BotBuilder framework for the CSharp language</li>
-            <li>Please ignore the ReadMe in this directory and use the instructions in the hands-on-labs as the single source of truth instructions to get started. </li>
+            <li>Ignore the ReadMe in this directory and use the instructions in the hands-on-labs as the single source of truth instructions to get started. </li>
         </ul>
     </li>
     <li>
         BotBuilderNodeJs
         <ul>
             <li>This folder contains a fork of the BotBuilder framework for the JavaScript language</li>
-            <li>Please ignore the ReadMe in this directory and use the instructions in the hands-on-labs as the single source of truth instructions to get started. </li>
+            <li>Ignore the ReadMe in this directory and use the instructions in the hands-on-labs as the single source of truth instructions to get started. </li>
         </ul>
     </li>
     <li>
