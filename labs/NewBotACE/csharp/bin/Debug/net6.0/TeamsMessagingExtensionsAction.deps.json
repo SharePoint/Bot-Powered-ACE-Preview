@@ -1263,49 +1263,49 @@
     "Microsoft.Bot.Builder/0.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-h//JXcWADU5ag8pHgolPqzF+Jko1uVCUw75dEP/WKLQQupfjNFiwT6prQ80tdSGjiwcgWripcTohNd4eTlaojg==",
+      "sha512": "sha512-q7y8jv5wZSW7MiumWLcco0bCWwp+6RuMZFnwjM6MMbufA5WJT6FxHY1S9sXEdrGKAXifAqVFK7WqTFPP43uyuQ==",
       "path": "microsoft.bot.builder/0.0.0",
       "hashPath": "microsoft.bot.builder.0.0.0.nupkg.sha512"
     },
     "Microsoft.Bot.Builder.Integration.AspNet.Core/0.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-TruhtcObkHl5XE8w/L649iEQz9+RWm6SuZa7YIWnbcIkhi0q50PjeYC2EXJsy/cDhUulr8Rgnbkt4/9vIpVsqQ==",
+      "sha512": "sha512-MNPie+eJUKHLZUdrAGn2dTH4Luwwvd//uwPOI8dP5IVHrjrcPJ4KNu+l5Q7QEHIM2SbaRZY4CuHsd8eqmSycog==",
       "path": "microsoft.bot.builder.integration.aspnet.core/0.0.0",
       "hashPath": "microsoft.bot.builder.integration.aspnet.core.0.0.0.nupkg.sha512"
     },
     "Microsoft.Bot.Configuration/0.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-TxMJfO4gjRciYmqH+/PZsmjPmRDT9oBAS4NgfdxKLLcRSRosAyTRLJY2ZqJVQaqoRwnYmZH0Ynbn7eYGzROQkw==",
+      "sha512": "sha512-xn7CK31S34qXWPyWUa3fzrqOueJm0EBAad6ltjzXsWVaPU6HRB7n6nGmA/bdRIaHzH/PrZyUIHgqjH2iUSQY3Q==",
       "path": "microsoft.bot.configuration/0.0.0",
       "hashPath": "microsoft.bot.configuration.0.0.0.nupkg.sha512"
     },
     "Microsoft.Bot.Connector/0.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-TWedBlzs024JCWCo7C9pZMb0Oayt6yEg/Z5ZdYM5CDdIuKaqyzuQxtpvTmx43BP7Pk6Dj6j/ekegTz9tBP6VJg==",
+      "sha512": "sha512-aVM7dHIvJDZSLPqwyR41DS70heu1w86iJ9XP8VRxreoMwz5zvlaWZBZRmuUpTGN9P4mDuXMgBtDneCy23VflrQ==",
       "path": "microsoft.bot.connector/0.0.0",
       "hashPath": "microsoft.bot.connector.0.0.0.nupkg.sha512"
     },
     "Microsoft.Bot.Connector.Streaming/0.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-RrGIjZCNgag9X0mc+4spakCEiPr8pCALuOvYeTmflfIb4qPuFqUKL68ddTOiCuX6bY1kE+xK+piiCzoCqJSMgQ==",
+      "sha512": "sha512-fn5ZCZGKx+Tow3zGwDMraRSGGLMypqkxX+H5nOtd11q+8wIoA4NPiD4j57FbvHDmSDyOQzaXreAlSxvOy5W7jw==",
       "path": "microsoft.bot.connector.streaming/0.0.0",
       "hashPath": "microsoft.bot.connector.streaming.0.0.0.nupkg.sha512"
     },
     "Microsoft.Bot.Schema/0.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-nQU+Uqjl7D0pF4Z3XWuj8oJw2VP8MtW9OKB25PEaXKIaZIsvv8N148upGoU8A1UCk953OImHKDjSS1zLGmFiSw==",
+      "sha512": "sha512-H5IVVQIVLgI8WeHi1oLCnNcpu+yLkZ4dtzUamK33f31tI/AL+J/81iojMcIlKMqZoxAbml9GzjOCHPNITGccNA==",
       "path": "microsoft.bot.schema/0.0.0",
       "hashPath": "microsoft.bot.schema.0.0.0.nupkg.sha512"
     },
     "Microsoft.Bot.Streaming/0.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-mV8js7ee0UfQyAKV9nLG/0hPIfWCZ16zATzXTvU+N7GGUsvUSI5a+Azi6V9hak/tddN0U2gS6QoIKs5zCPkvKQ==",
+      "sha512": "sha512-7bxDdr88tB0eGP+O9PjPnFopf8jvbSWyAIYAF1v/B4UajV9J6YCSDTfaqS0BaNhYy9QUywf40U3KQdAYds/MBg==",
       "path": "microsoft.bot.streaming/0.0.0",
       "hashPath": "microsoft.bot.streaming.0.0.0.nupkg.sha512"
     },

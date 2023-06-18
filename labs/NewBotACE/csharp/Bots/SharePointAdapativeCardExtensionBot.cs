@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Microsoft.Bot.Schema.Teams;
+using System.Diagnostics;
 
 namespace Microsoft.BotBuilderSamples.Bots
 {
@@ -35,6 +36,7 @@ namespace Microsoft.BotBuilderSamples.Bots
 
             if (!SharePointAdapativeCardExtensionBot.cardViewDict.ContainsKey("PRIMARY_TEXT_CARD_VIEW"))
             {
+                Trace.Write("\n\n\nStarting to get card view.\n\n\n");
                 PrimaryTextCardViewResponse primaryTextCard = new PrimaryTextCardViewResponse();
                 primaryTextCard.AceData = new AceData();
                 primaryTextCard.AceData.CardSize = AceData.AceCardSize.Large;
@@ -64,19 +66,9 @@ namespace Microsoft.BotBuilderSamples.Bots
                 };
                 primaryTextButton.Action = primaryTextSubmitAction;
 
-                ActionButton primaryTextButton2= new ActionButton();
-                primaryTextButton2.Title="sic View";
-                primaryTextButton2.Action = primaryTextSubmitAction;
-
-                ActionButton primaryTextButton3=new ActionButton();
-                primaryTextButton3.Title = "Basic View";
-                primaryTextButton3.Action = primaryTextSubmitAction;
-
                 List<ActionButton> actionButtons = new List<ActionButton>
                 {
-                    primaryTextButton, 
-                    primaryTextButton2,
-                    primaryTextButton3
+                    primaryTextButton
                 };
 
                 primaryTextCard.CardButtons = actionButtons;
@@ -206,6 +198,7 @@ namespace Microsoft.BotBuilderSamples.Bots
 
                 signInCard.CardButtons = signInActionButtons;
                 SharePointAdapativeCardExtensionBot.cardViewDict.Add(signInCard.ViewId, signInCard);
+                Trace.Write("\n\n\nCard views created!\n\n\n");
             }
 
         }
@@ -213,12 +206,15 @@ namespace Microsoft.BotBuilderSamples.Bots
         protected override Task<ICardViewResponse> OnSharePointTaskGetCardViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
             this.currentView = "PRIMARY_TEXT_CARD_VIEW";
+            // Access the instanceId of your ACE here
+            Trace.Write("\n\n\nHere is your ACE's instanceId! " + turnContext.Activity.Value + "\n\n\n");
 
             return Task.FromResult(SharePointAdapativeCardExtensionBot.cardViewDict["PRIMARY_TEXT_CARD_VIEW"]);
         }
 
         protected override Task<GetQuickViewResponse> OnSharePointTaskGetQuickViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
+            Trace.Write("\n\n\nStarting to get quick view.\n\n\n");
             GetQuickViewResponse response = new GetQuickViewResponse();
             response.Title =  "Primary Text quick view";
             response.Template = new AdaptiveCard();
@@ -247,6 +243,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             response.Template.Body.Add(container);
 
             response.ViewId = "PRIMARY_TEXT_QUICK_VIEW";
+            Trace.Write("\n\n\nQuick View created.\n\n\n");
             return Task.FromResult(response);
         }
 
@@ -255,6 +252,7 @@ namespace Microsoft.BotBuilderSamples.Bots
         // note that the majority of the following code is currently not used by the card either in rendering the card view nor the quick view.
         // this is an example of the syntaxt that needs to be used to surface controls in the property pane.
         // However, setting the title, primary text, and description text fields will provide a sneak peek of applying property pane changes. 
+            Trace.Write("\n\n\nStarting to create the Property Pane Configuration.\n\n\n");
             GetPropertyPaneConfigurationResponse response = new GetPropertyPaneConfigurationResponse();
             PropertyPanePage page = new PropertyPanePage();
             page.Header = new PropertyPanePageHeader();
@@ -417,11 +415,13 @@ namespace Microsoft.BotBuilderSamples.Bots
             };
             response.Pages = pages;
 
+            Trace.Write("\n\n\nProperty Pane Configuration created.\n\n\n");
             return Task.FromResult(response);
         }
 
         protected override Task<SetPropertyPaneConfigurationResponse> OnSharePointTaskSetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
+            Trace.Write("\n\n\nStarting to set the Property Pane Configuration.\n\n\n");
             PrimaryTextCardViewResponse primaryTextCardView = SharePointAdapativeCardExtensionBot.cardViewDict["PRIMARY_TEXT_CARD_VIEW"] as PrimaryTextCardViewResponse;
 
             JObject activityObject = turnContext.Activity.Value as JObject;
@@ -448,6 +448,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             SetPropertyPaneConfigurationResponse response = new SetPropertyPaneConfigurationResponse();
             response.ResponseType = SetPropertyPaneConfigurationResponse.ResponseTypeOption.CardView;
             response.RenderArguments = primaryTextCardView;
+            Trace.Write("\n\n\nFinished setting the Property Pane Configuration.\n\n\n");
             return Task.FromResult(response);
         }
 
@@ -460,6 +461,7 @@ namespace Microsoft.BotBuilderSamples.Bots
                     cancellationToken.ThrowIfCancellationRequested();
                 }
             }
+            Trace.Write("\n\n\nStarted to handle action.\n\n\n");
             JObject actionParameters = (JObject)((JObject)turnContext.Activity.Value).Property("data").Value;
 
             if (actionParameters["type"].ToString().Equals("Submit"))
@@ -471,9 +473,11 @@ namespace Microsoft.BotBuilderSamples.Bots
                 
                 response.RenderArguments = SharePointAdapativeCardExtensionBot.cardViewDict[viewToNavigateTo];
 
+                Trace.Write("\n\n\nFinished handling action.\n\n\n");
                 return Task.FromResult(response);
             }
 
+            Trace.Write("\n\n\nFinished handling action.\n\n\n");
             return Task.FromResult(new HandleActionResponse());
         }
     }
