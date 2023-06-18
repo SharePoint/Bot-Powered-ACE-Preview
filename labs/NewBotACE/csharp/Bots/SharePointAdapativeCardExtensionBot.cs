@@ -66,19 +66,9 @@ namespace Microsoft.BotBuilderSamples.Bots
                 };
                 primaryTextButton.Action = primaryTextSubmitAction;
 
-                ActionButton primaryTextButton2= new ActionButton();
-                primaryTextButton2.Title="sic View";
-                primaryTextButton2.Action = primaryTextSubmitAction;
-
-                ActionButton primaryTextButton3=new ActionButton();
-                primaryTextButton3.Title = "Basic View";
-                primaryTextButton3.Action = primaryTextSubmitAction;
-
                 List<ActionButton> actionButtons = new List<ActionButton>
                 {
-                    primaryTextButton, 
-                    primaryTextButton2,
-                    primaryTextButton3
+                    primaryTextButton
                 };
 
                 primaryTextCard.CardButtons = actionButtons;
