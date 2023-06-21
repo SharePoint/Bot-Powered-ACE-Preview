@@ -17,7 +17,9 @@ Furthermore, Bot-Driven ACEs prevent bots and other third party code from access
 
 For more information on the bot builder framework, see the [bot builder framework repository](https://github.com/Microsoft/botframework-sdk).
 
-Furthermore, to get started, ensure the account you use to configure the bot is in the same Azure subscription as your tenant.<br>
+Please check the [known issues page](https://github.com/SharePoint/BotPoweredACEPreview/wiki/Known-Issues) to be informed on any issues blocking any desired use cases.
+
+To get started, **ensure the account you use to configure the bot is in the same Azure subscription as your tenant**.<br>
 
 Note: we're using a fork of the BotBuilder framework due to anticipating changes in the Bot-Driven ACE schema based on feedback during the preview period. Before this feature hits GA, we'll finalize the schema and work with the BotBuilder framework team to merge our changes.  
 
