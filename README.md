@@ -1,4 +1,4 @@
-# SPFx Bot Powered Adaptive Card Extensions for Viva Connections (Preview)
+# Bot Powered Adaptive Card Extensions for Viva Connections (Preview)
 
 Welcome to the Bot-Driven Adaptive Card Extension preview program!
 
