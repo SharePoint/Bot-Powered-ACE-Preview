@@ -1,6 +1,13 @@
-# Bot Powered Adaptive Card Extensions for Viva Connections (Preview)
+# Bot Powered Adaptive Card Extensions for Viva Connections (Preview) - Paused
 
-Welcome to the Bot-Driven Adaptive Card Extension preview program!
+Thank you for your interest for the Bot Powered Adaptive Card Extensions for Viva Connections. We executed this preview from spring 2023 to autumn 2023 and have currently **paused the preview** as we are addressing all feedback and are **getting ready for the first version to be generally available**.
+
+**Thank you all for your invaluable input**. Current plan is to get the feature relased in the first half of the 2024. We will be sharing more updates through the [Microsoft 365 Developer blog](https://devblogs.microsoft.com/microsoft365dev/). Stay tuned! 
+
+
+> Reference solutions which were part of the public preview material has been deleted from this repository. We have intentionally left the tutorials and other assets here for anyone who might be interested on checking the model before it's publicly again available.
+
+---
 
 <h2>Why Bot-Driven ACEs?</h2>
 <h6>Problem Statement</h6>

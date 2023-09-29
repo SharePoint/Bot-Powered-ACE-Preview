@@ -1,5 +1,0 @@
-steps:
-- script: git ls-files
-  displayName: list files
-  continueOnError: true
-  condition: succeededOrFailed()
