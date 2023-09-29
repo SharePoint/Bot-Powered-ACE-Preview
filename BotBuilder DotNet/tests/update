@@ -1,5 +1,0 @@
-#!/bin/bash
-cd ..
-bf dialog:merge **/*.schema libraries/**/*.uischema tests/**/*.schema -o tests/tests.schema
-cd tests
-
