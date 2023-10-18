@@ -19,6 +19,7 @@
     <PackageId>AdaptiveExpressions</PackageId>
     <Description>This library implements Microsoft Bot Builder Expression evaluator for .NET</Description>
     <Summary>This library implements Microsoft Bot Builder Expression evaluator for .NET</Summary>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>

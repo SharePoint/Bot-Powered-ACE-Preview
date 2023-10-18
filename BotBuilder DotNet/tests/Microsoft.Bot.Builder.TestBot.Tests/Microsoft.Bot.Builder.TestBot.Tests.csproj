@@ -40,7 +40,6 @@
     <None Update="Properties\launchSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <AdditionalFiles Include="stylecop.json" />
   </ItemGroup>
   <ItemGroup>
     <None Update="xunit.runner.json">

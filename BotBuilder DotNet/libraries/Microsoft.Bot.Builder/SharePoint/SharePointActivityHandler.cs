@@ -47,15 +47,21 @@ namespace Microsoft.Bot.Builder.SharePoint
                     switch (turnContext.Activity.Name)
                     {
                         case "cardExtension/getCardView":
-                            return CreateInvokeResponse(await OnSharePointTaskGetCardViewAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false));
+                            return CreateInvokeResponse(await OnSharePointTaskGetCardViewAsync(turnContext, SafeCast<AceRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false));
+
                         case "cardExtension/getQuickView":
-                            return CreateInvokeResponse(await OnSharePointTaskGetQuickViewAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false));
+                            return CreateInvokeResponse(await OnSharePointTaskGetQuickViewAsync(turnContext, SafeCast<AceRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false));
+
                         case "cardExtension/getPropertyPaneConfiguration":
-                            return CreateInvokeResponse(await OnSharePointTaskGetPropertyPaneConfigurationAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false));
+                            return CreateInvokeResponse(await OnSharePointTaskGetPropertyPaneConfigurationAsync(turnContext, SafeCast<AceRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false));
+
                         case "cardExtension/setPropertyPaneConfiguration":
-                            return CreateInvokeResponse(await OnSharePointTaskSetPropertyPaneConfigurationAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false));
+                            BaseHandleActionResponse setPropPaneConfigResponse = await OnSharePointTaskSetPropertyPaneConfigurationAsync(turnContext, SafeCast<AceRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false);
+                            ValidateSetPropertyPaneConfigurationResponse(setPropPaneConfigResponse);
+                            return CreateInvokeResponse(setPropPaneConfigResponse);
+
                         case "cardExtension/handleAction":
-                            return CreateInvokeResponse(await OnSharePointTaskHandleActionAsync(turnContext, SafeCast<TaskModuleRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false)); 
+                            return CreateInvokeResponse(await OnSharePointTaskHandleActionAsync(turnContext, SafeCast<AceRequest>(turnContext.Activity.Value), cancellationToken).ConfigureAwait(false));
                     }
                 }
             }
@@ -71,11 +77,11 @@ namespace Microsoft.Bot.Builder.SharePoint
         /// Override this in a derived class to provide logic for when a card view is fetched.
         /// </summary>
         /// <param name="turnContext">A strongly-typed context object for this turn.</param>
-        /// <param name="taskModuleRequest">The task module invoke request value payload.</param>
+        /// <param name="aceRequest">The ACE invoke request value payload.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects
         /// or threads to receive notice of cancellation.</param>
-        /// <returns>A Task Module Response for the request.</returns>
-        protected virtual Task<ICardViewResponse> OnSharePointTaskGetCardViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        /// <returns>A Card View Response for the request.</returns>
+        protected virtual Task<CardViewResponse> OnSharePointTaskGetCardViewAsync(ITurnContext<IInvokeActivity> turnContext, AceRequest aceRequest, CancellationToken cancellationToken)
         {
             throw new InvokeResponseException(HttpStatusCode.NotImplemented);
         }
@@ -84,24 +90,11 @@ namespace Microsoft.Bot.Builder.SharePoint
         /// Override this in a derived class to provide logic for when a quick view is fetched.
         /// </summary>
         /// <param name="turnContext">A strongly-typed context object for this turn.</param>
-        /// <param name="taskModuleRequest">The task module invoke request value payload.</param>
+        /// <param name="aceRequest">The ACE invoke request value payload.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects
         /// or threads to receive notice of cancellation.</param>
-        /// <returns>A Task Module Response for the request.</returns>
-        protected virtual Task<GetQuickViewResponse> OnSharePointTaskGetQuickViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
-        {
-            throw new InvokeResponseException(HttpStatusCode.NotImplemented);
-        }
-
-        /// <summary>
-        /// Override this in a derived class to provide logic for when a Action.Submit is initiated.
-        /// </summary>
-        /// <param name="turnContext">A strongly-typed context object for this turn.</param>
-        /// <param name="taskModuleRequest">The task module invoke request value payload.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects
-        /// or threads to receive notice of cancellation.</param>
-        /// <returns>A Task Module Response for the request.</returns>
-        protected virtual Task<HandleActionResponse> OnSharePointTaskHandleActionAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        /// <returns>A Quick View Response for the request.</returns>
+        protected virtual Task<QuickViewResponse> OnSharePointTaskGetQuickViewAsync(ITurnContext<IInvokeActivity> turnContext, AceRequest aceRequest, CancellationToken cancellationToken)
         {
             throw new InvokeResponseException(HttpStatusCode.NotImplemented);
         }
@@ -110,11 +103,11 @@ namespace Microsoft.Bot.Builder.SharePoint
         /// Override this in a derived class to provide logic for getting configuration pane properties.
         /// </summary>
         /// <param name="turnContext">A strongly-typed context object for this turn.</param>
-        /// <param name="taskModuleRequest">The task module invoke request value payload.</param>
+        /// <param name="aceRequest">The ACE invoke request value payload.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects
         /// or threads to receive notice of cancellation.</param>
-        /// <returns>A Task Module Response for the request.</returns>
-        protected virtual Task<GetPropertyPaneConfigurationResponse> OnSharePointTaskGetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        /// <returns>A Property Pane Configuration Response for the request.</returns>
+        protected virtual Task<GetPropertyPaneConfigurationResponse> OnSharePointTaskGetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, AceRequest aceRequest, CancellationToken cancellationToken)
         {
             throw new InvokeResponseException(HttpStatusCode.NotImplemented);
         }
@@ -123,11 +116,25 @@ namespace Microsoft.Bot.Builder.SharePoint
         /// Override this in a derived class to provide logic for setting configuration pane properties.
         /// </summary>
         /// <param name="turnContext">A strongly-typed context object for this turn.</param>
-        /// <param name="taskModuleRequest">The task module invoke request value payload.</param>
+        /// <param name="aceRequest">The ACE invoke request value payload.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects
         /// or threads to receive notice of cancellation.</param>
-        /// <returns>A Task Module Response for the request.</returns>
-        protected virtual Task<SetPropertyPaneConfigurationResponse> OnSharePointTaskSetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        /// <returns>Card view or no-op action response.</returns>
+        /// <remarks>The handler will fail with 500 status code if the response is of type <see cref="QuickViewHandleActionResponse" />.</remarks>
+        protected virtual Task<BaseHandleActionResponse> OnSharePointTaskSetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, AceRequest aceRequest, CancellationToken cancellationToken)
+        {
+            throw new InvokeResponseException(HttpStatusCode.NotImplemented);
+        }
+
+        /// <summary>
+        /// Override this in a derived class to provide logic for handling ACE actions.
+        /// </summary>
+        /// <param name="turnContext">A strongly-typed context object for this turn.</param>
+        /// <param name="aceRequest">The ACE invoke request value payload.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects
+        /// or threads to receive notice of cancellation.</param>
+        /// <returns>A view response.</returns>
+        protected virtual Task<BaseHandleActionResponse> OnSharePointTaskHandleActionAsync(ITurnContext<IInvokeActivity> turnContext, AceRequest aceRequest, CancellationToken cancellationToken)
         {
             throw new InvokeResponseException(HttpStatusCode.NotImplemented);
         }
@@ -146,6 +153,14 @@ namespace Microsoft.Bot.Builder.SharePoint
             }
 
             return obj.ToObject<T>();
+        }
+
+        private void ValidateSetPropertyPaneConfigurationResponse(BaseHandleActionResponse response)
+        {
+            if (response is QuickViewHandleActionResponse)
+            {
+                throw new InvokeResponseException(HttpStatusCode.InternalServerError, "Response for SetPropertyPaneConfiguration action can't be of QuickView type.");
+            }
         }
     }
 }

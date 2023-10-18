@@ -3,35 +3,38 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Bot.Schema.SharePoint
 {
     /// <summary>
-    /// SharePoint primary text card parameters.
+    /// SharePoint Quick View Data object.
     /// </summary>
-    public class PrimaryTextCardParameters : BaseCardParameters
+    public class QuickViewData
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PrimaryTextCardParameters"/> class.
+        /// Initializes a new instance of the <see cref="QuickViewData"/> class.
         /// </summary>
-        public PrimaryTextCardParameters()
+        public QuickViewData()
         {
             // Do nothing
         }
 
         /// <summary>
-        /// Gets or Sets the primary text of type <see cref="string"/>.
+        /// Gets or Sets the title of type <see cref="string"/>.
         /// </summary>
-        /// <value>This value is the primary text to display.</value>
-        [JsonProperty(PropertyName = "primaryText")]
-        public string PrimaryText { get; set; }
+        /// <value>This value is the title of the quick view data.</value>
+        [JsonProperty(PropertyName = "title")]
+        public string Title { get; set; }
 
         /// <summary>
         /// Gets or Sets the description of type <see cref="string"/>.
         /// </summary>
-        /// <value>This value is the description of the card view.</value>
+        /// <value>This value is the description of the quick view data.</value>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
     }

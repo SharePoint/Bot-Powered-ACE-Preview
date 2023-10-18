@@ -8,10 +8,6 @@
     <PackageOutputPath>$(MSBuildThisFileDirectory)outputpackages</PackageOutputPath>
   </PropertyGroup>
 
-  <Target Name="CleanOutputpackagesDir" AfterTargets="Clean">
-    <RemoveDir Directories="$(MSBuildThisFileDirectory)outputpackages" />
-  </Target>
-
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>

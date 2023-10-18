@@ -84,11 +84,11 @@ namespace Microsoft.Bot.Schema.SharePoint
         public string IconProperty { get; set; }
 
         /// <summary>
-        /// Gets or Sets the property bag of type <see cref="Uri"/>.
+        /// Gets or Sets the property bag of type <see cref="JObject"/>.
         /// </summary>
         /// <value>This value is the property bag of the adaptive card extension.</value>
         [JsonProperty(PropertyName = "properties")]
-        #pragma warning disable CA2227
+#pragma warning disable CA2227
         public JObject Properties { get; set; }
     }
 }

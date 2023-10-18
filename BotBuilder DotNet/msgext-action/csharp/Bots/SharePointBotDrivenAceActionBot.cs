@@ -33,9 +33,9 @@ namespace Microsoft.BotBuilderSamples.Bots
             this._baseUrl = configuration["BaseUrl"];
         }
 
-        protected override Task<GetQuickViewResponse> OnSharePointTaskGetQuickViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        protected override Task<QuickViewResponse> OnSharePointTaskGetQuickViewAsync(ITurnContext<IInvokeActivity> turnContext, AceRequest taskModuleRequest, CancellationToken cancellationToken)
         {
-            GetQuickViewResponse response = new GetQuickViewResponse();
+            QuickViewResponse response = new QuickViewResponse();
             response.Title = "BOT QUICK VIEW";
             response.Template = new AdaptiveCard();
 
@@ -114,35 +114,35 @@ namespace Microsoft.BotBuilderSamples.Bots
             };
         }*/
 
-        protected override Task<ICardViewResponse> OnSharePointTaskGetCardViewAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        protected override Task<CardViewResponse> OnSharePointTaskGetCardViewAsync(ITurnContext<IInvokeActivity> turnContext, AceRequest taskModuleRequest, CancellationToken cancellationToken)
         {
-            PrimaryTextCardViewResponse response = new PrimaryTextCardViewResponse();
+            CardViewResponse response = new CardViewResponse();
             response.AceData = new AceData();
             response.AceData.CardSize = AceData.AceCardSize.Medium;
             response.AceData.Title = "BOT DRIVEN ACE";
             response.AceData.DataVersion = "1.0";
             response.AceData.Id = "<App ID>";
-            response.Data = new PrimaryTextCardParameters()
-            {
-                PrimaryText = "MY BOT " + SharePointBotDrivenAceActionBot.index++.ToString()
-            };
+            response.CardViewParameters = CardViewParameters.BasicCardViewParameters(
+                new CardBarComponent(),
+                new CardTextComponent()
+                {
+                    Text = "MY BOT " + SharePointBotDrivenAceActionBot.index++.ToString()
+                },
+                new List<BaseCardComponent>()
+                {
+                    new CardButtonComponent()
+                    {
+                        Title = "DETAILS",
+                        Action = new QuickViewAction()
+                        {
+                        Parameters = new QuickViewActionParameters() { View = "appid_QUICK_VIEW" }
+                        }
+                    }
+                });
+
             response.ViewId = "view1";
 
-            ActionButton button = new ActionButton();
-            button.Title = "DETAILS";
-            button.Action = new QuickViewAction()
-            {
-                Parameters = new QuickViewActionParameters() { View = "appid_QUICK_VIEW" }
-            };
-
-            List<ActionButton> actionButtons = new List<ActionButton>
-            {
-                button
-            };
-
-            response.CardButtons = actionButtons;
-
-            return Task.FromResult(response as ICardViewResponse);
+            return Task.FromResult(response);
         }
 
         /*
@@ -194,7 +194,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             return await Task.FromResult(new MessagingExtensionActionResponse());
         }*/
 
-        protected override Task<GetPropertyPaneConfigurationResponse> OnSharePointTaskGetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        protected override Task<GetPropertyPaneConfigurationResponse> OnSharePointTaskGetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, AceRequest aceRequest, CancellationToken cancellationToken)
         {
             GetPropertyPaneConfigurationResponse response = new GetPropertyPaneConfigurationResponse();
             PropertyPanePage page = new PropertyPanePage();
@@ -341,7 +341,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             return Task.FromResult(response); 
         }
 
-        protected override Task<SetPropertyPaneConfigurationResponse> OnSharePointTaskSetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        protected override Task<BaseHandleActionResponse> OnSharePointTaskSetPropertyPaneConfigurationAsync(ITurnContext<IInvokeActivity> turnContext, AceRequest aceRequest, CancellationToken cancellationToken)
         {
             if (turnContext != null)
             {
@@ -351,7 +351,7 @@ namespace Microsoft.BotBuilderSamples.Bots
                 }
             }
 
-            return Task.FromResult(new SetPropertyPaneConfigurationResponse());
+            return Task.FromResult<BaseHandleActionResponse>(new NoOpHandleActionResponse());
         }
 
         private MessagingExtensionActionResponse RazorViewResponse(ITurnContext<IInvokeActivity> turnContext, MessagingExtensionAction action)
@@ -439,9 +439,9 @@ namespace Microsoft.BotBuilderSamples.Bots
             var includeImage = ((JObject)action.Data)["includeImage"]?.ToString();
             if (string.Equals(includeImage, bool.TrueString, StringComparison.OrdinalIgnoreCase))
             {
-                heroCard.Images = new List<CardImage>
+                heroCard.Images = new List<Bot.Schema.CardImage>
                 {
-                    new CardImage { Url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtB3AwMUeNoq4gUBGe6Ocj8kyh3bXa9ZbV7u1fVKQoyKFHdkqU" },
+                    new Bot.Schema.CardImage { Url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtB3AwMUeNoq4gUBGe6Ocj8kyh3bXa9ZbV7u1fVKQoyKFHdkqU" },
                 };
             }
 
@@ -475,7 +475,7 @@ namespace Microsoft.BotBuilderSamples.Bots
                 Title = "ID: " + cardData.EmpId,
                 Subtitle = "Name: " + cardData.EmpName,
                 Text = "E-Mail: " + cardData.EmpEmail,
-                Images = new List<CardImage> { new CardImage { Url = imgUrl } },
+                Images = new List<Bot.Schema.CardImage> { new Bot.Schema.CardImage { Url = imgUrl } },
             };
 
             var attachments = new List<MessagingExtensionAttachment>

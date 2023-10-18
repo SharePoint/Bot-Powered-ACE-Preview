@@ -1,7 +1,7 @@
-﻿using AdaptiveCards;
+﻿using System.Collections.Generic;
+using AdaptiveCards;
 using Microsoft.Bot.Schema.Teams;
 using Microsoft.BotBuilderSamples.Models;
-using System.Collections.Generic;
 
 namespace Microsoft.BotBuilderSamples.Helpers
 {
@@ -18,27 +18,27 @@ namespace Microsoft.BotBuilderSamples.Helpers
                     {
                         new AdaptiveColumn()
                         {
-                            Items=new List<AdaptiveElement>()
+                            Items = new List<AdaptiveElement>()
                             {
                                 new AdaptiveTextBlock()
                                 {
-                                    Text= "Name :",
-                                    Wrap=true,
-                                    Size=AdaptiveTextSize.Medium,
-                                    Weight=AdaptiveTextWeight.Bolder
+                                    Text = "Name :",
+                                    Wrap = true,
+                                    Size = AdaptiveTextSize.Medium,
+                                    Weight = AdaptiveTextWeight.Bolder
                                 }
                             },
                             Width = AdaptiveColumnWidth.Auto
                         },
-                         new AdaptiveColumn()
+                        new AdaptiveColumn()
                         {
-                            Items=new List<AdaptiveElement>()
+                            Items = new List<AdaptiveElement>()
                             {
                                 new AdaptiveTextBlock()
                                 {
-                                    Text= createCardResponse.Title,
-                                    Wrap=true,
-                                    Size=AdaptiveTextSize.Medium,
+                                    Text = createCardResponse.Title,
+                                    Wrap = true,
+                                    Size = AdaptiveTextSize.Medium,
                                 }
                             },
                             Width = AdaptiveColumnWidth.Auto
@@ -51,27 +51,27 @@ namespace Microsoft.BotBuilderSamples.Helpers
                     {
                         new AdaptiveColumn()
                         {
-                            Items=new List<AdaptiveElement>()
+                            Items = new List<AdaptiveElement>()
                             {
                                 new AdaptiveTextBlock()
                                 {
-                                    Text= "Designation :",
-                                    Wrap=true,
-                                    Size=AdaptiveTextSize.Medium,
-                                    Weight=AdaptiveTextWeight.Bolder
+                                    Text = "Designation :",
+                                    Wrap = true,
+                                    Size = AdaptiveTextSize.Medium,
+                                    Weight = AdaptiveTextWeight.Bolder
                                 }
                             },
                             Width = AdaptiveColumnWidth.Auto
                         },
                         new AdaptiveColumn()
                         {
-                            Items=new List<AdaptiveElement>()
+                            Items = new List<AdaptiveElement>()
                             {
                                 new AdaptiveTextBlock()
                                 {
-                                    Text= createCardResponse.Subtitle,
-                                    Wrap=true,
-                                    Size=AdaptiveTextSize.Medium,
+                                    Text = createCardResponse.Subtitle,
+                                    Wrap = true,
+                                    Size = AdaptiveTextSize.Medium,
                                 }
                             },
                             Width = AdaptiveColumnWidth.Auto
@@ -84,27 +84,27 @@ namespace Microsoft.BotBuilderSamples.Helpers
                     {
                         new AdaptiveColumn()
                         {
-                            Items=new List<AdaptiveElement>()
+                            Items = new List<AdaptiveElement>()
                             {
                                 new AdaptiveTextBlock()
                                 {
-                                    Text= "Description :",
-                                    Wrap=true,
-                                    Size=AdaptiveTextSize.Medium,
-                                    Weight=AdaptiveTextWeight.Bolder
+                                    Text = "Description :",
+                                    Wrap = true,
+                                    Size = AdaptiveTextSize.Medium,
+                                    Weight = AdaptiveTextWeight.Bolder
                                 }
                             },
                             Width = AdaptiveColumnWidth.Auto
                         },
-                         new AdaptiveColumn()
+                        new AdaptiveColumn()
                         {
-                            Items=new List<AdaptiveElement>()
+                            Items = new List<AdaptiveElement>()
                             {
                                 new AdaptiveTextBlock()
                                 {
-                                    Text= createCardResponse.Text,
-                                    Wrap=true,
-                                    Size=AdaptiveTextSize.Medium,
+                                    Text = createCardResponse.Text,
+                                    Wrap = true,
+                                    Size = AdaptiveTextSize.Medium,
                                 }
                             },
                             Width = AdaptiveColumnWidth.Auto
@@ -134,27 +134,27 @@ namespace Microsoft.BotBuilderSamples.Helpers
                     {
                         new AdaptiveColumn()
                         {
-                            Items=new List<AdaptiveElement>()
+                            Items = new List<AdaptiveElement>()
                             {
                                 new AdaptiveTextBlock()
                                 {
-                                    Text= "User Name :",
-                                    Wrap=true,
-                                    Size=AdaptiveTextSize.Medium,
-                                    Weight=AdaptiveTextWeight.Bolder
+                                    Text = "User Name :",
+                                    Wrap = true,
+                                    Size = AdaptiveTextSize.Medium,
+                                    Weight = AdaptiveTextWeight.Bolder
                                 }
                             },
                             Width = AdaptiveColumnWidth.Auto
                         },
-                         new AdaptiveColumn()
+                        new AdaptiveColumn()
                         {
-                            Items=new List<AdaptiveElement>()
+                            Items = new List<AdaptiveElement>()
                             {
                                 new AdaptiveTextBlock()
                                 {
-                                    Text= createCardResponse.UserName,
-                                    Wrap=true,
-                                    Size=AdaptiveTextSize.Medium,
+                                    Text = createCardResponse.UserName,
+                                    Wrap = true,
+                                    Size = AdaptiveTextSize.Medium,
                                 }
                             },
                             Width = AdaptiveColumnWidth.Auto
@@ -167,27 +167,27 @@ namespace Microsoft.BotBuilderSamples.Helpers
                     {
                         new AdaptiveColumn()
                         {
-                            Items=new List<AdaptiveElement>()
+                            Items = new List<AdaptiveElement>()
                             {
                                 new AdaptiveTextBlock()
                                 {
-                                    Text= "Password is :",
-                                    Wrap=true,
-                                    Size=AdaptiveTextSize.Medium,
-                                    Weight=AdaptiveTextWeight.Bolder
+                                    Text = "Password is :",
+                                    Wrap = true,
+                                    Size = AdaptiveTextSize.Medium,
+                                    Weight = AdaptiveTextWeight.Bolder
                                 }
                             },
                             Width = AdaptiveColumnWidth.Auto
                         },
                         new AdaptiveColumn()
                         {
-                            Items=new List<AdaptiveElement>()
+                            Items = new List<AdaptiveElement>()
                             {
                                 new AdaptiveTextBlock()
                                 {
-                                    Text= createCardResponse.UserPwd,
-                                    Wrap=true,
-                                    Size=AdaptiveTextSize.Medium,
+                                    Text = createCardResponse.UserPwd,
+                                    Wrap = true,
+                                    Size = AdaptiveTextSize.Medium,
                                 }
                             },
                             Width = AdaptiveColumnWidth.Auto

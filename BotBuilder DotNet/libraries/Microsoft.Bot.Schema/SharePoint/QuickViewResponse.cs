@@ -16,22 +16,22 @@ namespace Microsoft.Bot.Schema.SharePoint
     /// <summary>
     /// SharePoint GetQuickView response object.
     /// </summary>
-    public class GetQuickViewResponse : ISharePointViewResponse
+    public class QuickViewResponse
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetQuickViewResponse"/> class.
+        /// Initializes a new instance of the <see cref="QuickViewResponse"/> class.
         /// </summary>
-        public GetQuickViewResponse()
+        public QuickViewResponse()
         {
             // Do nothing
         }
 
         /// <summary>
-        /// Gets or Sets data for the quick view of type <see cref="IQuickViewData"/>.
+        /// Gets or Sets data for the quick view.
         /// </summary>
         /// <value>This value is the data of the quick view response.</value>
         [JsonProperty(PropertyName = "data")]
-        public IQuickViewData Data { get; set; }
+        public object Data { get; set; }
 
         /// <summary>
         /// Gets or Sets data for the quick view template of type <see cref="AdaptiveCard"/>.
