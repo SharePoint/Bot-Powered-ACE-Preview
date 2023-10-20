@@ -1,23 +1,23 @@
 {
   "Files": [
     {
-      "Id": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\css\\Site.css",
+      "Id": "D:\\at\\bot-ace\\labs\\NewBotACE\\csharp\\wwwroot\\css\\Site.css",
       "PackagePath": "staticwebassets\\css\\Site.css"
     },
     {
-      "Id": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\css\\custom.css",
+      "Id": "D:\\at\\bot-ace\\labs\\NewBotACE\\csharp\\wwwroot\\css\\custom.css",
       "PackagePath": "staticwebassets\\css\\custom.css"
     },
     {
-      "Id": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\css\\msteams-16.css",
+      "Id": "D:\\at\\bot-ace\\labs\\NewBotACE\\csharp\\wwwroot\\css\\msteams-16.css",
       "PackagePath": "staticwebassets\\css\\msteams-16.css"
     },
     {
-      "Id": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\default.html",
+      "Id": "D:\\at\\bot-ace\\labs\\NewBotACE\\csharp\\wwwroot\\default.html",
       "PackagePath": "staticwebassets\\default.html"
     },
     {
-      "Id": "D:\\BotPoweredACEPreview\\labs\\NewBotACE\\csharp\\wwwroot\\profile-image.png",
+      "Id": "D:\\at\\bot-ace\\labs\\NewBotACE\\csharp\\wwwroot\\profile-image.png",
       "PackagePath": "staticwebassets\\profile-image.png"
     },
     {
