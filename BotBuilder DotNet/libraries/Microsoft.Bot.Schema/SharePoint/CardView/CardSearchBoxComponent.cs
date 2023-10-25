@@ -20,7 +20,6 @@ namespace Microsoft.Bot.Schema.SharePoint
         public CardSearchBoxComponent()
             : base(CardComponentName.SearchBox)
         {
-            // this.ComponentName = CardComponentName.SearchBox;
         }
 
         /// <summary>

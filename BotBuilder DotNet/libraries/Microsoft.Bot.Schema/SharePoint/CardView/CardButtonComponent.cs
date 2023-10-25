@@ -37,7 +37,6 @@ namespace Microsoft.Bot.Schema.SharePoint
         public CardButtonComponent()
             : base(CardComponentName.CardButton)
         {
-            // this.ComponentName = CardComponentName.CardButton;
         }
 
         /// <summary>

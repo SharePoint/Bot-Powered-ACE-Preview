@@ -20,7 +20,6 @@ namespace Microsoft.Bot.Schema.SharePoint
         public CardTextComponent()
             : base(CardComponentName.Text)
         {
-            // this.ComponentName = CardComponentName.Text;
         }
 
         /// <summary>

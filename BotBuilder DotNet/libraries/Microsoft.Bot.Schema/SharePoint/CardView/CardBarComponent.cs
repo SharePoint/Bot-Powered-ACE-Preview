@@ -17,7 +17,7 @@ namespace Microsoft.Bot.Schema.SharePoint
         /// <summary>
         /// Initializes a new instance of the <see cref="CardBarComponent"/> class.
         /// </summary>
-        public CardBarComponent() 
+        public CardBarComponent()
             : base(CardComponentName.CardBar)
         {
         }
