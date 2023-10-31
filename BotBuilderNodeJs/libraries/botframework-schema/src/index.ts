@@ -17,6 +17,7 @@ export { TokenExchangeInvokeResponse } from './tokenExchangeInvokeResponse';
 // The Teams schemas was manually added to this library. This file has been updated to export those schemas.
 export * from './teams';
 
+// The SharePoint schemas was manually added to this library. This file has been updated to export those schemas.
 export * from './sharepoint';
 
 /**
@@ -2282,7 +2283,6 @@ export enum Channels {
     Msteams = 'msteams',
     Omni = 'omnichannel',
     Outlook = 'outlook',
-    Sharepoint = 'sharepoint',
     Skype = 'skype',
     /**
      * @deprecated This channel is no longer available for bot developers.

@@ -1,66 +1,23 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { IPropertyPaneGroupOrConditionalGroup } from './IPropertyPaneGroupOrConditionalGroup';
+import { PropertyPaneGroupOrConditionalGroup } from './propertyPaneGroupOrConditionalGroup';
 import { PropertyPanePageHeader } from './propertyPanePageHeader';
 
 /**
- * Sharepoint PropertyPanePage object
+ * SharePoint property pane page.
  */
-export class PropertyPanePage {
-    private displayGroupsAsAccordion: boolean;
-    private groups: [IPropertyPaneGroupOrConditionalGroup];
-    private header: PropertyPanePageHeader;
-    
+export interface PropertyPanePage {
     /**
-     * Initializes a new instance of the PropertyPanePage class
+     * Whether the groups should be displayed as an accordion or not.
      */
-    public PropertyPanePage() {
-        // Do nothing
-    }
-
+    displayGroupsAsAccordion?: boolean;
     /**
-     * Sets a value indicating whether the groups on the PropertyPanePage 
-     * are displayed as accordion or not of type boolean
+     * The groups to be rendered inside this page.
      */
-    public set DisplayGroupsAsAccordion(displayGroupsAsAccordion: boolean) {
-        this.displayGroupsAsAccordion = displayGroupsAsAccordion;
-    }
-
+    groups: PropertyPaneGroupOrConditionalGroup[];
     /**
-     * Gets a value indicating whether the groups on the PropertyPanePage 
-     * are displayed as accordion or not of type boolean
+     * The header to be rendered inside this page.
      */
-    public get DisplayGroupsAsAccordion(): boolean {
-        return this.displayGroupsAsAccordion;
-    }
-
-
-    /**
-     * Sets the groups of type IPropertyPaneGroupOrConditionalGroup
-     */
-    public set Groups(groups: [IPropertyPaneGroupOrConditionalGroup] ) {
-        this.groups = groups;
-    }
-
-    /**
-     * Gets the groups of type IPropertyPaneGroupOrConditionalGroup
-     */
-    public get Groups(): [IPropertyPaneGroupOrConditionalGroup] {
-        return this.groups;
-    }
-
-    /**
-     * Sets the header for the property pane of type PropertyPanePageHeader
-     */
-    public set Header(header: PropertyPanePageHeader ) {
-        this.header = header;
-    }
-
-    /**
-     * Gets the header for the property pane of type PropertyPanePageHeader
-     */
-    public get Header(): PropertyPanePageHeader {
-        return this.header;
-    }
+    header?: PropertyPanePageHeader;
 }

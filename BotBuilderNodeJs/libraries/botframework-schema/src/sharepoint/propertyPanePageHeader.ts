@@ -2,29 +2,11 @@
 // Licensed under the MIT License.
 
 /**
- * Sharepoint PropertyPanePageHeader object
+ * SharePoint property pane page header.
  */
-export class PropertyPanePageHeader {
-    private description: string;
-    
+export interface PropertyPanePageHeader {
     /**
-     * Initializes a new instance of the PropertyPanePageHeader class
+     * The description of the page.
      */
-    public PropertyPanePageHeader() {
-        // Do nothing
-    }
-
-    /**
-     * Sets the description of type string
-     */
-    public set Description(description: string) {
-        this.description = description;
-    }
-
-    /**
-     * Gets the description of type string
-     */
-    public get Description(): string {
-        return this.description;
-    }
+    description: string;
 }

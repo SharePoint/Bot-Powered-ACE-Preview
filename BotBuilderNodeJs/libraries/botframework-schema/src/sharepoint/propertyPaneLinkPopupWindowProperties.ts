@@ -2,84 +2,49 @@
 // Licensed under the MIT License.
 
 /**
- * Sharepoint PropertyPaneLinkPopupWindowProperties object
+ * SharePoint property pane link popup window properties.
  */
-export class PropertyPaneLinkPopupWindowProperties {
-    private width: number;
-    private height: number;
-    private title: string;
-    private positionWindowPosition: PropertyPaneLinkPopupWindowProperties.PopupWindowPosition;
-    
+export interface PropertyPaneLinkPopupWindowProperties {
     /**
-     * Initializes a new instance of the PropertyPaneLinkPopupWindowProperties class
+     * The width of the popup window.
      */
-    public PropertyPaneLinkPopupWindowProperties() {
-        // Do nothing
-    }
-
-     /**
-     * Sets the width of the pop up window of type number
-     */
-     public set Width(width: number) {
-        this.width = width;
-    }
-
+    width: number;
     /**
-     * Gets the width of the pop up window of type number
+     * The height of the popup window.
      */
-    public get Width(): number {
-        return this.width;
-    }
-
+    height: number;
     /**
-     * Sets the height of the pop up window of type number
+     * The title of the popup window.
      */
-    public set Height(height: number) {
-        this.height = height;
-    }
-
+    title: string;
     /**
-     * Gets the height of the pop up window of type number
+     * The position of the popup window.
      */
-    public get Height(): number {
-        return this.height;
-    }
-
-    /**
-     * Sets the title of pop up window of type string
-     */
-    public set Title(title: string) { 
-        this.title = title;
-    }
-
-    /**
-     * Gets the title of pop up window of type string
-     */
-    public get Title(): string {
-        return this.title;
-    }
-
-    /**
-     * Sets the position of pop up window type PopupWindowPosition
-     */
-     public set PositionWindowPosition(positionWindowPosition: PropertyPaneLinkPopupWindowProperties.PopupWindowPosition) {
-        this.positionWindowPosition = positionWindowPosition;
-    }
-
-    /**
-     * Gets the position of pop up window type PopupWindowPosition
-     */
-    public get PositionWindowPosition(): PropertyPaneLinkPopupWindowProperties.PopupWindowPosition {
-        return this.positionWindowPosition;
-    }
+    positionWindowPosition: PopupWindowPosition;
 }
 
-export namespace PropertyPaneLinkPopupWindowProperties {
-    export enum PopupWindowPosition {
-        Center = 0,
-        RightTop = 1,
-        LeftTop = 2,
-        RightBottom = 3,
-        LeftBottom = 4
-    }
+/**
+ * SharePoint property pane link popup window position.
+ */
+export enum PopupWindowPosition {
+    /**
+     * Center.
+     */
+    Center = 0,
+    /**
+     * Right top.
+     */
+    RightTop = 1,
+    /**
+     * Left top.
+     */
+    LeftTop = 2,
+    /**
+     * Right bottom.
+     */
+    RightBottom = 3,
+    /**
+     * Left bottom.
+     */
+    LeftBottom = 4,
 }

@@ -1,139 +1,42 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { IPropertyPaneFieldProperties } from './IPropertyPaneFieldProperties';
+import { PropertyPaneFieldProperties } from './propertyPaneFieldProperties';
 
 /**
- * Sharepoint PropertyPaneSliderProperties object
+ * SharePoint property pane slider field properties.
  */
-export class PropertyPaneSliderProperties implements IPropertyPaneFieldProperties {
-    private label: string;
-    private value: string;
-    private ariaLabel: string;
-    private disabled: boolean;
-    private max: number;
-    private min: number;
-    private step: number;
-    private showValue: boolean;
-    
+export interface PropertyPaneSliderProperties extends PropertyPaneFieldProperties {
     /**
-     * Initializes a new instance of the PropertyPaneSliderProperties class
+     * The label of the slider.
      */
-    public PropertyPaneSliderProperties() {
-        this.step = 1;
-    }
-
+    label?: string;
     /**
-     * Sets the label of type string
+     * The value of the slider.
      */
-    public set Label(label: string) {
-        this.label = label;
-    }
-
+    value?: string;
     /**
-     * Gets the label of type string
+     * Optional ariaLabel flag. Text for screen-reader to announce regardless of toggle state.
      */
-    public get Label(): string {
-        return this.label;
-    }
-
+    ariaLabel?: string;
     /**
-     * Sets the value of type string
+     * Whether the slider is disabled or not.
      */
-    public set Value(value: string) {
-        this.value = value;
-    }
-
+    disabled?: boolean;
     /**
-     * Gets the value of type string
+     * The maximum value of the slider.
      */
-    public get Value(): string {
-        return this.value;
-    }
-
-
+    max: number;
     /**
-     * Sets the aria label of type string
+     * The minimum value of the slider.
      */
-    public set AriaLabel(ariaLabel: string) {
-        this.ariaLabel = ariaLabel;
-    }
-
+    min: number;
     /**
-     * Gets the aria label of type string
+     * The step value of the slider.
      */
-    public get AriaLabel(): string {
-        return this.ariaLabel;
-    }
-
-
+    step?: number;
     /**
-     * Sets a value indicating whether this control is enabled or not of type boolean
+     * Whether to show the value on the right of the slider or no.
      */
-     public set Disabled(disabled: boolean) {
-        this.disabled = disabled;
-    }
-
-    /**
-     * Gets a value indicating whether this control is enabled or not of type boolean
-     */
-    public get Disabled(): boolean {
-        return this.disabled;
-    }
-
-    /**
-     * Sets the max value of the Slider of type number
-     */
-    public set Max(max: number) {
-        this.max = max;
-    }
-
-    /**
-     * Gets the max value of the Slider of type number
-     */
-    public get Max(): number {
-        return this.max;
-    }
-
-    /**
-     * Sets the min value of the Slider of type number
-     */
-    public set Min(min: number) {
-        this.min = min;
-    }
-
-    /**
-     * Gets the min value of the Slider of type number
-     */
-    public get Min(): number {
-        return this.min;
-    }
-
-    /**
-     * Sets the difference between the two adjacent values of the Slider. Defaults to 1. of type number
-     */
-    public set Step(step: number) {
-        this.step = step;
-    }
-
-    /**
-     * Gets the difference between the two adjacent values of the Slider. Defaults to 1. of type number
-     */
-    public get Step(): number {
-        return this.step;
-    }
-
-    /**
-     * Sets a value indicating whether to show the value on the right of the Slider of type boolean
-     */
-    public set ShowValue(showValue: boolean) {
-        this.showValue = showValue;
-    }
-
-    /**
-     * Gets a value indicating whether to show the value on the right of the Slider of type boolean
-     */
-    public get ShowValue(): boolean {
-        return this.showValue;
-    }
+    showValue?: boolean;
 }

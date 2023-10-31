@@ -1,152 +1,46 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { IPropertyPaneFieldProperties } from './IPropertyPaneFieldProperties';
+import { PropertyPaneFieldProperties } from './propertyPaneFieldProperties';
 
 /**
- * Sharepoint PropertyPaneToggleProperties object
+ * SharePoint property pane toggle field properties.
  */
-export class PropertyPaneToggleProperties implements IPropertyPaneFieldProperties {
-    private ariaLabel: string;
-    private label: string;
-    private disabled: boolean;
-    private checked: boolean;
-    private key: string;
-    private offText: string;
-    private onText: string;
-    private onAriaLabel: string;
-    private offAriaLabel: string;
-    
+export interface PropertyPaneToggleProperties extends PropertyPaneFieldProperties {
     /**
-     * Initializes a new instance of the PropertyPaneToggleProperties class
+     * Optional ariaLabel flag. Text for screen-reader to announce regardless of toggle state.
      */
-    public PropertyPaneToggleProperties() {
-        // Do nothing
-    }
-
+    ariaLabel?: string;
     /**
-     * Sets the aria label of type string
+     * A label for the toggle.
      */
-    public set AriaLabel(ariaLabel: string) {
-        this.ariaLabel = ariaLabel;
-    }
-
+    label?: string;
     /**
-     * Gets the aria label of type string
+     * Indicates whether the toggle is disabled or not.
      */
-    public get AriaLabel(): string {
-        return this.ariaLabel;
-    }
-
+    disabled?: boolean;
     /**
-     * Sets the label of type string
+     * Indicates whether the toggle is checked or not.
      */
-    public set Label(label: string) {
-        this.label = label;
-    }
-
+    checked?: boolean;
     /**
-     * Gets the label of type string
+     * A key to uniquely identify the toggle.
      */
-    public get Label(): string {
-        return this.label;
-    }
-
+    key?: string;
     /**
-     * Sets a value indicating whether this control is enabled or not of type boolean
+     * Text to display when toggle is OFF.
      */
-    public set Disabled(disabled: boolean) {
-        this.disabled = disabled;
-    }
-
+    offText?: string;
     /**
-     * Gets a value indicating whether this control is enabled or not of type boolean
+     * Text to display when toggle is ON.
      */
-    public get Disabled(): boolean {
-        return this.disabled;
-    }
-
+    onText?: string;
     /**
-     * Sets a value indicating whether the property pane checkbox is checked or not of type boolean
+     * Optional onAriaLabel flag. Text for screen-reader to announce when toggle is ON.
      */
-    public set Checked(checked: boolean) {
-        this.checked = checked;
-    }
-
+    onAriaLabel?: string;
     /**
-     * Gets a value indicating whether the property pane checkbox is checked or not of type boolean
+     * Optional offAriaLabel flag. Text for screen-reader to announce when toggle is OFF.
      */
-    public get Checked(): boolean {
-        return this.checked;
-    }
-
-    /**
-     * Sets a key to uniquely identify the field of type string
-     */
-    public set Key(key: string) {
-        this.key = key;
-    }
-
-    /**
-     * Gets a key to uniquely identify the field of type string
-     */
-    public get Key(): string {
-        return this.key;
-    }
-
-    /**
-     * Sets text to display when toggle is OFF of type string
-     */
-    public set OffText(offText: string) {
-        this.offText = offText;
-    }
-
-    /**
-     * Gets text to display when toggle is OFF of type string
-     */
-    public get OffText(): string {
-        return this.offText;
-    }
-
-    /**
-     * Sets text to display when toggle is ON of type string
-     */
-    public set OnText(onText: string) {
-        this.onText = onText;
-    }
-
-    /**
-     * Gets text to display when toggle is ON of type string
-     */
-    public get OnText(): string {
-        return this.onText;
-    }
-
-    /**
-     * Sets text for screen-reader to announce when toggle is OFF of type string
-     */
-    public set OffAriaLabel(offAriaLabel: string) {
-        this.offAriaLabel = offAriaLabel;
-    }
-
-    /**
-     * Gets text for screen-reader to announce when toggle is OFF of type string
-     */
-    public get OffAriaLabel(): string {
-        return this.offAriaLabel;
-    }
-
-    /**
-     * Sets text for screen-reader to announce when toggle is ON of type string
-     */
-    public set OnAriaLabel(onAriaLabel: string) {
-        this.onAriaLabel = onAriaLabel;
-    }
-
-    /**
-     * Gets text for screen-reader to announce when toggle is ON of type string
-     */
-    public get OnAriaLabel(): string {
-        return this.onAriaLabel;
-    }
+    offAriaLabel?: string;
 }

@@ -1,91 +1,68 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { IPropertyPaneFieldProperties } from './IPropertyPaneFieldProperties';
+import { PropertyPaneFieldProperties } from './propertyPaneFieldProperties';
 
 /**
- * Sharepoint PropertyPaneGroupField object
+ * SharePoint property pane group field.
  */
-export class PropertyPaneGroupField {
-    private type: PropertyPaneGroupField.FieldType;
-    private targetProperty: string; 
-    private properties: IPropertyPaneFieldProperties;
-    private shouldFocus: boolean;
-    
+export interface PropertyPaneGroupField {
     /**
-     * Initializes a new instance of the PropertyPaneField class
+     * The type of the field.
      */
-    public PropertyPaneGroupField() {
-        // Do nothing
-    }
-
+    type: FieldType;
     /**
-     * Sets the type of field
+     * The target property for the field.
      */
-    public set Type(type: PropertyPaneGroupField.FieldType) {
-        this.type = type;
-    }
-
+    targetProperty: string;
     /**
-     * Gets the type of field
+     * The properties for the field.
      */
-    public get Type(): PropertyPaneGroupField.FieldType {
-        return this.type;
-    }
-
+    properties: PropertyPaneFieldProperties;
     /**
-     * Sets the target property of type string
+     * Indicates whether the field should be focused or not.
      */
-    public set TargetProperty(targetProperty: string) {
-        this.targetProperty = targetProperty;
-    }
-
-    /**
-     * Gets the target property of type string
-     */
-    public get TargetProperty(): string {
-        return this.targetProperty;
-    }
-
-    /**
-     * Sets the properties property of type IPropertyPaneFieldProperties
-     */
-    public set Properties(properties: IPropertyPaneFieldProperties) {
-        this.properties = properties;
-    }
-
-    /**
-     * Gets the properties property of type IPropertyPaneFieldProperties
-     */
-    public get Properties(): IPropertyPaneFieldProperties {
-        return this.properties;
-    }
-
-    /**
-     * Sets a value indicating whether this control should be focused of type boolean
-     */
-     public set ShouldFocus(shouldFocus: boolean) {
-        this.shouldFocus = shouldFocus;
-    }
-
-    /**
-     * Gets a value indicating whether this control should be focused of type boolean
-     */
-    public get ShouldFocus(): boolean {
-        return this.shouldFocus;
-    }
+    shouldFocus?: boolean;
 }
 
-export namespace PropertyPaneGroupField {
-    export enum FieldType {
-        CheckBox = 2,
-        TextField = 3,
-        Toggle = 5, 
-        Dropdown = 6,
-        Label = 7, 
-        Slider = 8, 
-        ChoiceGroup = 10,
-        HorizontalRule = 12,
-        Link = 13,
-    }
+/**
+ * SharePoint property pane group field type.
+ */
+export enum FieldType {
+    /**
+     * Checkbox field.
+     */
+    CheckBox = 2,
+    /**
+     * Text field.
+     */
+    TextField = 3,
+    /**
+     * Toggle field.
+     */
+    Toggle = 5,
+    /**
+     * Dropdown field.
+     */
+    Dropdown = 6,
+    /**
+     * Label field.
+     */
+    Label = 7,
+    /**
+     * Slider field.
+     */
+    Slider = 8,
+    /**
+     * Choice Group field.
+     */
+    ChoiceGroup = 10,
+    /**
+     * Horizontal Rule field.
+     */
+    HorizontalRule = 12,
+    /**
+     * Link field.
+     */
+    Link = 13,
 }

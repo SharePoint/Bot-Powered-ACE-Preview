@@ -1,79 +1,27 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { IPropertyPaneGroupOrConditionalGroup } from './IPropertyPaneGroupOrConditionalGroup';
+import { PropertyPaneGroupOrConditionalGroup } from './propertyPaneGroupOrConditionalGroup';
 import { PropertyPaneGroupField } from './propertyPaneGroupField';
 
 /**
- * Sharepoint PropertyPaneGroup object
+ * SharePoint property pane group.
  */
-export class PropertyPaneGroup implements IPropertyPaneGroupOrConditionalGroup {
-    private groupFields: [PropertyPaneGroupField];
-    private groupName: string;
-    private isCollapsed: boolean;
-    private isGroupNameHidden: boolean;
-    
+export interface PropertyPaneGroup extends PropertyPaneGroupOrConditionalGroup {
     /**
-     * Initializes a new instance of the PropertyPaneGroup class
+     * The fields to be rendered inside this group.
      */
-    public PropertyPaneGroup() {
-        // Do nothing
-    }
-
+    groupFields: PropertyPaneGroupField[];
     /**
-     * Sets the group fields of type PropertyPaneGroupField
+     * The name of the group.
      */
-    public set GroupFields(groupFields: [PropertyPaneGroupField]) {
-        this.groupFields = groupFields;
-    }
-
+    groupName?: string;
     /**
-     * Gets the group fields of type PropertyPaneGroupField
+     * Whether the group is collapsed or not.
      */
-    public get GroupFields(): [PropertyPaneGroupField] {
-        return this.groupFields;
-    }
-
+    isCollapsed?: boolean;
     /**
-     * Sets the group name of type string
+     * Whether the group name is hidden or not.
      */
-    public set GroupName(groupName: string) {
-        this.groupName = groupName;
-    }
-
-    /**
-     * Gets the group name of type string
-     */
-    public get GroupName(): string {
-        return this.groupName;
-    }
-
-    /**
-     * Sets a value indicating whether the PropertyPane group is collapsed or not of type boolean
-     */
-    public set IsCollapsed(isCollapsed: boolean)  {
-        this.isCollapsed = isCollapsed;
-    }
-
-    /**
-     * Gets a value indicating whether the PropertyPane group is collapsed or not of type boolean
-     */
-    public get IsCollapsed(): boolean {
-        return this.isCollapsed;
-    }
-
-    /**
-     * Sets a value indicating whether the group name should be hidden of type boolean
-     */
-     public set IsGroupNameHidden(isGroupNameHidden: boolean) {
-        this.isGroupNameHidden = isGroupNameHidden;
-    }
-
-    /**
-     * Gets a value indicating whether the group name should be hidden of type boolean
-     */
-    public get IsGroupNameHidden(): boolean {
-        return this.isGroupNameHidden;
-    }
-
+    isGroupNameHidden?: boolean;
 }

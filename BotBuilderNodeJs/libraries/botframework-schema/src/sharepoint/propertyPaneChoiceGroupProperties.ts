@@ -1,48 +1,19 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { IPropertyPaneFieldProperties } from './IPropertyPaneFieldProperties';
+import { PropertyPaneFieldProperties } from './propertyPaneFieldProperties';
 import { PropertyPaneChoiceGroupOption } from './propertyPaneChoiceGroupOption';
 
 /**
- * Sharepoint PropertyPaneChoiceGroupProperties object
+ * SharePoint property pane choice group field properties.
  */
-export class PropertyPaneChoiceGroupProperties implements IPropertyPaneFieldProperties {
-    private label: string;
-    private options: [PropertyPaneChoiceGroupOption];
-    
+export interface PropertyPaneChoiceGroupProperties extends PropertyPaneFieldProperties {
     /**
-     * Initializes a new instance of the PropertyPaneChoiceGroupProperties class
+     * The label text to display next to the choice group.
      */
-    public PropertyPaneChoiceGroupProperties() {
-        // Do nothing
-    }
-
+    label?: string;
     /**
-     * Sets the label of type string
+     * The options for the choice group.
      */
-    public set Label(label: string) {
-        this.label = label;
-    }
-
-    /**
-     * Gets the label of type string
-     */
-    public get Label(): string {
-        return this.label;
-    }
-
-    /**
-     * Sets the collection of options for this choice group of type [PropertyPaneChoiceGroupOption]
-     */
-     public set Options(options: [PropertyPaneChoiceGroupOption]) {
-        this.options = options;
-    }
-
-    /**
-     * Gets the collection of options for this choice group of type [PropertyPaneChoiceGroupOption]
-     */
-    public get Options(): [PropertyPaneChoiceGroupOption] {
-        return this.options;
-    }
+    options: PropertyPaneChoiceGroupOption[];
 }

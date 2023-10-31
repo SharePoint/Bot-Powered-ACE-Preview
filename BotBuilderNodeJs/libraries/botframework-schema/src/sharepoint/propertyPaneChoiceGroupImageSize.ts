@@ -2,44 +2,15 @@
 // Licensed under the MIT License.
 
 /**
- * Sharepoint PropertyPaneChoiceGroupImageSize object
+ * SharePoint property pane choice group image size.
  */
-export class PropertyPaneChoiceGroupImageSize {
-    private width: number;
-    private height: number;
-    
+export interface PropertyPaneChoiceGroupImageSize {
     /**
-     * Initializes a new instance of the PropertyPaneChoiceGroupImageSize class
+     * The width of the image.
      */
-    public PropertyPaneChoiceGroupImageSize() {
-        // Do nothing
-    }
-
+    width: number;
     /**
-     * Sets the width of the image of type number
+     * The height of the image.
      */
-    public set Width(width: number) {
-        this.width = width;
-    }
-
-    /**
-     * Gets the width of the image of type number
-     */
-    public get Width(): number {
-        return this.width;
-    }
-
-    /**
-     * Sets the height of the image of type number
-     */
-    public set Height(height: number) {
-        this.height = height;
-    }
-
-    /**
-     * Gets the height of the image of type number
-     */
-    public get Height(): number {
-        return this.height;
-    }
+    height: number;
 }

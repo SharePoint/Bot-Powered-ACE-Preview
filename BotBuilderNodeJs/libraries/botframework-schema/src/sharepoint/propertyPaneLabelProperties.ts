@@ -1,48 +1,18 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { IPropertyPaneFieldProperties } from './IPropertyPaneFieldProperties';
+import { PropertyPaneFieldProperties } from './propertyPaneFieldProperties';
 
 /**
- * Sharepoint PropertyPaneLabelProperties object
+ * SharePoint property pane label properties.
  */
-export class PropertyPaneLabelProperties implements IPropertyPaneFieldProperties {
-    private text: string;
-    private required: boolean;
-    
+export interface PropertyPaneLabelProperties extends PropertyPaneFieldProperties {
     /**
-     * Initializes a new instance of the PropertyPaneLabelProperties class
+     * The text to display in the label.
      */
-    public PropertyPaneLabelProperties() {
-        // Do nothing
-    }
-
+    text: string;
     /**
-     * Sets the label to display next to the checkbox of type string
+     * Whether the label is required or not.
      */
-    public set Text(text: string) {
-        this.text = text;
-    }
-
-    /**
-     * Gets the label to display next to the checkbox of type string
-     */
-    public get Text(): string {
-        return this.text;
-    }
-
-    /**
-     * Sets a value indicating whether the associated form field is required or not of type boolean
-     */
-     public set Required(required: boolean) {
-        this.required = required;
-    }
-
-    /**
-     * Gets a value indicating whether the associated form field is required or not of type boolean
-     */
-    public get Required(): boolean {
-        return this.required;
-    }
-
+    required?: boolean;
 }

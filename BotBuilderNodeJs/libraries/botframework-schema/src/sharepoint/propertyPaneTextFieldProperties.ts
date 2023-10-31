@@ -1,265 +1,62 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { IPropertyPaneFieldProperties } from './IPropertyPaneFieldProperties';
+import { PropertyPaneFieldProperties } from './propertyPaneFieldProperties';
 
 /**
- * Sharepoint PropertyPaneTextFieldProperties object
+ * SharePoint property pane text field properties.
  */
-export class PropertyPaneTextFieldProperties implements IPropertyPaneFieldProperties {
-    private label: string;
-    private value: string;
-    private ariaLabel: string;
-    private deferredValidationTime: number;
-    private description: string;
-    private disabled: boolean;
-    private errorMessage: string;
-    private logName: string;
-    private maxLength: number;
-    private multiline: boolean;
-    private placeholder: string;
-    private resizable: boolean;
-    private rows: number;
-    private underlined: boolean;
-    private validateOnFocusIn: boolean;
-    private validateOnFocusOut: boolean;
-
+export interface PropertyPaneTextFieldProperties extends PropertyPaneFieldProperties {
     /**
-     * Initializes a new instance of the PropertyPaneTextFieldProperties class
+     * The label of the text field.
      */
-    public PropertyPaneTextFieldProperties() {
-        // Do nothing
-    }
-
+    label?: string;
     /**
-     * Sets the label of type string
+     * The value of the text field.
      */
-    public set Label(label: string) {
-        this.label = label;
-    }
-
+    value?: string;
     /**
-     * Gets the label of type string
+     * Optional ariaLabel flag. Text for screen-reader to announce regardless of toggle state.
      */
-    public get Label(): string {
-        return this.label;
-    }
-
+    ariaLabel?: string;
     /**
-     * Sets the value of type string
+     * The description to display under the text field.
      */
-    public set Value(value: string) {
-        this.value = value;
-    }
-
+    description?: string;
     /**
-     * Gets the value of type string
+     * Whether the text field is disabled or not.
      */
-    public get Value(): string {
-        return this.value;
-    }
-
-
+    disabled?: boolean;
     /**
-     * Sets the aria label of type string
+     * If set, this will be displayed as an error message underneath the text field..
      */
-    public set AriaLabel(ariaLabel: string) {
-        this.ariaLabel = ariaLabel;
-    }
-
+    errorMessage?: string;
     /**
-     * Gets the aria label of type string
+     * Name used to log PropertyPaneTextField value changes for engagement tracking.
      */
-    public get AriaLabel(): string {
-        return this.ariaLabel;
-    }
-
+    logName?: string;
     /**
-     * Sets the amount of time to wait before validating after the users stop typing in ms of type number
+     * The maximum length of the text field.
      */
-    public set DeferredValidationTime(deferredValidationTime: number) {
-        this.deferredValidationTime = deferredValidationTime;
-    }
-
+    maxLength?: number;
     /**
-     * Gets the amount of time to wait before validating after the users stop typing in ms of type number
+     * Whether or not the text field is multiline.
      */
-    public get DeferredValidationTime(): number {
-        return this.deferredValidationTime;
-    }
-
+    multiline?: boolean;
     /**
-     * Sets the description of type string
+     * The placeholder text to display in the text field.
      */
-    public set Description(description: string) {
-        this.description = description;
-    }
-
+    placeholder?: string;
     /**
-     * Gets the description of type string
+     * Whether or not the multiline text field is resizable.
      */
-    public get Description(): string {
-        return this.description;
-    }
-
+    resizable?: boolean;
     /**
-     * Sets a value indicating whether this control is enabled or not of type boolean
+     * Specifies the visible height of a text area(multiline text TextField), in lines.
      */
-     public set Disabled(disabled: boolean) {
-        this.disabled = disabled;
-    }
-
+    rows?: number;
     /**
-     * Gets a value indicating whether this control is enabled or not of type boolean
+     * Whether or not the text field is underlined.
      */
-    public get Disabled(): boolean {
-        return this.disabled;
-    }
-
-    
-    /**
-     * Sets the error message of type string
-     */
-     public set ErrorMessage(errorMessage: string) {
-        this.errorMessage = errorMessage;
-    }
-
-    /**
-     * Gets the error message of type string
-     */
-    public get ErrorMessage(): string {
-        return this.errorMessage;
-    }
-
-    /**
-     * Sets the name used to log PropertyPaneTextField value changes for engagement tracking of type string
-     */
-    public set LogName(logName: string) {
-        this.logName = logName;
-    }
-
-    /**
-     * Gets the name used to log PropertyPaneTextField value changes for engagement tracking of type string
-     */
-    public get LogName(): string {
-        return this.logName;
-    }
-
-    /**
-     * Sets the maximum number of characters that the PropertyPaneTextField can have of type number
-     */
-    public set MaxLength(maxLength: number) {
-        this.maxLength = maxLength;
-    }
-
-    /**
-     * Gets the maximum number of characters that the PropertyPaneTextField can have of type number
-     */
-    public get MaxLength(): number {
-        return this.maxLength;
-    }
-
-    /**
-     * Sets a value indicating whether or not the text field is a multiline text field of type boolean
-     */
-    public set Multiline(multiline: boolean) {
-        this.multiline = multiline;
-    }
-
-    /**
-     * Gets a value indicating whether or not the text field is a multiline text field of type boolean
-     */
-    public get Multiline(): boolean {
-        return this.multiline;
-    }
-
-    /**
-     * Sets the placeholder text to be displayed in the text field of type string
-     */
-    public set Placeholder(placeholder: string) {
-        this.placeholder = placeholder;
-    }
-
-    /**
-     * Gets the placeholder text to be displayed in the text field of type string
-     */
-    public get Placeholder(): string {
-        return this.placeholder;
-    }
-
-    /**
-     * Sets a value indicating whether or not the multiline text field is resizable of type boolean
-     */
-    public set Resizable(resizable: boolean) {
-        this.resizable = resizable;
-    }
-
-    /**
-     * Gets a value indicating whether or not the multiline text field is resizable of type boolean
-     */
-    public get Resizable(): boolean {
-        return this.resizable;
-    }
-
-    /**
-     * Sets the value that specifies the visible height of a text area(multiline text TextField), 
-     * in lines.maximum number of characters that the PropertyPaneTextField can have of type number
-     */
-    public set Rows(rows: number) {
-        this.rows = rows;
-    }
-
-    /**
-     * Gets the value that specifies the visible height of a text area(multiline text TextField), 
-     * in lines.maximum number of characters that the PropertyPaneTextField can have of type number
-     */
-    public get Rows(): number {
-        return this.rows;
-    }
-
-    /**
-     * Sets a value indicating whether or not the text field is underlined of type boolean
-     */
-    public set Underlined(underlined: boolean) {
-        this.underlined = underlined;
-    }
-
-    /**
-     * Gets a value indicating whether or not the text field is underlined of type boolean 
-     */
-    public get Underlined(): boolean {
-        return this.underlined;
-    }
-
-    /**
-     * Sets a value indicating whether to run validation when the 
-     * PropertyPaneTextField is focused of type boolean
-     */
-    public set ValidateOnFocusIn(validateOnFocusIn: boolean) {
-        this.validateOnFocusIn = validateOnFocusIn;
-    }
-
-    /**
-     * Gets a value indicating whether to run validation when the 
-     * PropertyPaneTextField is focused of type boolean
-     */
-    public get ValidateOnFocusIn(): boolean {
-        return this.validateOnFocusIn;
-    }
-
-    /**
-     * Sets a value indicating whether to run validation when the 
-     * PropertyPaneTextField is out of focus or on blur of type boolean
-     */
-    public set ValidateOnFocusOut(validateOnFocusOut: boolean) {
-        this.validateOnFocusOut = validateOnFocusOut;
-    }
-
-    /**
-     * Gets a value indicating whether to run validation when the 
-     * PropertyPaneTextField is out of focus or on blur of type boolean
-     */
-    public get ValidateOnFocusOut(): boolean {
-        return this.validateOnFocusOut;
-    }
+    underlined?: boolean;
 }

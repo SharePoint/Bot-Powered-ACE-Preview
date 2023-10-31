@@ -7,7 +7,7 @@ const {
     AceData,
     ActionButton,
     BasicCardViewResponse, 
-    GetQuickViewResponse, 
+    QuickViewResponse, 
     PropertyPanePageHeader, 
     PropertyPaneDropDownProperties, 
     PropertyPaneDropDownOption, 

@@ -1,54 +1,74 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
-import { ISharePointViewResponse } from "./ISharePointViewResponse";
+
+import { CardViewResponse } from './cardViewResponse';
+import { QuickViewResponse } from './quickViewResponse';
 
 /**
- * Sharepoint HandleActionReponse object
+ * The type of the view in the handle action response.
  */
-export class HandleActionReponse {
-    private responseType: HandleActionReponse.ResponseTypeOption;
-    private renderArguments?: ISharePointViewResponse;
+export type ViewResponseType = 'Card' | 'QuickView' | 'NoOp';
 
+/**
+ * The base handle action response.
+ */
+export interface BaseHandleActionResponse {
     /**
-     * Initializes a new instance of the HandleActionReponse class
+     * The type of the view in the handle action response.
      */
-    public HandleActionReponse() {
-        // Do nothing
-    }
-
+    type: ViewResponseType;
     /**
-     * Sets response type property of type HandleActionViewReponse.ResponseType
+     * The render arguments.
      */
-    public set ReponseType(responseType: HandleActionReponse.ResponseTypeOption) {
-        this.responseType = responseType;
-    }
-
-    /**
-     * Gets response type property of type HandleActionViewReponse.ResponseType
-     */
-    public get ReponseType(): HandleActionReponse.ResponseTypeOption {
-        return this.responseType;
-    }
-
-    /**
-     * Sets render arguments property of type GetCardViewResponse or GetQuickViewResponse
-     */
-    public set RenderArguments(renderArguments: ISharePointViewResponse) {
-        this.renderArguments = renderArguments;
-    }
-
-    /**
-     * Gets render arguments property of type GetCardViewResponse or GetQuickViewResponse
-     */
-    public get RenderArguments(): ISharePointViewResponse {
-        return this.renderArguments;
-    }
+    renderArguments?: CardViewResponse | QuickViewResponse;
 }
 
-export namespace HandleActionReponse {
-    export enum ResponseTypeOption {
-        CardView = "Card",
-        QuickView = "QuickView",
-        NoOp = "NoOp"
-    }
+/**
+ * The handle action response for card view.
+ */
+export interface CardViewHandleActionResponse extends BaseHandleActionResponse {
+    /**
+     * Card view.
+     */
+    type: 'Card';
+    /**
+     * Card view render arguments.
+     */
+    renderArguments: CardViewResponse;
 }
+
+/**
+ * The handle action response for quick view.
+ */
+export interface QuickViewHandleActionResponse extends BaseHandleActionResponse {
+    /**
+     * Quick view.
+     */
+    type: 'QuickView';
+    /**
+     * Quick view render arguments.
+     */
+    renderArguments: QuickViewResponse;
+}
+
+/**
+ * The handle action response for no op.
+ */
+export interface NoOpHandleActionResponse extends BaseHandleActionResponse {
+    /**
+     * No op.
+     */
+    type: 'NoOp';
+    /**
+     * No op doesn't have render arguments.
+     */
+    renderArguments?: undefined;
+}
+
+/**
+ * The handle action response.
+ */
+export type HandleActionResponse =
+    | CardViewHandleActionResponse
+    | QuickViewHandleActionResponse
+    | NoOpHandleActionResponse;

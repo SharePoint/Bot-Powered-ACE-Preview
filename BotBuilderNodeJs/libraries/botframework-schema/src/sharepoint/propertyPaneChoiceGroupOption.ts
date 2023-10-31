@@ -5,134 +5,39 @@ import { PropertyPaneChoiceGroupIconProperties } from './propertyPaneChoiceGroup
 import { PropertyPaneChoiceGroupImageSize } from './propertyPaneChoiceGroupImageSize';
 
 /**
- * Sharepoint PropertyPaneChoiceGroupOption object
+ * SharePoint property pane choice group option.
  */
-export class PropertyPaneChoiceGroupOption {
-    private ariaLabel: string;
-    private disabled: boolean;
-    private checked: boolean;
-    private iconProps: PropertyPaneChoiceGroupIconProperties;
-    private imageSize: PropertyPaneChoiceGroupImageSize;
-    private imageSrc: string;
-    private key: string;
-    private text: string;
-
+export interface PropertyPaneChoiceGroupOption {
     /**
-     * Initializes a new instance of the PropertyPaneChoiceGroupOption class
+     * Optional ariaLabel flag. Text for screen-reader to announce regardless of toggle state.
      */
-    public PropertyPaneChoiceGroupOption() {
-        // Do nothing
-    }
-
+    ariaLabel?: string;
     /**
-     * Sets the aria label of type string
+     * Indicates whether the choice group option is disabled or not.
      */
-    public set AriaLabel(ariaLabel: string) {
-        this.ariaLabel = ariaLabel;
-    }
-
+    disabled?: boolean;
     /**
-     * Gets the aria label of type string
+     * Indicates whether the choice group option is checked or not.
      */
-    public get AriaLabel(): string {
-        return this.ariaLabel;
-    }
-
-     /**
-     * Sets a value indicating whether this control is enabled or not of type boolean
-     */
-     public set Disabled(disabled: boolean) {
-        this.disabled = disabled;
-    }
-
+    checked?: boolean;
     /**
-     * Gets a value indicating whether this control is enabled or not of type boolean
+     * The icon properties to use for the choice group option.
      */
-    public get Disabled(): boolean {
-        return this.disabled;
-    }
-
+    iconProps?: PropertyPaneChoiceGroupIconProperties;
     /**
-     * Sets a value indicating whether the property pane group option is checked or not of type boolean
+     * The image size to use for the choice group option.
      */
-    public set Checked(checked: boolean) {
-        this.checked = checked;
-    }
-
+    imageSize?: PropertyPaneChoiceGroupImageSize;
     /**
-     * Gets a value indicating whether the property pane group option is checked or not of type boolean
+     * The image source to use for the choice group option.
      */
-    public get Checked(): boolean {
-        return this.checked;
-    }
-
+    imageSrc?: string;
     /**
-     * Sets the Icon component props for choice field of type PropertyPaneChoiceGroupIconProperties
+     * The key to uniquely identify the choice group option.
      */
-    public set IconProps(iconProps: PropertyPaneChoiceGroupIconProperties) {
-        this.iconProps = iconProps;
-    }
-
+    key: string;
     /**
-     * Gets the Icon component props for choice field of type PropertyPaneChoiceGroupIconProperties
+     * The text to display next for this choice group option.
      */
-    public get IconProps(): PropertyPaneChoiceGroupIconProperties {
-        return this.iconProps;
-    }
-
-    /**
-     * Sets the width and height of the image in px for choice field of type PropertyPaneChoiceGroupImageSize
-     */
-     public set ImageSize(imageSize: PropertyPaneChoiceGroupImageSize) {
-        this.imageSize = imageSize;
-    }
-
-    /**
-     * Gets the width and height of the image in px for choice field of type PropertyPaneChoiceGroupImageSize
-     */
-    public get ImageSize(): PropertyPaneChoiceGroupImageSize {
-        return this.imageSize;
-    }
-
-    /**
-     * Sets the src of image for choice field of type string
-     */
-     public set ImageSrc(imageSrc: string) {
-        this.imageSrc = imageSrc;
-    }
-
-    /**
-     * Gets the src of image for choice field of type string
-     */
-    public get ImageSrc(): string {
-        return this.imageSrc;
-    }
-
-    /**
-     * Sets a key to uniquely identify this option of type string
-     */
-    public set Key(key: string) {
-        this.key = key;
-    }
-
-    /**
-     * Gets a key to uniquely identify this option of type string
-     */
-    public get Key(): string {
-        return this.key;
-    }
-
-    /**
-     * Sets text to render for this option of type string
-     */
-    public set Text(text: string) {
-        this.text = text;
-    }
-
-    /**
-     * Gets text to render for this option of type string
-     */
-    public get Text(): string {
-        return this.text;
-    }
+    text: string;
 }

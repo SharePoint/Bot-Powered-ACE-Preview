@@ -2,127 +2,43 @@
 // Licensed under the MIT License.
 
 /**
- * Sharepoint Ace Data object
+ * SharePoint ACE Data object
  */
-export class AceData {
-    private cardSize: AceData.AceCardSize;
-    private dataVersion: string;
-    private id: string;
-    private title: string;
-    private iconProperty: string;
-    private description: string;
-    private properties: any;
-
+export interface AceData {
     /**
-     * Initializes a new instance of the AceData class
+     * The card size.
      */
-    public AceData() {
-        // Do nothing
-    }
-
+    cardSize: AceCardSize;
     /**
-     * Sets card size property of type AceCardSize
+     * The value of this property is stored in the serialized data of the Adaptive Card Extension.
+     * It can be used to manage versioning of the Adaptive Card Extension.
+     *
+     * @remarks - although there is no restriction on the format of this property, it is recommended to use semantic versioning.
      */
-    public set CardSize(cardSize: AceData.AceCardSize) {
-        this.cardSize = cardSize;
-    }
-
+    dataVersion: string;
     /**
-     * Gets card size property of type AceCardSize
+     * The unique id (Guid) of the ACE.
      */
-    public get CardSize(): AceData.AceCardSize {
-        return this.cardSize;
-    }
-
+    id: string;
     /**
-     * Sets data version property of type string
+     * The title of the ACE.
      */
-    public set DataVersion(dataVersion: string) {
-        this.dataVersion = dataVersion;
-    }
-
+    title: string;
     /**
-     * Gets data version property of type string
+     * The icon of the ACE.
      */
-    public get DataVersion(): string {
-        return this.dataVersion; 
-    }
-
+    iconProperty: string;
     /**
-     * Sets id property of type string
+     * The description of the ACE.
      */
-    public set Id(id: string) {
-        this.id = id;
-    }
-
+    description: string;
     /**
-     * Gets id property of type string
+     * The properties of the ACE.
      */
-    public get Id(): string {
-        return this.id;
-    }
-
-    /**
-     * Sets title property of type string
-     */
-    public set Title(title: string) {
-        this.title = title;
-    }
-
-    /**
-     * Gets title property of type string
-     */
-    public get Title(): string {
-        return this.title;
-    }
-
-    /**
-     * Sets icon property of type string
-     */
-    public set IconProperty(iconProperty: string) {
-        this.iconProperty = iconProperty;
-    }
-
-    /**
-     * Gets icon property of type string
-     */
-    public get IconProperty(): string {
-        return this.iconProperty;
-    }
-
-    /**
-     * Sets description property of type string
-     */
-    public set Description(description: string) {
-        this.description = description;
-    }
-
-    /**
-     * Gets description property of type string
-     */
-    public get Description(): string {
-        return this.description;
-    }
-
-    /**
-     * Sets the property bag of the ACE of type any
-     */
-    public set Properties(properties: any) {
-        this.properties = properties;
-    }
-
-    /**
-     * Gets the property bag of the ACE of type any
-     */
-    public get Properties(): any {
-        return this.properties;
-    }
+    properties: any;
 }
 
-export namespace AceData
-{
-    export enum AceCardSize {
-        Medium = "Medium",
-        Large = "Large"
-    }
-}
+/**
+ * SharePoint ACE Card Size
+ */
+export type AceCardSize = 'Medium' | 'Large';

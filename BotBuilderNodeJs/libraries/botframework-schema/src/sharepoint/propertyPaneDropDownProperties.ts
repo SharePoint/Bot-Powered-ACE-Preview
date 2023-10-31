@@ -1,140 +1,43 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { IPropertyPaneFieldProperties } from './IPropertyPaneFieldProperties';
-import { PropertyPaneDropDownOption } from './propertyPaneDropDownOptions';
+import { PropertyPaneFieldProperties } from './propertyPaneFieldProperties';
+import { PropertyPaneDropDownOption } from './propertyPaneDropDownOption';
 
 /**
- * Sharepoint PropertyPaneDropDownProperties object
+ * SharePoint property pane dropdown field properties.
  */
-export class PropertyPaneDropDownProperties implements IPropertyPaneFieldProperties {
-    private ariaLabel: string;
-    private ariaPositionInSet: number;
-    private ariaSetSize: number;
-    private label: string;
-    private disabled: boolean;
-    private errorMessage: string;
-    private selectedKey: string;
-    private options: [PropertyPaneDropDownOption];
-    
+export interface PropertyPaneDropDownProperties extends PropertyPaneFieldProperties {
     /**
-     * Initializes a new instance of the PropertyPaneDropDownProperties class
+     * Optional ariaLabel flag. Text for screen-reader to announce regardless of toggle state.
      */
-    public PropertyPaneDropDownProperties() {
-        // Do nothing
-    }
-
+    ariaLabel?: string;
     /**
-     * Sets the aria label of type string
+     * The elemement's number or position in the current set of controls. Maps to native aria-positionset attribute. It starts from 1.
      */
-    public set AriaLabel(ariaLabel: string) {
-        this.ariaLabel = ariaLabel;
-    }
-
+    ariaPositionInSet?: number;
     /**
-     * Gets the aria label of type string
+     * The total number of elements in the current set of controls. Maps to native aria-setsize attribute.
      */
-    public get AriaLabel(): string {
-        return this.ariaLabel;
-    }
-
+    ariaSetSize?: number;
     /**
-     * Sets an element's number or position in the current set of controls.
-     * Maps to native aria-posinset attribute. It starts from 1 of type number
+     * The label text to display next to the dropdown.
      */
-    public set AriaPositionInSet(ariaPositionInSet: number) {
-        this.ariaPositionInSet = ariaPositionInSet;
-    }
-
+    label: string;
     /**
-     * Gets an element's number or position in the current set of controls.
-     * Maps to native aria-posinset attribute. It starts from 1 of type number
+     * Indicates whether the dropdown is disabled or not.
      */
-    public get AriaPositionInSet(): number {
-        return this.ariaPositionInSet;
-    }
-
+    disabled?: boolean;
     /**
-     * Sets the number of items in the current set of controls. Maps to native aria-setsize attribute of type number
+     * The error message to display when the dropdown value is invalid.
      */
-    public set AriaSetSize(ariaSetSize: number) {
-        this.ariaSetSize = ariaSetSize;
-    }
-
+    errorMessage?: string;
     /**
-     * Gets the number of items in the current set of controls. Maps to native aria-setsize attribute of type number
+     * The key of the selected dropdown option.
      */
-    public get AriaSetSize(): number {
-        return this.ariaSetSize;
-    }
-
+    selectedKey?: string;
     /**
-     * Sets the label of type string
+     * The options for the dropdown.
      */
-    public set Label(label: string) {
-        this.label = label;
-    }
-
-    /**
-     * Gets the label of type string
-     */
-    public get Label(): string {
-        return this.label;
-    }
-
-    /**
-     * Sets a value indicating whether this control is enabled or not of type boolean
-     */
-    public set Disabled(disabled: boolean) {
-        this.disabled = disabled;
-    }
-
-    /**
-     * Gets a value indicating whether this control is enabled or not of type boolean
-     */
-    public get Disabled(): boolean {
-        return this.disabled;
-    }
-
-    /**
-     * Sets the error message of type string
-     */
-    public set ErrorMessage(errorMessage: string) {
-        this.errorMessage = errorMessage;
-    }
-
-    /**
-     * Gets the error message of type string
-     */
-    public get ErrorMessage(): string {
-        return this.errorMessage;
-    }
-
-    /**
-     * Sets the key of the initially selected option of type string
-     */
-    public set SelectedKey(selectedKey: string) {
-        this.selectedKey = selectedKey;
-    }
-
-    /**
-     * Gets the key of the initially selected option of type string
-     */
-    public get SelectedKey(): string {
-        return this.selectedKey;
-    }
-
-    /**
-     * Sets the collection of options for this Dropdown of type [PropertyPaneDropDownOption]
-     */
-    public set Options(options: [PropertyPaneDropDownOption]) {
-        this.options = options;
-    }
-
-    /**
-     * Gets the collection of options for this Dropdown of type [PropertyPaneDropDownOption]
-     */
-    public get Options(): [PropertyPaneDropDownOption] {
-        return this.options;
-    }
+    options?: PropertyPaneDropDownOption[];
 }

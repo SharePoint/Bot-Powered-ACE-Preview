@@ -1,109 +1,35 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-import { IPropertyPaneFieldProperties } from './IPropertyPaneFieldProperties';
+import { PropertyPaneFieldProperties } from './propertyPaneFieldProperties';
 import { PropertyPaneLinkPopupWindowProperties } from './propertyPaneLinkPopupWindowProperties';
 
 /**
- * Sharepoint PropertyPaneLinkProperties object
+ * SharePoint property pane link field properties.
  */
-export class PropertyPaneLinkProperties implements IPropertyPaneFieldProperties {
-    private text: string;
-    private target: string;
-    private href: string;
-    private ariaLabel: string;
-    private disabled: boolean;
-    private popupWindowProps: PropertyPaneLinkPopupWindowProperties;
-    
+export interface PropertyPaneLinkProperties extends PropertyPaneFieldProperties {
     /**
-     * Initializes a new instance of the PropertyPaneLinkProperties class
+     * The text to display in the link.
      */
-    public PropertyPaneLinkProperties() {
-        // Do nothing
-    }
-
+    text: string;
     /**
-     * Sets the label to display next to the checkbox of type string
+     * The target of the link.
      */
-    public set Text(text: string) {
-        this.text = text;
-    }
-
+    target?: string;
     /**
-     * Gets the label to display next to the checkbox of type string
+     * The URL of the link.
      */
-    public get Text(): string {
-        return this.text;
-    }
-
+    href: string;
     /**
-     * Sets where to display the linked resource of type string
+     * Optional ariaLabel flag. Text for screen-reader to announce regardless of toggle state.
      */
-    public set Target(target: string) {
-        this.target = target;
-    }
-
+    ariaLabel?: string;
     /**
-     * Gets where to display the linked resource of type string
+     * Whether the link is disabled or not.
      */
-    public get Target(): string {
-        return this.target;
-    }
-
+    disabled?: boolean;
     /**
-     * Sets the location to which the link is targeted to of type string
+     * The properties of the popup window.
      */
-    public set Href(href: string) {
-        this.href = href;
-    }
-
-    /**
-     * Gets the location to which the link is targeted to of type string
-     */
-    public get Href(): string {
-        return this.href;
-    }
-
-    /**
-     * Sets the aria label of type string
-     */
-    public set AriaLabel(ariaLabel: string) {
-        this.ariaLabel = ariaLabel;
-    }
-
-    /**
-     * Gets the aria label of type string
-     */
-    public get AriaLabel(): string {
-        return this.ariaLabel;
-    }
-
-    /**
-     * Sets a value indicating whether this control is enabled or not of type boolean
-     */
-    public set Disabled(disabled: boolean) {
-        this.disabled = disabled;
-    }
-
-    /**
-     * Gets a value indicating whether this control is enabled or not of type boolean
-     */
-    public get Disabled(): boolean {
-        return this.disabled;
-    }
-
-
-    /**
-     * Sets the title of pop up window of type string
-     */
-    public set PopupWindowProps(popupWindowProps: PropertyPaneLinkPopupWindowProperties ){
-        this.popupWindowProps = popupWindowProps;
-    }
-
-    /**
-     * Gets the title of pop up window of type string
-     */
-    public get PopupWindowProps(): PropertyPaneLinkPopupWindowProperties {
-        return this.popupWindowProps;
-    }
+    popupWindowProps?: PropertyPaneLinkPopupWindowProperties;
 }
