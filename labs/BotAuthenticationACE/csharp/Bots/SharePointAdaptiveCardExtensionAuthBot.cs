@@ -21,7 +21,6 @@ using Microsoft.BotBuilderSamples.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Graph;
-using Microsoft.Identity.Core.Cache;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
