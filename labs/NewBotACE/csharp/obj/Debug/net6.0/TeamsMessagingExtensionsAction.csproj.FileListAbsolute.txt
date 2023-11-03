@@ -217,7 +217,6 @@ D:\at\bot-ace\labs\NewBotACE\csharp\bin\Debug\net6.0\TeamsMessagingExtensionsAct
 D:\at\bot-ace\labs\NewBotACE\csharp\bin\Debug\net6.0\AdaptiveCards.dll
 D:\at\bot-ace\labs\NewBotACE\csharp\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
 D:\at\bot-ace\labs\NewBotACE\csharp\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
-D:\at\bot-ace\labs\NewBotACE\csharp\bin\Debug\net6.0\Microsoft.Azure.Services.AppAuthentication.dll
 D:\at\bot-ace\labs\NewBotACE\csharp\bin\Debug\net6.0\Microsoft.Bot.Builder.dll
 D:\at\bot-ace\labs\NewBotACE\csharp\bin\Debug\net6.0\Microsoft.Bot.Builder.Integration.AspNet.Core.dll
 D:\at\bot-ace\labs\NewBotACE\csharp\bin\Debug\net6.0\Microsoft.Bot.Configuration.dll
@@ -226,7 +225,6 @@ D:\at\bot-ace\labs\NewBotACE\csharp\bin\Debug\net6.0\Microsoft.Bot.Connector.Str
 D:\at\bot-ace\labs\NewBotACE\csharp\bin\Debug\net6.0\Microsoft.Bot.Schema.dll
 D:\at\bot-ace\labs\NewBotACE\csharp\bin\Debug\net6.0\Microsoft.Bot.Streaming.dll
 D:\at\bot-ace\labs\NewBotACE\csharp\bin\Debug\net6.0\Microsoft.Identity.Client.dll
-D:\at\bot-ace\labs\NewBotACE\csharp\bin\Debug\net6.0\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
 D:\at\bot-ace\labs\NewBotACE\csharp\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
 D:\at\bot-ace\labs\NewBotACE\csharp\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
 D:\at\bot-ace\labs\NewBotACE\csharp\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
@@ -259,3 +257,4 @@ D:\at\bot-ace\labs\NewBotACE\csharp\obj\Debug\net6.0\refint\TeamsMessagingExtens
 D:\at\bot-ace\labs\NewBotACE\csharp\obj\Debug\net6.0\TeamsMessagingExtensionsAction.pdb
 D:\at\bot-ace\labs\NewBotACE\csharp\obj\Debug\net6.0\TeamsMessagingExtensionsAction.genruntimeconfig.cache
 D:\at\bot-ace\labs\NewBotACE\csharp\obj\Debug\net6.0\ref\TeamsMessagingExtensionsAction.dll
+D:\at\bot-ace\labs\NewBotACE\csharp\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll

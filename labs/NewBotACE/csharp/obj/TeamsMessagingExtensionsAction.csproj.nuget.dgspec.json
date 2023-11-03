@@ -27,7 +27,8 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "D:\\at\\bot-ace\\BotBuilder DotNet\\outputpackages": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/ConversationalAI/BotFramework/_packaging/SDK/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -55,15 +56,15 @@
             },
             "Microsoft.Bot.Builder": {
               "target": "Package",
-              "version": "[0.0.0, )"
+              "version": "[4.22.0-daily.20231103.375540.e4afa43, )"
             },
             "Microsoft.Bot.Builder.Integration.AspNet.Core": {
               "target": "Package",
-              "version": "[0.0.0, )"
+              "version": "[4.22.0-daily.20231103.375540.e4afa43, )"
             },
             "Microsoft.Bot.Schema": {
               "target": "Package",
-              "version": "[0.0.0, )"
+              "version": "[4.22.0-daily.20231103.375540.e4afa43, )"
             }
           },
           "imports": [

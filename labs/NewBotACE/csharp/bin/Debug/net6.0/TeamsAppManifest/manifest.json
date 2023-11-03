@@ -1,60 +1,60 @@
 {
-  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
-  "manifestVersion": "1.9",
-  "version": "1.0.0",
-  "id": "16693ec7-72c5-48d9-a68f-bf23f4476792",
-  "packageName": "FooBar",
-  "developer": {
-    "name": "Microsoft",
-    "websiteUrl": "https://mwww.microsoft.com",
-    "privacyUrl": "https://mwww.microsoft.com",
-    "termsOfUseUrl": "https://www.microsoft.com/en-us/legal/terms-of-use"
-  },
-  "icons": {
-    "color": "color.png",
-    "outline": "outline.png"
-  },
-  "name": {
-    "short": "DK Local bot",
-    "full": ""
-  },
-  "description": {
-    "short": "DK Local bot",
-    "full": "DK Local bot"
-  },
-  "accentColor": "#FFFFFF",
-  "dashboardCards": [
-    {
-      "entityId": "16693ec7-72c5-48d9-a68f-bf23f4476792",
-      "name": "Bot default name",
-      "description": "Bot default description",
-      "context": [
-        "Connections"
-      ],
-      "iconProperty": "SharePointLogo",
-      "officeFabricIconFontName": "VivaLogo",
-      "defaultSize": [
-        "medium"
-      ],
-      "contentBotId": "16693ec7-72c5-48d9-a68f-bf23f4476792"
-    }
-  ],
-  "permissions": [
-    "identity",
-    "messageTeamMembers"
-  ],
-  "validDomains": [
-    "https://ebea-2001-4898-80e8-f-25ce-5dba-4904-1467.ngrok-free.app"
-  ],
-  "devicePermissions": [
-    "media",
-    "geolocation",
-    "notifications",
-    "midi",
-    "openExternal"
-  ],
-  "webApplicationInfo": {
-    "resource": "https://prepspogrid.com",
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.9",
+    "version": "1.0.0",
+    "id": "<<Microsoft-App-ID>>",
+    "packageName": "FooBar",
+    "developer": {
+        "name": "Microsoft",
+        "websiteUrl": "https://mwww.microsoft.com",
+        "privacyUrl": "https://mwww.microsoft.com",
+        "termsOfUseUrl": "https://www.microsoft.com/en-us/legal/terms-of-use"
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "DK Local bot",
+        "full": ""
+    },
+    "description": {
+        "short": "DK Local bot",
+        "full": "DK Local bot"
+    },
+    "accentColor": "#FFFFFF",
+    "dashboardCards": [
+	{
+	  "entityId": "<<Microsoft-App-ID>>",
+	  "name": "Bot default name",
+	  "description": "Bot default description",
+	  "context":[
+		"Connections"
+	   ],
+	  "iconProperty": "SharePointLogo", 
+	  "officeFabricIconFontName": "VivaLogo",
+	  "defaultSize": [
+		"medium"
+	   ],
+	  "contentBotId": "<<Microsoft-App-ID>>"
+	}
+    ],    
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": [
+        "<<validDomains>>"
+    ],
+    "devicePermissions": [
+        "media",
+        "geolocation",
+        "notifications",
+        "midi",
+        "openExternal"
+    ],
+    "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
     "id": "00000003-0000-0ff1-ce00-000000000000"
   }
 }
