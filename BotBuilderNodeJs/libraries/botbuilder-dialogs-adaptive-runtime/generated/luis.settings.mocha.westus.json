@@ -1,6 +1,0 @@
-{
-    "luis": {
-        "fancySetting": "fancyValue",
-        "override": "new value"
-    }
-}
