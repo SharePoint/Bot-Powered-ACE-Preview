@@ -1,59 +1,61 @@
 {
-    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.9/MicrosoftTeams.schema.json",
-    "manifestVersion": "1.9",
-    "version": "1.0.0",
-    "id": "<<Microsoft-App-ID>>",
-    "packageName": "FooBar",
-    "developer": {
-        "name": "Microsoft",
-        "websiteUrl": "https://mwww.microsoft.com",
-        "privacyUrl": "https://mwww.microsoft.com",
-        "termsOfUseUrl": "https://www.microsoft.com/en-us/legal/terms-of-use"
-    },
-    "icons": {
-        "color": "color.png",
-        "outline": "outline.png"
-    },
-    "name": {
-        "short": "DK Local bot",
-        "full": ""
-    },
-    "description": {
-        "short": "DK Local bot",
-        "full": "DK Local bot"
-    },
-    "accentColor": "#FFFFFF",
-    "dashboardCards": [
-	{
-	  "entityId": "<<Microsoft-App-ID>>",
-	  "name": "Bot default name",
-	  "description": "Bot default description",
-	  "context":[
-		"Connections"
-	   ],
-	  "iconProperty": "SharePointLogo", 
-	  "officeFabricIconFontName": "VivaLogo",
-	  "defaultSize": [
-		"medium"
-	   ],
-	  "contentBotId": "<<Microsoft-App-ID>>"
-	}
-    ],    
-    "permissions": [
-        "identity",
-        "messageTeamMembers"
-    ],
-    "validDomains": [
-        "<<validDomains>>"
-    ],
-    "devicePermissions": [
-        "media",
-        "geolocation",
-        "notifications",
-        "midi",
-        "openExternal"
-    ],
-    "webApplicationInfo": {
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.16",
+  "version": "1.0.0",
+  "id": "<<Microsoft-App-ID>>",
+  "packageName": "FooBar",
+  "developer": {
+    "name": "Microsoft",
+    "websiteUrl": "https://mwww.microsoft.com",
+    "privacyUrl": "https://mwww.microsoft.com",
+    "termsOfUseUrl": "https://www.microsoft.com/en-us/legal/terms-of-use"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "DK Local bot",
+    "full": ""
+  },
+  "description": {
+    "short": "DK Local bot",
+    "full": "DK Local bot"
+  },
+  "accentColor": "#FFFFFF",
+  "bots": [
+    {
+      "botId": "<<Microsoft-App-ID>>",
+      "scopes": ["groupChat", "personal", "team"]
+    }
+  ],
+  "dashboardCards": [
+    {
+      "id": "<<Microsoft-App-ID>>",
+      "displayName": "Bot default name",
+      "description": "Bot default description",
+      "icon": {
+        "officeUIFabricIconName": "SharePointLogo"
+      },
+      "contentSource": {
+        "sourceType": "bot",
+        "botConfiguration": {
+          "botId": "<<Microsoft-App-ID>>"
+        }
+      },
+      "defaultSize": "medium"
+    }
+  ],
+  "permissions": ["identity", "messageTeamMembers"],
+  "validDomains": ["<<validDomains>>"],
+  "devicePermissions": [
+    "media",
+    "geolocation",
+    "notifications",
+    "midi",
+    "openExternal"
+  ],
+  "webApplicationInfo": {
     "resource": "https://{teamSiteDomain}",
     "id": "00000003-0000-0ff1-ce00-000000000000"
   }
