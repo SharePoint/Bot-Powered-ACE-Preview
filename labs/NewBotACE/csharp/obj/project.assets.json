@@ -58,12 +58,12 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Microsoft.Bot.Builder/4.22.0-daily.20231103.375540.e4afa43": {
+      "Microsoft.Bot.Builder/4.21.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Bot.Connector": "4.22.0-daily.20231103.375540.e4afa43",
-          "Microsoft.Bot.Connector.Streaming": "4.22.0-daily.20231103.375540.e4afa43",
-          "Microsoft.Bot.Streaming": "4.22.0-daily.20231103.375540.e4afa43",
+          "Microsoft.Bot.Connector": "4.21.2",
+          "Microsoft.Bot.Connector.Streaming": "4.21.2",
+          "Microsoft.Bot.Streaming": "4.21.2",
           "Microsoft.Extensions.DependencyInjection": "2.1.0",
           "Microsoft.Extensions.Logging": "2.1.0"
         },
@@ -78,13 +78,13 @@
           }
         }
       },
-      "Microsoft.Bot.Builder.Integration.AspNet.Core/4.22.0-daily.20231103.375540.e4afa43": {
+      "Microsoft.Bot.Builder.Integration.AspNet.Core/4.21.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Bot.Builder": "4.22.0-daily.20231103.375540.e4afa43",
-          "Microsoft.Bot.Configuration": "4.22.0-daily.20231103.375540.e4afa43",
-          "Microsoft.Bot.Connector.Streaming": "4.22.0-daily.20231103.375540.e4afa43",
-          "Microsoft.Bot.Streaming": "4.22.0-daily.20231103.375540.e4afa43",
+          "Microsoft.Bot.Builder": "4.21.2",
+          "Microsoft.Bot.Configuration": "4.21.2",
+          "Microsoft.Bot.Connector.Streaming": "4.21.2",
+          "Microsoft.Bot.Streaming": "4.21.2",
           "Newtonsoft.Json": "13.0.1"
         },
         "compile": {
@@ -101,7 +101,7 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Microsoft.Bot.Configuration/4.22.0-daily.20231103.375540.e4afa43": {
+      "Microsoft.Bot.Configuration/4.21.2": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "13.0.1",
@@ -118,10 +118,10 @@
           }
         }
       },
-      "Microsoft.Bot.Connector/4.22.0-daily.20231103.375540.e4afa43": {
+      "Microsoft.Bot.Connector/4.21.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Bot.Schema": "4.22.0-daily.20231103.375540.e4afa43",
+          "Microsoft.Bot.Schema": "4.21.2",
           "Microsoft.CSharp": "4.5.0",
           "Microsoft.Extensions.Http": "2.1.0",
           "Microsoft.Extensions.Logging": "2.1.0",
@@ -141,11 +141,11 @@
           }
         }
       },
-      "Microsoft.Bot.Connector.Streaming/4.22.0-daily.20231103.375540.e4afa43": {
+      "Microsoft.Bot.Connector.Streaming/4.21.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Bot.Schema": "4.22.0-daily.20231103.375540.e4afa43",
-          "Microsoft.Bot.Streaming": "4.22.0-daily.20231103.375540.e4afa43",
+          "Microsoft.Bot.Schema": "4.21.2",
+          "Microsoft.Bot.Streaming": "4.21.2",
           "Microsoft.Extensions.Logging": "2.1.0",
           "Newtonsoft.Json": "13.0.1",
           "System.IO.Pipelines": "5.0.1",
@@ -163,7 +163,7 @@
           }
         }
       },
-      "Microsoft.Bot.Schema/4.22.0-daily.20231103.375540.e4afa43": {
+      "Microsoft.Bot.Schema/4.21.2": {
         "type": "package",
         "dependencies": {
           "AdaptiveCards": "1.2.3",
@@ -180,7 +180,7 @@
           }
         }
       },
-      "Microsoft.Bot.Streaming/4.22.0-daily.20231103.375540.e4afa43": {
+      "Microsoft.Bot.Streaming/4.21.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Logging": "2.1.0",
@@ -1490,24 +1490,24 @@
         "microsoft.aspnetcore.mvc.newtonsoftjson.nuspec"
       ]
     },
-    "Microsoft.Bot.Builder/4.22.0-daily.20231103.375540.e4afa43": {
-      "sha512": "v2rQqtpIAgUyN2U/DR1dJSYIXt4C4LvNlTCBCHcs/kqTMdRb+5FJ03GrZRC1o67VULn6Tla20BBlzZ1NfaMelQ==",
+    "Microsoft.Bot.Builder/4.21.2": {
+      "sha512": "T9ovZoL3PJylGZeNg6UBwEhrD9agjSYeHrNcRcASaYeje+FI6T4DHa1NMn3ZT8A3skuKvgQah303rZ+KYvfezw==",
       "type": "package",
-      "path": "microsoft.bot.builder/4.22.0-daily.20231103.375540.e4afa43",
+      "path": "microsoft.bot.builder/4.21.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "icon.png",
         "lib/netstandard2.0/Microsoft.Bot.Builder.dll",
         "lib/netstandard2.0/Microsoft.Bot.Builder.xml",
-        "microsoft.bot.builder.4.22.0-daily.20231103.375540.e4afa43.nupkg.sha512",
+        "microsoft.bot.builder.4.21.2.nupkg.sha512",
         "microsoft.bot.builder.nuspec"
       ]
     },
-    "Microsoft.Bot.Builder.Integration.AspNet.Core/4.22.0-daily.20231103.375540.e4afa43": {
-      "sha512": "zx40DC/xFHvV0U3tu7fXuBO2CXO8zzsApn7qoSnnwGMIpNcEWllrZ0PpfHEU2piIXYV29tDaUlqbUgN/Od8wLg==",
+    "Microsoft.Bot.Builder.Integration.AspNet.Core/4.21.2": {
+      "sha512": "ZzlPj9BigGxYXZ3xcgjNK7fC11pHsoWCBntrOLNdoAZz2yvbtibWnSoN/PTVfi9XqvDCvzsPLxcyavwYiO48+g==",
       "type": "package",
-      "path": "microsoft.bot.builder.integration.aspnet.core/4.22.0-daily.20231103.375540.e4afa43",
+      "path": "microsoft.bot.builder.integration.aspnet.core/4.21.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1518,42 +1518,42 @@
         "lib/netcoreapp3.1/Microsoft.Bot.Builder.Integration.AspNet.Core.xml",
         "lib/netstandard2.0/Microsoft.Bot.Builder.Integration.AspNet.Core.dll",
         "lib/netstandard2.0/Microsoft.Bot.Builder.Integration.AspNet.Core.xml",
-        "microsoft.bot.builder.integration.aspnet.core.4.22.0-daily.20231103.375540.e4afa43.nupkg.sha512",
+        "microsoft.bot.builder.integration.aspnet.core.4.21.2.nupkg.sha512",
         "microsoft.bot.builder.integration.aspnet.core.nuspec"
       ]
     },
-    "Microsoft.Bot.Configuration/4.22.0-daily.20231103.375540.e4afa43": {
-      "sha512": "mkpZTeBjXHTvh2RUpJatQ/e5wrZZJhbxnZ/U9yvLLWCiu+4/AHEKUTmdptqnWFzvG9QDWh31KNnBtbtWmwYEog==",
+    "Microsoft.Bot.Configuration/4.21.2": {
+      "sha512": "pzXVCUg2ixQNioU33CpEF7pUzbjEs44Y4RB5M/XzCEvU7QbMupaMlPijFeCzZpg4y5KZZoBaHRKAWO9acDBPXg==",
       "type": "package",
-      "path": "microsoft.bot.configuration/4.22.0-daily.20231103.375540.e4afa43",
+      "path": "microsoft.bot.configuration/4.21.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "icon.png",
         "lib/netstandard2.0/Microsoft.Bot.Configuration.dll",
         "lib/netstandard2.0/Microsoft.Bot.Configuration.xml",
-        "microsoft.bot.configuration.4.22.0-daily.20231103.375540.e4afa43.nupkg.sha512",
+        "microsoft.bot.configuration.4.21.2.nupkg.sha512",
         "microsoft.bot.configuration.nuspec"
       ]
     },
-    "Microsoft.Bot.Connector/4.22.0-daily.20231103.375540.e4afa43": {
-      "sha512": "kqG8gAAd0XJXC8RIiqj0XpAa3NHlq9SRSNzm8M8xSmzAPkNpYgH446Rob02h2eRfyjzKxd25+iSfx7l0EN8W/A==",
+    "Microsoft.Bot.Connector/4.21.2": {
+      "sha512": "tOOb/gyfI28Vsof7P9QrnJo62okkcCxHXgrA7BuUpjazEyWdPfaRTQOgXUBqqgnHGQrJRGe8I98JFQMr/hBFmA==",
       "type": "package",
-      "path": "microsoft.bot.connector/4.22.0-daily.20231103.375540.e4afa43",
+      "path": "microsoft.bot.connector/4.21.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "icon.png",
         "lib/netstandard2.0/Microsoft.Bot.Connector.dll",
         "lib/netstandard2.0/Microsoft.Bot.Connector.xml",
-        "microsoft.bot.connector.4.22.0-daily.20231103.375540.e4afa43.nupkg.sha512",
+        "microsoft.bot.connector.4.21.2.nupkg.sha512",
         "microsoft.bot.connector.nuspec"
       ]
     },
-    "Microsoft.Bot.Connector.Streaming/4.22.0-daily.20231103.375540.e4afa43": {
-      "sha512": "bDoD/pJG81IDsL0Ii7/p24XcsUNidOw/4ujF59fABJIIT2d/XeAuDU+G8gkUaVua48vwXZdC+TVtvCGkhvEhiA==",
+    "Microsoft.Bot.Connector.Streaming/4.21.2": {
+      "sha512": "dhxrPhBORX2U60dq2EmbjVSwwoEcKgcFGUznlr6NaizYZKER1q4JqZ5BXOCg2HsTwqe7uB3YOx8fkWt+mXE5jA==",
       "type": "package",
-      "path": "microsoft.bot.connector.streaming/4.22.0-daily.20231103.375540.e4afa43",
+      "path": "microsoft.bot.connector.streaming/4.21.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1561,28 +1561,28 @@
         "lib/netstandard2.0/Microsoft.Bot.Connector.Streaming.dll",
         "lib/netstandard2.0/Microsoft.Bot.Connector.Streaming.pdb",
         "lib/netstandard2.0/Microsoft.Bot.Connector.Streaming.xml",
-        "microsoft.bot.connector.streaming.4.22.0-daily.20231103.375540.e4afa43.nupkg.sha512",
+        "microsoft.bot.connector.streaming.4.21.2.nupkg.sha512",
         "microsoft.bot.connector.streaming.nuspec"
       ]
     },
-    "Microsoft.Bot.Schema/4.22.0-daily.20231103.375540.e4afa43": {
-      "sha512": "y0onMq+2d37yOHWn67a47oglXrmAxAd8z+NLr/13ZdAlYj1y7xBOSh1SCoY7ezIE9zRMcwpeIf3dpTjkjSYgLQ==",
+    "Microsoft.Bot.Schema/4.21.2": {
+      "sha512": "OkJQOwhYPiHpRhoehzQGHVh5lQmzQb636K+ZWmDTJluNcrFBMkvEj0WWc7rDX+caWD7+OrqhYt+i/iofbjZnqg==",
       "type": "package",
-      "path": "microsoft.bot.schema/4.22.0-daily.20231103.375540.e4afa43",
+      "path": "microsoft.bot.schema/4.21.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "icon.png",
         "lib/netstandard2.0/Microsoft.Bot.Schema.dll",
         "lib/netstandard2.0/Microsoft.Bot.Schema.xml",
-        "microsoft.bot.schema.4.22.0-daily.20231103.375540.e4afa43.nupkg.sha512",
+        "microsoft.bot.schema.4.21.2.nupkg.sha512",
         "microsoft.bot.schema.nuspec"
       ]
     },
-    "Microsoft.Bot.Streaming/4.22.0-daily.20231103.375540.e4afa43": {
-      "sha512": "BETWFQz+zTSPGZkSMFjvwatPd4zd3po4JpzcpStKW9q6W183RPju55oQDw5ecBwEM5w3ErkJosNGrePl+Q9mZQ==",
+    "Microsoft.Bot.Streaming/4.21.2": {
+      "sha512": "4IAMvO6SN/nLaHVdB2IlC538+eM59L6st62ouVO20peo9Hdkol5PIIw7fW2gOXXWL32aZ//8LhYmHzFbzKF/gA==",
       "type": "package",
-      "path": "microsoft.bot.streaming/4.22.0-daily.20231103.375540.e4afa43",
+      "path": "microsoft.bot.streaming/4.21.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1590,7 +1590,7 @@
         "lib/netstandard2.0/Microsoft.Bot.Streaming.dll",
         "lib/netstandard2.0/Microsoft.Bot.Streaming.pdb",
         "lib/netstandard2.0/Microsoft.Bot.Streaming.xml",
-        "microsoft.bot.streaming.4.22.0-daily.20231103.375540.e4afa43.nupkg.sha512",
+        "microsoft.bot.streaming.4.21.2.nupkg.sha512",
         "microsoft.bot.streaming.nuspec"
       ]
     },
@@ -4365,29 +4365,29 @@
     "net6.0": [
       "AdaptiveCards >= 2.7.3",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 6.0.11",
-      "Microsoft.Bot.Builder >= 4.22.0-daily.20231103.375540.e4afa43",
-      "Microsoft.Bot.Builder.Integration.AspNet.Core >= 4.22.0-daily.20231103.375540.e4afa43",
-      "Microsoft.Bot.Schema >= 4.22.0-daily.20231103.375540.e4afa43"
+      "Microsoft.Bot.Builder >= 4.21.2",
+      "Microsoft.Bot.Builder.Integration.AspNet.Core >= 4.21.2",
+      "Microsoft.Bot.Schema >= 4.21.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\aterentiev.NORTHAMERICA\\.nuget\\packages\\": {},
+    "C:\\.tools\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\at\\bot-ace\\labs\\NewBotACE\\csharp\\TeamsMessagingExtensionsAction.csproj",
+      "projectUniqueName": "C:\\Users\\aterentiev\\work\\Bot-Powered-ACE-Preview\\labs\\NewBotACE\\csharp\\TeamsMessagingExtensionsAction.csproj",
       "projectName": "TeamsMessagingExtensionsAction",
-      "projectPath": "D:\\at\\bot-ace\\labs\\NewBotACE\\csharp\\TeamsMessagingExtensionsAction.csproj",
-      "packagesPath": "C:\\Users\\aterentiev.NORTHAMERICA\\.nuget\\packages\\",
-      "outputPath": "D:\\at\\bot-ace\\labs\\NewBotACE\\csharp\\obj\\",
+      "projectPath": "C:\\Users\\aterentiev\\work\\Bot-Powered-ACE-Preview\\labs\\NewBotACE\\csharp\\TeamsMessagingExtensionsAction.csproj",
+      "packagesPath": "C:\\.tools\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\aterentiev\\work\\Bot-Powered-ACE-Preview\\labs\\NewBotACE\\csharp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\aterentiev.NORTHAMERICA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\aterentiev\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4396,9 +4396,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "D:\\at\\bot-ace\\BotBuilder DotNet\\outputpackages": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://pkgs.dev.azure.com/ConversationalAI/BotFramework/_packaging/SDK/nuget/v3/index.json": {}
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
@@ -4426,15 +4425,15 @@
           },
           "Microsoft.Bot.Builder": {
             "target": "Package",
-            "version": "[4.22.0-daily.20231103.375540.e4afa43, )"
+            "version": "[4.21.2, )"
           },
           "Microsoft.Bot.Builder.Integration.AspNet.Core": {
             "target": "Package",
-            "version": "[4.22.0-daily.20231103.375540.e4afa43, )"
+            "version": "[4.21.2, )"
           },
           "Microsoft.Bot.Schema": {
             "target": "Package",
-            "version": "[4.22.0-daily.20231103.375540.e4afa43, )"
+            "version": "[4.21.2, )"
           }
         },
         "imports": [
@@ -4456,7 +4455,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

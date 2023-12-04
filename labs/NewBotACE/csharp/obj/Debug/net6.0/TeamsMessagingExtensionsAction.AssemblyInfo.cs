@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TeamsMessagingExtensionsAction")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b9b7b302bedcf678802af75d27aab39afdaae83")]
 [assembly: System.Reflection.AssemblyProductAttribute("TeamsMessagingExtensionsAction")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TeamsMessagingExtensionsAction")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
